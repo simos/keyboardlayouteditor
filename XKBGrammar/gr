@@ -1,0 +1,27 @@
+
+partial alphanumeric_keys alternate_group
+xkb_symbols "extended" {
+
+    include "gr(basic)"
+
+    name[Group1] = "Greece - Extended";
+
+    key.type[Group1] = "THREE_LEVEL";
+
+    key <AE03> { [ NoSymbol, NoSymbol,       sterling ] }; //
+    key <AE10> { [ NoSymbol, NoSymbol,         degree ] }; //
+
+    include "level3(ralt_switch)"
+    include "eurosign(5)"
+    include "eurosign(e)"
+};
+
+partial alphanumeric_keys alternate_group
+xkb_symbols "nodeadkeys" {
+
+    include "gr(basic)"
+
+    name[Group1] = "Greece - Eliminate dead keys";
+
+    key <AC10> { [ semicolon, colon ] }; // ; :
+};
