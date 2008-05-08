@@ -1,4 +1,4 @@
-# $ANTLR 3.0.1 XKBGrammar.g 2008-04-30 19:41:41
+# $ANTLR 3.0.1 XKBGrammar.g 2008-05-08 01:14:04
 
 from antlr3 import *
 from antlr3.compat import set, frozenset
@@ -8,45 +8,47 @@ from antlr3.compat import set, frozenset
 HIDDEN = BaseRecognizer.HIDDEN
 
 # token types
-TOKEN_ALTERNATE_GROUP=9
-ATTRIBUTES=28
+ATTRIBUTES=29
 TOKEN_INCLUDE=11
-KEYCODE=30
+ATTRIBUTE=30
+DQUOTE=21
+TOKEN_MODIFIER_MAP=15
+TOKEN_XKB_SYMBOLS=10
+NAME_INCLUDE=39
+EOF=-1
+SECTIONNAME=36
+NAME_KEYSYM=38
+NAME_GROUP=40
+LBRACKET=16
+NAME=32
+TOKEN_PARTIAL=6
+COMMA=20
+INCLUDE=31
+EQUAL=25
+PLUS=23
+RBRACKET=17
+COMMENT=37
+DOT=28
+TOKEN_DEFAULT=4
+GREATERTHAN=27
+TOKEN_ALTERNATE_GROUP=9
+SECTION=35
 KEY=33
 KEYTYPE=34
-ATTRIBUTE=29
 TOKEN_NAME=13
-DQUOTE=20
-LCURLY=17
-SEMICOLON=23
-NAME_INCLUDE=36
-MINUS=21
-TOKEN_XKB_SYMBOLS=10
-Tokens=41
-EOF=-1
-NAME_KEYSYM=35
-NAME_GROUP=37
-LBRACKET=15
-TOKEN_PARTIAL=6
-NAME=32
-WS=40
-TOKEN_HIDDEN=5
+LCURLY=18
+SEMICOLON=24
+MINUS=22
+Tokens=43
+WS=42
+NEWLINE=41
 TOKEN_ALPHANUMERIC_KEYS=7
-NEWLINE=39
-COMMA=19
-LOWERTHAN=25
-EQUAL=24
-INCLUDE=31
-RCURLY=18
+TOKEN_HIDDEN=5
+LOWERTHAN=26
+RCURLY=19
 TOKEN_MODIFIER_KEYS=8
-PLUS=22
 TOKEN_KEY=14
-RBRACKET=16
-DOT=27
-COMMENT=38
-TOKEN_DEFAULT=4
 TOKEN_KEY_TYPE=12
-GREATERTHAN=26
 
 class XKBGrammarLexer(Lexer):
 
@@ -323,14 +325,37 @@ class XKBGrammarLexer(Lexer):
 
 
 
+    # $ANTLR start TOKEN_MODIFIER_MAP
+    def mTOKEN_MODIFIER_MAP(self, ):
+
+        try:
+            self.type = TOKEN_MODIFIER_MAP
+
+            # XKBGrammar.g:18:20: ( 'modifier_map' )
+            # XKBGrammar.g:18:22: 'modifier_map'
+            self.match("modifier_map")
+
+
+
+
+
+
+        finally:
+
+            pass
+
+    # $ANTLR end TOKEN_MODIFIER_MAP
+
+
+
     # $ANTLR start LBRACKET
     def mLBRACKET(self, ):
 
         try:
             self.type = LBRACKET
 
-            # XKBGrammar.g:18:10: ( '[' )
-            # XKBGrammar.g:18:12: '['
+            # XKBGrammar.g:19:10: ( '[' )
+            # XKBGrammar.g:19:12: '['
             self.match(u'[')
 
 
@@ -351,8 +376,8 @@ class XKBGrammarLexer(Lexer):
         try:
             self.type = RBRACKET
 
-            # XKBGrammar.g:19:10: ( ']' )
-            # XKBGrammar.g:19:12: ']'
+            # XKBGrammar.g:20:10: ( ']' )
+            # XKBGrammar.g:20:12: ']'
             self.match(u']')
 
 
@@ -373,8 +398,8 @@ class XKBGrammarLexer(Lexer):
         try:
             self.type = LCURLY
 
-            # XKBGrammar.g:20:8: ( '{' )
-            # XKBGrammar.g:20:10: '{'
+            # XKBGrammar.g:21:8: ( '{' )
+            # XKBGrammar.g:21:10: '{'
             self.match(u'{')
 
 
@@ -395,8 +420,8 @@ class XKBGrammarLexer(Lexer):
         try:
             self.type = RCURLY
 
-            # XKBGrammar.g:21:8: ( '}' )
-            # XKBGrammar.g:21:10: '}'
+            # XKBGrammar.g:22:8: ( '}' )
+            # XKBGrammar.g:22:10: '}'
             self.match(u'}')
 
 
@@ -417,8 +442,8 @@ class XKBGrammarLexer(Lexer):
         try:
             self.type = COMMA
 
-            # XKBGrammar.g:22:7: ( ',' )
-            # XKBGrammar.g:22:9: ','
+            # XKBGrammar.g:23:7: ( ',' )
+            # XKBGrammar.g:23:9: ','
             self.match(u',')
 
 
@@ -439,8 +464,8 @@ class XKBGrammarLexer(Lexer):
         try:
             self.type = DQUOTE
 
-            # XKBGrammar.g:23:8: ( '\"' )
-            # XKBGrammar.g:23:10: '\"'
+            # XKBGrammar.g:24:8: ( '\"' )
+            # XKBGrammar.g:24:10: '\"'
             self.match(u'"')
 
 
@@ -461,8 +486,8 @@ class XKBGrammarLexer(Lexer):
         try:
             self.type = MINUS
 
-            # XKBGrammar.g:24:7: ( '-' )
-            # XKBGrammar.g:24:9: '-'
+            # XKBGrammar.g:25:7: ( '-' )
+            # XKBGrammar.g:25:9: '-'
             self.match(u'-')
 
 
@@ -483,8 +508,8 @@ class XKBGrammarLexer(Lexer):
         try:
             self.type = PLUS
 
-            # XKBGrammar.g:25:6: ( '+' )
-            # XKBGrammar.g:25:8: '+'
+            # XKBGrammar.g:26:6: ( '+' )
+            # XKBGrammar.g:26:8: '+'
             self.match(u'+')
 
 
@@ -505,8 +530,8 @@ class XKBGrammarLexer(Lexer):
         try:
             self.type = SEMICOLON
 
-            # XKBGrammar.g:26:11: ( ';' )
-            # XKBGrammar.g:26:13: ';'
+            # XKBGrammar.g:27:11: ( ';' )
+            # XKBGrammar.g:27:13: ';'
             self.match(u';')
 
 
@@ -527,8 +552,8 @@ class XKBGrammarLexer(Lexer):
         try:
             self.type = EQUAL
 
-            # XKBGrammar.g:27:7: ( '=' )
-            # XKBGrammar.g:27:9: '='
+            # XKBGrammar.g:28:7: ( '=' )
+            # XKBGrammar.g:28:9: '='
             self.match(u'=')
 
 
@@ -549,8 +574,8 @@ class XKBGrammarLexer(Lexer):
         try:
             self.type = LOWERTHAN
 
-            # XKBGrammar.g:28:11: ( '<' )
-            # XKBGrammar.g:28:13: '<'
+            # XKBGrammar.g:29:11: ( '<' )
+            # XKBGrammar.g:29:13: '<'
             self.match(u'<')
 
 
@@ -571,8 +596,8 @@ class XKBGrammarLexer(Lexer):
         try:
             self.type = GREATERTHAN
 
-            # XKBGrammar.g:29:13: ( '>' )
-            # XKBGrammar.g:29:15: '>'
+            # XKBGrammar.g:30:13: ( '>' )
+            # XKBGrammar.g:30:15: '>'
             self.match(u'>')
 
 
@@ -593,8 +618,8 @@ class XKBGrammarLexer(Lexer):
         try:
             self.type = DOT
 
-            # XKBGrammar.g:30:5: ( '.' )
-            # XKBGrammar.g:30:7: '.'
+            # XKBGrammar.g:31:5: ( '.' )
+            # XKBGrammar.g:31:7: '.'
             self.match(u'.')
 
 
@@ -615,8 +640,8 @@ class XKBGrammarLexer(Lexer):
         try:
             self.type = NAME
 
-            # XKBGrammar.g:124:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            # XKBGrammar.g:124:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            # XKBGrammar.g:155:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            # XKBGrammar.g:155:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             if (u'A' <= self.input.LA(1) <= u'Z') or self.input.LA(1) == u'_' or (u'a' <= self.input.LA(1) <= u'z'):
                 self.input.consume();
 
@@ -626,7 +651,7 @@ class XKBGrammarLexer(Lexer):
                 raise mse
 
 
-            # XKBGrammar.g:124:27: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            # XKBGrammar.g:155:27: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             while True: #loop1
                 alt1 = 2
                 LA1_0 = self.input.LA(1)
@@ -670,8 +695,8 @@ class XKBGrammarLexer(Lexer):
         try:
             self.type = NAME_INCLUDE
 
-            # XKBGrammar.g:128:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' )* )
-            # XKBGrammar.g:128:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' )*
+            # XKBGrammar.g:159:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' )* )
+            # XKBGrammar.g:159:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' )*
             if (u'A' <= self.input.LA(1) <= u'Z') or self.input.LA(1) == u'_' or (u'a' <= self.input.LA(1) <= u'z'):
                 self.input.consume();
 
@@ -681,7 +706,7 @@ class XKBGrammarLexer(Lexer):
                 raise mse
 
 
-            # XKBGrammar.g:128:27: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' )*
+            # XKBGrammar.g:159:27: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' )*
             while True: #loop2
                 alt2 = 2
                 LA2_0 = self.input.LA(1)
@@ -725,8 +750,8 @@ class XKBGrammarLexer(Lexer):
         try:
             self.type = NAME_KEYSYM
 
-            # XKBGrammar.g:132:2: ( ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            # XKBGrammar.g:132:4: ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            # XKBGrammar.g:163:2: ( ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            # XKBGrammar.g:163:4: ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             if (u'0' <= self.input.LA(1) <= u'9') or (u'A' <= self.input.LA(1) <= u'Z') or (u'a' <= self.input.LA(1) <= u'z'):
                 self.input.consume();
 
@@ -736,7 +761,7 @@ class XKBGrammarLexer(Lexer):
                 raise mse
 
 
-            # XKBGrammar.g:132:32: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            # XKBGrammar.g:163:32: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             while True: #loop3
                 alt3 = 2
                 LA3_0 = self.input.LA(1)
@@ -780,8 +805,8 @@ class XKBGrammarLexer(Lexer):
         try:
             self.type = NAME_GROUP
 
-            # XKBGrammar.g:136:2: ( ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '-' | '.' | '0' .. '9' )* )
-            # XKBGrammar.g:136:4: ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '-' | '.' | '0' .. '9' )*
+            # XKBGrammar.g:167:2: ( ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '-' | '.' | '0' .. '9' )* )
+            # XKBGrammar.g:167:4: ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '-' | '.' | '0' .. '9' )*
             if (u'0' <= self.input.LA(1) <= u'9') or (u'A' <= self.input.LA(1) <= u'Z') or (u'a' <= self.input.LA(1) <= u'z'):
                 self.input.consume();
 
@@ -791,7 +816,7 @@ class XKBGrammarLexer(Lexer):
                 raise mse
 
 
-            # XKBGrammar.g:136:32: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '-' | '.' | '0' .. '9' )*
+            # XKBGrammar.g:167:32: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '-' | '.' | '0' .. '9' )*
             while True: #loop4
                 alt4 = 2
                 LA4_0 = self.input.LA(1)
@@ -835,12 +860,12 @@ class XKBGrammarLexer(Lexer):
         try:
             self.type = COMMENT
 
-            # XKBGrammar.g:139:9: ( '//' (~ ( '\\n' | '\\r' ) )* )
-            # XKBGrammar.g:139:11: '//' (~ ( '\\n' | '\\r' ) )*
+            # XKBGrammar.g:170:9: ( '//' (~ ( '\\n' | '\\r' ) )* )
+            # XKBGrammar.g:170:11: '//' (~ ( '\\n' | '\\r' ) )*
             self.match("//")
 
 
-            # XKBGrammar.g:139:16: (~ ( '\\n' | '\\r' ) )*
+            # XKBGrammar.g:170:16: (~ ( '\\n' | '\\r' ) )*
             while True: #loop5
                 alt5 = 2
                 LA5_0 = self.input.LA(1)
@@ -850,7 +875,7 @@ class XKBGrammarLexer(Lexer):
 
 
                 if alt5 == 1:
-                    # XKBGrammar.g:139:17: ~ ( '\\n' | '\\r' )
+                    # XKBGrammar.g:170:17: ~ ( '\\n' | '\\r' )
                     if (u'\u0000' <= self.input.LA(1) <= u'\t') or (u'\u000B' <= self.input.LA(1) <= u'\f') or (u'\u000E' <= self.input.LA(1) <= u'\uFFFE'):
                         self.input.consume();
 
@@ -887,9 +912,9 @@ class XKBGrammarLexer(Lexer):
         try:
             self.type = WS
 
-            # XKBGrammar.g:143:9: ( ( '\\t' | ' ' | NEWLINE )+ )
-            # XKBGrammar.g:143:17: ( '\\t' | ' ' | NEWLINE )+
-            # XKBGrammar.g:143:17: ( '\\t' | ' ' | NEWLINE )+
+            # XKBGrammar.g:174:9: ( ( '\\t' | ' ' | NEWLINE )+ )
+            # XKBGrammar.g:174:17: ( '\\t' | ' ' | NEWLINE )+
+            # XKBGrammar.g:174:17: ( '\\t' | ' ' | NEWLINE )+
             cnt6 = 0
             while True: #loop6
                 alt6 = 2
@@ -941,7 +966,7 @@ class XKBGrammarLexer(Lexer):
     def mNEWLINE(self, ):
 
         try:
-            # XKBGrammar.g:148:9: ( '\\r' | '\\n' )
+            # XKBGrammar.g:179:9: ( '\\r' | '\\n' )
             # XKBGrammar.g:
             if self.input.LA(1) == u'\n' or self.input.LA(1) == u'\r':
                 self.input.consume();
@@ -965,8 +990,8 @@ class XKBGrammarLexer(Lexer):
 
 
     def mTokens(self):
-        # XKBGrammar.g:1:8: ( TOKEN_DEFAULT | TOKEN_HIDDEN | TOKEN_PARTIAL | TOKEN_ALPHANUMERIC_KEYS | TOKEN_MODIFIER_KEYS | TOKEN_ALTERNATE_GROUP | TOKEN_XKB_SYMBOLS | TOKEN_INCLUDE | TOKEN_KEY_TYPE | TOKEN_NAME | TOKEN_KEY | LBRACKET | RBRACKET | LCURLY | RCURLY | COMMA | DQUOTE | MINUS | PLUS | SEMICOLON | EQUAL | LOWERTHAN | GREATERTHAN | DOT | NAME | NAME_INCLUDE | NAME_KEYSYM | NAME_GROUP | COMMENT | WS )
-        alt7 = 30
+        # XKBGrammar.g:1:8: ( TOKEN_DEFAULT | TOKEN_HIDDEN | TOKEN_PARTIAL | TOKEN_ALPHANUMERIC_KEYS | TOKEN_MODIFIER_KEYS | TOKEN_ALTERNATE_GROUP | TOKEN_XKB_SYMBOLS | TOKEN_INCLUDE | TOKEN_KEY_TYPE | TOKEN_NAME | TOKEN_KEY | TOKEN_MODIFIER_MAP | LBRACKET | RBRACKET | LCURLY | RCURLY | COMMA | DQUOTE | MINUS | PLUS | SEMICOLON | EQUAL | LOWERTHAN | GREATERTHAN | DOT | NAME | NAME_INCLUDE | NAME_KEYSYM | NAME_GROUP | COMMENT | WS )
+        alt7 = 31
         alt7 = self.dfa7.predict(self.input)
         if alt7 == 1:
             # XKBGrammar.g:1:10: TOKEN_DEFAULT
@@ -1035,115 +1060,121 @@ class XKBGrammarLexer(Lexer):
 
 
         elif alt7 == 12:
-            # XKBGrammar.g:1:185: LBRACKET
-            self.mLBRACKET()
+            # XKBGrammar.g:1:185: TOKEN_MODIFIER_MAP
+            self.mTOKEN_MODIFIER_MAP()
 
 
 
         elif alt7 == 13:
-            # XKBGrammar.g:1:194: RBRACKET
-            self.mRBRACKET()
+            # XKBGrammar.g:1:204: LBRACKET
+            self.mLBRACKET()
 
 
 
         elif alt7 == 14:
-            # XKBGrammar.g:1:203: LCURLY
-            self.mLCURLY()
+            # XKBGrammar.g:1:213: RBRACKET
+            self.mRBRACKET()
 
 
 
         elif alt7 == 15:
-            # XKBGrammar.g:1:210: RCURLY
-            self.mRCURLY()
+            # XKBGrammar.g:1:222: LCURLY
+            self.mLCURLY()
 
 
 
         elif alt7 == 16:
-            # XKBGrammar.g:1:217: COMMA
-            self.mCOMMA()
+            # XKBGrammar.g:1:229: RCURLY
+            self.mRCURLY()
 
 
 
         elif alt7 == 17:
-            # XKBGrammar.g:1:223: DQUOTE
-            self.mDQUOTE()
+            # XKBGrammar.g:1:236: COMMA
+            self.mCOMMA()
 
 
 
         elif alt7 == 18:
-            # XKBGrammar.g:1:230: MINUS
-            self.mMINUS()
+            # XKBGrammar.g:1:242: DQUOTE
+            self.mDQUOTE()
 
 
 
         elif alt7 == 19:
-            # XKBGrammar.g:1:236: PLUS
-            self.mPLUS()
+            # XKBGrammar.g:1:249: MINUS
+            self.mMINUS()
 
 
 
         elif alt7 == 20:
-            # XKBGrammar.g:1:241: SEMICOLON
-            self.mSEMICOLON()
+            # XKBGrammar.g:1:255: PLUS
+            self.mPLUS()
 
 
 
         elif alt7 == 21:
-            # XKBGrammar.g:1:251: EQUAL
-            self.mEQUAL()
+            # XKBGrammar.g:1:260: SEMICOLON
+            self.mSEMICOLON()
 
 
 
         elif alt7 == 22:
-            # XKBGrammar.g:1:257: LOWERTHAN
-            self.mLOWERTHAN()
+            # XKBGrammar.g:1:270: EQUAL
+            self.mEQUAL()
 
 
 
         elif alt7 == 23:
-            # XKBGrammar.g:1:267: GREATERTHAN
-            self.mGREATERTHAN()
+            # XKBGrammar.g:1:276: LOWERTHAN
+            self.mLOWERTHAN()
 
 
 
         elif alt7 == 24:
-            # XKBGrammar.g:1:279: DOT
-            self.mDOT()
+            # XKBGrammar.g:1:286: GREATERTHAN
+            self.mGREATERTHAN()
 
 
 
         elif alt7 == 25:
-            # XKBGrammar.g:1:283: NAME
-            self.mNAME()
+            # XKBGrammar.g:1:298: DOT
+            self.mDOT()
 
 
 
         elif alt7 == 26:
-            # XKBGrammar.g:1:288: NAME_INCLUDE
-            self.mNAME_INCLUDE()
+            # XKBGrammar.g:1:302: NAME
+            self.mNAME()
 
 
 
         elif alt7 == 27:
-            # XKBGrammar.g:1:301: NAME_KEYSYM
-            self.mNAME_KEYSYM()
+            # XKBGrammar.g:1:307: NAME_INCLUDE
+            self.mNAME_INCLUDE()
 
 
 
         elif alt7 == 28:
-            # XKBGrammar.g:1:313: NAME_GROUP
-            self.mNAME_GROUP()
+            # XKBGrammar.g:1:320: NAME_KEYSYM
+            self.mNAME_KEYSYM()
 
 
 
         elif alt7 == 29:
-            # XKBGrammar.g:1:324: COMMENT
-            self.mCOMMENT()
+            # XKBGrammar.g:1:332: NAME_GROUP
+            self.mNAME_GROUP()
 
 
 
         elif alt7 == 30:
-            # XKBGrammar.g:1:332: WS
+            # XKBGrammar.g:1:343: COMMENT
+            self.mCOMMENT()
+
+
+
+        elif alt7 == 31:
+            # XKBGrammar.g:1:351: WS
             self.mWS()
 
 
@@ -1157,40 +1188,41 @@ class XKBGrammarLexer(Lexer):
 
     DFA7_eot = DFA.unpack(
         u"\1\uffff\11\36\15\uffff\2\36\1\53\2\uffff\2\36\3\uffff\11\36\1"
-        u"\53\1\uffff\10\36\1\77\11\36\1\37\1\uffff\1\112\10\36\1\37\1\uffff"
-        u"\1\36\1\125\6\36\1\37\1\135\1\uffff\1\136\4\36\1\143\1\37\2\uffff"
-        u"\4\36\1\uffff\1\151\4\36\1\uffff\7\36\1\165\3\36\1\uffff\2\36\1"
-        u"\173\2\36\1\uffff\1\36\1\177\1\36\1\uffff\1\u0081\1\uffff"
+        u"\53\1\uffff\10\36\1\77\11\36\1\40\1\uffff\1\112\10\36\1\40\1\uffff"
+        u"\1\36\1\125\6\36\1\40\1\135\1\uffff\1\136\4\36\1\143\1\40\2\uffff"
+        u"\4\36\1\uffff\1\151\4\36\1\uffff\11\36\1\170\2\36\1\173\1\36\1"
+        u"\uffff\2\36\1\uffff\1\177\2\36\1\uffff\1\36\1\u0083\1\36\1\uffff"
+        u"\1\u0085\1\uffff"
         )
 
     DFA7_eof = DFA.unpack(
-        u"\u0082\uffff"
+        u"\u0086\uffff"
         )
 
     DFA7_min = DFA.unpack(
         u"\1\11\11\50\15\uffff\2\50\1\55\2\uffff\2\50\3\uffff\11\50\1\55"
         u"\1\uffff\22\50\1\164\1\uffff\11\50\1\171\1\uffff\10\50\1\160\1"
-        u"\50\1\uffff\6\50\1\145\2\uffff\4\50\1\uffff\1\55\4\50\1\uffff\13"
-        u"\50\1\uffff\5\50\1\uffff\3\50\1\uffff\1\50\1\uffff"
+        u"\50\1\uffff\6\50\1\145\2\uffff\4\50\1\uffff\1\55\4\50\1\uffff\16"
+        u"\50\1\uffff\2\50\1\uffff\3\50\1\uffff\3\50\1\uffff\1\50\1\uffff"
         )
 
     DFA7_max = DFA.unpack(
         u"\1\175\11\172\15\uffff\3\172\2\uffff\2\172\3\uffff\12\172\1\uffff"
         u"\22\172\1\164\1\uffff\11\172\1\171\1\uffff\10\172\1\160\1\172\1"
-        u"\uffff\6\172\1\145\2\uffff\4\172\1\uffff\5\172\1\uffff\13\172\1"
-        u"\uffff\5\172\1\uffff\3\172\1\uffff\1\172\1\uffff"
+        u"\uffff\6\172\1\145\2\uffff\4\172\1\uffff\5\172\1\uffff\16\172\1"
+        u"\uffff\2\172\1\uffff\3\172\1\uffff\3\172\1\uffff\1\172\1\uffff"
         )
 
     DFA7_accept = DFA.unpack(
-        u"\12\uffff\1\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26"
-        u"\1\27\1\30\3\uffff\1\35\1\36\2\uffff\1\31\1\34\1\32\12\uffff\1"
-        u"\33\23\uffff\1\13\12\uffff\1\12\12\uffff\1\2\7\uffff\1\1\1\3\4"
-        u"\uffff\1\10\5\uffff\1\11\13\uffff\1\7\5\uffff\1\5\3\uffff\1\6\1"
-        u"\uffff\1\4"
+        u"\12\uffff\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27"
+        u"\1\30\1\31\3\uffff\1\36\1\37\2\uffff\1\32\1\33\1\35\12\uffff\1"
+        u"\34\23\uffff\1\13\12\uffff\1\12\12\uffff\1\2\7\uffff\1\1\1\3\4"
+        u"\uffff\1\10\5\uffff\1\11\16\uffff\1\7\2\uffff\1\14\3\uffff\1\5"
+        u"\3\uffff\1\6\1\uffff\1\4"
         )
 
     DFA7_special = DFA.unpack(
-        u"\u0082\uffff"
+        u"\u0086\uffff"
         )
 
             
@@ -1200,23 +1232,23 @@ class XKBGrammarLexer(Lexer):
         u"\32\27\1\12\1\uffff\1\13\1\uffff\1\30\1\uffff\1\4\2\27\1\1\3\27"
         u"\1\2\1\7\1\27\1\10\1\27\1\5\1\11\1\27\1\3\7\27\1\6\2\27\1\14\1"
         u"\uffff\1\15"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\4\35\1\34\25\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\10\35\1\41\21\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\1\42\31\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\13\35\1\43\16\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\16\35\1\44\13\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\12\35\1\45\17\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\15\35\1\46\14\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\4\35\1\47\25\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\1\50\31\35"),
         DFA.unpack(u""),
         DFA.unpack(u""),
@@ -1231,197 +1263,204 @@ class XKBGrammarLexer(Lexer):
         DFA.unpack(u""),
         DFA.unpack(u""),
         DFA.unpack(u""),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\32\35"),
-        DFA.unpack(u"\2\40\6\uffff\12\51\7\uffff\32\51\4\uffff\1\51\1\uffff"
+        DFA.unpack(u"\2\37\6\uffff\12\51\7\uffff\32\51\4\uffff\1\51\1\uffff"
         u"\32\51"),
-        DFA.unpack(u"\2\37\1\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff"
+        DFA.unpack(u"\2\40\1\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff"
         u"\32\52"),
         DFA.unpack(u""),
         DFA.unpack(u""),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\5\35\1\54\24\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\32\35"),
         DFA.unpack(u""),
         DFA.unpack(u""),
         DFA.unpack(u""),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\3\35\1\55\26\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\21\35\1\56\10\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\17\35\1\57\3\35\1\60\6\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\3\35\1\61\26\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\1\35\1\62\30\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\2\35\1\63\27\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\30\35\1\64\1\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\14\35\1\65\15\35"),
-        DFA.unpack(u"\2\40\6\uffff\12\51\7\uffff\32\51\4\uffff\1\51\1\uffff"
+        DFA.unpack(u"\2\37\6\uffff\12\51\7\uffff\32\51\4\uffff\1\51\1\uffff"
         u"\32\51"),
-        DFA.unpack(u"\2\37\1\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff"
+        DFA.unpack(u"\2\40\1\uffff\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff"
         u"\32\52"),
         DFA.unpack(u""),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\1\66\31\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\3\35\1\67\26\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\23\35\1\70\6\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\7\35\1\71\22\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\4\35\1\72\25\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\10\35\1\73\21\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\74\1\uffff\32\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\13\35\1\75\16\35"),
-        DFA.unpack(u"\2\40\3\uffff\1\37\1\76\1\uffff\12\35\7\uffff\32\35"
+        DFA.unpack(u"\2\37\3\uffff\1\40\1\76\1\uffff\12\35\7\uffff\32\35"
         u"\4\uffff\1\35\1\uffff\32\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\4\35\1\100\25\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\24\35\1\101\5\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\4\35\1\102\25\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\10\35\1\103\21\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\1\104\31\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\21\35\1\105\10\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\5\35\1\106\24\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\22\35\1\107\7\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\24\35\1\110\5\35"),
         DFA.unpack(u"\1\111"),
         DFA.unpack(u""),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\32\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\13\35\1\113\16\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\15\35\1\114\14\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\1\115\31\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\15\35\1\116\14\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\15\35\1\117\14\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\10\35\1\120\21\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\30\35\1\121\1\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\3\35\1\122\26\35"),
         DFA.unpack(u"\1\123"),
         DFA.unpack(u""),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\23\35\1\124\6\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\32\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\13\35\1\126\16\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\24\35\1\127\5\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\1\130\31\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\4\35\1\131\25\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\14\35\1\132\15\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\4\35\1\133\25\35"),
         DFA.unpack(u"\1\134"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\32\35"),
         DFA.unpack(u""),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\32\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\14\35\1\137\15\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\23\35\1\140\6\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\21\35\1\141\10\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\1\35\1\142\30\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\32\35"),
         DFA.unpack(u"\1\144"),
         DFA.unpack(u""),
         DFA.unpack(u""),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\4\35\1\145\25\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\4\35\1\146\25\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\147\1\uffff\32\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\16\35\1\150\13\35"),
         DFA.unpack(u""),
-        DFA.unpack(u"\2\37\1\uffff\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff"
-        u"\32\37"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\40\1\uffff\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff"
+        u"\32\40"),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\21\35\1\152\10\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\153\1\uffff\32\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
-        u"\1\35\1\uffff\12\35\1\154\17\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
-        u"\1\35\1\uffff\13\35\1\155\16\35"),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        u"\1\35\1\uffff\12\35\1\155\1\35\1\154\15\35"),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        u"\1\35\1\uffff\13\35\1\156\16\35"),
         DFA.unpack(u""),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
-        u"\1\35\1\uffff\10\35\1\156\21\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
-        u"\1\35\1\uffff\6\35\1\157\23\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
-        u"\1\35\1\uffff\4\35\1\160\25\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
-        u"\1\35\1\uffff\22\35\1\161\7\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
-        u"\1\35\1\uffff\2\35\1\162\27\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
-        u"\1\35\1\uffff\21\35\1\163\10\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
-        u"\1\35\1\uffff\30\35\1\164\1\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        u"\1\35\1\uffff\10\35\1\157\21\35"),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        u"\1\35\1\uffff\6\35\1\160\23\35"),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        u"\1\35\1\uffff\1\161\31\35"),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        u"\1\35\1\uffff\4\35\1\162\25\35"),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        u"\1\35\1\uffff\22\35\1\163\7\35"),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        u"\1\35\1\uffff\2\35\1\164\27\35"),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        u"\1\35\1\uffff\21\35\1\165\10\35"),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        u"\1\35\1\uffff\17\35\1\166\12\35"),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        u"\1\35\1\uffff\30\35\1\167\1\35"),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\32\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
-        u"\1\166\1\uffff\32\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
-        u"\1\35\1\uffff\16\35\1\167\13\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
-        u"\1\35\1\uffff\22\35\1\170\7\35"),
-        DFA.unpack(u""),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
-        u"\1\35\1\uffff\12\35\1\171\17\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
-        u"\1\35\1\uffff\24\35\1\172\5\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        u"\1\171\1\uffff\32\35"),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        u"\1\35\1\uffff\16\35\1\172\13\35"),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\32\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
-        u"\1\35\1\uffff\4\35\1\174\25\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
-        u"\1\35\1\uffff\17\35\1\175\12\35"),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        u"\1\35\1\uffff\22\35\1\174\7\35"),
         DFA.unpack(u""),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
-        u"\1\35\1\uffff\30\35\1\176\1\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        u"\1\35\1\uffff\12\35\1\175\17\35"),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        u"\1\35\1\uffff\24\35\1\176\5\35"),
+        DFA.unpack(u""),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\32\35"),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
-        u"\1\35\1\uffff\22\35\1\u0080\7\35"),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        u"\1\35\1\uffff\4\35\1\u0080\25\35"),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        u"\1\35\1\uffff\17\35\1\u0081\12\35"),
         DFA.unpack(u""),
-        DFA.unpack(u"\2\40\3\uffff\2\37\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        u"\1\35\1\uffff\30\35\1\u0082\1\35"),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        u"\1\35\1\uffff\32\35"),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
+        u"\1\35\1\uffff\22\35\1\u0084\7\35"),
+        DFA.unpack(u""),
+        DFA.unpack(u"\2\37\3\uffff\2\40\1\uffff\12\35\7\uffff\32\35\4\uffff"
         u"\1\35\1\uffff\32\35"),
         DFA.unpack(u"")
     ]

@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 import sys
 import antlr3
@@ -14,7 +15,7 @@ def getChildrenByType(tree, type_value):
 
 xkbfilename = "gr"
 if len(sys.argv) > 1:
-    formula = sys.argv[1]
+    xkbfilename = sys.argv[1]
 
 try:    
 	xkbfile = open(xkbfilename, 'r')
@@ -22,25 +23,14 @@ except OSError:
 	print "Could not open file ", xkbfilename, ". Aborting..."
 	sys.exit(-1)
 
-xkbcontents = xkbfile.read()
 xkbfile.close
 
-print "Creating character stream...",
-char_stream = antlr3.ANTLRStringStream(xkbcontents)
-print " done."
-print "Performing the lexer...",
+char_stream = antlr3.ANTLRFileStream(xkbfilename, encoding='utf-8')
 lexer = XKBGrammarLexer(char_stream)
-print " done."
-print "Extracting tokens...",
 tokens = antlr3.CommonTokenStream(lexer)
-print " done."
-print "Performing the parser...",
 parser = XKBGrammarParser(tokens)
-print " done."
 
-print "Executing the function...",
 result = parser.layout()
-print "done."
 
 # Get all of the SPECIES children
 for attribute in getChildrenByType(result.tree, INCLUDE):

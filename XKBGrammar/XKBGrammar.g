@@ -22,6 +22,7 @@ tokens
 	TOKEN_KEY_TYPE			= 'key.type';
 	TOKEN_NAME 			= 'name';		
 	TOKEN_KEY 			= 'key';
+	TOKEN_MODIFIER_MAP		= 'modifier_map';
 
 	// Punctuators
 	LBRACKET			= '[';
@@ -43,7 +44,6 @@ tokens
 	
 	ATTRIBUTES;
 	ATTRIBUTE;
-	KEYCODE;
 	INCLUDE;
 	NAME;
 	KEY;
@@ -52,62 +52,91 @@ tokens
 	SECTIONNAME;
 }
 
-layout 	: section* EOF!
+layout 	: section* EOF! 
 	;
 	
 section
-	: preamble quotedstring LCURLY sectionmaterial+ RCURLY SEMICOLON -> ^(SECTION)
+	: 
+	preamble sectionmaterial
+	{ print '}' }
+	-> ^(SECTION)
  	;
 
-preamble:	attribute_xkb+;
+preamble :	attribute_xkb+ sectionname=quotedstring
+	{ print '%(sname)s {' % { "sname": $sectionname.text } }
+	;
 
-quotedstring
-	: DQUOTE sectionname+=~(DQUOTE)+ DQUOTE -> ^(SECTIONNAME $sectionname)
+quotedstring returns [value]
+	: DQUOTE sectionname+=~(DQUOTE)+ DQUOTE 
+{ 
+qstring = ['"']
+for elem in $sectionname:
+	qstring.append(elem.getText())
+qstring.append('"')
+$value = "".join(qstring)
+}
 	;
 
 sectionmaterial
-	: line_include 
+	: LCURLY (line_include 
 	| line_name 
 	| line_keytype 
 	| line_key 
+//	| line_modifiermap
+	| line_comment)+ RCURLY SEMICOLON
 	;
 
-// line_comment
-//	:	COMMENT;
+line_comment
+	:	COMMENT { skip(); } ;
 
 line_include
 	//: KEYWORD_INCLUDE DQUOTE NAME_INCLUDE DQUOTE COMMENT*
-	: TOKEN_INCLUDE quotedstring
+	: TOKEN_INCLUDE include=quotedstring 
+	{ print '\tinclude %(inc)s' % { "inc": $include.text } }
 	;
 
 line_name
-	: TOKEN_NAME LBRACKET name=NAME RBRACKET EQUAL quotedstring SEMICOLON
+	: TOKEN_NAME LBRACKET name=NAME RBRACKET EQUAL nameval=quotedstring SEMICOLON
+	{ print '\tname[\%(name)s] = %(nameval)s;' % {  "name": $name.text, "nameval": $nameval.text } }
 	;
 
 line_keytype
 	: TOKEN_KEY_TYPE LBRACKET keytype=NAME RBRACKET EQUAL DQUOTE keytypevalue=NAME DQUOTE SEMICOLON
+	{ print '\tkey.type[\%(kt)s] = \"%(ktv)s\";' % {  "kt": $keytype.text, "ktv": $keytypevalue.text } }
 	;
 	
+// line_modifiermap
+//	: TOKEN_MODIFIER_MAP mapname=NAME mapsyms SEMICOLON
+//	{ print "\tmodifier_map \%(mapname)s %(mapsyms)s ;" % {  "mapname": $mapname.text, "mapsyms": $mapsyms.text } }
+//	;
+
 line_key
 	: TOKEN_KEY keycode keysyms SEMICOLON
+	{ print "\tkey \%(keycode)s %(keysyms)s ;" % {  "keycode": $keycode.text, "keysyms": $keysyms.text } }
 	;
 	
 keycode	
-	: LOWERTHAN NAME GREATERTHAN -> ^(INCLUDE NAME)
+	: LOWERTHAN NAME GREATERTHAN 
+	-> ^(INCLUDE NAME)
 	;
 
 keysyms	
 	: LCURLY LBRACKET (NAME|NAME_KEYSYM) (COMMA (NAME|NAME_KEYSYM))* RBRACKET RCURLY  
 	;
 
+// mapsyms	
+//	: LCURLY LBRACKET (NAME|keycode) (COMMA (NAME|keycode))* RBRACKET RCURLY  
+//	;
+
 attribute_xkb
-	: TOKEN_DEFAULT
-	| TOKEN_HIDDEN 			
-	| TOKEN_PARTIAL 			
-	| TOKEN_ALPHANUMERIC_KEYS 	
-	| TOKEN_MODIFIER_KEYS 		
-	| TOKEN_ALTERNATE_GROUP 	
-	| TOKEN_XKB_SYMBOLS -> ^(ATTRIBUTES ATTRIBUTE)
+	: TOKEN_DEFAULT 	{ print "default", }
+	| TOKEN_HIDDEN 		{ print "hidden", }
+	| TOKEN_PARTIAL 	{ print "partial", }	
+	| TOKEN_ALPHANUMERIC_KEYS { print "alphanumeric_keys", } 	
+//	| TOKEN_MODIFIER_KEYS 	{ print "modifier_keys", }
+	| TOKEN_ALTERNATE_GROUP { print "alternate_group", }
+	| TOKEN_XKB_SYMBOLS     { print "xkb_symbols", }
+	-> ^(ATTRIBUTES ATTRIBUTE)
 	;
 
 /*
