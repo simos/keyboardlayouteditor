@@ -2,6 +2,7 @@
 partial alphanumeric_keys alternate_group
 xkb_symbols "extended" {
     // my comment
+    // more of these comments
     include "gr(basic)"
     name[Group1] = "Greece - Extended";
     key.type[Group1] = "THREE_LEVEL"; // yeah, comment
