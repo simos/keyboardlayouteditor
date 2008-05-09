@@ -29,28 +29,29 @@ LOWERTHAN : '<' ;
 GREATERTHAN : '>' ;
 DOT : '.' ;
 
-// $ANTLR src "XKBGrammar.g" 147
+// $ANTLR src "XKBGrammar.g" 164
 fragment GENERIC_NAME
 	: ('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'0'..'9')
         ;
 
-// $ANTLR src "XKBGrammar.g" 151
+// $ANTLR src "XKBGrammar.g" 168
 NAME
 	: ('a'..'z'|'A'..'Z'|'_'|'('|')'|'0'..'9')*
         ;
 
 // Comments are currently ignored.
-// $ANTLR src "XKBGrammar.g" 156
-COMMENT	: '//' (~('\n'|'\r'))* 
+// $ANTLR src "XKBGrammar.g" 173
+COMMENT	
+	: '//' (~('\n'|'\r'))* 
 	{ $channel = HIDDEN; }
 	;
 
-// $ANTLR src "XKBGrammar.g" 160
+// $ANTLR src "XKBGrammar.g" 178
 WS      :       ('\t'|' '|NEWLINE)+ 
 	{ $channel=HIDDEN; }
 	;
 
-// $ANTLR src "XKBGrammar.g" 164
+// $ANTLR src "XKBGrammar.g" 182
 fragment NEWLINE
         :       '\r'|'\n'
 	;

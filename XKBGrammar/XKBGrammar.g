@@ -71,35 +71,39 @@ tokens
 //
 // // can have several sections as above.
 
-layout 		: section* EOF! 
-		;
+layout 		
+	: section* EOF! 
+	;
 	
-section 	: preamble sectionmaterial 
-		{ print '}' }
-		-> ^(SECTION)
- 		;
+section 	
+	: preamble sectionmaterial 
+	{ print '}' }
+	-> ^(SECTION)
+ 	;
 
-preamble 	: attribute_xkb+ sectionname=quotedstring
-		{ print '\%(sectionname)s {' \% { "sectionname": $sectionname.text } }
-		;
+preamble 	
+	: attribute_xkb+ sectionname=quotedstring
+	{ print '\%(sectionname)s {' \% { "sectionname": $sectionname.text } }
+	;
 
 quotedstring returns [value]
-        	: DQUOTE sectionname+=~(DQUOTE)+ DQUOTE 
-                {       
-                        qstring = ['"']
-                        for elem in $sectionname:
-                                qstring.append(elem.getText())
-                        qstring.append('"')
-                        $value = "".join(qstring)
-                }
-        	;
+        : DQUOTE sectionname+=~(DQUOTE)+ DQUOTE 
+        {       
+                qstring = ['"']
+                for elem in $sectionname:
+                        qstring.append(elem.getText())
+                qstring.append('"')
+                $value = "".join(qstring)
+        }
+        ;
 
-sectionmaterial : LCURLY (line_include 
-		| line_name 
-		| line_keytype 
-		| line_key 
-		)+ RCURLY SEMICOLON
-		;
+sectionmaterial 
+	: LCURLY (line_include 
+	| line_name 
+	| line_keytype 
+	| line_key 
+	)+ RCURLY SEMICOLON
+	;
 
 line_include
 	: TOKEN_INCLUDE include=quotedstring 
@@ -118,7 +122,7 @@ line_keytype
 	
 line_key
 	: TOKEN_KEY keycode keysyms SEMICOLON
-	{ print "\tkey \%(keycode)s \%(keysyms)s ;" \% {  "keycode": $keycode.text, "keysyms": $keysyms.text } }
+	{ print '\tkey \%(keycode)s \%(keysyms)s;' \% {  "keycode": $keycode.text, "keysyms": $keysyms.value } }
 	;
 	
 keycode	
@@ -126,8 +130,21 @@ keycode
 	-> ^(INCLUDE NAME)
 	;
 
-keysyms	
-	: LCURLY LBRACKET NAME (COMMA NAME)* RBRACKET RCURLY  
+keysyms	returns [value]
+	: LCURLY LBRACKET keysym+=NAME (COMMA keysym+=NAME)* RBRACKET RCURLY
+        {       
+                qstring = ["{ [ "]
+                first_elem = $keysym[0].getText()
+                qstring.append(first_elem)
+                for elem in $keysym:
+                        if first_elem != "":
+                                first_elem = ""
+                                continue
+                        qstring.append(", ")
+                        qstring.append(elem.getText())
+                qstring.append(" ] }")
+                $value = "".join(qstring)
+        }
 	;
 
 // mapsyms	
@@ -153,7 +170,8 @@ NAME
         ;
 
 // Comments are currently ignored.
-COMMENT	: '//' (~('\n'|'\r'))* 
+COMMENT	
+	: '//' (~('\n'|'\r'))* 
 	{ $channel = HIDDEN; }
 	;
 

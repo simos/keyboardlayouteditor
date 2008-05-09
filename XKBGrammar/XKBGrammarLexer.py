@@ -1,4 +1,4 @@
-# $ANTLR 3.0.1 XKBGrammar.g 2008-05-09 12:05:39
+# $ANTLR 3.0.1 XKBGrammar.g 2008-05-09 13:01:19
 
 from antlr3 import *
 from antlr3.compat import set, frozenset
@@ -601,8 +601,8 @@ class XKBGrammarLexer(Lexer):
     def mGENERIC_NAME(self, ):
 
         try:
-            # XKBGrammar.g:148:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' ) )
-            # XKBGrammar.g:148:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )
+            # XKBGrammar.g:165:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' ) )
+            # XKBGrammar.g:165:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )
             if (u'A' <= self.input.LA(1) <= u'Z') or self.input.LA(1) == u'_' or (u'a' <= self.input.LA(1) <= u'z'):
                 self.input.consume();
 
@@ -639,9 +639,9 @@ class XKBGrammarLexer(Lexer):
         try:
             self.type = NAME
 
-            # XKBGrammar.g:152:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' )* )
-            # XKBGrammar.g:152:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' )*
-            # XKBGrammar.g:152:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' )*
+            # XKBGrammar.g:169:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' )* )
+            # XKBGrammar.g:169:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' )*
+            # XKBGrammar.g:169:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' )*
             while True: #loop1
                 alt1 = 2
                 LA1_0 = self.input.LA(1)
@@ -685,12 +685,12 @@ class XKBGrammarLexer(Lexer):
         try:
             self.type = COMMENT
 
-            # XKBGrammar.g:156:9: ( '//' (~ ( '\\n' | '\\r' ) )* )
-            # XKBGrammar.g:156:11: '//' (~ ( '\\n' | '\\r' ) )*
+            # XKBGrammar.g:174:2: ( '//' (~ ( '\\n' | '\\r' ) )* )
+            # XKBGrammar.g:174:4: '//' (~ ( '\\n' | '\\r' ) )*
             self.match("//")
 
 
-            # XKBGrammar.g:156:16: (~ ( '\\n' | '\\r' ) )*
+            # XKBGrammar.g:174:9: (~ ( '\\n' | '\\r' ) )*
             while True: #loop2
                 alt2 = 2
                 LA2_0 = self.input.LA(1)
@@ -700,7 +700,7 @@ class XKBGrammarLexer(Lexer):
 
 
                 if alt2 == 1:
-                    # XKBGrammar.g:156:17: ~ ( '\\n' | '\\r' )
+                    # XKBGrammar.g:174:10: ~ ( '\\n' | '\\r' )
                     if (u'\u0000' <= self.input.LA(1) <= u'\t') or (u'\u000B' <= self.input.LA(1) <= u'\f') or (u'\u000E' <= self.input.LA(1) <= u'\uFFFE'):
                         self.input.consume();
 
@@ -737,9 +737,9 @@ class XKBGrammarLexer(Lexer):
         try:
             self.type = WS
 
-            # XKBGrammar.g:160:9: ( ( '\\t' | ' ' | NEWLINE )+ )
-            # XKBGrammar.g:160:17: ( '\\t' | ' ' | NEWLINE )+
-            # XKBGrammar.g:160:17: ( '\\t' | ' ' | NEWLINE )+
+            # XKBGrammar.g:178:9: ( ( '\\t' | ' ' | NEWLINE )+ )
+            # XKBGrammar.g:178:17: ( '\\t' | ' ' | NEWLINE )+
+            # XKBGrammar.g:178:17: ( '\\t' | ' ' | NEWLINE )+
             cnt3 = 0
             while True: #loop3
                 alt3 = 2
@@ -791,7 +791,7 @@ class XKBGrammarLexer(Lexer):
     def mNEWLINE(self, ):
 
         try:
-            # XKBGrammar.g:165:9: ( '\\r' | '\\n' )
+            # XKBGrammar.g:183:9: ( '\\r' | '\\n' )
             # XKBGrammar.g:
             if self.input.LA(1) == u'\n' or self.input.LA(1) == u'\r':
                 self.input.consume();
