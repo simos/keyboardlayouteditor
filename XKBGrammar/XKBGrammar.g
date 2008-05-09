@@ -80,7 +80,7 @@ section 	: preamble sectionmaterial
  		;
 
 preamble 	: attribute_xkb+ sectionname=quotedstring
-		{ print '\%(sname)s {' \% { "sname": $sectionname.text } }
+		{ print '\%(sectionname)s {' \% { "sectionname": $sectionname.text } }
 		;
 
 quotedstring returns [value]

@@ -1,4 +1,4 @@
-# $ANTLR 3.0.1 XKBGrammar.g 2008-05-09 12:01:09
+# $ANTLR 3.0.1 XKBGrammar.g 2008-05-09 12:05:39
 
 from antlr3 import *
 from antlr3.compat import set, frozenset

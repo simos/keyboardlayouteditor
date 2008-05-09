@@ -1,4 +1,4 @@
-# $ANTLR 3.0.1 XKBGrammar.g 2008-05-09 12:01:09
+# $ANTLR 3.0.1 XKBGrammar.g 2008-05-09 12:05:38
 
 from antlr3 import *
 from antlr3.compat import set, frozenset
@@ -302,7 +302,7 @@ class XKBGrammarParser(Parser):
 
                 self.adaptor.addChild(root_0, sectionname.tree)
                 #action start
-                print '%(sname)s {' % { "sname": self.input.toString(sectionname.start,sectionname.stop) } 
+                print '%(sectionname)s {' % { "sectionname": self.input.toString(sectionname.start,sectionname.stop) } 
                 #action end
 
 
