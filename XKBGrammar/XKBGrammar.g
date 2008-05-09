@@ -1,6 +1,6 @@
 // XKB Grammar (X.org)
 // Written by Simos Xenitellis <simos.lists@googlemail.com>, 2008.
-// Version 0.2
+// Version 0.3
 
 grammar XKBGrammar;
 
@@ -12,7 +12,7 @@ options
 
 tokens
 {
-	// attributes [TODO: check terminolody]
+	// Map options
 	TOKEN_DEFAULT 			= 'default';
 	TOKEN_HIDDEN 			= 'hidden';
 	TOKEN_PARTIAL 			= 'partial';
@@ -46,16 +46,18 @@ tokens
 	// UNDERSCORE			= '_';
 	
 	// Tokens for tree.
+	MAPTYPE;
 	ATTRIBUTES;
 	ATTRIBUTE;
 	INCLUDE;
 	KEY;
 	KEYTYPE;
+	KEYCODE;
 	SECTION;
 	SECTIONNAME;
 }
 
-// We cover XKB files that look like
+// We cover XKB symbol files that look like
 //
 // // comments can appear here.
 // one of more modifiers "mysectionname"
@@ -72,18 +74,18 @@ tokens
 // // can have several sections as above.
 
 layout 		
-	: section* EOF! 
+	: section+
 	;
 	
-section 	
-	: preamble sectionmaterial 
+section 
+	: mapType sectionmaterial 
 	{ print '}' }
-	-> ^(SECTION)
  	;
 
-preamble 	
-	: attribute_xkb+ sectionname=quotedstring
+mapType
+	: mapOptions+ sectionname=quotedstring
 	{ print '\%(sectionname)s {' \% { "sectionname": $sectionname.text } }
+	-> ^(MAPTYPE mapOptions+ $sectionname)
 	;
 
 quotedstring returns [value]
@@ -98,36 +100,41 @@ quotedstring returns [value]
         ;
 
 sectionmaterial 
-	: LCURLY (line_include 
+	: lc=LCURLY (line_include 
 	| line_name 
 	| line_keytype 
 	| line_key 
 	)+ RCURLY SEMICOLON
+	-> ^(SECTION)
 	;
 
 line_include
 	: TOKEN_INCLUDE include=quotedstring 
 	{ print '\tinclude \%(inc)s' \% { "inc": $include.text } }
+	-> ^(TOKEN_INCLUDE $include)
 	;
 
 line_name
 	: TOKEN_NAME LBRACKET name=NAME RBRACKET EQUAL nameval=quotedstring SEMICOLON
 	{ print '\tname[\%(name)s] = \%(nameval)s;' \% {  "name": $name.text, "nameval": $nameval.text } }
+	-> ^(TOKEN_NAME $name $nameval)
 	;
 
 line_keytype
 	: TOKEN_KEY_TYPE LBRACKET keytype=NAME RBRACKET EQUAL DQUOTE keytypevalue=NAME DQUOTE SEMICOLON
 	{ print '\tkey.type[\%(kt)s] = \"\%(ktv)s\";' \% {  "kt": $keytype.text, "ktv": $keytypevalue.text } }
+	-> ^(TOKEN_KEY_TYPE $keytype $keytypevalue)
 	;
 	
 line_key
 	: TOKEN_KEY keycode keysyms SEMICOLON
 	{ print '\tkey \%(keycode)s \%(keysyms)s;' \% {  "keycode": $keycode.text, "keysyms": $keysyms.value } }
+	-> ^(TOKEN_KEY keycode keysyms)
 	;
 	
 keycode	
 	: LOWERTHAN NAME GREATERTHAN 
-	-> ^(INCLUDE NAME)
+	-> ^(KEYCODE NAME)
 	;
 
 keysyms	returns [value]
@@ -151,14 +158,13 @@ keysyms	returns [value]
 //	: LCURLY LBRACKET (NAME|keycode) (COMMA (NAME|keycode))* RBRACKET RCURLY  
 //	;
 
-attribute_xkb
+mapOptions
 	: TOKEN_DEFAULT 	{ print "default", }
 	| TOKEN_HIDDEN 		{ print "hidden", }
 	| TOKEN_PARTIAL 	{ print "partial", }	
 	| TOKEN_ALPHANUMERIC_KEYS { print "alphanumeric_keys", } 	
 	| TOKEN_ALTERNATE_GROUP { print "alternate_group", }
 	| TOKEN_XKB_SYMBOLS     { print "xkb_symbols", }
-	-> ^(ATTRIBUTES ATTRIBUTE)
 	;
 
 fragment GENERIC_NAME
@@ -170,16 +176,20 @@ NAME
         ;
 
 // Comments are currently ignored.
-COMMENT	
-	: '//' (~('\n'|'\r'))* 
-	{ $channel = HIDDEN; }
-	;
+WS  	
+	:  
+	(' '|'\r'|'\t'|'\u000C'|'\n') 
+	{$channel=HIDDEN;}
+    	;
 
-WS      :       ('\t'|' '|NEWLINE)+ 
-	{ $channel=HIDDEN; }
-	;
+COMMENT
+    	:   
+	'/*' .* '*/' {$channel=HIDDEN;}
+    	;
 
-fragment NEWLINE
-        :       '\r'|'\n'
-	;
+LINE_COMMENT
+    	: 
+	'//' ~('\n'|'\r')* '\r'? '\n' 
+	{$channel=HIDDEN;}
+    	;
 
