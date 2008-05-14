@@ -1,10 +1,7 @@
-// my comment
 partial alphanumeric_keys alternate_group
 xkb_symbols "extended" {
-    // my comment
-    // more of these comments
     include "gr(basic)"
-    name[Group1] = "Greece - Extended";
+    name[Group1] = "Greece-Extended";
     key.type[Group1] = "THREE_LEVEL"; // yeah, comment
     key <AE03> { [ NoSymbol, NoSymbol,       sterling ] }; // my comment
     key <AE10> { [ NoSymbol, NoSymbol,         degree ] }; // more comment
@@ -14,12 +11,12 @@ xkb_symbols "extended" {
     include "eurosign(e)"
 };
 
-partial alphanumeric_keys alternate_group
+partial alphanumeric_keys
 xkb_symbols "nodeadkeys" {
 
     include "gr(basic)"
 
-    name[Group1] = "Greece - Eliminate dead keys";
+    name[Group1] = "Greece-Eliminatedeadkeys";
 
     key <AC10> { [ semicolon, colon ] }; // ; :
 };
