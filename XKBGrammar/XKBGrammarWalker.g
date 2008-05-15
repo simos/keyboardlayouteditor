@@ -1,14 +1,14 @@
 // XKB Grammar (X.org)
 // Written by Simos Xenitellis <simos.lists@googlemail.com>, 2008.
-// Version 0.3
+// Version 0.4
 
 tree grammar XKBGrammarWalker;
 
 options
 {
-    tokenVocab=XKBGrammar;
-    ASTLabelType=CommonTree;
-    language=Python;
+	language = Python;
+	tokenVocab = XKBGrammar; 
+	ASTLabelType = CommonTree;
 }
 
 // We cover XKB symbol files that look like
@@ -36,37 +36,7 @@ section
  	;
 
 mapType
-	: ^(MAPTYPE mapOptions+ NAME)
-	;
-
-mapMaterial 
- 	: ^(MAPMATERIAL line_include line_name line_keytype line_key)
-	;
-//	: ^(MAPMATERIAL TOKEN_INCLUDE TOKEN_NAME TOKEN_KEY_TYPE TOKEY_KEY)
-//	;
-
-line_include
-	: ^(TOKEN_INCLUDE NAME)
-	;
-
-line_name
-	: ^(TOKEN_NAME NAME+)
-	;
-
-line_keytype
-	: ^(TOKEN_KEY_TYPE NAME+)
-	;
-	
-line_key
-	: ^(TOKEN_KEY keycode keysyms)
-	;
-	
-keycode	
-	: ^(KEYCODE NAME)
-	;
-
-keysyms
-	: ^(KEYSYMS NAME+)
+	: ^(MAPTYPE ^(MAPOPTIONS mapOptions+) ^(MAPNAME NAME))
 	;
 
 mapOptions
@@ -77,3 +47,19 @@ mapOptions
 	| 'alternate_group'
 	| 'xkb_symbols'
 	;
+
+mapMaterial
+	: ^(TOKEN_INCLUDE NAME)
+	| ^(TOKEN_NAME NAME ^(VALUE NAME))
+	| ^(TOKEN_KEY_TYPE NAME ^(VALUE NAME))
+	| ^(TOKEN_KEY keycode keysyms)
+	;
+	
+keycode	
+	: ^(KEYCODE NAME)
+	;
+
+keysyms
+	: ^(KEYSYMS NAME+)
+	;
+

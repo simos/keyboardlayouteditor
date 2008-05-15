@@ -24,7 +24,6 @@ char_stream = antlr3.ANTLRFileStream(xkbfilename, encoding='utf-8')
 lexer = XKBGrammarLexer(char_stream)
 tokens = antlr3.CommonTokenStream(lexer)
 parser = XKBGrammarParser(tokens)
-
 # pdb.set_trace()
 result = parser.layout()
 
@@ -33,5 +32,6 @@ print "tree =", result.tree.toStringTree()
 nodes = antlr3.tree.CommonTreeNodeStream(result.tree)
 nodes.setTokenStream(tokens)
 walker = XKBGrammarWalker(nodes)
-# walker.layout()
+walker.layout()
 
+# pdb.set_trace()

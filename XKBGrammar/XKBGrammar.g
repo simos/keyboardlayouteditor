@@ -1,6 +1,6 @@
 // XKB Grammar (X.org)
 // Written by Simos Xenitellis <simos.lists@googlemail.com>, 2008.
-// Version 0.3
+// Version 0.4
 
 grammar XKBGrammar;
 
@@ -21,7 +21,7 @@ tokens
 	TOKEN_ALTERNATE_GROUP;
 	TOKEN_XKB_SYMBOLS;
 
-	// Keywords [TODO: check terminology]
+	// Keywords
 	TOKEN_INCLUDE;
 	TOKEN_KEY_TYPE;
 	TOKEN_NAME;
@@ -29,17 +29,13 @@ tokens
 
 	// Tokens for tree.
 	MAPTYPE;
+	MAPNAME;
+	MAPOPTIONS;
 	MAPMATERIAL;
-	ATTRIBUTES;
-	ATTRIBUTE;
-	INCLUDE;
-	KEY;
-	KEYTYPE;
-	KEYCODE;
 	SECTION;
-	SECTIONNAME;
-	QUOTEDSTRING;
+	KEYCODE;
 	KEYSYMS;
+	VALUE;
 }
 
 // We cover XKB symbol files that look like
@@ -69,16 +65,16 @@ section
 
 mapType
 	: mapOptions+ '"' NAME '"'
-	-> ^(MAPTYPE mapOptions+ NAME)
+	-> ^(MAPTYPE ^(MAPOPTIONS mapOptions+) ^(MAPNAME NAME))
 	;
 
 mapMaterial 
-	: '{' 
+	: '{'
 	( line_include 
 	| line_name ';'!
 	| line_keytype ';'!
 	| line_key ';'!
-	)+ '}' ';'
+	)+ '}' ';'!
 	;
 
 line_include
@@ -88,12 +84,12 @@ line_include
 
 line_name
 	: 'name' '[' n1=NAME ']' '=' '"' n2=NAME '"'
-	-> ^(TOKEN_NAME $n1 $n2)
+	-> ^(TOKEN_NAME $n1 ^(VALUE $n2))
 	;
 
 line_keytype
 	: 'key.type' '[' n1=NAME ']' '=' '"' n2=NAME '"'
-	-> ^(TOKEN_KEY_TYPE $n1 $n2)
+	-> ^(TOKEN_KEY_TYPE $n1 ^(VALUE $n2))
 	;
 	
 line_key
@@ -124,7 +120,6 @@ NAME
 	: ('a'..'z' | 'A'..'Z' | '_' | '-' | '(' | ')' | '0'..'9')*
         ;
 
-// Comments are currently ignored.
 WS  	
 	:  
 	( ' ' | '\r' | '\t' | '\u000C' | '\n') 
