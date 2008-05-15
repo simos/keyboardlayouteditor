@@ -1,6 +1,6 @@
 // XKB Grammar (X.org)
 // Written by Simos Xenitellis <simos.lists@googlemail.com>, 2008.
-// Version 0.4
+// Version 0.5
 
 grammar XKBGrammar;
 
@@ -59,8 +59,8 @@ layout
 	;
 	
 section 
-	: mapType mapMaterial
-	-> ^(SECTION mapType mapMaterial)
+	: mapType '{' mapMaterial+ '}' ';'
+	-> ^(SECTION mapType ^(MAPMATERIAL mapMaterial+))
  	;
 
 mapType
@@ -69,12 +69,10 @@ mapType
 	;
 
 mapMaterial 
-	: '{'
-	( line_include 
+	: line_include 
 	| line_name ';'!
 	| line_keytype ';'!
 	| line_key ';'!
-	)+ '}' ';'!
 	;
 
 line_include

@@ -1,6 +1,6 @@
 // XKB Grammar (X.org)
 // Written by Simos Xenitellis <simos.lists@googlemail.com>, 2008.
-// Version 0.4
+// Version 0.5
 
 tree grammar XKBGrammarWalker;
 
@@ -32,7 +32,7 @@ layout
 	;
 	
 section 
-	: ^(SECTION mapType mapMaterial)
+        : ^(SECTION mapType ^(MAPMATERIAL mapMaterial+))
  	;
 
 mapType

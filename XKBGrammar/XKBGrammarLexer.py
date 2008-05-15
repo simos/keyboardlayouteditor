@@ -1,4 +1,4 @@
-# $ANTLR 3.1b1 XKBGrammar.g 2008-05-15 19:18:28
+# $ANTLR 3.1b1 XKBGrammar.g 2008-05-15 22:06:33
 
 import sys
 from antlr3 import *
@@ -87,9 +87,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__27
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:7:7: ( '\"' )
-            # XKBGrammar.g:7:9: '\"'
-            self.match(34)
+            # XKBGrammar.g:7:7: ( '{' )
+            # XKBGrammar.g:7:9: '{'
+            self.match(123)
 
 
 
@@ -112,9 +112,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__28
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:8:7: ( '{' )
-            # XKBGrammar.g:8:9: '{'
-            self.match(123)
+            # XKBGrammar.g:8:7: ( '}' )
+            # XKBGrammar.g:8:9: '}'
+            self.match(125)
 
 
 
@@ -162,9 +162,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__30
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:10:7: ( '}' )
-            # XKBGrammar.g:10:9: '}'
-            self.match(125)
+            # XKBGrammar.g:10:7: ( '\"' )
+            # XKBGrammar.g:10:9: '\"'
+            self.match(34)
 
 
 
@@ -587,9 +587,9 @@ class XKBGrammarLexer(Lexer):
             _type = NAME
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:120:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '-' | '(' | ')' | '0' .. '9' )* )
-            # XKBGrammar.g:120:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '-' | '(' | ')' | '0' .. '9' )*
-            # XKBGrammar.g:120:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '-' | '(' | ')' | '0' .. '9' )*
+            # XKBGrammar.g:118:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '-' | '(' | ')' | '0' .. '9' )* )
+            # XKBGrammar.g:118:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '-' | '(' | ')' | '0' .. '9' )*
+            # XKBGrammar.g:118:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '-' | '(' | ')' | '0' .. '9' )*
             while True: #loop1
                 alt1 = 2
                 LA1_0 = self.input.LA(1)
@@ -635,8 +635,8 @@ class XKBGrammarLexer(Lexer):
             _type = WS
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:124:2: ( ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' ) )
-            # XKBGrammar.g:125:2: ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' )
+            # XKBGrammar.g:122:2: ( ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' ) )
+            # XKBGrammar.g:123:2: ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' )
             if (9 <= self.input.LA(1) <= 10) or (12 <= self.input.LA(1) <= 13) or self.input.LA(1) == 32:
                 self.input.consume();
             else:
@@ -669,10 +669,10 @@ class XKBGrammarLexer(Lexer):
             _type = COMMENT
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:130:6: ( '/*' ( . )* '*/' )
-            # XKBGrammar.g:131:2: '/*' ( . )* '*/'
+            # XKBGrammar.g:128:6: ( '/*' ( . )* '*/' )
+            # XKBGrammar.g:129:2: '/*' ( . )* '*/'
             self.match("/*")
-            # XKBGrammar.g:131:7: ( . )*
+            # XKBGrammar.g:129:7: ( . )*
             while True: #loop2
                 alt2 = 2
                 LA2_0 = self.input.LA(1)
@@ -691,7 +691,7 @@ class XKBGrammarLexer(Lexer):
 
 
                 if alt2 == 1:
-                    # XKBGrammar.g:131:7: .
+                    # XKBGrammar.g:129:7: .
                     self.matchAny()
 
 
@@ -726,10 +726,10 @@ class XKBGrammarLexer(Lexer):
             _type = LINE_COMMENT
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:135:6: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' )
-            # XKBGrammar.g:136:2: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+            # XKBGrammar.g:133:6: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' )
+            # XKBGrammar.g:134:2: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
             self.match("//")
-            # XKBGrammar.g:136:7: (~ ( '\\n' | '\\r' ) )*
+            # XKBGrammar.g:134:7: (~ ( '\\n' | '\\r' ) )*
             while True: #loop3
                 alt3 = 2
                 LA3_0 = self.input.LA(1)
@@ -739,7 +739,7 @@ class XKBGrammarLexer(Lexer):
 
 
                 if alt3 == 1:
-                    # XKBGrammar.g:136:7: ~ ( '\\n' | '\\r' )
+                    # XKBGrammar.g:134:7: ~ ( '\\n' | '\\r' )
                     if (0 <= self.input.LA(1) <= 9) or (11 <= self.input.LA(1) <= 12) or (14 <= self.input.LA(1) <= 65534):
                         self.input.consume();
                     else:
@@ -754,14 +754,14 @@ class XKBGrammarLexer(Lexer):
                     break #loop3
 
 
-            # XKBGrammar.g:136:23: ( '\\r' )?
+            # XKBGrammar.g:134:23: ( '\\r' )?
             alt4 = 2
             LA4_0 = self.input.LA(1)
 
             if (LA4_0 == 13) :
                 alt4 = 1
             if alt4 == 1:
-                # XKBGrammar.g:136:23: '\\r'
+                # XKBGrammar.g:134:23: '\\r'
                 self.match(13)
 
 
@@ -989,10 +989,10 @@ class XKBGrammarLexer(Lexer):
 
             
     DFA5_transition = [
-        DFA.unpack(u"\2\24\1\uffff\2\24\22\uffff\1\24\1\uffff\1\1\11\uffff"
+        DFA.unpack(u"\2\24\1\uffff\2\24\22\uffff\1\24\1\uffff\1\4\11\uffff"
         u"\1\15\2\uffff\1\25\13\uffff\1\3\1\13\1\11\1\14\34\uffff\1\7\1\uffff"
         u"\1\10\3\uffff\1\21\2\uffff\1\16\3\uffff\1\17\1\5\1\uffff\1\12\2"
-        u"\uffff\1\6\1\uffff\1\20\7\uffff\1\22\2\uffff\1\2\1\uffff\1\4"),
+        u"\uffff\1\6\1\uffff\1\20\7\uffff\1\22\2\uffff\1\1\1\uffff\1\2"),
         DFA.unpack(u""),
         DFA.unpack(u""),
         DFA.unpack(u""),
