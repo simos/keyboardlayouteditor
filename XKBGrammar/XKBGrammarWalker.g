@@ -1,6 +1,6 @@
 // XKB Grammar (X.org)
 // Written by Simos Xenitellis <simos.lists@googlemail.com>, 2008.
-// Version 0.5
+// Version 0.6
 
 tree grammar XKBGrammarWalker;
 
@@ -36,7 +36,7 @@ section
  	;
 
 mapType
-	: ^(MAPTYPE ^(MAPOPTIONS mapOptions+) ^(MAPNAME NAME))
+	: ^(MAPTYPE ^(MAPOPTIONS mapOptions+) ^(MAPNAME DQSTRING))
 	;
 
 mapOptions
@@ -49,9 +49,9 @@ mapOptions
 	;
 
 mapMaterial
-	: ^(TOKEN_INCLUDE NAME)
-	| ^(TOKEN_NAME NAME ^(VALUE NAME))
-	| ^(TOKEN_KEY_TYPE NAME ^(VALUE NAME))
+	: ^(TOKEN_INCLUDE DQSTRING)
+	| ^(TOKEN_NAME NAME ^(VALUE DQSTRING))
+	| ^(TOKEN_KEY_TYPE NAME ^(VALUE DQSTRING))
 	| ^(TOKEN_KEY keycode keysyms)
 	;
 	

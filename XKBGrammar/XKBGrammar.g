@@ -1,6 +1,6 @@
 // XKB Grammar (X.org)
 // Written by Simos Xenitellis <simos.lists@googlemail.com>, 2008.
-// Version 0.5
+// Version 0.6
 
 grammar XKBGrammar;
 
@@ -64,8 +64,8 @@ section
  	;
 
 mapType
-	: mapOptions+ '"' NAME '"'
-	-> ^(MAPTYPE ^(MAPOPTIONS mapOptions+) ^(MAPNAME NAME))
+	: mapOptions+ DQSTRING
+	-> ^(MAPTYPE ^(MAPOPTIONS mapOptions+) ^(MAPNAME DQSTRING))
 	;
 
 mapMaterial 
@@ -76,17 +76,17 @@ mapMaterial
 	;
 
 line_include
-	: 'include' '"' NAME '"'
-	-> ^(TOKEN_INCLUDE NAME)
+	: 'include' DQSTRING
+	-> ^(TOKEN_INCLUDE DQSTRING)
 	;
 
 line_name
-	: 'name' '[' n1=NAME ']' '=' '"' n2=NAME '"'
+	: 'name' '[' n1=NAME ']' '=' n2=DQSTRING
 	-> ^(TOKEN_NAME $n1 ^(VALUE $n2))
 	;
 
 line_keytype
-	: 'key.type' '[' n1=NAME ']' '=' '"' n2=NAME '"'
+	: 'key.type' '[' n1=NAME ']' '=' n2=DQSTRING
 	-> ^(TOKEN_KEY_TYPE $n1 ^(VALUE $n2))
 	;
 	
@@ -134,4 +134,11 @@ LINE_COMMENT
 	'//' ~('\n' | '\r')* '\r'? '\n' 
 	{ $channel=HIDDEN; }
     	;
+
+/** Match various string types.  Note that greedy=false implies '''
+ *  should make us exit loop not continue.
+ */
+DQSTRING
+    	:   '"' (options {greedy=false;}:~('"'))* '"'
+        ;
 
