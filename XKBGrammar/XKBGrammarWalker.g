@@ -1,6 +1,6 @@
 // XKB Grammar (X.org)
 // Written by Simos Xenitellis <simos.lists@googlemail.com>, 2008.
-// Version 0.6
+// Version 0.7
 
 tree grammar XKBGrammarWalker;
 
@@ -39,26 +39,40 @@ mapType
 	: ^(MAPTYPE ^(MAPOPTIONS mapOptions+) ^(MAPNAME DQSTRING))
 	;
 
+keycode
+        : ^(KEYCODE NAME)
+        | ^(KEYCODEX NAME)
+        ;
+
 mapOptions
 	: 'default'
 	| 'hidden'
 	| 'partial' 
 	| 'alphanumeric_keys'
 	| 'alternate_group'
+	| 'modifier_keys'
 	| 'xkb_symbols'
 	;
+
+state
+        : 'Shift'
+        | 'Control'
+        | 'Lock'
+        | 'Mod1'
+        | 'Mod2'
+        | 'Mod3'
+        | 'Mod4'
+        | 'Mod5'
+        ;
 
 mapMaterial
 	: ^(TOKEN_INCLUDE DQSTRING)
 	| ^(TOKEN_NAME NAME ^(VALUE DQSTRING))
 	| ^(TOKEN_KEY_TYPE NAME ^(VALUE DQSTRING))
 	| ^(TOKEN_KEY keycode keysyms)
+	| ^(TOKEN_MODIFIER_MAP state keycode+)
 	;
 	
-keycode	
-	: ^(KEYCODE NAME)
-	;
-
 keysyms
 	: ^(KEYSYMS NAME+)
 	;

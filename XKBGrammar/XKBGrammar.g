@@ -1,6 +1,6 @@
 // XKB Grammar (X.org)
 // Written by Simos Xenitellis <simos.lists@googlemail.com>, 2008.
-// Version 0.6
+// Version 0.7
 
 grammar XKBGrammar;
 
@@ -12,20 +12,12 @@ options
 
 tokens
 {
-	// Map options
-	TOKEN_DEFAULT;
-	TOKEN_HIDDEN;
-	TOKEN_PARTIAL;
-	TOKEN_ALPHANUMERIC_KEYS;
-	TOKEN_MODIFIER_KEYS;
-	TOKEN_ALTERNATE_GROUP;
-	TOKEN_XKB_SYMBOLS;
-
 	// Keywords
 	TOKEN_INCLUDE;
 	TOKEN_KEY_TYPE;
 	TOKEN_NAME;
 	TOKEN_KEY;
+	TOKEN_MODIFIER_MAP;
 
 	// Tokens for tree.
 	MAPTYPE;
@@ -34,8 +26,10 @@ tokens
 	MAPMATERIAL;
 	SECTION;
 	KEYCODE;
+	KEYCODEX;
 	KEYSYMS;
 	VALUE;
+	STATE;
 }
 
 // We cover XKB symbol files that look like
@@ -73,6 +67,7 @@ mapMaterial
 	| line_name ';'!
 	| line_keytype ';'!
 	| line_key ';'!
+	| line_modifier_map ';'!
 	;
 
 line_include
@@ -94,10 +89,19 @@ line_key
 	: 'key' keycode keysyms
 	-> ^(TOKEN_KEY keycode keysyms)
 	;
-	
+
+line_modifier_map
+	: 'modifier_map' state '{' keycode (',' keycode)* '}'
+	-> ^(TOKEN_MODIFIER_MAP state keycode+)
+	;
+
+// segment_type
+//	: 'type' '[' NAME ']' '=' DQSTRING ','
+//	-> ^(TOKEN_SEGMENT_TYPE NAME DQSTRING)
+
 keycode	
-	: '<' NAME '>'
-	-> ^(KEYCODE NAME)
+	: NAME -> ^(KEYCODE NAME)
+	| '<' NAME '>' -> ^(KEYCODEX NAME)
 	;
 
 keysyms
@@ -110,12 +114,24 @@ mapOptions
 	| 'hidden'
 	| 'partial' 
 	| 'alphanumeric_keys'
+	| 'modifier_keys'
 	| 'alternate_group'
 	| 'xkb_symbols'
 	;
 
+state
+	: 'Shift'
+	| 'Control'
+	| 'Lock'
+	| 'Mod1'
+	| 'Mod2'
+	| 'Mod3'
+	| 'Mod4'
+	| 'Mod5'
+        ;
+
 NAME
-	: ('a'..'z' | 'A'..'Z' | '_' | '-' | '(' | ')' | '0'..'9')*
+	: ('a'..'z'|'A'..'Z'|'_'|'('|')'|'0'..'9')*
         ;
 
 WS  	
