@@ -52,7 +52,7 @@ nodes.setTokenStream(tokens)
 walker = XKBGrammarWalker(nodes)
 walker.layout()
 
-print "Layout has", result.tree.getChildCount(), "sections"
+print "Layout has", result.tree.getChildCount(), "sections", result.tree.getText()
 for section in result.tree.getChildren():
 	print "// Section"
 	for mapobject in section.getChildren():

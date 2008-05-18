@@ -1,4 +1,4 @@
-# $ANTLR 3.1b1 XKBGrammar.g 2008-05-17 13:54:29
+# $ANTLR 3.1b1 XKBGrammar.g 2008-05-18 16:27:20
 
 import sys
 from antlr3 import *
@@ -818,20 +818,20 @@ class XKBGrammarLexer(Lexer):
             _type = NAME
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:134:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' )* )
-            # XKBGrammar.g:134:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' )*
-            # XKBGrammar.g:134:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' )*
+            # XKBGrammar.g:134:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' | '+' | '-' )* )
+            # XKBGrammar.g:134:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' | '+' | '-' )*
+            # XKBGrammar.g:134:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' | '+' | '-' )*
             while True: #loop1
                 alt1 = 2
                 LA1_0 = self.input.LA(1)
 
-                if ((40 <= LA1_0 <= 41) or (48 <= LA1_0 <= 57) or (65 <= LA1_0 <= 90) or LA1_0 == 95 or (97 <= LA1_0 <= 122)) :
+                if ((40 <= LA1_0 <= 41) or LA1_0 == 43 or LA1_0 == 45 or (48 <= LA1_0 <= 57) or (65 <= LA1_0 <= 90) or LA1_0 == 95 or (97 <= LA1_0 <= 122)) :
                     alt1 = 1
 
 
                 if alt1 == 1:
                     # XKBGrammar.g:
-                    if (40 <= self.input.LA(1) <= 41) or (48 <= self.input.LA(1) <= 57) or (65 <= self.input.LA(1) <= 90) or self.input.LA(1) == 95 or (97 <= self.input.LA(1) <= 122):
+                    if (40 <= self.input.LA(1) <= 41) or self.input.LA(1) == 43 or self.input.LA(1) == 45 or (48 <= self.input.LA(1) <= 57) or (65 <= self.input.LA(1) <= 90) or self.input.LA(1) == 95 or (97 <= self.input.LA(1) <= 122):
                         self.input.consume();
                     else:
                         mse = MismatchedSetException(None, self.input)
@@ -1392,8 +1392,8 @@ class XKBGrammarLexer(Lexer):
         DFA.unpack(u""),
         DFA.unpack(u"\1\70"),
         DFA.unpack(u"\1\71"),
-        DFA.unpack(u"\2\27\4\uffff\1\72\1\uffff\12\27\7\uffff\32\27\4\uffff"
-        u"\1\27\1\uffff\32\27"),
+        DFA.unpack(u"\2\27\1\uffff\1\27\1\uffff\1\27\1\72\1\uffff\12\27\7"
+        u"\uffff\32\27\4\uffff\1\27\1\uffff\32\27"),
         DFA.unpack(u"\1\74"),
         DFA.unpack(u"\1\75"),
         DFA.unpack(u"\1\76"),
@@ -1406,8 +1406,8 @@ class XKBGrammarLexer(Lexer):
         DFA.unpack(u"\1\105"),
         DFA.unpack(u"\1\106\1\107\1\110\1\111\1\112"),
         DFA.unpack(u"\1\113"),
-        DFA.unpack(u"\2\27\6\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff"
-        u"\32\27"),
+        DFA.unpack(u"\2\27\1\uffff\1\27\1\uffff\1\27\2\uffff\12\27\7\uffff"
+        u"\32\27\4\uffff\1\27\1\uffff\32\27"),
         DFA.unpack(u""),
         DFA.unpack(u""),
         DFA.unpack(u"\1\115"),
@@ -1419,18 +1419,18 @@ class XKBGrammarLexer(Lexer):
         DFA.unpack(u"\1\123"),
         DFA.unpack(u"\1\124"),
         DFA.unpack(u"\1\125"),
-        DFA.unpack(u"\2\27\6\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff"
-        u"\32\27"),
-        DFA.unpack(u"\2\27\6\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff"
-        u"\32\27"),
-        DFA.unpack(u"\2\27\6\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff"
-        u"\32\27"),
-        DFA.unpack(u"\2\27\6\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff"
-        u"\32\27"),
-        DFA.unpack(u"\2\27\6\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff"
-        u"\32\27"),
-        DFA.unpack(u"\2\27\6\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff"
-        u"\32\27"),
+        DFA.unpack(u"\2\27\1\uffff\1\27\1\uffff\1\27\2\uffff\12\27\7\uffff"
+        u"\32\27\4\uffff\1\27\1\uffff\32\27"),
+        DFA.unpack(u"\2\27\1\uffff\1\27\1\uffff\1\27\2\uffff\12\27\7\uffff"
+        u"\32\27\4\uffff\1\27\1\uffff\32\27"),
+        DFA.unpack(u"\2\27\1\uffff\1\27\1\uffff\1\27\2\uffff\12\27\7\uffff"
+        u"\32\27\4\uffff\1\27\1\uffff\32\27"),
+        DFA.unpack(u"\2\27\1\uffff\1\27\1\uffff\1\27\2\uffff\12\27\7\uffff"
+        u"\32\27\4\uffff\1\27\1\uffff\32\27"),
+        DFA.unpack(u"\2\27\1\uffff\1\27\1\uffff\1\27\2\uffff\12\27\7\uffff"
+        u"\32\27\4\uffff\1\27\1\uffff\32\27"),
+        DFA.unpack(u"\2\27\1\uffff\1\27\1\uffff\1\27\2\uffff\12\27\7\uffff"
+        u"\32\27\4\uffff\1\27\1\uffff\32\27"),
         DFA.unpack(u"\1\134"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\135"),
@@ -1440,8 +1440,8 @@ class XKBGrammarLexer(Lexer):
         DFA.unpack(u"\1\141"),
         DFA.unpack(u"\1\142"),
         DFA.unpack(u"\1\143"),
-        DFA.unpack(u"\2\27\6\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff"
-        u"\32\27"),
+        DFA.unpack(u"\2\27\1\uffff\1\27\1\uffff\1\27\2\uffff\12\27\7\uffff"
+        u"\32\27\4\uffff\1\27\1\uffff\32\27"),
         DFA.unpack(u"\1\145"),
         DFA.unpack(u""),
         DFA.unpack(u""),
@@ -1452,27 +1452,27 @@ class XKBGrammarLexer(Lexer):
         DFA.unpack(u"\1\146"),
         DFA.unpack(u"\1\147"),
         DFA.unpack(u"\1\150"),
-        DFA.unpack(u"\2\27\6\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff"
-        u"\32\27"),
+        DFA.unpack(u"\2\27\1\uffff\1\27\1\uffff\1\27\2\uffff\12\27\7\uffff"
+        u"\32\27\4\uffff\1\27\1\uffff\32\27"),
         DFA.unpack(u"\1\152"),
         DFA.unpack(u"\1\153"),
         DFA.unpack(u"\1\154"),
         DFA.unpack(u"\1\155"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\156"),
-        DFA.unpack(u"\2\27\6\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff"
-        u"\32\27"),
+        DFA.unpack(u"\2\27\1\uffff\1\27\1\uffff\1\27\2\uffff\12\27\7\uffff"
+        u"\32\27\4\uffff\1\27\1\uffff\32\27"),
         DFA.unpack(u"\1\160"),
-        DFA.unpack(u"\2\27\6\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff"
-        u"\32\27"),
+        DFA.unpack(u"\2\27\1\uffff\1\27\1\uffff\1\27\2\uffff\12\27\7\uffff"
+        u"\32\27\4\uffff\1\27\1\uffff\32\27"),
         DFA.unpack(u""),
-        DFA.unpack(u"\2\27\6\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff"
-        u"\32\27"),
+        DFA.unpack(u"\2\27\1\uffff\1\27\1\uffff\1\27\2\uffff\12\27\7\uffff"
+        u"\32\27\4\uffff\1\27\1\uffff\32\27"),
         DFA.unpack(u"\1\163"),
         DFA.unpack(u"\1\164"),
         DFA.unpack(u"\1\165"),
-        DFA.unpack(u"\2\27\6\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff"
-        u"\32\27"),
+        DFA.unpack(u"\2\27\1\uffff\1\27\1\uffff\1\27\2\uffff\12\27\7\uffff"
+        u"\32\27\4\uffff\1\27\1\uffff\32\27"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\167"),
         DFA.unpack(u""),
@@ -1494,29 +1494,29 @@ class XKBGrammarLexer(Lexer):
         DFA.unpack(u"\1\u0086"),
         DFA.unpack(u"\1\u0087"),
         DFA.unpack(u"\1\u0088"),
-        DFA.unpack(u"\2\27\6\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff"
-        u"\32\27"),
-        DFA.unpack(u"\2\27\6\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff"
-        u"\32\27"),
+        DFA.unpack(u"\2\27\1\uffff\1\27\1\uffff\1\27\2\uffff\12\27\7\uffff"
+        u"\32\27\4\uffff\1\27\1\uffff\32\27"),
+        DFA.unpack(u"\2\27\1\uffff\1\27\1\uffff\1\27\2\uffff\12\27\7\uffff"
+        u"\32\27\4\uffff\1\27\1\uffff\32\27"),
         DFA.unpack(u"\1\u008b"),
         DFA.unpack(u"\1\u008c"),
         DFA.unpack(u"\1\u008d"),
         DFA.unpack(u""),
         DFA.unpack(u""),
-        DFA.unpack(u"\2\27\6\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff"
-        u"\32\27"),
+        DFA.unpack(u"\2\27\1\uffff\1\27\1\uffff\1\27\2\uffff\12\27\7\uffff"
+        u"\32\27\4\uffff\1\27\1\uffff\32\27"),
         DFA.unpack(u"\1\u008f"),
         DFA.unpack(u"\1\u0090"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\u0091"),
         DFA.unpack(u"\1\u0092"),
         DFA.unpack(u"\1\u0093"),
-        DFA.unpack(u"\2\27\6\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff"
-        u"\32\27"),
+        DFA.unpack(u"\2\27\1\uffff\1\27\1\uffff\1\27\2\uffff\12\27\7\uffff"
+        u"\32\27\4\uffff\1\27\1\uffff\32\27"),
         DFA.unpack(u"\1\u0095"),
         DFA.unpack(u""),
-        DFA.unpack(u"\2\27\6\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff"
-        u"\32\27"),
+        DFA.unpack(u"\2\27\1\uffff\1\27\1\uffff\1\27\2\uffff\12\27\7\uffff"
+        u"\32\27\4\uffff\1\27\1\uffff\32\27"),
         DFA.unpack(u"")
     ]
 
