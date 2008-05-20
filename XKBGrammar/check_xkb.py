@@ -50,9 +50,8 @@ print "tree =", result.tree.toStringTree()
 nodes = antlr3.tree.CommonTreeNodeStream(result.tree)
 nodes.setTokenStream(tokens)
 walker = XKBGrammarWalker(nodes)
-walker.layout()
+# walker.layout()
 
-print "Layout has", result.tree.getChildCount(), "sections", result.tree.getText()
 for section in result.tree.getChildren():
 	print "// Section"
 	for mapobject in section.getChildren():

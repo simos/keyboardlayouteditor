@@ -28,7 +28,7 @@ options
 // // can have several sections as above.
 
 layout 		
-	: section+
+	: ^(LAYOUT section+)
 	;
 	
 section 

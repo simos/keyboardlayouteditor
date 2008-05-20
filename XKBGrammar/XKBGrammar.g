@@ -20,6 +20,7 @@ tokens
 	TOKEN_MODIFIER_MAP;
 
 	// Tokens for tree.
+	LAYOUT;
 	MAPTYPE;
 	MAPNAME;
 	MAPOPTIONS;
@@ -49,7 +50,8 @@ tokens
 // // can have several sections as above.
 
 layout 		
-	: section+ EOF!
+	: section+ EOF
+	-> ^(LAYOUT section+)
 	;
 	
 section 
