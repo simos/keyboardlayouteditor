@@ -6,7 +6,7 @@
 import sys
 import pdb
 import antlr3
-from XKBGrammarLexer import XKBGrammarLexer, SECTION, MAPTYPE, MAPNAME, MAPOPTIONS, MAPMATERIAL, TOKEN_INCLUDE, TOKEN_NAME, TOKEN_KEY_TYPE, TOKEN_KEY, VALUE, KEYCODE, KEYCODEX, KEYSYMS, TOKEN_TYPE
+from XKBGrammarLexer import XKBGrammarLexer, SECTION, MAPTYPE, MAPNAME, MAPOPTIONS, MAPMATERIAL, TOKEN_INCLUDE, TOKEN_NAME, TOKEN_KEY_TYPE, TOKEN_KEY, VALUE, KEYCODE, KEYCODEX, KEYSYMS, TOKEN_TYPE,KEYSYMGROUP
 from XKBGrammarParser import XKBGrammarParser
 from XKBGrammarWalker import XKBGrammarWalker
 
@@ -38,6 +38,8 @@ def hasChildByType(tree, type_value):
 xkbfilename = "gr"
 if len(sys.argv) > 1:
     xkbfilename = sys.argv[1]
+
+print "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", sys.argv[1]
 
 try:    
 	xkbfile = open(xkbfilename, 'r')
@@ -93,28 +95,58 @@ for section in result.tree.getChildren():
 			for keyset in getChildrenByType(mapobject, TOKEN_KEY):
 				keycode = getChildrenListByType(keyset, KEYCODE)
 				keycodex = getChildrenListByType(keyset, KEYCODEX)
-				keysyms = getChildrenListByType(keyset, KEYSYMS)
+				keysyms = getChildrenByType(keyset, KEYSYMS)
 				if len(keycode) == 1:
-					print '\tkey %(kc)s = { [' % { "kc": keycode[0].getChild(0).getText() },
+					print '\tkey %(kc)s = { ' % { "kc": keycode[0].getChild(0).getText() },
 				elif len(keycodex) == 1:
-					print '\tkey <%(kc)s> = { [' % { "kc": keycodex[0].getChild(0).getText() },
+					print '\tkey <%(kc)s> = { ' % { "kc": keycodex[0].getChild(0).getText() },
 				else:
 					print "\tInternal error keycode/keycodex:", len(keycode), len(keycodex)
 					sys.exit(-1)
 				first_time = True
-				if keysyms[0].getChildCount() == 0:
-					print "Internal error"
-					sys.exit(-1)
-				for ks in keysyms[0].getChildren():
-					if first_time:
-						if ks.getType() == TOKEN_TYPE:
-							print 'type[%(t)s] = %(n)s, ' % {"t": ks.getChild(0).getText(), "n": ks.getChild(1).getText()},
-							continue
-						first_time = False
+				for ks in keysyms:
+					tokentype = getChildrenListByType(ks, TOKEN_TYPE)
+					keysymgroup = getChildrenListByType(ks, KEYSYMGROUP)	
+					if len(tokentype) == 1:
+						print 'type[%(t)s] = %(v)s,' % { "t": tokentype[0].getChild(0).getText(), "v": tokentype[0].getChild(1).getText() },
+					elif len(tokentype) == 0:
+						pass
 					else:
-						sys.stdout.write(", ");
-					sys.stdout.write(ks.getText())
-				print "] };"
+						print "Internal error"
+						sys.exit(-1)
+					ftg = True
+					for ksg in keysymgroup:
+						if ftg:
+							sys.stdout.write(' [ ')
+							ft = True
+							for lala in ksg.getChildren():
+								if ft:
+									sys.stdout.write(lala.getText())
+									ft = False
+									continue
+								sys.stdout.write(', ')
+								sys.stdout.write(lala.getText())
+							sys.stdout.write(' ]')
+							ftg = False
+							continue
+						sys.stdout.write(', [')	
+						ft = True
+						for lala in ksg.getChildren():
+							if ft:
+								sys.stdout.write(lala.getText())
+								ft = False
+								continue
+							sys.stdout.write(', ')
+							sys.stdout.write(lala.getText())
+						sys.stdout.write(' ]')
+					# print "tokentype:", len(tokentype), tokentype[0].getText(),
+					# print "keysymgroup:", len(keysymgroup), keysymgroup[0],
+				 	# if len(tokentype) != 0:
+					#	pass
+					#if len(keysymgroup) != 0: 
+					#	for ksg in keysymgroup:
+					#		print ksg.getText(),
+				print " };"
 		else:
 			print "\tInternal error at map level,", mapobject.getText()
 			# sys.exit(-2)

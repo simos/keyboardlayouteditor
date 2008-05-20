@@ -4,7 +4,7 @@ xkb_symbols "extended" {
     name[Group1] = "Greece-Extended";
     key.type[Group1] = "THREE_LEVEL"; // yeah, comment
     key <AD01> {   type[Group1] = "SEPARATE_CAPS_AND_SHIFT_ALPHABETIC",
-                 [ U1C9,                U1C8,         any,   U1C7 ]   }; // q
+                 [ U1C9,                U1C8],       [  any,   U1C7 ]   }; // q
     key <AD02> {   type[Group1] = "SEPARATE_CAPS_AND_SHIFT_ALPHABETIC",
                  [ U1CC,                U1CB,         any,   U1CA ]   }; // w
 };

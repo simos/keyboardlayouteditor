@@ -79,6 +79,11 @@ line_type
 	;
 	
 keysyms
-	: ^(KEYSYMS ^(TOKEN_TYPE NAME DQSTRING) NAME+)
+	: ^(KEYSYMS ^(TOKEN_TYPE NAME DQSTRING) keysymgroup+)
 	;
+
+keysymgroup
+        : ^(KEYSYM_GROUP NAME+)
+	;
+
 

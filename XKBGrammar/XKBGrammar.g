@@ -32,6 +32,7 @@ tokens
 	KEYSYMS;
 	VALUE;
 	STATE;
+	KEYSYMGROUP;
 }
 
 // We cover XKB symbol files that look like
@@ -104,8 +105,13 @@ keycode
 	;
 
 keysyms
-	: '{' ('type' '[' tn1=NAME ']' '=' tn2=DQSTRING ',')? '[' keysym+=NAME (',' keysym+=NAME)* ']' '}'
-	-> ^(KEYSYMS ^(TOKEN_TYPE $tn1 $tn2)? $keysym+)
+	: '{' ('type' '[' tn1=NAME ']' '=' tn2=DQSTRING ',')? keysymgroup (',' keysymgroup)* '}'
+	-> ^(KEYSYMS ^(TOKEN_TYPE $tn1 $tn2)? keysymgroup+)
+	;
+
+keysymgroup
+	: '[' keysym+=NAME (',' keysym+=NAME)* ']'
+	-> ^(KEYSYMGROUP $keysym+)
 	;
 
 mapOptions
@@ -146,7 +152,7 @@ COMMENT
 
 LINE_COMMENT
     	: 
-	'//' ~('\n' | '\r')* '\r'? '\n' 
+	('//' | '#')  ~('\n' | '\r')* '\r'? '\n' 
 	{ $channel=HIDDEN; }
     	;
 
