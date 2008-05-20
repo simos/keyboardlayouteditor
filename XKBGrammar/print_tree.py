@@ -52,14 +52,14 @@ nodes.setTokenStream(tokens)
 walker = XKBGrammarWalker(nodes)
 # walker.layout()
 
-MAX = 8
-TABS = "\t\t\t\t\t\t\t\t"
+MAX = 10
+TABS = "\t\t\t\t\t\t\t\t\t\t"
 
 def print_tree(node, depth):
 	if depth >= MAX:
 		return
 	for n in node.getChildren():
-		print TABS[:depth], n.getText()
+		print TABS[:depth], "===", n.getText(), "==="
 		print_tree(n, depth + 1)
 		
 

@@ -6,7 +6,7 @@
 import sys
 import pdb
 import antlr3
-from XKBGrammarLexer import XKBGrammarLexer, SECTION, MAPTYPE, MAPNAME, MAPOPTIONS, MAPMATERIAL, TOKEN_INCLUDE, TOKEN_NAME, TOKEN_KEY_TYPE, TOKEN_KEY, VALUE, KEYCODE, KEYCODEX, KEYSYMS
+from XKBGrammarLexer import XKBGrammarLexer, SECTION, MAPTYPE, MAPNAME, MAPOPTIONS, MAPMATERIAL, TOKEN_INCLUDE, TOKEN_NAME, TOKEN_KEY_TYPE, TOKEN_KEY, VALUE, KEYCODE, KEYCODEX, KEYSYMS, TOKEN_TYPE
 from XKBGrammarParser import XKBGrammarParser
 from XKBGrammarWalker import XKBGrammarWalker
 
@@ -25,6 +25,15 @@ def getChildrenListByType(tree, type_value):
         	if child.getType() == type_value:
         		list.append(child)
 	return list
+
+def hasChildByType(tree, type_value):
+	has = False
+	for i in range(tree.getChildCount()):
+		child = tree.getChild(i)
+		if child.getType() == type_value:
+			has = True
+			break
+	return has
 
 xkbfilename = "gr"
 if len(sys.argv) > 1:
@@ -98,6 +107,9 @@ for section in result.tree.getChildren():
 					sys.exit(-1)
 				for ks in keysyms[0].getChildren():
 					if first_time:
+						if ks.getType() == TOKEN_TYPE:
+							print 'type[%(t)s] = %(n)s, ' % {"t": ks.getChild(0).getText(), "n": ks.getChild(1).getText()},
+							continue
 						first_time = False
 					else:
 						sys.stdout.write(", ");

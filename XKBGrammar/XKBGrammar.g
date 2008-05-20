@@ -17,6 +17,7 @@ tokens
 	TOKEN_KEY_TYPE;
 	TOKEN_NAME;
 	TOKEN_KEY;
+	TOKEN_TYPE;
 	TOKEN_MODIFIER_MAP;
 
 	// Tokens for tree.
@@ -86,7 +87,7 @@ line_keytype
 	: 'key.type' '[' n1=NAME ']' '=' n2=DQSTRING
 	-> ^(TOKEN_KEY_TYPE $n1 ^(VALUE $n2))
 	;
-	
+
 line_key
 	: 'key' keycode keysyms
 	-> ^(TOKEN_KEY keycode keysyms)
@@ -97,18 +98,14 @@ line_modifier_map
 	-> ^(TOKEN_MODIFIER_MAP state keycode+)
 	;
 
-// segment_type
-//	: 'type' '[' NAME ']' '=' DQSTRING ','
-//	-> ^(TOKEN_SEGMENT_TYPE NAME DQSTRING)
-
 keycode	
 	: NAME -> ^(KEYCODE NAME)
 	| '<' NAME '>' -> ^(KEYCODEX NAME)
 	;
 
 keysyms
-	: '{' '[' keysym+=NAME (',' keysym+=NAME)* ']' '}'
-	-> ^(KEYSYMS $keysym+)
+	: '{' ('type' '[' tn1=NAME ']' '=' tn2=DQSTRING ',')? '[' keysym+=NAME (',' keysym+=NAME)* ']' '}'
+	-> ^(KEYSYMS ^(TOKEN_TYPE $tn1 $tn2)? $keysym+)
 	;
 
 mapOptions

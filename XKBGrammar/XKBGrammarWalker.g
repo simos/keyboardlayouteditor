@@ -72,8 +72,13 @@ mapMaterial
 	| ^(TOKEN_KEY keycode keysyms)
 	| ^(TOKEN_MODIFIER_MAP state keycode+)
 	;
+
+line_type
+	:
+	^(TOKEN_TYPE NAME ^(VALUE DQSTRING))
+	;
 	
 keysyms
-	: ^(KEYSYMS NAME+)
+	: ^(KEYSYMS ^(TOKEN_TYPE NAME DQSTRING) NAME+)
 	;
 
