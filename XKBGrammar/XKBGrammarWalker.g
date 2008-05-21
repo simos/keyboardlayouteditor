@@ -49,6 +49,7 @@ mapOptions
 	| 'hidden'
 	| 'partial' 
 	| 'alphanumeric_keys'
+	| 'keypad_keys'
 	| 'alternate_group'
 	| 'modifier_keys'
 	| 'xkb_symbols'
@@ -69,7 +70,7 @@ mapMaterial
 	: ^(TOKEN_INCLUDE DQSTRING)
 	| ^(TOKEN_NAME NAME ^(VALUE DQSTRING))
 	| ^(TOKEN_KEY_TYPE NAME ^(VALUE DQSTRING))
-	| ^(TOKEN_KEY keycode keysyms)
+	| ^(TOKEN_KEY ^(OVERRIDE 'override') keycode keysyms)
 	| ^(TOKEN_MODIFIER_MAP state keycode+)
 	;
 

@@ -6,7 +6,7 @@
 import sys
 import pdb
 import antlr3
-from XKBGrammarLexer import XKBGrammarLexer, SECTION, MAPTYPE, MAPNAME, MAPOPTIONS, MAPMATERIAL, TOKEN_INCLUDE, TOKEN_NAME, TOKEN_KEY_TYPE, TOKEN_KEY, VALUE, KEYCODE, KEYCODEX, KEYSYMS, TOKEN_TYPE,KEYSYMGROUP
+from XKBGrammarLexer import XKBGrammarLexer, SECTION, MAPTYPE, MAPNAME, MAPOPTIONS, MAPMATERIAL, TOKEN_INCLUDE, TOKEN_NAME, TOKEN_KEY_TYPE, TOKEN_KEY, VALUE, KEYCODE, KEYCODEX, KEYSYMS, TOKEN_TYPE,KEYSYMGROUP, OVERRIDE
 from XKBGrammarParser import XKBGrammarParser
 from XKBGrammarWalker import XKBGrammarWalker
 
@@ -96,10 +96,14 @@ for section in result.tree.getChildren():
 				keycode = getChildrenListByType(keyset, KEYCODE)
 				keycodex = getChildrenListByType(keyset, KEYCODEX)
 				keysyms = getChildrenByType(keyset, KEYSYMS)
+				override = getChildrenListByType(keyset, OVERRIDE)
+				print '\t',
+				if len(override) == 1:
+					print 'override',
 				if len(keycode) == 1:
-					print '\tkey %(kc)s = { ' % { "kc": keycode[0].getChild(0).getText() },
+					print 'key %(kc)s = { ' % { "kc": keycode[0].getChild(0).getText() },
 				elif len(keycodex) == 1:
-					print '\tkey <%(kc)s> = { ' % { "kc": keycodex[0].getChild(0).getText() },
+					print 'key <%(kc)s> = { ' % { "kc": keycodex[0].getChild(0).getText() },
 				else:
 					print "\tInternal error keycode/keycodex:", len(keycode), len(keycodex)
 					sys.exit(-1)

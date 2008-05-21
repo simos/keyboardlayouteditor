@@ -33,6 +33,7 @@ tokens
 	VALUE;
 	STATE;
 	KEYSYMGROUP;
+	OVERRIDE;
 }
 
 // We cover XKB symbol files that look like
@@ -90,8 +91,8 @@ line_keytype
 	;
 
 line_key
-	: 'key' keycode keysyms
-	-> ^(TOKEN_KEY keycode keysyms)
+	: override='override'? 'key' keycode keysyms
+	-> ^(TOKEN_KEY ^(OVERRIDE $override)? keycode keysyms)
 	;
 
 line_modifier_map
@@ -119,6 +120,7 @@ mapOptions
 	| 'hidden'
 	| 'partial' 
 	| 'alphanumeric_keys'
+	| 'keypad_keys'
 	| 'modifier_keys'
 	| 'alternate_group'
 	| 'xkb_symbols'
