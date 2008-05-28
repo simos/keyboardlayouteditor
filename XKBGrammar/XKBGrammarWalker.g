@@ -84,7 +84,7 @@ keysyms
 	;
 
 keysymgroup
-        : ^(KEYSYM_GROUP NAME+)
+        : ^(KEYSYM_GROUP ^(TOKEN_SYMBOL NAME) NAME+)
 	;
 
 

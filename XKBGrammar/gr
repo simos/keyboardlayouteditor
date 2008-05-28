@@ -7,4 +7,9 @@ xkb_symbols "extended" {
                  [ U1C9,                U1C8],       [  any,   U1C7 ]   }; // q
     override key <AD02> {   type[Group1] = "SEPARATE_CAPS_AND_SHIFT_ALPHABETIC",
                  [ U1CC,                U1CB,         any,   U1CA ]   }; // w
+    key <BKSP> {
+        type[Group1]="CTRL+ALT",
+        symbols[Group1]= [ BackSpace,   Terminate_Server ]
+    };
+
 };

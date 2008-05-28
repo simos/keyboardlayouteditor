@@ -19,6 +19,7 @@ tokens
 	TOKEN_KEY;
 	TOKEN_TYPE;
 	TOKEN_MODIFIER_MAP;
+	TOKEN_SYMBOL;
 
 	// Tokens for tree.
 	LAYOUT;
@@ -106,13 +107,13 @@ keycode
 	;
 
 keysyms
-	: '{' ('type' '[' tn1=NAME ']' '=' tn2=DQSTRING ',')? keysymgroup (',' keysymgroup)* '}'
-	-> ^(KEYSYMS ^(TOKEN_TYPE $tn1 $tn2)? keysymgroup+)
+	: '{' ('type' '[' tn1=NAME ']' '=' tn2=DQSTRING ',')* keysymgroup (',' keysymgroup)* '}'
+	-> ^(KEYSYMS ^(TOKEN_TYPE $tn1 $tn2)* keysymgroup+)
 	;
 
 keysymgroup
-	: '[' keysym+=NAME (',' keysym+=NAME)* ']'
-	-> ^(KEYSYMGROUP $keysym+)
+	: ('symbols' '[' st1=NAME ']' '=')? '[' keysym+=NAME (',' keysym+=NAME)* ']'
+	-> ^(KEYSYMGROUP ^(TOKEN_SYMBOL $st1)? $keysym+)
 	;
 
 mapOptions
@@ -121,6 +122,7 @@ mapOptions
 	| 'partial' 
 	| 'alphanumeric_keys'
 	| 'keypad_keys'
+	| 'function_keys'
 	| 'modifier_keys'
 	| 'alternate_group'
 	| 'xkb_symbols'
