@@ -20,6 +20,7 @@ tokens
 	TOKEN_TYPE;
 	TOKEN_MODIFIER_MAP;
 	TOKEN_SYMBOL;
+	TOKEN_VIRTUAL_MODIFIERS;
 
 	// Tokens for tree.
 	LAYOUT;
@@ -27,7 +28,7 @@ tokens
 	MAPNAME;
 	MAPOPTIONS;
 	MAPMATERIAL;
-	SECTION;
+	SYMBOLS;
 	KEYCODE;
 	KEYCODEX;
 	KEYSYMS;
@@ -35,12 +36,13 @@ tokens
 	STATE;
 	KEYSYMGROUP;
 	OVERRIDE;
+	VIRTUALMODS;
 }
 
 // We cover XKB symbol files that look like
 //
 // // comments can appear here.
-// one of more modifiers "mysectionname"
+// one of more modifiers "mysymbolsname"
 // {
 //   // comments can appear here.
 //   include "somename"                 // comments can also appear here.
@@ -51,16 +53,16 @@ tokens
 //   // can also have multiples of the above.
 // };
 //
-// // can have several sections as above.
+// // can have several symbol sections as above.
 
 layout 		
-	: section+ EOF
-	-> ^(LAYOUT section+)
+	: symbols+ EOF
+	-> ^(LAYOUT symbols+)
 	;
 	
-section 
+symbols 
 	: mapType '{' mapMaterial+ '}' ';'
-	-> ^(SECTION mapType ^(MAPMATERIAL mapMaterial+))
+	-> ^(SYMBOLS mapType ^(MAPMATERIAL mapMaterial+))
  	;
 
 mapType
@@ -74,6 +76,7 @@ mapMaterial
 	| line_keytype ';'!
 	| line_key ';'!
 	| line_modifier_map ';'!
+	| line_virtual_modifiers ';' !
 	;
 
 line_include
@@ -101,6 +104,11 @@ line_modifier_map
 	-> ^(TOKEN_MODIFIER_MAP state keycode+)
 	;
 
+line_virtual_modifiers
+	: 'virtual_modifiers' NAME (',' NAME)*
+	-> ^(TOKEN_VIRTUAL_MODIFIERS NAME+)
+	;
+
 keycode	
 	: NAME -> ^(KEYCODE NAME)
 	| '<' NAME '>' -> ^(KEYCODEX NAME)
@@ -114,6 +122,11 @@ keysyms
 keysymgroup
 	: ('symbols' '[' st1=NAME ']' '=')? '[' keysym+=NAME (',' keysym+=NAME)* ']'
 	-> ^(KEYSYMGROUP ^(TOKEN_SYMBOL $st1)? $keysym+)
+	;
+
+virtualmods
+	: 'virtualMods' '=' NAME
+	-> ^(VIRTUALMODS NAME)
 	;
 
 mapOptions

@@ -6,7 +6,7 @@
 import sys
 import pdb
 import antlr3
-from XKBGrammarLexer import XKBGrammarLexer, SECTION, MAPTYPE, MAPNAME, MAPOPTIONS, MAPMATERIAL, TOKEN_INCLUDE, TOKEN_NAME, TOKEN_KEY_TYPE, TOKEN_KEY, VALUE, KEYCODE, KEYCODEX, KEYSYMS, TOKEN_TYPE,KEYSYMGROUP, OVERRIDE
+from XKBGrammarLexer import XKBGrammarLexer, SYMBOLS, MAPTYPE, MAPNAME, MAPOPTIONS, MAPMATERIAL, TOKEN_INCLUDE, TOKEN_NAME, TOKEN_KEY_TYPE, TOKEN_KEY, VALUE, KEYCODE, KEYCODEX, KEYSYMS, TOKEN_TYPE,KEYSYMGROUP, OVERRIDE
 from XKBGrammarParser import XKBGrammarParser
 from XKBGrammarWalker import XKBGrammarWalker
 
@@ -63,9 +63,9 @@ nodes.setTokenStream(tokens)
 walker = XKBGrammarWalker(nodes)
 # walker.layout()
 
-for section in result.tree.getChildren():
+for symbols in result.tree.getChildren():
 	print "// Section"
-	for mapobject in section.getChildren():
+	for mapobject in symbols.getChildren():
 		if mapobject.getType() == MAPTYPE:
 			for maptypesect in mapobject.getChildren():
 				if maptypesect.getType() == MAPOPTIONS:

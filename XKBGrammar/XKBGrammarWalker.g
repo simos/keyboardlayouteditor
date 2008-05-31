@@ -14,7 +14,7 @@ options
 // We cover XKB symbol files that look like
 //
 // // comments can appear here.
-// one of more modifiers "mysectionname"
+// one of more modifiers "mysymbolname"
 // {
 //   // comments can appear here.
 //   include "somename"                 // comments can also appear here.
@@ -25,14 +25,14 @@ options
 //   // can also have multiples of the above.
 // };
 //
-// // can have several sections as above.
+// // can have several symbol sections as above.
 
 layout 		
-	: ^(LAYOUT section+)
+	: ^(LAYOUT symbols+)
 	;
 	
-section 
-        : ^(SECTION mapType ^(MAPMATERIAL mapMaterial+))
+symbols 
+        : ^(SYMBOLS mapType ^(MAPMATERIAL mapMaterial+))
  	;
 
 mapType
@@ -72,6 +72,7 @@ mapMaterial
 	| ^(TOKEN_KEY_TYPE NAME ^(VALUE DQSTRING))
 	| ^(TOKEN_KEY ^(OVERRIDE 'override') keycode keysyms)
 	| ^(TOKEN_MODIFIER_MAP state keycode+)
+	| ^(TOKEN_VIRTUAL_MODIFIERS NAME+)
 	;
 
 line_type
