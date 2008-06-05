@@ -1,12 +1,12 @@
 // XKB Grammar (X.org)
 // Written by Simos Xenitellis <simos.lists@googlemail.com>, 2008.
-// Version 0.7
+// Version 0.8
 
 grammar XKBGrammar;
 
 options
 {
-	language = Python;
+//	language = Python;
 	output = AST;
 }
 
@@ -24,19 +24,23 @@ tokens
 
 	// Tokens for tree.
 	LAYOUT;
+	SYMBOLS;
 	MAPTYPE;
 	MAPNAME;
 	MAPOPTIONS;
 	MAPMATERIAL;
-	SYMBOLS;
 	KEYCODE;
 	KEYCODEX;
-	KEYSYMS;
 	VALUE;
 	STATE;
-	KEYSYMGROUP;
+	ELEM_KEYSYMGROUP;
+	ELEM_KEYSYMS;
+	ELEM_VIRTUALMODS;
+	ELEM_ACTIONS;
+	ACTIONS_SETMODS;
+	KEYELEMENTS;
 	OVERRIDE;
-	VIRTUALMODS;
+	OVERLAY;
 }
 
 // We cover XKB symbol files that look like
@@ -66,8 +70,8 @@ symbols
  	;
 
 mapType
-	: mapOptions+ DQSTRING
-	-> ^(MAPTYPE ^(MAPOPTIONS mapOptions+) ^(MAPNAME DQSTRING))
+	: MAPOPTIONS* DQSTRING
+	-> ^(MAPTYPE ^(MAPOPTIONS MAPOPTIONS*) ^(MAPNAME DQSTRING))
 	;
 
 mapMaterial 
@@ -76,7 +80,7 @@ mapMaterial
 	| line_keytype ';'!
 	| line_key ';'!
 	| line_modifier_map ';'!
-	| line_virtual_modifiers ';' !
+	| line_virtual_modifiers ';'!
 	;
 
 line_include
@@ -85,23 +89,23 @@ line_include
 	;
 
 line_name
-	: 'name' '[' n1=NAME ']' '=' n2=DQSTRING
-	-> ^(TOKEN_NAME $n1 ^(VALUE $n2))
+	: 'name' '[' NAME ']' '=' DQSTRING
+	-> ^(TOKEN_NAME NAME ^(VALUE DQSTRING))
 	;
 
 line_keytype
-	: 'key.type' '[' n1=NAME ']' '=' n2=DQSTRING
-	-> ^(TOKEN_KEY_TYPE $n1 ^(VALUE $n2))
+	: 'key.type' ('[' NAME ']')? '=' n2=DQSTRING
+	-> ^(TOKEN_KEY_TYPE NAME? ^(VALUE DQSTRING))
 	;
 
 line_key
-	: override='override'? 'key' keycode keysyms
-	-> ^(TOKEN_KEY ^(OVERRIDE $override)? keycode keysyms)
+	: OVERRIDE? 'key' keycode '{' keyelements (',' keyelements)* '}'
+	-> ^(TOKEN_KEY OVERRIDE? keycode keyelements+)
 	;
 
 line_modifier_map
-	: 'modifier_map' state '{' keycode (',' keycode)* '}'
-	-> ^(TOKEN_MODIFIER_MAP state keycode+)
+	: 'modifier_map' STATE '{' keycode (',' keycode)* '}'
+	-> ^(TOKEN_MODIFIER_MAP STATE keycode+)
 	;
 
 line_virtual_modifiers
@@ -114,22 +118,49 @@ keycode
 	| '<' NAME '>' -> ^(KEYCODEX NAME)
 	;
 
-keysyms
-	: '{' ('type' '[' tn1=NAME ']' '=' tn2=DQSTRING ',')* keysymgroup (',' keysymgroup)* '}'
-	-> ^(KEYSYMS ^(TOKEN_TYPE $tn1 $tn2)* keysymgroup+)
+override
+	: 'override'
 	;
 
-keysymgroup
-	: ('symbols' '[' st1=NAME ']' '=')? '[' keysym+=NAME (',' keysym+=NAME)* ']'
-	-> ^(KEYSYMGROUP ^(TOKEN_SYMBOL $st1)? $keysym+)
+keyelements
+	: elem_keysyms 
+	| elem_virtualmods
+	| elem_keysymgroup
+	| elem_actions
+	| elem_overlay
 	;
 
-virtualmods
+elem_keysyms
+	: 'type' ('[' NAME ']')? '=' DQSTRING
+	-> ^(ELEM_KEYSYMS ^(TOKEN_TYPE NAME? DQSTRING))
+	;
+
+elem_keysymgroup
+	: ('symbols' '[' keysym+=NAME ']' '=')? '[' keysym+=NAME (',' keysym+=NAME)* ']'
+	-> ^(ELEM_KEYSYMGROUP $keysym+)
+	;
+
+elem_virtualmods
 	: 'virtualMods' '=' NAME
-	-> ^(VIRTUALMODS NAME)
+	-> ^(ELEM_VIRTUALMODS NAME)
 	;
 
-mapOptions
+elem_actions
+	: 'actions' '[' NAME ']' '=' '[' actions_setmods (',' actions_setmods)* ']'
+	-> ^(ELEM_ACTIONS NAME actions_setmods+)
+	;
+
+actions_setmods
+	: 'SetMods' '(' 'modifiers' '=' (STATE|NAME) (',' NAME)* ')'
+	-> ^(ACTIONS_SETMODS STATE* NAME*)
+	;
+
+elem_overlay
+	: NAME '=' keycode
+	-> ^(OVERLAY NAME keycode)
+	;
+
+MAPOPTIONS
 	: 'default'
 	| 'hidden'
 	| 'partial' 
@@ -141,7 +172,7 @@ mapOptions
 	| 'xkb_symbols'
 	;
 
-state
+STATE
 	: 'Shift'
 	| 'Control'
 	| 'Lock'
@@ -152,8 +183,12 @@ state
 	| 'Mod5'
         ;
 
+OVERRIDE
+	: 'override'
+	;
+
 NAME
-	: ( 'a'..'z' | 'A'..'Z' | '_' | '(' | ')' | '0'..'9' | '+' | '-' )*
+	: ( 'a'..'z' | 'A'..'Z' | '_' | '0'..'9' | '+' | '-' )*
         ;
 
 WS  	

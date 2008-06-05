@@ -1,4 +1,4 @@
-# $ANTLR 3.1b1 XKBGrammar.g 2008-05-31 21:36:48
+# $ANTLR 3.1b1 XKBGrammar.g 2008-06-04 20:51:55
 
 import sys
 from antlr3 import *
@@ -10,33 +10,34 @@ HIDDEN = BaseRecognizer.HIDDEN
 
 # token types
 T__66=66
+T__67=67
 T__64=64
 T__65=65
 T__62=62
 T__63=63
-MAPOPTIONS=15
+MAPOPTIONS=16
 TOKEN_INCLUDE=4
 TOKEN_MODIFIER_MAP=9
 T__61=61
 T__60=60
 EOF=-1
 TOKEN_TYPE=8
-MAPTYPE=13
+MAPTYPE=14
 TOKEN_VIRTUAL_MODIFIERS=11
 T__55=55
 T__56=56
 T__57=57
-NAME=27
+NAME=28
 T__58=58
 T__51=51
 T__52=52
-MAPMATERIAL=16
+MAPMATERIAL=17
 T__53=53
 T__54=54
 T__59=59
 KEYSYMS=20
-COMMENT=29
-DQSTRING=26
+COMMENT=30
+DQSTRING=27
 T__50=50
 T__42=42
 T__43=43
@@ -47,17 +48,16 @@ T__46=46
 T__47=47
 T__44=44
 T__45=45
-LINE_COMMENT=30
+LINE_COMMENT=31
 KEYCODE=18
 T__48=48
 T__49=49
 TOKEN_NAME=6
 VALUE=21
 LAYOUT=12
-T__31=31
 T__32=32
 T__33=33
-WS=28
+WS=29
 T__34=34
 T__35=35
 T__36=36
@@ -68,9 +68,10 @@ T__39=39
 KEYSYMGROUP=23
 TOKEN_SYMBOL=10
 TOKEN_KEY=7
-MAPNAME=14
-SYMBOLS=17
+MAPNAME=15
+SYMBOLS=13
 VIRTUALMODS=25
+KEYELEMENTS=26
 TOKEN_KEY_TYPE=5
 KEYCODEX=19
 
@@ -100,31 +101,6 @@ class XKBGrammarLexer(Lexer):
 
 
 
-    # $ANTLR start T__31
-    def mT__31(self, ):
-
-        try:
-            _type = T__31
-            _channel = DEFAULT_CHANNEL
-
-            # XKBGrammar.g:7:7: ( '{' )
-            # XKBGrammar.g:7:9: '{'
-            self.match(123)
-
-
-
-
-            self._state.type = _type
-            self._state.channel = _channel
-
-        finally:
-
-            pass
-
-    # $ANTLR end T__31
-
-
-
     # $ANTLR start T__32
     def mT__32(self, ):
 
@@ -132,9 +108,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__32
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:8:7: ( '}' )
-            # XKBGrammar.g:8:9: '}'
-            self.match(125)
+            # XKBGrammar.g:7:7: ( '{' )
+            # XKBGrammar.g:7:9: '{'
+            self.match(123)
 
 
 
@@ -157,9 +133,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__33
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:9:7: ( ';' )
-            # XKBGrammar.g:9:9: ';'
-            self.match(59)
+            # XKBGrammar.g:8:7: ( '}' )
+            # XKBGrammar.g:8:9: '}'
+            self.match(125)
 
 
 
@@ -182,9 +158,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__34
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:10:7: ( 'include' )
-            # XKBGrammar.g:10:9: 'include'
-            self.match("include")
+            # XKBGrammar.g:9:7: ( ';' )
+            # XKBGrammar.g:9:9: ';'
+            self.match(59)
 
 
 
@@ -207,9 +183,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__35
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:11:7: ( 'name' )
-            # XKBGrammar.g:11:9: 'name'
-            self.match("name")
+            # XKBGrammar.g:10:7: ( 'include' )
+            # XKBGrammar.g:10:9: 'include'
+            self.match("include")
 
 
 
@@ -232,9 +208,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__36
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:12:7: ( '[' )
-            # XKBGrammar.g:12:9: '['
-            self.match(91)
+            # XKBGrammar.g:11:7: ( 'name' )
+            # XKBGrammar.g:11:9: 'name'
+            self.match("name")
 
 
 
@@ -257,9 +233,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__37
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:13:7: ( ']' )
-            # XKBGrammar.g:13:9: ']'
-            self.match(93)
+            # XKBGrammar.g:12:7: ( '[' )
+            # XKBGrammar.g:12:9: '['
+            self.match(91)
 
 
 
@@ -282,9 +258,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__38
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:14:7: ( '=' )
-            # XKBGrammar.g:14:9: '='
-            self.match(61)
+            # XKBGrammar.g:13:7: ( ']' )
+            # XKBGrammar.g:13:9: ']'
+            self.match(93)
 
 
 
@@ -307,9 +283,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__39
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:15:7: ( 'key.type' )
-            # XKBGrammar.g:15:9: 'key.type'
-            self.match("key.type")
+            # XKBGrammar.g:14:7: ( '=' )
+            # XKBGrammar.g:14:9: '='
+            self.match(61)
 
 
 
@@ -332,9 +308,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__40
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:16:7: ( 'override' )
-            # XKBGrammar.g:16:9: 'override'
-            self.match("override")
+            # XKBGrammar.g:15:7: ( 'key.type' )
+            # XKBGrammar.g:15:9: 'key.type'
+            self.match("key.type")
 
 
 
@@ -357,9 +333,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__41
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:17:7: ( 'key' )
-            # XKBGrammar.g:17:9: 'key'
-            self.match("key")
+            # XKBGrammar.g:16:7: ( 'override' )
+            # XKBGrammar.g:16:9: 'override'
+            self.match("override")
 
 
 
@@ -382,9 +358,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__42
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:18:7: ( 'modifier_map' )
-            # XKBGrammar.g:18:9: 'modifier_map'
-            self.match("modifier_map")
+            # XKBGrammar.g:17:7: ( 'key' )
+            # XKBGrammar.g:17:9: 'key'
+            self.match("key")
 
 
 
@@ -407,8 +383,8 @@ class XKBGrammarLexer(Lexer):
             _type = T__43
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:19:7: ( ',' )
-            # XKBGrammar.g:19:9: ','
+            # XKBGrammar.g:18:7: ( ',' )
+            # XKBGrammar.g:18:9: ','
             self.match(44)
 
 
@@ -432,9 +408,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__44
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:20:7: ( 'virtual_modifiers' )
-            # XKBGrammar.g:20:9: 'virtual_modifiers'
-            self.match("virtual_modifiers")
+            # XKBGrammar.g:19:7: ( 'modifier_map' )
+            # XKBGrammar.g:19:9: 'modifier_map'
+            self.match("modifier_map")
 
 
 
@@ -457,9 +433,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__45
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:21:7: ( '<' )
-            # XKBGrammar.g:21:9: '<'
-            self.match(60)
+            # XKBGrammar.g:20:7: ( 'virtual_modifiers' )
+            # XKBGrammar.g:20:9: 'virtual_modifiers'
+            self.match("virtual_modifiers")
 
 
 
@@ -482,9 +458,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__46
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:22:7: ( '>' )
-            # XKBGrammar.g:22:9: '>'
-            self.match(62)
+            # XKBGrammar.g:21:7: ( '<' )
+            # XKBGrammar.g:21:9: '<'
+            self.match(60)
 
 
 
@@ -507,9 +483,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__47
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:23:7: ( 'type' )
-            # XKBGrammar.g:23:9: 'type'
-            self.match("type")
+            # XKBGrammar.g:22:7: ( '>' )
+            # XKBGrammar.g:22:9: '>'
+            self.match(62)
 
 
 
@@ -532,9 +508,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__48
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:24:7: ( 'symbols' )
-            # XKBGrammar.g:24:9: 'symbols'
-            self.match("symbols")
+            # XKBGrammar.g:23:7: ( 'type' )
+            # XKBGrammar.g:23:9: 'type'
+            self.match("type")
 
 
 
@@ -557,9 +533,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__49
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:25:7: ( 'virtualMods' )
-            # XKBGrammar.g:25:9: 'virtualMods'
-            self.match("virtualMods")
+            # XKBGrammar.g:24:7: ( 'symbols' )
+            # XKBGrammar.g:24:9: 'symbols'
+            self.match("symbols")
 
 
 
@@ -582,9 +558,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__50
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:26:7: ( 'default' )
-            # XKBGrammar.g:26:9: 'default'
-            self.match("default")
+            # XKBGrammar.g:25:7: ( 'virtualMods' )
+            # XKBGrammar.g:25:9: 'virtualMods'
+            self.match("virtualMods")
 
 
 
@@ -607,9 +583,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__51
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:27:7: ( 'hidden' )
-            # XKBGrammar.g:27:9: 'hidden'
-            self.match("hidden")
+            # XKBGrammar.g:26:7: ( 'default' )
+            # XKBGrammar.g:26:9: 'default'
+            self.match("default")
 
 
 
@@ -632,9 +608,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__52
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:28:7: ( 'partial' )
-            # XKBGrammar.g:28:9: 'partial'
-            self.match("partial")
+            # XKBGrammar.g:27:7: ( 'hidden' )
+            # XKBGrammar.g:27:9: 'hidden'
+            self.match("hidden")
 
 
 
@@ -657,9 +633,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__53
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:29:7: ( 'alphanumeric_keys' )
-            # XKBGrammar.g:29:9: 'alphanumeric_keys'
-            self.match("alphanumeric_keys")
+            # XKBGrammar.g:28:7: ( 'partial' )
+            # XKBGrammar.g:28:9: 'partial'
+            self.match("partial")
 
 
 
@@ -682,9 +658,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__54
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:30:7: ( 'keypad_keys' )
-            # XKBGrammar.g:30:9: 'keypad_keys'
-            self.match("keypad_keys")
+            # XKBGrammar.g:29:7: ( 'alphanumeric_keys' )
+            # XKBGrammar.g:29:9: 'alphanumeric_keys'
+            self.match("alphanumeric_keys")
 
 
 
@@ -707,9 +683,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__55
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:31:7: ( 'function_keys' )
-            # XKBGrammar.g:31:9: 'function_keys'
-            self.match("function_keys")
+            # XKBGrammar.g:30:7: ( 'keypad_keys' )
+            # XKBGrammar.g:30:9: 'keypad_keys'
+            self.match("keypad_keys")
 
 
 
@@ -732,9 +708,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__56
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:32:7: ( 'modifier_keys' )
-            # XKBGrammar.g:32:9: 'modifier_keys'
-            self.match("modifier_keys")
+            # XKBGrammar.g:31:7: ( 'function_keys' )
+            # XKBGrammar.g:31:9: 'function_keys'
+            self.match("function_keys")
 
 
 
@@ -757,9 +733,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__57
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:33:7: ( 'alternate_group' )
-            # XKBGrammar.g:33:9: 'alternate_group'
-            self.match("alternate_group")
+            # XKBGrammar.g:32:7: ( 'modifier_keys' )
+            # XKBGrammar.g:32:9: 'modifier_keys'
+            self.match("modifier_keys")
 
 
 
@@ -782,9 +758,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__58
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:34:7: ( 'xkb_symbols' )
-            # XKBGrammar.g:34:9: 'xkb_symbols'
-            self.match("xkb_symbols")
+            # XKBGrammar.g:33:7: ( 'alternate_group' )
+            # XKBGrammar.g:33:9: 'alternate_group'
+            self.match("alternate_group")
 
 
 
@@ -807,9 +783,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__59
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:35:7: ( 'Shift' )
-            # XKBGrammar.g:35:9: 'Shift'
-            self.match("Shift")
+            # XKBGrammar.g:34:7: ( 'xkb_symbols' )
+            # XKBGrammar.g:34:9: 'xkb_symbols'
+            self.match("xkb_symbols")
 
 
 
@@ -832,9 +808,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__60
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:36:7: ( 'Control' )
-            # XKBGrammar.g:36:9: 'Control'
-            self.match("Control")
+            # XKBGrammar.g:35:7: ( 'Shift' )
+            # XKBGrammar.g:35:9: 'Shift'
+            self.match("Shift")
 
 
 
@@ -857,9 +833,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__61
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:37:7: ( 'Lock' )
-            # XKBGrammar.g:37:9: 'Lock'
-            self.match("Lock")
+            # XKBGrammar.g:36:7: ( 'Control' )
+            # XKBGrammar.g:36:9: 'Control'
+            self.match("Control")
 
 
 
@@ -882,9 +858,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__62
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:38:7: ( 'Mod1' )
-            # XKBGrammar.g:38:9: 'Mod1'
-            self.match("Mod1")
+            # XKBGrammar.g:37:7: ( 'Lock' )
+            # XKBGrammar.g:37:9: 'Lock'
+            self.match("Lock")
 
 
 
@@ -907,9 +883,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__63
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:39:7: ( 'Mod2' )
-            # XKBGrammar.g:39:9: 'Mod2'
-            self.match("Mod2")
+            # XKBGrammar.g:38:7: ( 'Mod1' )
+            # XKBGrammar.g:38:9: 'Mod1'
+            self.match("Mod1")
 
 
 
@@ -932,9 +908,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__64
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:40:7: ( 'Mod3' )
-            # XKBGrammar.g:40:9: 'Mod3'
-            self.match("Mod3")
+            # XKBGrammar.g:39:7: ( 'Mod2' )
+            # XKBGrammar.g:39:9: 'Mod2'
+            self.match("Mod2")
 
 
 
@@ -957,9 +933,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__65
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:41:7: ( 'Mod4' )
-            # XKBGrammar.g:41:9: 'Mod4'
-            self.match("Mod4")
+            # XKBGrammar.g:40:7: ( 'Mod3' )
+            # XKBGrammar.g:40:9: 'Mod3'
+            self.match("Mod3")
 
 
 
@@ -982,9 +958,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__66
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:42:7: ( 'Mod5' )
-            # XKBGrammar.g:42:9: 'Mod5'
-            self.match("Mod5")
+            # XKBGrammar.g:41:7: ( 'Mod4' )
+            # XKBGrammar.g:41:9: 'Mod4'
+            self.match("Mod4")
 
 
 
@@ -1000,6 +976,31 @@ class XKBGrammarLexer(Lexer):
 
 
 
+    # $ANTLR start T__67
+    def mT__67(self, ):
+
+        try:
+            _type = T__67
+            _channel = DEFAULT_CHANNEL
+
+            # XKBGrammar.g:42:7: ( 'Mod5' )
+            # XKBGrammar.g:42:9: 'Mod5'
+            self.match("Mod5")
+
+
+
+
+            self._state.type = _type
+            self._state.channel = _channel
+
+        finally:
+
+            pass
+
+    # $ANTLR end T__67
+
+
+
     # $ANTLR start NAME
     def mNAME(self, ):
 
@@ -1007,9 +1008,9 @@ class XKBGrammarLexer(Lexer):
             _type = NAME
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:156:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' | '+' | '-' )* )
-            # XKBGrammar.g:156:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' | '+' | '-' )*
-            # XKBGrammar.g:156:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' | '+' | '-' )*
+            # XKBGrammar.g:163:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' | '+' | '-' )* )
+            # XKBGrammar.g:163:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' | '+' | '-' )*
+            # XKBGrammar.g:163:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '(' | ')' | '0' .. '9' | '+' | '-' )*
             while True: #loop1
                 alt1 = 2
                 LA1_0 = self.input.LA(1)
@@ -1055,8 +1056,8 @@ class XKBGrammarLexer(Lexer):
             _type = WS
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:160:2: ( ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' ) )
-            # XKBGrammar.g:161:2: ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' )
+            # XKBGrammar.g:167:2: ( ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' ) )
+            # XKBGrammar.g:168:2: ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' )
             if (9 <= self.input.LA(1) <= 10) or (12 <= self.input.LA(1) <= 13) or self.input.LA(1) == 32:
                 self.input.consume();
             else:
@@ -1089,10 +1090,10 @@ class XKBGrammarLexer(Lexer):
             _type = COMMENT
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:166:6: ( '/*' ( . )* '*/' )
-            # XKBGrammar.g:167:2: '/*' ( . )* '*/'
+            # XKBGrammar.g:173:6: ( '/*' ( . )* '*/' )
+            # XKBGrammar.g:174:2: '/*' ( . )* '*/'
             self.match("/*")
-            # XKBGrammar.g:167:7: ( . )*
+            # XKBGrammar.g:174:7: ( . )*
             while True: #loop2
                 alt2 = 2
                 LA2_0 = self.input.LA(1)
@@ -1111,7 +1112,7 @@ class XKBGrammarLexer(Lexer):
 
 
                 if alt2 == 1:
-                    # XKBGrammar.g:167:7: .
+                    # XKBGrammar.g:174:7: .
                     self.matchAny()
 
 
@@ -1146,9 +1147,9 @@ class XKBGrammarLexer(Lexer):
             _type = LINE_COMMENT
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:171:6: ( ( '//' | '#' ) (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' )
-            # XKBGrammar.g:172:2: ( '//' | '#' ) (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
-            # XKBGrammar.g:172:2: ( '//' | '#' )
+            # XKBGrammar.g:178:6: ( ( '//' | '#' ) (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' )
+            # XKBGrammar.g:179:2: ( '//' | '#' ) (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+            # XKBGrammar.g:179:2: ( '//' | '#' )
             alt3 = 2
             LA3_0 = self.input.LA(1)
 
@@ -1162,19 +1163,19 @@ class XKBGrammarLexer(Lexer):
                 raise nvae
 
             if alt3 == 1:
-                # XKBGrammar.g:172:3: '//'
+                # XKBGrammar.g:179:3: '//'
                 self.match("//")
 
 
 
             elif alt3 == 2:
-                # XKBGrammar.g:172:10: '#'
+                # XKBGrammar.g:179:10: '#'
                 self.match(35)
 
 
 
 
-            # XKBGrammar.g:172:16: (~ ( '\\n' | '\\r' ) )*
+            # XKBGrammar.g:179:16: (~ ( '\\n' | '\\r' ) )*
             while True: #loop4
                 alt4 = 2
                 LA4_0 = self.input.LA(1)
@@ -1184,7 +1185,7 @@ class XKBGrammarLexer(Lexer):
 
 
                 if alt4 == 1:
-                    # XKBGrammar.g:172:16: ~ ( '\\n' | '\\r' )
+                    # XKBGrammar.g:179:16: ~ ( '\\n' | '\\r' )
                     if (0 <= self.input.LA(1) <= 9) or (11 <= self.input.LA(1) <= 12) or (14 <= self.input.LA(1) <= 65534):
                         self.input.consume();
                     else:
@@ -1199,14 +1200,14 @@ class XKBGrammarLexer(Lexer):
                     break #loop4
 
 
-            # XKBGrammar.g:172:32: ( '\\r' )?
+            # XKBGrammar.g:179:32: ( '\\r' )?
             alt5 = 2
             LA5_0 = self.input.LA(1)
 
             if (LA5_0 == 13) :
                 alt5 = 1
             if alt5 == 1:
-                # XKBGrammar.g:172:32: '\\r'
+                # XKBGrammar.g:179:32: '\\r'
                 self.match(13)
 
 
@@ -1238,10 +1239,10 @@ class XKBGrammarLexer(Lexer):
             _type = DQSTRING
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:180:6: ( '\"' ( options {greedy=false; } : ~ ( '\"' ) )* '\"' )
-            # XKBGrammar.g:180:10: '\"' ( options {greedy=false; } : ~ ( '\"' ) )* '\"'
+            # XKBGrammar.g:187:6: ( '\"' ( options {greedy=false; } : ~ ( '\"' ) )* '\"' )
+            # XKBGrammar.g:187:10: '\"' ( options {greedy=false; } : ~ ( '\"' ) )* '\"'
             self.match(34)
-            # XKBGrammar.g:180:14: ( options {greedy=false; } : ~ ( '\"' ) )*
+            # XKBGrammar.g:187:14: ( options {greedy=false; } : ~ ( '\"' ) )*
             while True: #loop6
                 alt6 = 2
                 LA6_0 = self.input.LA(1)
@@ -1253,7 +1254,7 @@ class XKBGrammarLexer(Lexer):
 
 
                 if alt6 == 1:
-                    # XKBGrammar.g:180:39: ~ ( '\"' )
+                    # XKBGrammar.g:187:39: ~ ( '\"' )
                     if (0 <= self.input.LA(1) <= 33) or (35 <= self.input.LA(1) <= 65534):
                         self.input.consume();
                     else:
@@ -1285,222 +1286,222 @@ class XKBGrammarLexer(Lexer):
 
 
     def mTokens(self):
-        # XKBGrammar.g:1:8: ( T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | NAME | WS | COMMENT | LINE_COMMENT | DQSTRING )
+        # XKBGrammar.g:1:8: ( T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | NAME | WS | COMMENT | LINE_COMMENT | DQSTRING )
         alt7 = 41
         alt7 = self.dfa7.predict(self.input)
         if alt7 == 1:
-            # XKBGrammar.g:1:10: T__31
-            self.mT__31()
-
-
-
-        elif alt7 == 2:
-            # XKBGrammar.g:1:16: T__32
+            # XKBGrammar.g:1:10: T__32
             self.mT__32()
 
 
 
-        elif alt7 == 3:
-            # XKBGrammar.g:1:22: T__33
+        elif alt7 == 2:
+            # XKBGrammar.g:1:16: T__33
             self.mT__33()
 
 
 
-        elif alt7 == 4:
-            # XKBGrammar.g:1:28: T__34
+        elif alt7 == 3:
+            # XKBGrammar.g:1:22: T__34
             self.mT__34()
 
 
 
-        elif alt7 == 5:
-            # XKBGrammar.g:1:34: T__35
+        elif alt7 == 4:
+            # XKBGrammar.g:1:28: T__35
             self.mT__35()
 
 
 
-        elif alt7 == 6:
-            # XKBGrammar.g:1:40: T__36
+        elif alt7 == 5:
+            # XKBGrammar.g:1:34: T__36
             self.mT__36()
 
 
 
-        elif alt7 == 7:
-            # XKBGrammar.g:1:46: T__37
+        elif alt7 == 6:
+            # XKBGrammar.g:1:40: T__37
             self.mT__37()
 
 
 
-        elif alt7 == 8:
-            # XKBGrammar.g:1:52: T__38
+        elif alt7 == 7:
+            # XKBGrammar.g:1:46: T__38
             self.mT__38()
 
 
 
-        elif alt7 == 9:
-            # XKBGrammar.g:1:58: T__39
+        elif alt7 == 8:
+            # XKBGrammar.g:1:52: T__39
             self.mT__39()
 
 
 
-        elif alt7 == 10:
-            # XKBGrammar.g:1:64: T__40
+        elif alt7 == 9:
+            # XKBGrammar.g:1:58: T__40
             self.mT__40()
 
 
 
-        elif alt7 == 11:
-            # XKBGrammar.g:1:70: T__41
+        elif alt7 == 10:
+            # XKBGrammar.g:1:64: T__41
             self.mT__41()
 
 
 
-        elif alt7 == 12:
-            # XKBGrammar.g:1:76: T__42
+        elif alt7 == 11:
+            # XKBGrammar.g:1:70: T__42
             self.mT__42()
 
 
 
-        elif alt7 == 13:
-            # XKBGrammar.g:1:82: T__43
+        elif alt7 == 12:
+            # XKBGrammar.g:1:76: T__43
             self.mT__43()
 
 
 
-        elif alt7 == 14:
-            # XKBGrammar.g:1:88: T__44
+        elif alt7 == 13:
+            # XKBGrammar.g:1:82: T__44
             self.mT__44()
 
 
 
-        elif alt7 == 15:
-            # XKBGrammar.g:1:94: T__45
+        elif alt7 == 14:
+            # XKBGrammar.g:1:88: T__45
             self.mT__45()
 
 
 
-        elif alt7 == 16:
-            # XKBGrammar.g:1:100: T__46
+        elif alt7 == 15:
+            # XKBGrammar.g:1:94: T__46
             self.mT__46()
 
 
 
-        elif alt7 == 17:
-            # XKBGrammar.g:1:106: T__47
+        elif alt7 == 16:
+            # XKBGrammar.g:1:100: T__47
             self.mT__47()
 
 
 
-        elif alt7 == 18:
-            # XKBGrammar.g:1:112: T__48
+        elif alt7 == 17:
+            # XKBGrammar.g:1:106: T__48
             self.mT__48()
 
 
 
-        elif alt7 == 19:
-            # XKBGrammar.g:1:118: T__49
+        elif alt7 == 18:
+            # XKBGrammar.g:1:112: T__49
             self.mT__49()
 
 
 
-        elif alt7 == 20:
-            # XKBGrammar.g:1:124: T__50
+        elif alt7 == 19:
+            # XKBGrammar.g:1:118: T__50
             self.mT__50()
 
 
 
-        elif alt7 == 21:
-            # XKBGrammar.g:1:130: T__51
+        elif alt7 == 20:
+            # XKBGrammar.g:1:124: T__51
             self.mT__51()
 
 
 
-        elif alt7 == 22:
-            # XKBGrammar.g:1:136: T__52
+        elif alt7 == 21:
+            # XKBGrammar.g:1:130: T__52
             self.mT__52()
 
 
 
-        elif alt7 == 23:
-            # XKBGrammar.g:1:142: T__53
+        elif alt7 == 22:
+            # XKBGrammar.g:1:136: T__53
             self.mT__53()
 
 
 
-        elif alt7 == 24:
-            # XKBGrammar.g:1:148: T__54
+        elif alt7 == 23:
+            # XKBGrammar.g:1:142: T__54
             self.mT__54()
 
 
 
-        elif alt7 == 25:
-            # XKBGrammar.g:1:154: T__55
+        elif alt7 == 24:
+            # XKBGrammar.g:1:148: T__55
             self.mT__55()
 
 
 
-        elif alt7 == 26:
-            # XKBGrammar.g:1:160: T__56
+        elif alt7 == 25:
+            # XKBGrammar.g:1:154: T__56
             self.mT__56()
 
 
 
-        elif alt7 == 27:
-            # XKBGrammar.g:1:166: T__57
+        elif alt7 == 26:
+            # XKBGrammar.g:1:160: T__57
             self.mT__57()
 
 
 
-        elif alt7 == 28:
-            # XKBGrammar.g:1:172: T__58
+        elif alt7 == 27:
+            # XKBGrammar.g:1:166: T__58
             self.mT__58()
 
 
 
-        elif alt7 == 29:
-            # XKBGrammar.g:1:178: T__59
+        elif alt7 == 28:
+            # XKBGrammar.g:1:172: T__59
             self.mT__59()
 
 
 
-        elif alt7 == 30:
-            # XKBGrammar.g:1:184: T__60
+        elif alt7 == 29:
+            # XKBGrammar.g:1:178: T__60
             self.mT__60()
 
 
 
-        elif alt7 == 31:
-            # XKBGrammar.g:1:190: T__61
+        elif alt7 == 30:
+            # XKBGrammar.g:1:184: T__61
             self.mT__61()
 
 
 
-        elif alt7 == 32:
-            # XKBGrammar.g:1:196: T__62
+        elif alt7 == 31:
+            # XKBGrammar.g:1:190: T__62
             self.mT__62()
 
 
 
-        elif alt7 == 33:
-            # XKBGrammar.g:1:202: T__63
+        elif alt7 == 32:
+            # XKBGrammar.g:1:196: T__63
             self.mT__63()
 
 
 
-        elif alt7 == 34:
-            # XKBGrammar.g:1:208: T__64
+        elif alt7 == 33:
+            # XKBGrammar.g:1:202: T__64
             self.mT__64()
 
 
 
-        elif alt7 == 35:
-            # XKBGrammar.g:1:214: T__65
+        elif alt7 == 34:
+            # XKBGrammar.g:1:208: T__65
             self.mT__65()
 
 
 
-        elif alt7 == 36:
-            # XKBGrammar.g:1:220: T__66
+        elif alt7 == 35:
+            # XKBGrammar.g:1:214: T__66
             self.mT__66()
+
+
+
+        elif alt7 == 36:
+            # XKBGrammar.g:1:220: T__67
+            self.mT__67()
 
 
 
@@ -1542,7 +1543,7 @@ class XKBGrammarLexer(Lexer):
     # lookup tables for DFA #7
 
     DFA7_eot = DFA.unpack(
-        u"\1\34\3\uffff\2\34\3\uffff\3\34\1\uffff\1\34\2\uffff\14\34\5\uffff"
+        u"\1\34\3\uffff\2\34\3\uffff\2\34\1\uffff\2\34\2\uffff\14\34\5\uffff"
         u"\22\34\1\uffff\2\34\1\113\21\34\1\141\1\uffff\1\34\1\uffff\3\34"
         u"\1\146\12\34\1\161\1\162\1\163\1\164\1\165\1\166\1\34\1\uffff\4"
         u"\34\1\uffff\10\34\1\u0084\1\34\6\uffff\7\34\1\u008d\5\34\1\uffff"
@@ -1558,7 +1559,7 @@ class XKBGrammarLexer(Lexer):
         )
 
     DFA7_min = DFA.unpack(
-        u"\1\11\3\uffff\1\156\1\141\3\uffff\1\145\1\166\1\157\1\uffff\1\151"
+        u"\1\11\3\uffff\1\156\1\141\3\uffff\1\145\1\166\1\uffff\1\157\1\151"
         u"\2\uffff\2\171\1\145\1\151\1\141\1\154\1\165\1\153\1\150\3\157"
         u"\2\uffff\1\52\2\uffff\1\143\1\155\1\171\1\145\1\144\1\162\1\160"
         u"\1\155\1\146\1\144\1\162\1\160\1\156\1\142\1\151\1\156\1\143\1"
@@ -1579,7 +1580,7 @@ class XKBGrammarLexer(Lexer):
         )
 
     DFA7_max = DFA.unpack(
-        u"\1\175\3\uffff\1\156\1\141\3\uffff\1\145\1\166\1\157\1\uffff\1"
+        u"\1\175\3\uffff\1\156\1\141\3\uffff\1\145\1\166\1\uffff\1\157\1"
         u"\151\2\uffff\2\171\1\145\1\151\1\141\1\154\1\165\1\153\1\150\3"
         u"\157\2\uffff\1\57\2\uffff\1\143\1\155\1\171\1\145\1\144\1\162\1"
         u"\160\1\155\1\146\1\144\1\162\1\164\1\156\1\142\1\151\1\156\1\143"
@@ -1601,12 +1602,12 @@ class XKBGrammarLexer(Lexer):
         )
 
     DFA7_accept = DFA.unpack(
-        u"\1\uffff\1\1\1\2\1\3\2\uffff\1\6\1\7\1\10\3\uffff\1\15\1\uffff"
+        u"\1\uffff\1\1\1\2\1\3\2\uffff\1\6\1\7\1\10\2\uffff\1\14\2\uffff"
         u"\1\17\1\20\14\uffff\1\45\1\46\1\uffff\1\50\1\51\22\uffff\1\47\25"
         u"\uffff\1\11\1\uffff\1\13\25\uffff\1\5\4\uffff\1\21\12\uffff\1\37"
         u"\1\40\1\41\1\42\1\43\1\44\15\uffff\1\35\10\uffff\1\25\6\uffff\1"
         u"\4\5\uffff\1\22\1\24\1\26\4\uffff\1\36\1\uffff\1\12\31\uffff\1"
-        u"\30\3\uffff\1\23\3\uffff\1\34\1\14\5\uffff\1\32\3\uffff\1\31\5"
+        u"\30\3\uffff\1\23\3\uffff\1\34\1\15\5\uffff\1\32\3\uffff\1\31\5"
         u"\uffff\1\33\2\uffff\1\16\1\27"
         )
 
@@ -1617,10 +1618,10 @@ class XKBGrammarLexer(Lexer):
             
     DFA7_transition = [
         DFA.unpack(u"\2\35\1\uffff\2\35\22\uffff\1\35\1\uffff\1\40\1\37\10"
-        u"\uffff\1\14\2\uffff\1\36\13\uffff\1\3\1\16\1\10\1\17\4\uffff\1"
+        u"\uffff\1\13\2\uffff\1\36\13\uffff\1\3\1\16\1\10\1\17\4\uffff\1"
         u"\31\10\uffff\1\32\1\33\5\uffff\1\30\7\uffff\1\6\1\uffff\1\7\3\uffff"
         u"\1\25\2\uffff\1\22\1\uffff\1\26\1\uffff\1\23\1\4\1\uffff\1\11\1"
-        u"\uffff\1\13\1\5\1\12\1\24\2\uffff\1\21\1\20\1\uffff\1\15\1\uffff"
+        u"\uffff\1\14\1\5\1\12\1\24\2\uffff\1\21\1\20\1\uffff\1\15\1\uffff"
         u"\1\27\2\uffff\1\1\1\uffff\1\2"),
         DFA.unpack(u""),
         DFA.unpack(u""),
@@ -1632,8 +1633,8 @@ class XKBGrammarLexer(Lexer):
         DFA.unpack(u""),
         DFA.unpack(u"\1\43"),
         DFA.unpack(u"\1\44"),
-        DFA.unpack(u"\1\45"),
         DFA.unpack(u""),
+        DFA.unpack(u"\1\45"),
         DFA.unpack(u"\1\46"),
         DFA.unpack(u""),
         DFA.unpack(u""),

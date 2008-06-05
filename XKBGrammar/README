@@ -1,0 +1,4 @@
+
+To check if some files are non-UTF-8, use
+find . -type f | awk '{ printf "echo %s; iconv -f utf-8 -t utf-8 < %s > /dev/null \n", $1, $1 }' | sh
+

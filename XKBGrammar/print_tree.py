@@ -6,7 +6,7 @@
 import sys
 import pdb
 import antlr3
-from XKBGrammarLexer import XKBGrammarLexer, LAYOUT, SECTION, MAPTYPE, MAPNAME, MAPOPTIONS, MAPMATERIAL, TOKEN_INCLUDE, TOKEN_NAME, TOKEN_KEY_TYPE, TOKEN_KEY, VALUE, KEYCODE, KEYCODEX, KEYSYMS
+from XKBGrammarLexer import XKBGrammarLexer, LAYOUT, SYMBOLS, MAPTYPE, MAPNAME, MAPOPTIONS, MAPMATERIAL, TOKEN_INCLUDE, TOKEN_NAME, TOKEN_KEY_TYPE, TOKEN_KEY, VALUE, KEYCODE, KEYCODEX, KEYSYMS
 from XKBGrammarParser import XKBGrammarParser
 from XKBGrammarWalker import XKBGrammarWalker
 
@@ -45,12 +45,15 @@ parser = XKBGrammarParser(tokens)
 
 result = parser.layout()
 
+print "XXXXXXXXXXXXXXXXXXXXXXX", xkbfilename
 print "tree =", result.tree.toStringTree()
 
 nodes = antlr3.tree.CommonTreeNodeStream(result.tree)
 nodes.setTokenStream(tokens)
 walker = XKBGrammarWalker(nodes)
-# walker.layout()
+walker.layout()
+
+sys.exit(-1)
 
 MAX = 10
 TABS = "\t\t\t\t\t\t\t\t\t\t"
