@@ -6,7 +6,7 @@ grammar XKBGrammar;
 
 options
 {
-//	language = Python;
+	language = Python;
 	output = AST;
 }
 
@@ -70,8 +70,8 @@ symbols
  	;
 
 mapType
-	: MAPOPTIONS* DQSTRING
-	-> ^(MAPTYPE ^(MAPOPTIONS MAPOPTIONS*) ^(MAPNAME DQSTRING))
+	: MAPOPTS+ DQSTRING
+	-> ^(MAPTYPE ^(MAPOPTIONS MAPOPTS+) ^(MAPNAME DQSTRING))
 	;
 
 mapMaterial 
@@ -94,7 +94,7 @@ line_name
 	;
 
 line_keytype
-	: 'key.type' ('[' NAME ']')? '=' n2=DQSTRING
+	: 'key.type' ('[' NAME ']')? '=' DQSTRING
 	-> ^(TOKEN_KEY_TYPE NAME? ^(VALUE DQSTRING))
 	;
 
@@ -124,8 +124,8 @@ override
 
 keyelements
 	: elem_keysyms 
-	| elem_virtualmods
 	| elem_keysymgroup
+	| elem_virtualmods
 	| elem_actions
 	| elem_overlay
 	;
@@ -136,12 +136,12 @@ elem_keysyms
 	;
 
 elem_keysymgroup
-	: ('symbols' '[' keysym+=NAME ']' '=')? '[' keysym+=NAME (',' keysym+=NAME)* ']'
-	-> ^(ELEM_KEYSYMGROUP $keysym+)
+	: ('symbols' '[' group=NAME ']' '=')? '[' keysym+=NAME (',' keysym+=NAME)* ']'
+	-> ^(ELEM_KEYSYMGROUP $group? ^(VALUE $keysym+ ))
 	;
 
 elem_virtualmods
-	: 'virtualMods' '=' NAME
+	: ('virtualMods' '=' vmod=NAME) => ('virtualMods' NAME)
 	-> ^(ELEM_VIRTUALMODS NAME)
 	;
 
@@ -151,8 +151,8 @@ elem_actions
 	;
 
 actions_setmods
-	: 'SetMods' '(' 'modifiers' '=' (STATE|NAME) (',' NAME)* ')'
-	-> ^(ACTIONS_SETMODS STATE* NAME*)
+	: 'SetMods' '(' 'modifiers' '=' (mod=STATE | mod=NAME) (',' NAME)* ')'
+	-> ^(ACTIONS_SETMODS $mod NAME*)
 	;
 
 elem_overlay
@@ -160,7 +160,7 @@ elem_overlay
 	-> ^(OVERLAY NAME keycode)
 	;
 
-MAPOPTIONS
+MAPOPTS
 	: 'default'
 	| 'hidden'
 	| 'partial' 

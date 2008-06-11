@@ -20,7 +20,7 @@ symbols
  	;
 
 mapType
-	: ^(MAPTYPE ^(MAPOPTIONS MAPOPTIONS*) ^(MAPNAME DQSTRING))
+	: ^(MAPTYPE ^(MAPOPTIONS MAPOPTS+) ^(MAPNAME DQSTRING))
 	;
 
 mapMaterial 
@@ -28,7 +28,7 @@ mapMaterial
 	| ^(TOKEN_NAME NAME ^(VALUE DQSTRING))
 	| ^(TOKEN_KEY_TYPE NAME? ^(VALUE DQSTRING))
 	| ^(TOKEN_KEY OVERRIDE? keycode keyelements+)
-	| ^(TOKEN_MODIFIER_MAP STATE keycode+)
+	| ^(TOKEN_MODIFIER_MAP (STATE|NAME) keycode+)
 	| ^(TOKEN_VIRTUAL_MODIFIERS NAME+)
 	;
 
@@ -39,7 +39,7 @@ keycode
 
 keyelements
 	: ^(ELEM_KEYSYMS ^(TOKEN_TYPE NAME? DQSTRING))
-	| ^(ELEM_KEYSYMGROUP NAME+)
+	| ^(ELEM_KEYSYMGROUP NAME? ^(VALUE NAME+))
 	| ^(ELEM_VIRTUALMODS NAME)
 	| ^(ELEM_ACTIONS NAME actions_setmods+)
 	| ^(ELEM_OVERLAY NAME keycode)
@@ -48,3 +48,16 @@ keyelements
 actions_setmods
 	: ^(ACTIONS_SETMODS STATE* NAME*)
 	;
+
+mapopts
+        : 'default'
+        | 'hidden'
+        | 'partial'
+        | 'alphanumeric_keys'
+        | 'keypad_keys'
+        | 'function_keys'
+        | 'modifier_keys'
+        | 'alternate_group'
+        | 'xkb_symbols'
+        ;
+

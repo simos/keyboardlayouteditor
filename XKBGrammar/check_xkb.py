@@ -6,7 +6,7 @@
 import sys
 import pdb
 import antlr3
-from XKBGrammarLexer import XKBGrammarLexer, SYMBOLS, MAPTYPE, MAPNAME, MAPOPTIONS, MAPMATERIAL, TOKEN_INCLUDE, TOKEN_NAME, TOKEN_KEY_TYPE, TOKEN_KEY, VALUE, KEYCODE, KEYCODEX, KEYSYMS, TOKEN_TYPE,KEYSYMGROUP, OVERRIDE
+from XKBGrammarLexer import XKBGrammarLexer, SYMBOLS, MAPTYPE, MAPNAME, MAPOPTIONS, MAPMATERIAL, TOKEN_INCLUDE, TOKEN_NAME, TOKEN_KEY_TYPE, TOKEN_KEY, VALUE, KEYCODE, KEYCODEX, TOKEN_TYPE, OVERRIDE, ELEM_KEYSYMS, ELEM_KEYSYMGROUP
 from XKBGrammarParser import XKBGrammarParser
 from XKBGrammarWalker import XKBGrammarWalker
 
@@ -95,7 +95,7 @@ for symbols in result.tree.getChildren():
 			for keyset in getChildrenByType(mapobject, TOKEN_KEY):
 				keycode = getChildrenListByType(keyset, KEYCODE)
 				keycodex = getChildrenListByType(keyset, KEYCODEX)
-				keysyms = getChildrenByType(keyset, KEYSYMS)
+				keysyms = getChildrenByType(keyset, ELEM_KEYSYMS)
 				override = getChildrenListByType(keyset, OVERRIDE)
 				print '\t',
 				if len(override) == 1:
@@ -110,7 +110,7 @@ for symbols in result.tree.getChildren():
 				first_time = True
 				for ks in keysyms:
 					tokentype = getChildrenListByType(ks, TOKEN_TYPE)
-					keysymgroup = getChildrenListByType(ks, KEYSYMGROUP)	
+					keysymgroup = getChildrenListByType(ks, ELEM_KEYSYMGROUP)	
 					if len(tokentype) == 1:
 						print 'type[%(t)s] = %(v)s,' % { "t": tokentype[0].getChild(0).getText(), "v": tokentype[0].getChild(1).getText() },
 					elif len(tokentype) == 0:
