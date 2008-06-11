@@ -28,9 +28,7 @@
     <optional>
       <oneOrMore>
         <element name="tokenkeytype">
-          <option>
-            <attribute name="name"/>
-          </option>
+          <attribute name="name"/>
           <attribute name="value"/>
         </element>
       </oneOrMore>
@@ -67,60 +65,58 @@
     </optional>
     <optional>
       <oneOrMore>
-        <element name="tokenkey">
-          <ref name="tokenkeyContent"/>
-        </element>
+        <ref name="tokenkeyContent"/>
       </oneOrMore>
     </optional>
   </define>
   <define name="tokenkeyContent">
-    <attribute name="override"/>
-    <element name="keycodename">
-      <attribute name="value"/>
-    </element>
-    <option>
+    <element name="tokenkey">
+      <attribute name="override"/>
+      <element name="keycodename">
+        <attribute name="value"/>
+      </element>
       <element name="keysyms">
         <attribute name="tokenname"/>
         <element name="value">
           <text/>
         </element>
       </element>
-    </option>
-    <option>
-      <element name="keysymgroup">
-        <option>
-          <element name="groupname">
-            <attribute name="value"/>
-          </element>
-        </option>
-        <oneOrMore>
-          <element name="keysymname">
-            <attribute name="value"/>
-          </element>
-        </oneOrMore>
-      </element>
-    </option>
-    <option>
-      <element name="virtualMods">
-        <attribute name="value"/>
-      </element>
-    </option>
-    <option>
-      <element name="actions">
-        <attribute name="name"/>
-        <oneOrMore>
-          <element name="setMods">
-            <attribute name="value"/>
-          </element>
-        </oneOrMore>
-      </element>
-    </option>
-    <option>
-      <element name="overlay">
-        <attribute name="name"/>
-        <attribute name="keycode"/>
-      </element>
-    </option>
+      <optional>
+        <element name="keysymgroup">
+          <optional>
+            <element name="groupname">
+              <attribute name="value"/>
+            </element>
+          </optional>
+          <oneOrMore>
+            <element name="keysymname">
+              <attribute name="value"/>
+            </element>
+          </oneOrMore>
+        </element>
+      </optional>
+      <optional>
+        <element name="virtualMods">
+          <attribute name="value"/>
+        </element>
+      </optional>
+      <optional>
+        <element name="actions">
+          <attribute name="name"/>
+          <oneOrMore>
+            <element name="setMods">
+              <attribute name="value"/>
+            </element>
+          </oneOrMore>
+        </element>
+      </optional>
+      <optional>
+        <element name="overlay">
+          <attribute name="name"/>
+          <attribute name="keycode"/>
+        </element>
+      </optional>
+    </element>
   </define>
   <define name="mapoptionContent">
     <element name="mapoption">
