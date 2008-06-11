@@ -20,8 +20,30 @@
       <text/>
     </element>
     <element name="mapmaterial">
+      <ref name="mapContent"/>
+    </element>
+  </define>
+  <define name="mapContent">
+    <oneOrMore>
+      <element name="tokenname">
+        <element name="name">
+          <text/>
+        </element>
+        <element name="value">
+          <text/>
+        </element>
+      </element>
+    </oneOrMore>
+    <optional>
       <oneOrMore>
-        <element name="tokenname">
+        <element name="tokeninclude">
+          <text/>
+        </element>
+      </oneOrMore>
+    </optional>
+    <optional>
+      <oneOrMore>
+        <element name="tokenkeytype">
           <element name="name">
             <text/>
           </element>
@@ -30,73 +52,57 @@
           </element>
         </element>
       </oneOrMore>
-      <optional>
-        <oneOrMore>
-          <element name="tokeninclude">
-            <text/>
-          </element>
-        </oneOrMore>
-      </optional>
-      <optional>
-        <oneOrMore>
-          <element name="tokenkeytype">
-            <element name="name">
-              <text/>
-            </element>
-            <element name="value">
-              <text/>
-            </element>
-          </element>
-        </oneOrMore>
-      </optional>
-      <optional>
-        <oneOrMore>
-          <element name="tokenmodifiermap">
-            <text/>
-          </element>
-        </oneOrMore>
-      </optional>
-      <optional>
-        <oneOrMore>
-          <element name="tokenvirtualmodifiers">
-            <text/>
-          </element>
-        </oneOrMore>
-      </optional>
-      <optional>
-        <oneOrMore>
-          <element name="tokenkey">
-            <attribute name="override"/>
-            <attribute name="keycodetype"/>
-            <text/>
-            <oneOrMore>
-              <element name="keyname">
-                <element name="name">
-                  <text/>
-                </element>
-                <element name="value">
-                  <text/>
-                </element>
-              </element>
-            </oneOrMore>
-            <element name="keysyms">
-              <element name="tokentype">
-                <element name="name">
-                  <text/>
-                </element>
-                <element name="value">
-                  <text/>
-                </element>
-              </element>
-              <oneOrMore>
-                <element name="keysym">
-                  <text/>
-                </element>
-              </oneOrMore>
-            </element>
-          </element>
-        </oneOrMore>
-      </optional>
+    </optional>
+    <optional>
+      <oneOrMore>
+        <element name="tokenmodifiermap">
+          <text/>
+        </element>
+      </oneOrMore>
+    </optional>
+    <optional>
+      <oneOrMore>
+        <element name="tokenvirtualmodifiers">
+          <text/>
+        </element>
+      </oneOrMore>
+    </optional>
+    <optional>
+      <oneOrMore>
+        <element name="tokenkey">
+          <ref name="tokenkeyContent"/>
+        </element>
+      </oneOrMore>
+    </optional>
+  </define>
+  <define name="tokenkeyContent">
+    <attribute name="override"/>
+    <attribute name="keycodetype"/>
+    <text/>
+    <oneOrMore>
+      <element name="keyname">
+        <element name="name">
+          <text/>
+        </element>
+        <element name="value">
+          <text/>
+        </element>
+      </element>
+    </oneOrMore>
+    <element name="keysyms">
+      <element name="tokentype">
+        <element name="name">
+          <text/>
+        </element>
+        <element name="value">
+          <text/>
+        </element>
+      </element>
+      <oneOrMore>
+        <element name="keysym">
+          <text/>
+        </element>
+      </oneOrMore>
     </element>
   </define>
 </grammar>
