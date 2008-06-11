@@ -12,9 +12,7 @@
   </start>
   <define name="symbolsContent">
     <oneOrMore>
-      <element name="mapoption">
-        <text/>
-      </element>
+      <ref name="mapoptionContent"/>
     </oneOrMore>
     <element name="mapname">
       <text/>
@@ -26,37 +24,47 @@
   <define name="mapContent">
     <oneOrMore>
       <element name="tokenname">
-        <element name="name">
-          <text/>
-        </element>
-        <element name="value">
-          <text/>
-        </element>
+        <attribute name="name"/>
+        <attribute name="value"/>
       </element>
     </oneOrMore>
     <optional>
       <oneOrMore>
         <element name="tokeninclude">
-          <text/>
+          <attribute name="value"/>
         </element>
       </oneOrMore>
     </optional>
     <optional>
       <oneOrMore>
         <element name="tokenkeytype">
-          <element name="name">
-            <text/>
-          </element>
-          <element name="value">
-            <text/>
-          </element>
+          <option>
+            <attribute name="name"/>
+          </option>
+          <attribute name="value"/>
         </element>
       </oneOrMore>
     </optional>
     <optional>
       <oneOrMore>
         <element name="tokenmodifiermap">
-          <text/>
+          <attribute name="state">
+            <choice>
+              <value>Shift</value>
+              <value>Control</value>
+              <value>Lock</value>
+              <value>Mod1</value>
+              <value>Mod2</value>
+              <value>Mod3</value>
+              <value>Mod4</value>
+              <value>Mod5</value>
+            </choice>
+          </attribute>
+          <oneOrMore>
+            <element name="keycode">
+              <text/>
+            </element>
+          </oneOrMore>
         </element>
       </oneOrMore>
     </optional>
@@ -77,32 +85,66 @@
   </define>
   <define name="tokenkeyContent">
     <attribute name="override"/>
-    <attribute name="keycodetype"/>
-    <text/>
-    <oneOrMore>
-      <element name="keyname">
-        <element name="name">
-          <text/>
-        </element>
+    <element name="keycodename">
+      <attribute name="value"/>
+    </element>
+    <option>
+      <element name="keysyms">
+        <attribute name="tokenname"/>
         <element name="value">
           <text/>
         </element>
       </element>
-    </oneOrMore>
-    <element name="keysyms">
-      <element name="tokentype">
-        <element name="name">
-          <text/>
-        </element>
-        <element name="value">
-          <text/>
-        </element>
+    </option>
+    <option>
+      <element name="keysymgroup">
+        <option>
+          <element name="groupname">
+            <attribute name="value"/>
+          </element>
+        </option>
+        <oneOrMore>
+          <element name="keysymname">
+            <attribute name="value"/>
+          </element>
+        </oneOrMore>
       </element>
-      <oneOrMore>
-        <element name="keysym">
-          <text/>
-        </element>
-      </oneOrMore>
+    </option>
+    <option>
+      <element name="virtualMods">
+        <attribute name="value"/>
+      </element>
+    </option>
+    <option>
+      <element name="actions">
+        <attribute name="name"/>
+        <oneOrMore>
+          <element name="setMods">
+            <attribute name="value"/>
+          </element>
+        </oneOrMore>
+      </element>
+    </option>
+    <option>
+      <element name="overlay">
+        <attribute name="name"/>
+        <attribute name="keycode"/>
+      </element>
+    </option>
+  </define>
+  <define name="mapoptionContent">
+    <element name="mapoption">
+      <choice>
+        <value>default</value>
+        <value>hidden</value>
+        <value>partial</value>
+        <value>alphanumeric_keys</value>
+        <value>keypad_keys</value>
+        <value>function_keys</value>
+        <value>modifier_keys</value>
+        <value>alternate_group</value>
+        <value>xkb_symbols</value>
+      </choice>
     </element>
   </define>
 </grammar>
