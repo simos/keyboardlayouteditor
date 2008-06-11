@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start>
+    <element name="layout">
+      <attribute name="layoutname"/>
+      <oneOrMore>
+        <element name="symbols">
+          <ref name="symbolsContent"/>
+        </element>
+      </oneOrMore>
+    </element>
+  </start>
+  <define name="symbolsContent">
+    <oneOrMore>
+      <element name="mapoption">
+        <text/>
+      </element>
+    </oneOrMore>
+    <element name="mapname">
+      <text/>
+    </element>
+    <element name="mapmaterial">
+      <oneOrMore>
+        <element name="tokenname">
+          <element name="name">
+            <text/>
+          </element>
+          <element name="value">
+            <text/>
+          </element>
+        </element>
+      </oneOrMore>
+      <optional>
+        <oneOrMore>
+          <element name="tokeninclude">
+            <text/>
+          </element>
+        </oneOrMore>
+      </optional>
+      <optional>
+        <oneOrMore>
+          <element name="tokenkeytype">
+            <element name="name">
+              <text/>
+            </element>
+            <element name="value">
+              <text/>
+            </element>
+          </element>
+        </oneOrMore>
+      </optional>
+      <optional>
+        <oneOrMore>
+          <element name="tokenmodifiermap">
+            <text/>
+          </element>
+        </oneOrMore>
+      </optional>
+      <optional>
+        <oneOrMore>
+          <element name="tokenvirtualmodifiers">
+            <text/>
+          </element>
+        </oneOrMore>
+      </optional>
+      <optional>
+        <oneOrMore>
+          <element name="tokenkey">
+            <attribute name="override"/>
+            <attribute name="keycodetype"/>
+            <text/>
+            <oneOrMore>
+              <element name="keyname">
+                <element name="name">
+                  <text/>
+                </element>
+                <element name="value">
+                  <text/>
+                </element>
+              </element>
+            </oneOrMore>
+            <element name="keysyms">
+              <element name="tokentype">
+                <element name="name">
+                  <text/>
+                </element>
+                <element name="value">
+                  <text/>
+                </element>
+              </element>
+              <oneOrMore>
+                <element name="keysym">
+                  <text/>
+                </element>
+              </oneOrMore>
+            </element>
+          </element>
+        </oneOrMore>
+      </optional>
+    </element>
+  </define>
+</grammar>
