@@ -1,4 +1,4 @@
-# $ANTLR 3.1b1 XKBGrammar.g 2008-06-18 19:48:03
+# $ANTLR 3.1b1 XKBGrammar.g 2008-06-18 20:34:36
 
 import sys
 from antlr3 import *
@@ -1875,7 +1875,7 @@ class XKBGrammarParser(Parser):
                 self.match(self.input, DQSTRING, self.FOLLOW_DQSTRING_in_elem_keysyms622) 
                 stream_DQSTRING.add(DQSTRING69)
                 # AST Rewrite
-                # elements: DQSTRING, NAME
+                # elements: NAME, DQSTRING
                 # token labels: 
                 # rule labels: retval
                 # token list labels: 
@@ -2056,7 +2056,7 @@ class XKBGrammarParser(Parser):
                 self.match(self.input, 42, self.FOLLOW_42_in_elem_keysymgroup679) 
                 stream_42.add(char_literal76)
                 # AST Rewrite
-                # elements: group, keysym
+                # elements: keysym, group
                 # token labels: group
                 # rule labels: retval
                 # token list labels: keysym
@@ -2612,7 +2612,7 @@ class XKBGrammarParser(Parser):
                 self._state.following.pop()
                 stream_keycode.add(keycode99.tree)
                 # AST Rewrite
-                # elements: NAME, keycode
+                # elements: keycode, NAME
                 # token labels: 
                 # rule labels: retval
                 # token list labels: 
