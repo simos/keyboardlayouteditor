@@ -6,6 +6,7 @@
 import sys
 import pdb
 import antlr3
+from lxml import etree
 from XKBGrammarLexer import XKBGrammarLexer 
 from XKBGrammarParser import XKBGrammarParser
 from XKBGrammarWalker import XKBGrammarWalker, LAYOUT, SYMBOLS, MAPMATERIAL, MAPTYPE, MAPOPTIONS, MAPOPTS, MAPNAME, TOKEN_INCLUDE, TOKEN_NAME, TOKEN_KEY_TYPE, TOKEN_KEY, TOKEN_TYPE, TOKEN_MODIFIER_MAP, TOKEN_VIRTUAL_MODIFIERS, KEYCODE, KEYCODEX, ELEM_KEYSYMS, ELEM_KEYSYMGROUP, ELEM_VIRTUALMODS, ELEM_ACTIONS, OVERLAY, ACTIONS_SETMODS, VALUE, STATE, NAME, DQSTRING, OVERRIDE
@@ -63,15 +64,26 @@ nodes.setTokenStream(tokens)
 walker = XKBGrammarWalker(nodes)
 # walker.layout()
 
+layout = etree.Element('layout')
+
+doc = etree.ElementTree(layout)
+
+layout.attrib['layoutname'] = xkbfilename
+
 for symbols in result.tree.getChildren():
+	eSymbol = etree.SubElement(layout, 'symbols')
 	for mapobject in symbols.getChildren():
 		if mapobject.getType() == MAPTYPE:
 			for maptypesect in mapobject.getChildren():
 				if maptypesect.getType() == MAPOPTIONS:
 					for mapoption in maptypesect.getChildren():
+						eMapOption = etree.SubElement(eSymbol, 'mapoption')
+						eMapOption.text = mapoption.getText()
 						print mapoption.getText(),
 				elif maptypesect.getType() == MAPNAME:
 					if maptypesect.getChildCount() == 1:
+						eMapName = etree.SubElement(eSymbol, 'mapname')
+						eMapName.text = maptypesect.getChildren()[0].getText()[1:-1]
 						print '%(opt)s {' % { "opt": maptypesect.getChildren()[0].getText() }
 					else:
 						print "\t\t\tInternal error in mapoption"
@@ -79,17 +91,26 @@ for symbols in result.tree.getChildren():
 					print "\t\tInternal error in maptypesect"
 					sys.exit(-2)
 		elif mapobject.getType() == MAPMATERIAL:
+			eMapMaterial = etree.SubElement(eSymbol, 'mapmaterial')
 			for name in getChildrenByType(mapobject, TOKEN_NAME):
 				nameText = name.getChild(0).getText()
 				for i in name.getChildren():
 					if i.getType() == VALUE:
+						eTokenName = etree.SubElement(eMapMaterial, 'tokenname')
+						eTokenName.attrib['name'] = nameText
+						eTokenName.text = i.getChild(0).getText()[1:-1]
 						print '\tname[%(name)s] = %(val)s;' % { "name": nameText, "val": i.getChild(0).getText()}
 			for include in getChildrenByType(mapobject, TOKEN_INCLUDE):
+				eInclude = etree.SubElement(eMapMaterial, 'tokeninclude')
+				eInclude.text = include.getChild(0).getText()
 				print "\tinclude", include.getChild(0).getText()
 			for keytype in getChildrenByType(mapobject, TOKEN_KEY_TYPE):
 				keytypeText = keytype.getChild(0).getText()
 				for i in keytype.getChildren():
 					if i.getType() == VALUE:
+						eKeyType = etree.SubElement(eMapMaterial, 'tokentype')
+						eKeyType.attrib['name'] = keytypeText
+						eKeyType.text = i.getChild(0).getText()[1:-1]
 						print '\tkey.type[%(kt)s] = %(val)s;' % { "kt": keytypeText, "val": i.getChild(0).getText() }
 			for keyset in getChildrenByType(mapobject, TOKEN_KEY):
 				keycode = getChildrenListByType(keyset, KEYCODE)
@@ -165,5 +186,6 @@ for symbols in result.tree.getChildren():
 			print "\tInternal error at map level,", mapobject.getText()
 			# sys.exit(-2)
 	print "};\n"
+	print etree.tostring(layout, pretty_print=True)
 
 #pdb.set_trace()
