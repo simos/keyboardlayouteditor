@@ -9,7 +9,7 @@ import antlr3
 from lxml import etree
 from XKBGrammarLexer import XKBGrammarLexer 
 from XKBGrammarParser import XKBGrammarParser
-from XKBGrammarWalker import XKBGrammarWalker, LAYOUT, SYMBOLS, MAPMATERIAL, MAPTYPE, MAPOPTIONS, MAPOPTS, MAPNAME, TOKEN_INCLUDE, TOKEN_NAME, TOKEN_KEY_TYPE, TOKEN_KEY, TOKEN_TYPE, TOKEN_MODIFIER_MAP, TOKEN_VIRTUAL_MODIFIERS, KEYCODE, KEYCODEX, ELEM_KEYSYMS, ELEM_KEYSYMGROUP, ELEM_VIRTUALMODS, ELEM_ACTIONS, OVERLAY, ACTIONS_SETMODS, VALUE, STATE, NAME, DQSTRING, OVERRIDE
+from XKBGrammarWalker import XKBGrammarWalker, LAYOUT, SYMBOLS, MAPMATERIAL, MAPTYPE, MAPOPTIONS, MAPOPTS, MAPNAME, TOKEN_INCLUDE, TOKEN_NAME, TOKEN_KEY_TYPE, TOKEN_KEY, TOKEN_TYPE, TOKEN_MODIFIER_MAP, TOKEN_VIRTUAL_MODIFIERS, KEYCODE, KEYCODEX, ELEM_KEYSYMS, ELEM_KEYSYMGROUP, ELEM_VIRTUALMODS, OVERLAY, VALUE, STATE, NAME, DQSTRING, OVERRIDE
 
 # Helper function to iterate through all children of a given type
 def getChildrenByType(tree, type_value):
@@ -79,12 +79,10 @@ for symbols in result.tree.getChildren():
 					for mapoption in maptypesect.getChildren():
 						eMapOption = etree.SubElement(eSymbol, 'mapoption')
 						eMapOption.text = mapoption.getText()
-						print mapoption.getText(),
 				elif maptypesect.getType() == MAPNAME:
 					if maptypesect.getChildCount() == 1:
 						eMapName = etree.SubElement(eSymbol, 'mapname')
 						eMapName.text = maptypesect.getChildren()[0].getText()[1:-1]
-						print '%(opt)s {' % { "opt": maptypesect.getChildren()[0].getText() }
 					else:
 						print "\t\t\tInternal error in mapoption"
 				else:
@@ -96,14 +94,11 @@ for symbols in result.tree.getChildren():
 				nameText = name.getChild(0).getText()
 				for i in name.getChildren():
 					if i.getType() == VALUE:
-						eTokenName = etree.SubElement(eMapMaterial, 'tokenname')
-						eTokenName.attrib['name'] = nameText
+						eTokenName = etree.SubElement(eMapMaterial, 'tokenname', name=nameText ) 
 						eTokenName.text = i.getChild(0).getText()[1:-1]
-						print '\tname[%(name)s] = %(val)s;' % { "name": nameText, "val": i.getChild(0).getText()}
 			for include in getChildrenByType(mapobject, TOKEN_INCLUDE):
 				eInclude = etree.SubElement(eMapMaterial, 'tokeninclude')
 				eInclude.text = include.getChild(0).getText()
-				print "\tinclude", include.getChild(0).getText()
 			for keytype in getChildrenByType(mapobject, TOKEN_KEY_TYPE):
 				keytypeText = keytype.getChild(0).getText()
 				for i in keytype.getChildren():
@@ -111,67 +106,38 @@ for symbols in result.tree.getChildren():
 						eKeyType = etree.SubElement(eMapMaterial, 'tokentype')
 						eKeyType.attrib['name'] = keytypeText
 						eKeyType.text = i.getChild(0).getText()[1:-1]
-						print '\tkey.type[%(kt)s] = %(val)s;' % { "kt": keytypeText, "val": i.getChild(0).getText() }
 			for keyset in getChildrenByType(mapobject, TOKEN_KEY):
 				keycode = getChildrenListByType(keyset, KEYCODE)
 				keycodex = getChildrenListByType(keyset, KEYCODEX)
 				elem_keysyms = getChildrenByType(keyset, ELEM_KEYSYMS)
 				elem_keysymgroup = getChildrenByType(keyset, ELEM_KEYSYMGROUP)
 				elem_virtualmods = getChildrenByType(keyset, ELEM_VIRTUALMODS)
-				elem_actions = getChildrenByType(keyset, ELEM_ACTIONS)
 				elem_overlay = getChildrenByType(keyset, OVERLAY)
 				override = getChildrenListByType(keyset, OVERRIDE)
 				print '\t',
+				eTokenKey = etree.SubElement(eMapMaterial, 'tokenkey')
 				if len(override) == 1:
-					print 'override',
+					eTokenKey.attrib['override'] = "True"
+				else:
+					eTokenKey.attrib['override'] = "False"
 				if len(keycode) == 1:
-					print 'key %(kc)s = {' % { "kc": keycode[0].getChild(0).getText() },
+					eKeyCodeName = etree.SubElement(eTokenKey, 'keycodename', value=keycode[0].getChild(0).getText())
 				elif len(keycodex) == 1:
-					print 'key <%(kc)s> = {' % { "kc": keycodex[0].getChild(0).getText() },
+					eKeyCodeNameX = etree.SubElement(eTokenKey, 'keycodenamex', value=keycode[0].getChild(0).getText())
 				else:
 					print "\tInternal error keycode/keycodex:", len(keycode), len(keycodex)
 					sys.exit(-1)
-				gotitem = False
 				if len(getChildrenListByType(keyset, ELEM_KEYSYMGROUP)):
-					gotitem = True
-					print "[",
+					eKeySymGroup = etree.SubElement(eTokenKey, 'keysymgroup')
 					keysymgroup_counter = len(getChildrenListByType(keyset, ELEM_KEYSYMGROUP))
 					for elem in elem_keysymgroup:
+						eSymbolsGroup = etree.SubElement(eKeySymGroup, 'symbolsgroup', group="")
 						for elem2 in elem.getChildren():
-							repeat_visit = False
 							for elem3 in elem2.getChildren():
-								if repeat_visit:
-									sys.stdout.write(', ')
-								else:
-									repeat_visit = True
-								print "%(elem)s" % { "elem": elem3.getText() },
-						if keysymgroup_counter > 1:
-							print "], [",
-							keysymgroup_counter -= 1
-					print "]",
+								eSymbol = etree.SubElement(eSymbolsGroup, 'symbol')
+								eSymbol.text = elem3.getText()	
 				if len(getChildrenListByType(keyset, ELEM_VIRTUALMODS)):
-					if gotitem:
-						sys.stdout.write(",\n\t\t\t"),
-					else:
-						gotitem = True
-					for elem in elem_virtualmods:
-						print "virtualMods =", elem.getChild(0).getText(),
-				if len(getChildrenListByType(keyset, ELEM_ACTIONS)):
-					if gotitem:
-						sys.stdout.write(", "),
-					else:
-						gotitem = True
-					repeat_visit = False
-					for elem in elem_actions:
-						print "actions[%(s)s] = [ " % { "s": elem.getChild(0).getText() },
-						sys.stdout.write("SetMods(modifiers=")
-						for elem2 in getChildrenByType(elem, ACTIONS_SETMODS):
-							if repeat_visit:
-								sys.stdout.write(", "),
-							else:
-								repeat_visit = True
-							print "%(s)s" % { "s": elem2.getChild(0).getText() },
-						sys.stdout.write(") ]")
+					eVirtualMods = etree.SubElement(eTokenKey, 'tokenvirtualmodifiers', value=elem.getChild(0).getText())
 				if len(getChildrenListByType(keyset, OVERLAY)):
 					if gotitem:
 						sys.stdout.write(", "),

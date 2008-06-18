@@ -1,4 +1,4 @@
-# $ANTLR 3.1b1 XKBGrammar.g 2008-06-18 20:34:36
+# $ANTLR 3.1b1 XKBGrammar.g 2008-06-18 23:27:42
 
 import sys
 from antlr3 import *
@@ -13,7 +13,7 @@ HIDDEN = BaseRecognizer.HIDDEN
 
 # token types
 MAPOPTIONS=16
-OVERLAY=29
+OVERLAY=27
 TOKEN_INCLUDE=4
 ELEM_VIRTUALMODS=24
 ELEM_KEYSYMS=23
@@ -22,50 +22,43 @@ EOF=-1
 TOKEN_TYPE=8
 MAPTYPE=14
 TOKEN_VIRTUAL_MODIFIERS=11
-T__55=55
-T__56=56
-T__57=57
-NAME=32
-T__58=58
+NAME=30
 T__51=51
-T__52=52
-T__53=53
 MAPMATERIAL=17
-T__54=54
-MAPOPTS=30
-COMMENT=34
-DQSTRING=31
+MAPOPTS=28
+COMMENT=32
+DQSTRING=29
 T__50=50
 T__42=42
 T__43=43
-STATE=21
 T__40=40
+STATE=21
 T__41=41
 T__46=46
 T__47=47
-ACTIONS_SETMODS=26
 T__44=44
 T__45=45
-LINE_COMMENT=35
+LINE_COMMENT=33
 KEYCODE=18
 T__48=48
 T__49=49
-ELEM_ACTIONS=25
 TOKEN_NAME=6
 VALUE=20
 LAYOUT=12
-WS=33
+WS=31
+T__34=34
+T__35=35
 T__36=36
 T__37=37
-OVERRIDE=28
+OVERRIDE=26
 T__38=38
 T__39=39
-ELEM_KEYSYMGROUP=22
 TOKEN_SYMBOL=10
+ELEM_KEYSYMGROUP=22
 TOKEN_KEY=7
 MAPNAME=15
 SYMBOLS=13
-KEYELEMENTS=27
+KEYELEMENTS=25
 TOKEN_KEY_TYPE=5
 KEYCODEX=19
 
@@ -76,12 +69,10 @@ tokenNames = [
     "TOKEN_MODIFIER_MAP", "TOKEN_SYMBOL", "TOKEN_VIRTUAL_MODIFIERS", "LAYOUT", 
     "SYMBOLS", "MAPTYPE", "MAPNAME", "MAPOPTIONS", "MAPMATERIAL", "KEYCODE", 
     "KEYCODEX", "VALUE", "STATE", "ELEM_KEYSYMGROUP", "ELEM_KEYSYMS", "ELEM_VIRTUALMODS", 
-    "ELEM_ACTIONS", "ACTIONS_SETMODS", "KEYELEMENTS", "OVERRIDE", "OVERLAY", 
-    "MAPOPTS", "DQSTRING", "NAME", "WS", "COMMENT", "LINE_COMMENT", "'{'", 
-    "'}'", "';'", "'include'", "'name'", "'['", "']'", "'='", "'key.type'", 
-    "'key'", "','", "'modifier_map'", "'virtual_modifiers'", "'<'", "'>'", 
-    "'type'", "'symbols'", "'virtualMods'", "'actions'", "'SetMods'", "'('", 
-    "'modifiers'", "')'"
+    "KEYELEMENTS", "OVERRIDE", "OVERLAY", "MAPOPTS", "DQSTRING", "NAME", 
+    "WS", "COMMENT", "LINE_COMMENT", "'{'", "'}'", "';'", "'include'", "'name'", 
+    "'['", "']'", "'='", "'key.type'", "'key'", "','", "'modifier_map'", 
+    "'virtual_modifiers'", "'<'", "'>'", "'type'", "'symbols'", "'virtualMods'"
 ]
 
 
@@ -121,7 +112,7 @@ class XKBGrammarParser(Parser):
 
 
     # $ANTLR start layout
-    # XKBGrammar.g:62:1: layout : ( symbols )+ EOF -> ^( LAYOUT ( symbols )+ ) ;
+    # XKBGrammar.g:60:1: layout : ( symbols )+ EOF -> ^( LAYOUT ( symbols )+ ) ;
     def layout(self, ):
 
         retval = self.layout_return()
@@ -138,9 +129,9 @@ class XKBGrammarParser(Parser):
         stream_symbols = RewriteRuleSubtreeStream(self.adaptor, "rule symbols")
         try:
             try:
-                # XKBGrammar.g:63:2: ( ( symbols )+ EOF -> ^( LAYOUT ( symbols )+ ) )
-                # XKBGrammar.g:63:4: ( symbols )+ EOF
-                # XKBGrammar.g:63:4: ( symbols )+
+                # XKBGrammar.g:61:2: ( ( symbols )+ EOF -> ^( LAYOUT ( symbols )+ ) )
+                # XKBGrammar.g:61:4: ( symbols )+ EOF
+                # XKBGrammar.g:61:4: ( symbols )+
                 cnt1 = 0
                 while True: #loop1
                     alt1 = 2
@@ -151,8 +142,8 @@ class XKBGrammarParser(Parser):
 
 
                     if alt1 == 1:
-                        # XKBGrammar.g:63:4: symbols
-                        self._state.following.append(self.FOLLOW_symbols_in_layout169)
+                        # XKBGrammar.g:61:4: symbols
+                        self._state.following.append(self.FOLLOW_symbols_in_layout161)
                         symbols1 = self.symbols()
 
                         self._state.following.pop()
@@ -171,7 +162,7 @@ class XKBGrammarParser(Parser):
 
 
                 EOF2 = self.input.LT(1)
-                self.match(self.input, EOF, self.FOLLOW_EOF_in_layout172) 
+                self.match(self.input, EOF, self.FOLLOW_EOF_in_layout164) 
                 stream_EOF.add(EOF2)
                 # AST Rewrite
                 # elements: symbols
@@ -189,12 +180,12 @@ class XKBGrammarParser(Parser):
 
 
                 root_0 = self.adaptor.nil()
-                # 64:2: -> ^( LAYOUT ( symbols )+ )
-                # XKBGrammar.g:64:5: ^( LAYOUT ( symbols )+ )
+                # 62:2: -> ^( LAYOUT ( symbols )+ )
+                # XKBGrammar.g:62:5: ^( LAYOUT ( symbols )+ )
                 root_1 = self.adaptor.nil()
                 root_1 = self.adaptor.becomeRoot(self.adaptor.createFromType(LAYOUT, "LAYOUT"), root_1)
 
-                # XKBGrammar.g:64:14: ( symbols )+
+                # XKBGrammar.g:62:14: ( symbols )+
                 if not (stream_symbols.hasNext()):
                     raise RewriteEarlyExitException()
 
@@ -243,7 +234,7 @@ class XKBGrammarParser(Parser):
 
 
     # $ANTLR start symbols
-    # XKBGrammar.g:67:1: symbols : mapType '{' ( mapMaterial )+ '}' ';' -> ^( SYMBOLS mapType ^( MAPMATERIAL ( mapMaterial )+ ) ) ;
+    # XKBGrammar.g:65:1: symbols : mapType '{' ( mapMaterial )+ '}' ';' -> ^( SYMBOLS mapType ^( MAPMATERIAL ( mapMaterial )+ ) ) ;
     def symbols(self, ):
 
         retval = self.symbols_return()
@@ -262,36 +253,36 @@ class XKBGrammarParser(Parser):
         char_literal4_tree = None
         char_literal6_tree = None
         char_literal7_tree = None
+        stream_35 = RewriteRuleTokenStream(self.adaptor, "token 35")
         stream_36 = RewriteRuleTokenStream(self.adaptor, "token 36")
-        stream_37 = RewriteRuleTokenStream(self.adaptor, "token 37")
-        stream_38 = RewriteRuleTokenStream(self.adaptor, "token 38")
+        stream_34 = RewriteRuleTokenStream(self.adaptor, "token 34")
         stream_mapMaterial = RewriteRuleSubtreeStream(self.adaptor, "rule mapMaterial")
         stream_mapType = RewriteRuleSubtreeStream(self.adaptor, "rule mapType")
         try:
             try:
-                # XKBGrammar.g:68:2: ( mapType '{' ( mapMaterial )+ '}' ';' -> ^( SYMBOLS mapType ^( MAPMATERIAL ( mapMaterial )+ ) ) )
-                # XKBGrammar.g:68:4: mapType '{' ( mapMaterial )+ '}' ';'
-                self._state.following.append(self.FOLLOW_mapType_in_symbols195)
+                # XKBGrammar.g:66:2: ( mapType '{' ( mapMaterial )+ '}' ';' -> ^( SYMBOLS mapType ^( MAPMATERIAL ( mapMaterial )+ ) ) )
+                # XKBGrammar.g:66:4: mapType '{' ( mapMaterial )+ '}' ';'
+                self._state.following.append(self.FOLLOW_mapType_in_symbols187)
                 mapType3 = self.mapType()
 
                 self._state.following.pop()
                 stream_mapType.add(mapType3.tree)
                 char_literal4 = self.input.LT(1)
-                self.match(self.input, 36, self.FOLLOW_36_in_symbols197) 
-                stream_36.add(char_literal4)
-                # XKBGrammar.g:68:16: ( mapMaterial )+
+                self.match(self.input, 34, self.FOLLOW_34_in_symbols189) 
+                stream_34.add(char_literal4)
+                # XKBGrammar.g:66:16: ( mapMaterial )+
                 cnt2 = 0
                 while True: #loop2
                     alt2 = 2
                     LA2_0 = self.input.LA(1)
 
-                    if (LA2_0 == OVERRIDE or (39 <= LA2_0 <= 40) or (44 <= LA2_0 <= 45) or (47 <= LA2_0 <= 48)) :
+                    if (LA2_0 == OVERRIDE or (37 <= LA2_0 <= 38) or (42 <= LA2_0 <= 43) or (45 <= LA2_0 <= 46)) :
                         alt2 = 1
 
 
                     if alt2 == 1:
-                        # XKBGrammar.g:68:16: mapMaterial
-                        self._state.following.append(self.FOLLOW_mapMaterial_in_symbols199)
+                        # XKBGrammar.g:66:16: mapMaterial
+                        self._state.following.append(self.FOLLOW_mapMaterial_in_symbols191)
                         mapMaterial5 = self.mapMaterial()
 
                         self._state.following.pop()
@@ -310,11 +301,11 @@ class XKBGrammarParser(Parser):
 
 
                 char_literal6 = self.input.LT(1)
-                self.match(self.input, 37, self.FOLLOW_37_in_symbols202) 
-                stream_37.add(char_literal6)
+                self.match(self.input, 35, self.FOLLOW_35_in_symbols194) 
+                stream_35.add(char_literal6)
                 char_literal7 = self.input.LT(1)
-                self.match(self.input, 38, self.FOLLOW_38_in_symbols204) 
-                stream_38.add(char_literal7)
+                self.match(self.input, 36, self.FOLLOW_36_in_symbols196) 
+                stream_36.add(char_literal7)
                 # AST Rewrite
                 # elements: mapMaterial, mapType
                 # token labels: 
@@ -331,17 +322,17 @@ class XKBGrammarParser(Parser):
 
 
                 root_0 = self.adaptor.nil()
-                # 69:2: -> ^( SYMBOLS mapType ^( MAPMATERIAL ( mapMaterial )+ ) )
-                # XKBGrammar.g:69:5: ^( SYMBOLS mapType ^( MAPMATERIAL ( mapMaterial )+ ) )
+                # 67:2: -> ^( SYMBOLS mapType ^( MAPMATERIAL ( mapMaterial )+ ) )
+                # XKBGrammar.g:67:5: ^( SYMBOLS mapType ^( MAPMATERIAL ( mapMaterial )+ ) )
                 root_1 = self.adaptor.nil()
                 root_1 = self.adaptor.becomeRoot(self.adaptor.createFromType(SYMBOLS, "SYMBOLS"), root_1)
 
                 self.adaptor.addChild(root_1, stream_mapType.nextTree())
-                # XKBGrammar.g:69:23: ^( MAPMATERIAL ( mapMaterial )+ )
+                # XKBGrammar.g:67:23: ^( MAPMATERIAL ( mapMaterial )+ )
                 root_2 = self.adaptor.nil()
                 root_2 = self.adaptor.becomeRoot(self.adaptor.createFromType(MAPMATERIAL, "MAPMATERIAL"), root_2)
 
-                # XKBGrammar.g:69:37: ( mapMaterial )+
+                # XKBGrammar.g:67:37: ( mapMaterial )+
                 if not (stream_mapMaterial.hasNext()):
                     raise RewriteEarlyExitException()
 
@@ -392,7 +383,7 @@ class XKBGrammarParser(Parser):
 
 
     # $ANTLR start mapType
-    # XKBGrammar.g:72:1: mapType : ( MAPOPTS )+ DQSTRING -> ^( MAPTYPE ^( MAPOPTIONS ( MAPOPTS )+ ) ^( MAPNAME DQSTRING ) ) ;
+    # XKBGrammar.g:70:1: mapType : ( MAPOPTS )+ DQSTRING -> ^( MAPTYPE ^( MAPOPTIONS ( MAPOPTS )+ ) ^( MAPNAME DQSTRING ) ) ;
     def mapType(self, ):
 
         retval = self.mapType_return()
@@ -410,9 +401,9 @@ class XKBGrammarParser(Parser):
 
         try:
             try:
-                # XKBGrammar.g:73:2: ( ( MAPOPTS )+ DQSTRING -> ^( MAPTYPE ^( MAPOPTIONS ( MAPOPTS )+ ) ^( MAPNAME DQSTRING ) ) )
-                # XKBGrammar.g:73:4: ( MAPOPTS )+ DQSTRING
-                # XKBGrammar.g:73:4: ( MAPOPTS )+
+                # XKBGrammar.g:71:2: ( ( MAPOPTS )+ DQSTRING -> ^( MAPTYPE ^( MAPOPTIONS ( MAPOPTS )+ ) ^( MAPNAME DQSTRING ) ) )
+                # XKBGrammar.g:71:4: ( MAPOPTS )+ DQSTRING
+                # XKBGrammar.g:71:4: ( MAPOPTS )+
                 cnt3 = 0
                 while True: #loop3
                     alt3 = 2
@@ -423,9 +414,9 @@ class XKBGrammarParser(Parser):
 
 
                     if alt3 == 1:
-                        # XKBGrammar.g:73:4: MAPOPTS
+                        # XKBGrammar.g:71:4: MAPOPTS
                         MAPOPTS8 = self.input.LT(1)
-                        self.match(self.input, MAPOPTS, self.FOLLOW_MAPOPTS_in_mapType232) 
+                        self.match(self.input, MAPOPTS, self.FOLLOW_MAPOPTS_in_mapType224) 
                         stream_MAPOPTS.add(MAPOPTS8)
 
 
@@ -441,7 +432,7 @@ class XKBGrammarParser(Parser):
 
 
                 DQSTRING9 = self.input.LT(1)
-                self.match(self.input, DQSTRING, self.FOLLOW_DQSTRING_in_mapType235) 
+                self.match(self.input, DQSTRING, self.FOLLOW_DQSTRING_in_mapType227) 
                 stream_DQSTRING.add(DQSTRING9)
                 # AST Rewrite
                 # elements: DQSTRING, MAPOPTS
@@ -459,16 +450,16 @@ class XKBGrammarParser(Parser):
 
 
                 root_0 = self.adaptor.nil()
-                # 74:2: -> ^( MAPTYPE ^( MAPOPTIONS ( MAPOPTS )+ ) ^( MAPNAME DQSTRING ) )
-                # XKBGrammar.g:74:5: ^( MAPTYPE ^( MAPOPTIONS ( MAPOPTS )+ ) ^( MAPNAME DQSTRING ) )
+                # 72:2: -> ^( MAPTYPE ^( MAPOPTIONS ( MAPOPTS )+ ) ^( MAPNAME DQSTRING ) )
+                # XKBGrammar.g:72:5: ^( MAPTYPE ^( MAPOPTIONS ( MAPOPTS )+ ) ^( MAPNAME DQSTRING ) )
                 root_1 = self.adaptor.nil()
                 root_1 = self.adaptor.becomeRoot(self.adaptor.createFromType(MAPTYPE, "MAPTYPE"), root_1)
 
-                # XKBGrammar.g:74:15: ^( MAPOPTIONS ( MAPOPTS )+ )
+                # XKBGrammar.g:72:15: ^( MAPOPTIONS ( MAPOPTS )+ )
                 root_2 = self.adaptor.nil()
                 root_2 = self.adaptor.becomeRoot(self.adaptor.createFromType(MAPOPTIONS, "MAPOPTIONS"), root_2)
 
-                # XKBGrammar.g:74:28: ( MAPOPTS )+
+                # XKBGrammar.g:72:28: ( MAPOPTS )+
                 if not (stream_MAPOPTS.hasNext()):
                     raise RewriteEarlyExitException()
 
@@ -479,7 +470,7 @@ class XKBGrammarParser(Parser):
                 stream_MAPOPTS.reset()
 
                 self.adaptor.addChild(root_1, root_2)
-                # XKBGrammar.g:74:38: ^( MAPNAME DQSTRING )
+                # XKBGrammar.g:72:38: ^( MAPNAME DQSTRING )
                 root_2 = self.adaptor.nil()
                 root_2 = self.adaptor.becomeRoot(self.adaptor.createFromType(MAPNAME, "MAPNAME"), root_2)
 
@@ -526,7 +517,7 @@ class XKBGrammarParser(Parser):
 
 
     # $ANTLR start mapMaterial
-    # XKBGrammar.g:77:1: mapMaterial : ( line_include | line_name ';' | line_keytype ';' | line_key ';' | line_modifier_map ';' | line_virtual_modifiers ';' );
+    # XKBGrammar.g:75:1: mapMaterial : ( line_include | line_name ';' | line_keytype ';' | line_key ';' | line_modifier_map ';' | line_virtual_modifiers ';' );
     def mapMaterial(self, ):
 
         retval = self.mapMaterial_return()
@@ -560,20 +551,20 @@ class XKBGrammarParser(Parser):
 
         try:
             try:
-                # XKBGrammar.g:78:2: ( line_include | line_name ';' | line_keytype ';' | line_key ';' | line_modifier_map ';' | line_virtual_modifiers ';' )
+                # XKBGrammar.g:76:2: ( line_include | line_name ';' | line_keytype ';' | line_key ';' | line_modifier_map ';' | line_virtual_modifiers ';' )
                 alt4 = 6
                 LA4 = self.input.LA(1)
-                if LA4 == 39:
+                if LA4 == 37:
                     alt4 = 1
-                elif LA4 == 40:
+                elif LA4 == 38:
                     alt4 = 2
-                elif LA4 == 44:
+                elif LA4 == 42:
                     alt4 = 3
-                elif LA4 == OVERRIDE or LA4 == 45:
+                elif LA4 == OVERRIDE or LA4 == 43:
                     alt4 = 4
-                elif LA4 == 47:
+                elif LA4 == 45:
                     alt4 = 5
-                elif LA4 == 48:
+                elif LA4 == 46:
                     alt4 = 6
                 else:
                     nvae = NoViableAltException("", 4, 0, self.input)
@@ -581,10 +572,10 @@ class XKBGrammarParser(Parser):
                     raise nvae
 
                 if alt4 == 1:
-                    # XKBGrammar.g:78:4: line_include
+                    # XKBGrammar.g:76:4: line_include
                     root_0 = self.adaptor.nil()
 
-                    self._state.following.append(self.FOLLOW_line_include_in_mapMaterial267)
+                    self._state.following.append(self.FOLLOW_line_include_in_mapMaterial259)
                     line_include10 = self.line_include()
 
                     self._state.following.pop()
@@ -593,72 +584,72 @@ class XKBGrammarParser(Parser):
 
 
                 elif alt4 == 2:
-                    # XKBGrammar.g:79:4: line_name ';'
+                    # XKBGrammar.g:77:4: line_name ';'
                     root_0 = self.adaptor.nil()
 
-                    self._state.following.append(self.FOLLOW_line_name_in_mapMaterial273)
+                    self._state.following.append(self.FOLLOW_line_name_in_mapMaterial265)
                     line_name11 = self.line_name()
 
                     self._state.following.pop()
                     self.adaptor.addChild(root_0, line_name11.tree)
                     char_literal12 = self.input.LT(1)
-                    self.match(self.input, 38, self.FOLLOW_38_in_mapMaterial275)
+                    self.match(self.input, 36, self.FOLLOW_36_in_mapMaterial267)
 
 
 
                 elif alt4 == 3:
-                    # XKBGrammar.g:80:4: line_keytype ';'
+                    # XKBGrammar.g:78:4: line_keytype ';'
                     root_0 = self.adaptor.nil()
 
-                    self._state.following.append(self.FOLLOW_line_keytype_in_mapMaterial281)
+                    self._state.following.append(self.FOLLOW_line_keytype_in_mapMaterial273)
                     line_keytype13 = self.line_keytype()
 
                     self._state.following.pop()
                     self.adaptor.addChild(root_0, line_keytype13.tree)
                     char_literal14 = self.input.LT(1)
-                    self.match(self.input, 38, self.FOLLOW_38_in_mapMaterial283)
+                    self.match(self.input, 36, self.FOLLOW_36_in_mapMaterial275)
 
 
 
                 elif alt4 == 4:
-                    # XKBGrammar.g:81:4: line_key ';'
+                    # XKBGrammar.g:79:4: line_key ';'
                     root_0 = self.adaptor.nil()
 
-                    self._state.following.append(self.FOLLOW_line_key_in_mapMaterial289)
+                    self._state.following.append(self.FOLLOW_line_key_in_mapMaterial281)
                     line_key15 = self.line_key()
 
                     self._state.following.pop()
                     self.adaptor.addChild(root_0, line_key15.tree)
                     char_literal16 = self.input.LT(1)
-                    self.match(self.input, 38, self.FOLLOW_38_in_mapMaterial291)
+                    self.match(self.input, 36, self.FOLLOW_36_in_mapMaterial283)
 
 
 
                 elif alt4 == 5:
-                    # XKBGrammar.g:82:4: line_modifier_map ';'
+                    # XKBGrammar.g:80:4: line_modifier_map ';'
                     root_0 = self.adaptor.nil()
 
-                    self._state.following.append(self.FOLLOW_line_modifier_map_in_mapMaterial297)
+                    self._state.following.append(self.FOLLOW_line_modifier_map_in_mapMaterial289)
                     line_modifier_map17 = self.line_modifier_map()
 
                     self._state.following.pop()
                     self.adaptor.addChild(root_0, line_modifier_map17.tree)
                     char_literal18 = self.input.LT(1)
-                    self.match(self.input, 38, self.FOLLOW_38_in_mapMaterial299)
+                    self.match(self.input, 36, self.FOLLOW_36_in_mapMaterial291)
 
 
 
                 elif alt4 == 6:
-                    # XKBGrammar.g:83:4: line_virtual_modifiers ';'
+                    # XKBGrammar.g:81:4: line_virtual_modifiers ';'
                     root_0 = self.adaptor.nil()
 
-                    self._state.following.append(self.FOLLOW_line_virtual_modifiers_in_mapMaterial305)
+                    self._state.following.append(self.FOLLOW_line_virtual_modifiers_in_mapMaterial297)
                     line_virtual_modifiers19 = self.line_virtual_modifiers()
 
                     self._state.following.pop()
                     self.adaptor.addChild(root_0, line_virtual_modifiers19.tree)
                     char_literal20 = self.input.LT(1)
-                    self.match(self.input, 38, self.FOLLOW_38_in_mapMaterial307)
+                    self.match(self.input, 36, self.FOLLOW_36_in_mapMaterial299)
 
 
 
@@ -692,7 +683,7 @@ class XKBGrammarParser(Parser):
 
 
     # $ANTLR start line_include
-    # XKBGrammar.g:86:1: line_include : 'include' DQSTRING -> ^( TOKEN_INCLUDE DQSTRING ) ;
+    # XKBGrammar.g:84:1: line_include : 'include' DQSTRING -> ^( TOKEN_INCLUDE DQSTRING ) ;
     def line_include(self, ):
 
         retval = self.line_include_return()
@@ -706,17 +697,17 @@ class XKBGrammarParser(Parser):
         string_literal21_tree = None
         DQSTRING22_tree = None
         stream_DQSTRING = RewriteRuleTokenStream(self.adaptor, "token DQSTRING")
-        stream_39 = RewriteRuleTokenStream(self.adaptor, "token 39")
+        stream_37 = RewriteRuleTokenStream(self.adaptor, "token 37")
 
         try:
             try:
-                # XKBGrammar.g:87:2: ( 'include' DQSTRING -> ^( TOKEN_INCLUDE DQSTRING ) )
-                # XKBGrammar.g:87:4: 'include' DQSTRING
+                # XKBGrammar.g:85:2: ( 'include' DQSTRING -> ^( TOKEN_INCLUDE DQSTRING ) )
+                # XKBGrammar.g:85:4: 'include' DQSTRING
                 string_literal21 = self.input.LT(1)
-                self.match(self.input, 39, self.FOLLOW_39_in_line_include319) 
-                stream_39.add(string_literal21)
+                self.match(self.input, 37, self.FOLLOW_37_in_line_include311) 
+                stream_37.add(string_literal21)
                 DQSTRING22 = self.input.LT(1)
-                self.match(self.input, DQSTRING, self.FOLLOW_DQSTRING_in_line_include321) 
+                self.match(self.input, DQSTRING, self.FOLLOW_DQSTRING_in_line_include313) 
                 stream_DQSTRING.add(DQSTRING22)
                 # AST Rewrite
                 # elements: DQSTRING
@@ -734,8 +725,8 @@ class XKBGrammarParser(Parser):
 
 
                 root_0 = self.adaptor.nil()
-                # 88:2: -> ^( TOKEN_INCLUDE DQSTRING )
-                # XKBGrammar.g:88:5: ^( TOKEN_INCLUDE DQSTRING )
+                # 86:2: -> ^( TOKEN_INCLUDE DQSTRING )
+                # XKBGrammar.g:86:5: ^( TOKEN_INCLUDE DQSTRING )
                 root_1 = self.adaptor.nil()
                 root_1 = self.adaptor.becomeRoot(self.adaptor.createFromType(TOKEN_INCLUDE, "TOKEN_INCLUDE"), root_1)
 
@@ -780,7 +771,7 @@ class XKBGrammarParser(Parser):
 
 
     # $ANTLR start line_name
-    # XKBGrammar.g:91:1: line_name : 'name' '[' NAME ']' '=' DQSTRING -> ^( TOKEN_NAME NAME ^( VALUE DQSTRING ) ) ;
+    # XKBGrammar.g:89:1: line_name : 'name' '[' NAME ']' '=' DQSTRING -> ^( TOKEN_NAME NAME ^( VALUE DQSTRING ) ) ;
     def line_name(self, ):
 
         retval = self.line_name_return()
@@ -802,33 +793,33 @@ class XKBGrammarParser(Parser):
         char_literal27_tree = None
         DQSTRING28_tree = None
         stream_NAME = RewriteRuleTokenStream(self.adaptor, "token NAME")
-        stream_43 = RewriteRuleTokenStream(self.adaptor, "token 43")
-        stream_42 = RewriteRuleTokenStream(self.adaptor, "token 42")
         stream_41 = RewriteRuleTokenStream(self.adaptor, "token 41")
         stream_40 = RewriteRuleTokenStream(self.adaptor, "token 40")
         stream_DQSTRING = RewriteRuleTokenStream(self.adaptor, "token DQSTRING")
+        stream_39 = RewriteRuleTokenStream(self.adaptor, "token 39")
+        stream_38 = RewriteRuleTokenStream(self.adaptor, "token 38")
 
         try:
             try:
-                # XKBGrammar.g:92:2: ( 'name' '[' NAME ']' '=' DQSTRING -> ^( TOKEN_NAME NAME ^( VALUE DQSTRING ) ) )
-                # XKBGrammar.g:92:4: 'name' '[' NAME ']' '=' DQSTRING
+                # XKBGrammar.g:90:2: ( 'name' '[' NAME ']' '=' DQSTRING -> ^( TOKEN_NAME NAME ^( VALUE DQSTRING ) ) )
+                # XKBGrammar.g:90:4: 'name' '[' NAME ']' '=' DQSTRING
                 string_literal23 = self.input.LT(1)
-                self.match(self.input, 40, self.FOLLOW_40_in_line_name341) 
-                stream_40.add(string_literal23)
+                self.match(self.input, 38, self.FOLLOW_38_in_line_name333) 
+                stream_38.add(string_literal23)
                 char_literal24 = self.input.LT(1)
-                self.match(self.input, 41, self.FOLLOW_41_in_line_name343) 
-                stream_41.add(char_literal24)
+                self.match(self.input, 39, self.FOLLOW_39_in_line_name335) 
+                stream_39.add(char_literal24)
                 NAME25 = self.input.LT(1)
-                self.match(self.input, NAME, self.FOLLOW_NAME_in_line_name345) 
+                self.match(self.input, NAME, self.FOLLOW_NAME_in_line_name337) 
                 stream_NAME.add(NAME25)
                 char_literal26 = self.input.LT(1)
-                self.match(self.input, 42, self.FOLLOW_42_in_line_name347) 
-                stream_42.add(char_literal26)
+                self.match(self.input, 40, self.FOLLOW_40_in_line_name339) 
+                stream_40.add(char_literal26)
                 char_literal27 = self.input.LT(1)
-                self.match(self.input, 43, self.FOLLOW_43_in_line_name349) 
-                stream_43.add(char_literal27)
+                self.match(self.input, 41, self.FOLLOW_41_in_line_name341) 
+                stream_41.add(char_literal27)
                 DQSTRING28 = self.input.LT(1)
-                self.match(self.input, DQSTRING, self.FOLLOW_DQSTRING_in_line_name351) 
+                self.match(self.input, DQSTRING, self.FOLLOW_DQSTRING_in_line_name343) 
                 stream_DQSTRING.add(DQSTRING28)
                 # AST Rewrite
                 # elements: DQSTRING, NAME
@@ -846,13 +837,13 @@ class XKBGrammarParser(Parser):
 
 
                 root_0 = self.adaptor.nil()
-                # 93:2: -> ^( TOKEN_NAME NAME ^( VALUE DQSTRING ) )
-                # XKBGrammar.g:93:5: ^( TOKEN_NAME NAME ^( VALUE DQSTRING ) )
+                # 91:2: -> ^( TOKEN_NAME NAME ^( VALUE DQSTRING ) )
+                # XKBGrammar.g:91:5: ^( TOKEN_NAME NAME ^( VALUE DQSTRING ) )
                 root_1 = self.adaptor.nil()
                 root_1 = self.adaptor.becomeRoot(self.adaptor.createFromType(TOKEN_NAME, "TOKEN_NAME"), root_1)
 
                 self.adaptor.addChild(root_1, stream_NAME.nextNode())
-                # XKBGrammar.g:93:23: ^( VALUE DQSTRING )
+                # XKBGrammar.g:91:23: ^( VALUE DQSTRING )
                 root_2 = self.adaptor.nil()
                 root_2 = self.adaptor.becomeRoot(self.adaptor.createFromType(VALUE, "VALUE"), root_2)
 
@@ -899,7 +890,7 @@ class XKBGrammarParser(Parser):
 
 
     # $ANTLR start line_keytype
-    # XKBGrammar.g:96:1: line_keytype : 'key.type' ( '[' NAME ']' )? '=' DQSTRING -> ^( TOKEN_KEY_TYPE ( NAME )? ^( VALUE DQSTRING ) ) ;
+    # XKBGrammar.g:94:1: line_keytype : 'key.type' ( '[' NAME ']' )? '=' DQSTRING -> ^( TOKEN_KEY_TYPE ( NAME )? ^( VALUE DQSTRING ) ) ;
     def line_keytype(self, ):
 
         retval = self.line_keytype_return()
@@ -921,45 +912,45 @@ class XKBGrammarParser(Parser):
         char_literal33_tree = None
         DQSTRING34_tree = None
         stream_NAME = RewriteRuleTokenStream(self.adaptor, "token NAME")
-        stream_43 = RewriteRuleTokenStream(self.adaptor, "token 43")
         stream_42 = RewriteRuleTokenStream(self.adaptor, "token 42")
-        stream_44 = RewriteRuleTokenStream(self.adaptor, "token 44")
         stream_41 = RewriteRuleTokenStream(self.adaptor, "token 41")
+        stream_40 = RewriteRuleTokenStream(self.adaptor, "token 40")
         stream_DQSTRING = RewriteRuleTokenStream(self.adaptor, "token DQSTRING")
+        stream_39 = RewriteRuleTokenStream(self.adaptor, "token 39")
 
         try:
             try:
-                # XKBGrammar.g:97:2: ( 'key.type' ( '[' NAME ']' )? '=' DQSTRING -> ^( TOKEN_KEY_TYPE ( NAME )? ^( VALUE DQSTRING ) ) )
-                # XKBGrammar.g:97:4: 'key.type' ( '[' NAME ']' )? '=' DQSTRING
+                # XKBGrammar.g:95:2: ( 'key.type' ( '[' NAME ']' )? '=' DQSTRING -> ^( TOKEN_KEY_TYPE ( NAME )? ^( VALUE DQSTRING ) ) )
+                # XKBGrammar.g:95:4: 'key.type' ( '[' NAME ']' )? '=' DQSTRING
                 string_literal29 = self.input.LT(1)
-                self.match(self.input, 44, self.FOLLOW_44_in_line_keytype377) 
-                stream_44.add(string_literal29)
-                # XKBGrammar.g:97:15: ( '[' NAME ']' )?
+                self.match(self.input, 42, self.FOLLOW_42_in_line_keytype369) 
+                stream_42.add(string_literal29)
+                # XKBGrammar.g:95:15: ( '[' NAME ']' )?
                 alt5 = 2
                 LA5_0 = self.input.LA(1)
 
-                if (LA5_0 == 41) :
+                if (LA5_0 == 39) :
                     alt5 = 1
                 if alt5 == 1:
-                    # XKBGrammar.g:97:16: '[' NAME ']'
+                    # XKBGrammar.g:95:16: '[' NAME ']'
                     char_literal30 = self.input.LT(1)
-                    self.match(self.input, 41, self.FOLLOW_41_in_line_keytype380) 
-                    stream_41.add(char_literal30)
+                    self.match(self.input, 39, self.FOLLOW_39_in_line_keytype372) 
+                    stream_39.add(char_literal30)
                     NAME31 = self.input.LT(1)
-                    self.match(self.input, NAME, self.FOLLOW_NAME_in_line_keytype382) 
+                    self.match(self.input, NAME, self.FOLLOW_NAME_in_line_keytype374) 
                     stream_NAME.add(NAME31)
                     char_literal32 = self.input.LT(1)
-                    self.match(self.input, 42, self.FOLLOW_42_in_line_keytype384) 
-                    stream_42.add(char_literal32)
+                    self.match(self.input, 40, self.FOLLOW_40_in_line_keytype376) 
+                    stream_40.add(char_literal32)
 
 
 
 
                 char_literal33 = self.input.LT(1)
-                self.match(self.input, 43, self.FOLLOW_43_in_line_keytype388) 
-                stream_43.add(char_literal33)
+                self.match(self.input, 41, self.FOLLOW_41_in_line_keytype380) 
+                stream_41.add(char_literal33)
                 DQSTRING34 = self.input.LT(1)
-                self.match(self.input, DQSTRING, self.FOLLOW_DQSTRING_in_line_keytype390) 
+                self.match(self.input, DQSTRING, self.FOLLOW_DQSTRING_in_line_keytype382) 
                 stream_DQSTRING.add(DQSTRING34)
                 # AST Rewrite
                 # elements: NAME, DQSTRING
@@ -977,18 +968,18 @@ class XKBGrammarParser(Parser):
 
 
                 root_0 = self.adaptor.nil()
-                # 98:2: -> ^( TOKEN_KEY_TYPE ( NAME )? ^( VALUE DQSTRING ) )
-                # XKBGrammar.g:98:5: ^( TOKEN_KEY_TYPE ( NAME )? ^( VALUE DQSTRING ) )
+                # 96:2: -> ^( TOKEN_KEY_TYPE ( NAME )? ^( VALUE DQSTRING ) )
+                # XKBGrammar.g:96:5: ^( TOKEN_KEY_TYPE ( NAME )? ^( VALUE DQSTRING ) )
                 root_1 = self.adaptor.nil()
                 root_1 = self.adaptor.becomeRoot(self.adaptor.createFromType(TOKEN_KEY_TYPE, "TOKEN_KEY_TYPE"), root_1)
 
-                # XKBGrammar.g:98:22: ( NAME )?
+                # XKBGrammar.g:96:22: ( NAME )?
                 if stream_NAME.hasNext():
                     self.adaptor.addChild(root_1, stream_NAME.nextNode())
 
 
                 stream_NAME.reset();
-                # XKBGrammar.g:98:28: ^( VALUE DQSTRING )
+                # XKBGrammar.g:96:28: ^( VALUE DQSTRING )
                 root_2 = self.adaptor.nil()
                 root_2 = self.adaptor.becomeRoot(self.adaptor.createFromType(VALUE, "VALUE"), root_2)
 
@@ -1035,7 +1026,7 @@ class XKBGrammarParser(Parser):
 
 
     # $ANTLR start line_key
-    # XKBGrammar.g:101:1: line_key : ( OVERRIDE )? 'key' keycode '{' keyelements ( ',' keyelements )* '}' -> ^( TOKEN_KEY ( OVERRIDE )? keycode ( keyelements )+ ) ;
+    # XKBGrammar.g:99:1: line_key : ( OVERRIDE )? 'key' keycode '{' keyelements ( ',' keyelements )* '}' -> ^( TOKEN_KEY ( OVERRIDE )? keycode ( keyelements )+ ) ;
     def line_key(self, ):
 
         retval = self.line_key_return()
@@ -1060,63 +1051,63 @@ class XKBGrammarParser(Parser):
         char_literal38_tree = None
         char_literal40_tree = None
         char_literal42_tree = None
-        stream_45 = RewriteRuleTokenStream(self.adaptor, "token 45")
-        stream_46 = RewriteRuleTokenStream(self.adaptor, "token 46")
-        stream_36 = RewriteRuleTokenStream(self.adaptor, "token 36")
+        stream_43 = RewriteRuleTokenStream(self.adaptor, "token 43")
+        stream_44 = RewriteRuleTokenStream(self.adaptor, "token 44")
+        stream_35 = RewriteRuleTokenStream(self.adaptor, "token 35")
         stream_OVERRIDE = RewriteRuleTokenStream(self.adaptor, "token OVERRIDE")
-        stream_37 = RewriteRuleTokenStream(self.adaptor, "token 37")
+        stream_34 = RewriteRuleTokenStream(self.adaptor, "token 34")
         stream_keycode = RewriteRuleSubtreeStream(self.adaptor, "rule keycode")
         stream_keyelements = RewriteRuleSubtreeStream(self.adaptor, "rule keyelements")
         try:
             try:
-                # XKBGrammar.g:102:2: ( ( OVERRIDE )? 'key' keycode '{' keyelements ( ',' keyelements )* '}' -> ^( TOKEN_KEY ( OVERRIDE )? keycode ( keyelements )+ ) )
-                # XKBGrammar.g:102:4: ( OVERRIDE )? 'key' keycode '{' keyelements ( ',' keyelements )* '}'
-                # XKBGrammar.g:102:4: ( OVERRIDE )?
+                # XKBGrammar.g:100:2: ( ( OVERRIDE )? 'key' keycode '{' keyelements ( ',' keyelements )* '}' -> ^( TOKEN_KEY ( OVERRIDE )? keycode ( keyelements )+ ) )
+                # XKBGrammar.g:100:4: ( OVERRIDE )? 'key' keycode '{' keyelements ( ',' keyelements )* '}'
+                # XKBGrammar.g:100:4: ( OVERRIDE )?
                 alt6 = 2
                 LA6_0 = self.input.LA(1)
 
                 if (LA6_0 == OVERRIDE) :
                     alt6 = 1
                 if alt6 == 1:
-                    # XKBGrammar.g:102:4: OVERRIDE
+                    # XKBGrammar.g:100:4: OVERRIDE
                     OVERRIDE35 = self.input.LT(1)
-                    self.match(self.input, OVERRIDE, self.FOLLOW_OVERRIDE_in_line_key417) 
+                    self.match(self.input, OVERRIDE, self.FOLLOW_OVERRIDE_in_line_key409) 
                     stream_OVERRIDE.add(OVERRIDE35)
 
 
 
 
                 string_literal36 = self.input.LT(1)
-                self.match(self.input, 45, self.FOLLOW_45_in_line_key420) 
-                stream_45.add(string_literal36)
-                self._state.following.append(self.FOLLOW_keycode_in_line_key422)
+                self.match(self.input, 43, self.FOLLOW_43_in_line_key412) 
+                stream_43.add(string_literal36)
+                self._state.following.append(self.FOLLOW_keycode_in_line_key414)
                 keycode37 = self.keycode()
 
                 self._state.following.pop()
                 stream_keycode.add(keycode37.tree)
                 char_literal38 = self.input.LT(1)
-                self.match(self.input, 36, self.FOLLOW_36_in_line_key424) 
-                stream_36.add(char_literal38)
-                self._state.following.append(self.FOLLOW_keyelements_in_line_key426)
+                self.match(self.input, 34, self.FOLLOW_34_in_line_key416) 
+                stream_34.add(char_literal38)
+                self._state.following.append(self.FOLLOW_keyelements_in_line_key418)
                 keyelements39 = self.keyelements()
 
                 self._state.following.pop()
                 stream_keyelements.add(keyelements39.tree)
-                # XKBGrammar.g:102:44: ( ',' keyelements )*
+                # XKBGrammar.g:100:44: ( ',' keyelements )*
                 while True: #loop7
                     alt7 = 2
                     LA7_0 = self.input.LA(1)
 
-                    if (LA7_0 == 46) :
+                    if (LA7_0 == 44) :
                         alt7 = 1
 
 
                     if alt7 == 1:
-                        # XKBGrammar.g:102:45: ',' keyelements
+                        # XKBGrammar.g:100:45: ',' keyelements
                         char_literal40 = self.input.LT(1)
-                        self.match(self.input, 46, self.FOLLOW_46_in_line_key429) 
-                        stream_46.add(char_literal40)
-                        self._state.following.append(self.FOLLOW_keyelements_in_line_key431)
+                        self.match(self.input, 44, self.FOLLOW_44_in_line_key421) 
+                        stream_44.add(char_literal40)
+                        self._state.following.append(self.FOLLOW_keyelements_in_line_key423)
                         keyelements41 = self.keyelements()
 
                         self._state.following.pop()
@@ -1129,8 +1120,8 @@ class XKBGrammarParser(Parser):
 
 
                 char_literal42 = self.input.LT(1)
-                self.match(self.input, 37, self.FOLLOW_37_in_line_key435) 
-                stream_37.add(char_literal42)
+                self.match(self.input, 35, self.FOLLOW_35_in_line_key427) 
+                stream_35.add(char_literal42)
                 # AST Rewrite
                 # elements: keyelements, keycode, OVERRIDE
                 # token labels: 
@@ -1147,19 +1138,19 @@ class XKBGrammarParser(Parser):
 
 
                 root_0 = self.adaptor.nil()
-                # 103:2: -> ^( TOKEN_KEY ( OVERRIDE )? keycode ( keyelements )+ )
-                # XKBGrammar.g:103:5: ^( TOKEN_KEY ( OVERRIDE )? keycode ( keyelements )+ )
+                # 101:2: -> ^( TOKEN_KEY ( OVERRIDE )? keycode ( keyelements )+ )
+                # XKBGrammar.g:101:5: ^( TOKEN_KEY ( OVERRIDE )? keycode ( keyelements )+ )
                 root_1 = self.adaptor.nil()
                 root_1 = self.adaptor.becomeRoot(self.adaptor.createFromType(TOKEN_KEY, "TOKEN_KEY"), root_1)
 
-                # XKBGrammar.g:103:17: ( OVERRIDE )?
+                # XKBGrammar.g:101:17: ( OVERRIDE )?
                 if stream_OVERRIDE.hasNext():
                     self.adaptor.addChild(root_1, stream_OVERRIDE.nextNode())
 
 
                 stream_OVERRIDE.reset();
                 self.adaptor.addChild(root_1, stream_keycode.nextTree())
-                # XKBGrammar.g:103:35: ( keyelements )+
+                # XKBGrammar.g:101:35: ( keyelements )+
                 if not (stream_keyelements.hasNext()):
                     raise RewriteEarlyExitException()
 
@@ -1208,7 +1199,7 @@ class XKBGrammarParser(Parser):
 
 
     # $ANTLR start line_modifier_map
-    # XKBGrammar.g:106:1: line_modifier_map : 'modifier_map' STATE '{' keycode ( ',' keycode )* '}' -> ^( TOKEN_MODIFIER_MAP STATE ( keycode )+ ) ;
+    # XKBGrammar.g:104:1: line_modifier_map : 'modifier_map' STATE '{' keycode ( ',' keycode )* '}' -> ^( TOKEN_MODIFIER_MAP STATE ( keycode )+ ) ;
     def line_modifier_map(self, ):
 
         retval = self.line_modifier_map_return()
@@ -1232,44 +1223,44 @@ class XKBGrammarParser(Parser):
         char_literal47_tree = None
         char_literal49_tree = None
         stream_STATE = RewriteRuleTokenStream(self.adaptor, "token STATE")
-        stream_47 = RewriteRuleTokenStream(self.adaptor, "token 47")
-        stream_46 = RewriteRuleTokenStream(self.adaptor, "token 46")
-        stream_36 = RewriteRuleTokenStream(self.adaptor, "token 36")
-        stream_37 = RewriteRuleTokenStream(self.adaptor, "token 37")
+        stream_45 = RewriteRuleTokenStream(self.adaptor, "token 45")
+        stream_44 = RewriteRuleTokenStream(self.adaptor, "token 44")
+        stream_35 = RewriteRuleTokenStream(self.adaptor, "token 35")
+        stream_34 = RewriteRuleTokenStream(self.adaptor, "token 34")
         stream_keycode = RewriteRuleSubtreeStream(self.adaptor, "rule keycode")
         try:
             try:
-                # XKBGrammar.g:107:2: ( 'modifier_map' STATE '{' keycode ( ',' keycode )* '}' -> ^( TOKEN_MODIFIER_MAP STATE ( keycode )+ ) )
-                # XKBGrammar.g:107:4: 'modifier_map' STATE '{' keycode ( ',' keycode )* '}'
+                # XKBGrammar.g:105:2: ( 'modifier_map' STATE '{' keycode ( ',' keycode )* '}' -> ^( TOKEN_MODIFIER_MAP STATE ( keycode )+ ) )
+                # XKBGrammar.g:105:4: 'modifier_map' STATE '{' keycode ( ',' keycode )* '}'
                 string_literal43 = self.input.LT(1)
-                self.match(self.input, 47, self.FOLLOW_47_in_line_modifier_map461) 
-                stream_47.add(string_literal43)
+                self.match(self.input, 45, self.FOLLOW_45_in_line_modifier_map453) 
+                stream_45.add(string_literal43)
                 STATE44 = self.input.LT(1)
-                self.match(self.input, STATE, self.FOLLOW_STATE_in_line_modifier_map463) 
+                self.match(self.input, STATE, self.FOLLOW_STATE_in_line_modifier_map455) 
                 stream_STATE.add(STATE44)
                 char_literal45 = self.input.LT(1)
-                self.match(self.input, 36, self.FOLLOW_36_in_line_modifier_map465) 
-                stream_36.add(char_literal45)
-                self._state.following.append(self.FOLLOW_keycode_in_line_modifier_map467)
+                self.match(self.input, 34, self.FOLLOW_34_in_line_modifier_map457) 
+                stream_34.add(char_literal45)
+                self._state.following.append(self.FOLLOW_keycode_in_line_modifier_map459)
                 keycode46 = self.keycode()
 
                 self._state.following.pop()
                 stream_keycode.add(keycode46.tree)
-                # XKBGrammar.g:107:37: ( ',' keycode )*
+                # XKBGrammar.g:105:37: ( ',' keycode )*
                 while True: #loop8
                     alt8 = 2
                     LA8_0 = self.input.LA(1)
 
-                    if (LA8_0 == 46) :
+                    if (LA8_0 == 44) :
                         alt8 = 1
 
 
                     if alt8 == 1:
-                        # XKBGrammar.g:107:38: ',' keycode
+                        # XKBGrammar.g:105:38: ',' keycode
                         char_literal47 = self.input.LT(1)
-                        self.match(self.input, 46, self.FOLLOW_46_in_line_modifier_map470) 
-                        stream_46.add(char_literal47)
-                        self._state.following.append(self.FOLLOW_keycode_in_line_modifier_map472)
+                        self.match(self.input, 44, self.FOLLOW_44_in_line_modifier_map462) 
+                        stream_44.add(char_literal47)
+                        self._state.following.append(self.FOLLOW_keycode_in_line_modifier_map464)
                         keycode48 = self.keycode()
 
                         self._state.following.pop()
@@ -1282,8 +1273,8 @@ class XKBGrammarParser(Parser):
 
 
                 char_literal49 = self.input.LT(1)
-                self.match(self.input, 37, self.FOLLOW_37_in_line_modifier_map476) 
-                stream_37.add(char_literal49)
+                self.match(self.input, 35, self.FOLLOW_35_in_line_modifier_map468) 
+                stream_35.add(char_literal49)
                 # AST Rewrite
                 # elements: STATE, keycode
                 # token labels: 
@@ -1300,13 +1291,13 @@ class XKBGrammarParser(Parser):
 
 
                 root_0 = self.adaptor.nil()
-                # 108:2: -> ^( TOKEN_MODIFIER_MAP STATE ( keycode )+ )
-                # XKBGrammar.g:108:5: ^( TOKEN_MODIFIER_MAP STATE ( keycode )+ )
+                # 106:2: -> ^( TOKEN_MODIFIER_MAP STATE ( keycode )+ )
+                # XKBGrammar.g:106:5: ^( TOKEN_MODIFIER_MAP STATE ( keycode )+ )
                 root_1 = self.adaptor.nil()
                 root_1 = self.adaptor.becomeRoot(self.adaptor.createFromType(TOKEN_MODIFIER_MAP, "TOKEN_MODIFIER_MAP"), root_1)
 
                 self.adaptor.addChild(root_1, stream_STATE.nextNode())
-                # XKBGrammar.g:108:32: ( keycode )+
+                # XKBGrammar.g:106:32: ( keycode )+
                 if not (stream_keycode.hasNext()):
                     raise RewriteEarlyExitException()
 
@@ -1355,7 +1346,7 @@ class XKBGrammarParser(Parser):
 
 
     # $ANTLR start line_virtual_modifiers
-    # XKBGrammar.g:111:1: line_virtual_modifiers : 'virtual_modifiers' NAME ( ',' NAME )* -> ^( TOKEN_VIRTUAL_MODIFIERS ( NAME )+ ) ;
+    # XKBGrammar.g:109:1: line_virtual_modifiers : 'virtual_modifiers' NAME ( ',' NAME )* -> ^( TOKEN_VIRTUAL_MODIFIERS ( NAME )+ ) ;
     def line_virtual_modifiers(self, ):
 
         retval = self.line_virtual_modifiers_return()
@@ -1372,36 +1363,36 @@ class XKBGrammarParser(Parser):
         NAME51_tree = None
         char_literal52_tree = None
         NAME53_tree = None
-        stream_48 = RewriteRuleTokenStream(self.adaptor, "token 48")
         stream_NAME = RewriteRuleTokenStream(self.adaptor, "token NAME")
+        stream_44 = RewriteRuleTokenStream(self.adaptor, "token 44")
         stream_46 = RewriteRuleTokenStream(self.adaptor, "token 46")
 
         try:
             try:
-                # XKBGrammar.g:112:2: ( 'virtual_modifiers' NAME ( ',' NAME )* -> ^( TOKEN_VIRTUAL_MODIFIERS ( NAME )+ ) )
-                # XKBGrammar.g:112:4: 'virtual_modifiers' NAME ( ',' NAME )*
+                # XKBGrammar.g:110:2: ( 'virtual_modifiers' NAME ( ',' NAME )* -> ^( TOKEN_VIRTUAL_MODIFIERS ( NAME )+ ) )
+                # XKBGrammar.g:110:4: 'virtual_modifiers' NAME ( ',' NAME )*
                 string_literal50 = self.input.LT(1)
-                self.match(self.input, 48, self.FOLLOW_48_in_line_virtual_modifiers499) 
-                stream_48.add(string_literal50)
+                self.match(self.input, 46, self.FOLLOW_46_in_line_virtual_modifiers491) 
+                stream_46.add(string_literal50)
                 NAME51 = self.input.LT(1)
-                self.match(self.input, NAME, self.FOLLOW_NAME_in_line_virtual_modifiers501) 
+                self.match(self.input, NAME, self.FOLLOW_NAME_in_line_virtual_modifiers493) 
                 stream_NAME.add(NAME51)
-                # XKBGrammar.g:112:29: ( ',' NAME )*
+                # XKBGrammar.g:110:29: ( ',' NAME )*
                 while True: #loop9
                     alt9 = 2
                     LA9_0 = self.input.LA(1)
 
-                    if (LA9_0 == 46) :
+                    if (LA9_0 == 44) :
                         alt9 = 1
 
 
                     if alt9 == 1:
-                        # XKBGrammar.g:112:30: ',' NAME
+                        # XKBGrammar.g:110:30: ',' NAME
                         char_literal52 = self.input.LT(1)
-                        self.match(self.input, 46, self.FOLLOW_46_in_line_virtual_modifiers504) 
-                        stream_46.add(char_literal52)
+                        self.match(self.input, 44, self.FOLLOW_44_in_line_virtual_modifiers496) 
+                        stream_44.add(char_literal52)
                         NAME53 = self.input.LT(1)
-                        self.match(self.input, NAME, self.FOLLOW_NAME_in_line_virtual_modifiers506) 
+                        self.match(self.input, NAME, self.FOLLOW_NAME_in_line_virtual_modifiers498) 
                         stream_NAME.add(NAME53)
 
 
@@ -1426,12 +1417,12 @@ class XKBGrammarParser(Parser):
 
 
                 root_0 = self.adaptor.nil()
-                # 113:2: -> ^( TOKEN_VIRTUAL_MODIFIERS ( NAME )+ )
-                # XKBGrammar.g:113:5: ^( TOKEN_VIRTUAL_MODIFIERS ( NAME )+ )
+                # 111:2: -> ^( TOKEN_VIRTUAL_MODIFIERS ( NAME )+ )
+                # XKBGrammar.g:111:5: ^( TOKEN_VIRTUAL_MODIFIERS ( NAME )+ )
                 root_1 = self.adaptor.nil()
                 root_1 = self.adaptor.becomeRoot(self.adaptor.createFromType(TOKEN_VIRTUAL_MODIFIERS, "TOKEN_VIRTUAL_MODIFIERS"), root_1)
 
-                # XKBGrammar.g:113:31: ( NAME )+
+                # XKBGrammar.g:111:31: ( NAME )+
                 if not (stream_NAME.hasNext()):
                     raise RewriteEarlyExitException()
 
@@ -1480,7 +1471,7 @@ class XKBGrammarParser(Parser):
 
 
     # $ANTLR start keycode
-    # XKBGrammar.g:116:1: keycode : ( NAME -> ^( KEYCODE NAME ) | '<' NAME '>' -> ^( KEYCODEX NAME ) );
+    # XKBGrammar.g:114:1: keycode : '<' NAME '>' -> ^( KEYCODE NAME ) ;
     def keycode(self, ):
 
         retval = self.keycode_return()
@@ -1488,109 +1479,59 @@ class XKBGrammarParser(Parser):
 
         root_0 = None
 
-        NAME54 = None
-        char_literal55 = None
-        NAME56 = None
-        char_literal57 = None
+        char_literal54 = None
+        NAME55 = None
+        char_literal56 = None
 
-        NAME54_tree = None
-        char_literal55_tree = None
-        NAME56_tree = None
-        char_literal57_tree = None
-        stream_49 = RewriteRuleTokenStream(self.adaptor, "token 49")
+        char_literal54_tree = None
+        NAME55_tree = None
+        char_literal56_tree = None
+        stream_48 = RewriteRuleTokenStream(self.adaptor, "token 48")
         stream_NAME = RewriteRuleTokenStream(self.adaptor, "token NAME")
-        stream_50 = RewriteRuleTokenStream(self.adaptor, "token 50")
+        stream_47 = RewriteRuleTokenStream(self.adaptor, "token 47")
 
         try:
             try:
-                # XKBGrammar.g:117:2: ( NAME -> ^( KEYCODE NAME ) | '<' NAME '>' -> ^( KEYCODEX NAME ) )
-                alt10 = 2
-                LA10_0 = self.input.LA(1)
+                # XKBGrammar.g:115:2: ( '<' NAME '>' -> ^( KEYCODE NAME ) )
+                # XKBGrammar.g:115:4: '<' NAME '>'
+                char_literal54 = self.input.LT(1)
+                self.match(self.input, 47, self.FOLLOW_47_in_keycode522) 
+                stream_47.add(char_literal54)
+                NAME55 = self.input.LT(1)
+                self.match(self.input, NAME, self.FOLLOW_NAME_in_keycode524) 
+                stream_NAME.add(NAME55)
+                char_literal56 = self.input.LT(1)
+                self.match(self.input, 48, self.FOLLOW_48_in_keycode526) 
+                stream_48.add(char_literal56)
+                # AST Rewrite
+                # elements: NAME
+                # token labels: 
+                # rule labels: retval
+                # token list labels: 
+                # rule list labels: 
 
-                if (LA10_0 == NAME) :
-                    alt10 = 1
-                elif (LA10_0 == 49) :
-                    alt10 = 2
+                retval.tree = root_0
+
+                if retval is not None:
+                    stream_retval = RewriteRuleSubtreeStream(self.adaptor, "token retval", retval.tree)
                 else:
-                    nvae = NoViableAltException("", 10, 0, self.input)
-
-                    raise nvae
-
-                if alt10 == 1:
-                    # XKBGrammar.g:117:4: NAME
-                    NAME54 = self.input.LT(1)
-                    self.match(self.input, NAME, self.FOLLOW_NAME_in_keycode530) 
-                    stream_NAME.add(NAME54)
-                    # AST Rewrite
-                    # elements: NAME
-                    # token labels: 
-                    # rule labels: retval
-                    # token list labels: 
-                    # rule list labels: 
-
-                    retval.tree = root_0
-
-                    if retval is not None:
-                        stream_retval = RewriteRuleSubtreeStream(self.adaptor, "token retval", retval.tree)
-                    else:
-                        stream_retval = RewriteRuleSubtreeStream(self.adaptor, "token retval", None)
+                    stream_retval = RewriteRuleSubtreeStream(self.adaptor, "token retval", None)
 
 
-                    root_0 = self.adaptor.nil()
-                    # 117:9: -> ^( KEYCODE NAME )
-                    # XKBGrammar.g:117:12: ^( KEYCODE NAME )
-                    root_1 = self.adaptor.nil()
-                    root_1 = self.adaptor.becomeRoot(self.adaptor.createFromType(KEYCODE, "KEYCODE"), root_1)
+                root_0 = self.adaptor.nil()
+                # 115:17: -> ^( KEYCODE NAME )
+                # XKBGrammar.g:115:20: ^( KEYCODE NAME )
+                root_1 = self.adaptor.nil()
+                root_1 = self.adaptor.becomeRoot(self.adaptor.createFromType(KEYCODE, "KEYCODE"), root_1)
 
-                    self.adaptor.addChild(root_1, stream_NAME.nextNode())
+                self.adaptor.addChild(root_1, stream_NAME.nextNode())
 
-                    self.adaptor.addChild(root_0, root_1)
+                self.adaptor.addChild(root_0, root_1)
 
 
 
-                    retval.tree = root_0
+                retval.tree = root_0
 
-
-
-                elif alt10 == 2:
-                    # XKBGrammar.g:118:4: '<' NAME '>'
-                    char_literal55 = self.input.LT(1)
-                    self.match(self.input, 49, self.FOLLOW_49_in_keycode543) 
-                    stream_49.add(char_literal55)
-                    NAME56 = self.input.LT(1)
-                    self.match(self.input, NAME, self.FOLLOW_NAME_in_keycode545) 
-                    stream_NAME.add(NAME56)
-                    char_literal57 = self.input.LT(1)
-                    self.match(self.input, 50, self.FOLLOW_50_in_keycode547) 
-                    stream_50.add(char_literal57)
-                    # AST Rewrite
-                    # elements: NAME
-                    # token labels: 
-                    # rule labels: retval
-                    # token list labels: 
-                    # rule list labels: 
-
-                    retval.tree = root_0
-
-                    if retval is not None:
-                        stream_retval = RewriteRuleSubtreeStream(self.adaptor, "token retval", retval.tree)
-                    else:
-                        stream_retval = RewriteRuleSubtreeStream(self.adaptor, "token retval", None)
-
-
-                    root_0 = self.adaptor.nil()
-                    # 118:17: -> ^( KEYCODEX NAME )
-                    # XKBGrammar.g:118:20: ^( KEYCODEX NAME )
-                    root_1 = self.adaptor.nil()
-                    root_1 = self.adaptor.becomeRoot(self.adaptor.createFromType(KEYCODEX, "KEYCODEX"), root_1)
-
-                    self.adaptor.addChild(root_1, stream_NAME.nextNode())
-
-                    self.adaptor.addChild(root_0, root_1)
-
-
-
-                    retval.tree = root_0
 
 
 
@@ -1624,7 +1565,7 @@ class XKBGrammarParser(Parser):
 
 
     # $ANTLR start override
-    # XKBGrammar.g:121:1: override : 'override' ;
+    # XKBGrammar.g:118:1: override : 'override' ;
     def override(self, ):
 
         retval = self.override_return()
@@ -1632,21 +1573,21 @@ class XKBGrammarParser(Parser):
 
         root_0 = None
 
-        string_literal58 = None
+        string_literal57 = None
 
-        string_literal58_tree = None
+        string_literal57_tree = None
 
         try:
             try:
-                # XKBGrammar.g:122:2: ( 'override' )
-                # XKBGrammar.g:122:4: 'override'
+                # XKBGrammar.g:119:2: ( 'override' )
+                # XKBGrammar.g:119:4: 'override'
                 root_0 = self.adaptor.nil()
 
-                string_literal58 = self.input.LT(1)
-                self.match(self.input, OVERRIDE, self.FOLLOW_OVERRIDE_in_override566)
+                string_literal57 = self.input.LT(1)
+                self.match(self.input, OVERRIDE, self.FOLLOW_OVERRIDE_in_override545)
 
-                string_literal58_tree = self.adaptor.createWithPayload(string_literal58)
-                self.adaptor.addChild(root_0, string_literal58_tree)
+                string_literal57_tree = self.adaptor.createWithPayload(string_literal57)
+                self.adaptor.addChild(root_0, string_literal57_tree)
 
 
 
@@ -1682,7 +1623,7 @@ class XKBGrammarParser(Parser):
 
 
     # $ANTLR start keyelements
-    # XKBGrammar.g:125:1: keyelements : ( elem_keysyms | elem_keysymgroup | elem_virtualmods | elem_actions | elem_overlay );
+    # XKBGrammar.g:122:1: keyelements : ( elem_keysyms | elem_keysymgroup | elem_virtualmods | elem_overlay );
     def keyelements(self, ):
 
         retval = self.keyelements_return()
@@ -1690,95 +1631,79 @@ class XKBGrammarParser(Parser):
 
         root_0 = None
 
-        elem_keysyms59 = None
+        elem_keysyms58 = None
 
-        elem_keysymgroup60 = None
+        elem_keysymgroup59 = None
 
-        elem_virtualmods61 = None
+        elem_virtualmods60 = None
 
-        elem_actions62 = None
-
-        elem_overlay63 = None
+        elem_overlay61 = None
 
 
 
         try:
             try:
-                # XKBGrammar.g:126:2: ( elem_keysyms | elem_keysymgroup | elem_virtualmods | elem_actions | elem_overlay )
-                alt11 = 5
-                LA11 = self.input.LA(1)
-                if LA11 == 51:
-                    alt11 = 1
-                elif LA11 == 41 or LA11 == 52:
-                    alt11 = 2
-                elif LA11 == 53:
-                    alt11 = 3
-                elif LA11 == 54:
-                    alt11 = 4
-                elif LA11 == NAME:
-                    alt11 = 5
+                # XKBGrammar.g:123:2: ( elem_keysyms | elem_keysymgroup | elem_virtualmods | elem_overlay )
+                alt10 = 4
+                LA10 = self.input.LA(1)
+                if LA10 == 49:
+                    alt10 = 1
+                elif LA10 == 39 or LA10 == 50:
+                    alt10 = 2
+                elif LA10 == 51:
+                    alt10 = 3
+                elif LA10 == NAME:
+                    alt10 = 4
                 else:
-                    nvae = NoViableAltException("", 11, 0, self.input)
+                    nvae = NoViableAltException("", 10, 0, self.input)
 
                     raise nvae
 
-                if alt11 == 1:
-                    # XKBGrammar.g:126:4: elem_keysyms
+                if alt10 == 1:
+                    # XKBGrammar.g:123:4: elem_keysyms
                     root_0 = self.adaptor.nil()
 
-                    self._state.following.append(self.FOLLOW_elem_keysyms_in_keyelements577)
-                    elem_keysyms59 = self.elem_keysyms()
+                    self._state.following.append(self.FOLLOW_elem_keysyms_in_keyelements556)
+                    elem_keysyms58 = self.elem_keysyms()
 
                     self._state.following.pop()
-                    self.adaptor.addChild(root_0, elem_keysyms59.tree)
+                    self.adaptor.addChild(root_0, elem_keysyms58.tree)
 
 
 
-                elif alt11 == 2:
-                    # XKBGrammar.g:127:4: elem_keysymgroup
+                elif alt10 == 2:
+                    # XKBGrammar.g:124:4: elem_keysymgroup
                     root_0 = self.adaptor.nil()
 
-                    self._state.following.append(self.FOLLOW_elem_keysymgroup_in_keyelements583)
-                    elem_keysymgroup60 = self.elem_keysymgroup()
+                    self._state.following.append(self.FOLLOW_elem_keysymgroup_in_keyelements562)
+                    elem_keysymgroup59 = self.elem_keysymgroup()
 
                     self._state.following.pop()
-                    self.adaptor.addChild(root_0, elem_keysymgroup60.tree)
+                    self.adaptor.addChild(root_0, elem_keysymgroup59.tree)
 
 
 
-                elif alt11 == 3:
-                    # XKBGrammar.g:128:4: elem_virtualmods
+                elif alt10 == 3:
+                    # XKBGrammar.g:125:4: elem_virtualmods
                     root_0 = self.adaptor.nil()
 
-                    self._state.following.append(self.FOLLOW_elem_virtualmods_in_keyelements588)
-                    elem_virtualmods61 = self.elem_virtualmods()
+                    self._state.following.append(self.FOLLOW_elem_virtualmods_in_keyelements567)
+                    elem_virtualmods60 = self.elem_virtualmods()
 
                     self._state.following.pop()
-                    self.adaptor.addChild(root_0, elem_virtualmods61.tree)
+                    self.adaptor.addChild(root_0, elem_virtualmods60.tree)
 
 
 
-                elif alt11 == 4:
-                    # XKBGrammar.g:129:4: elem_actions
+                elif alt10 == 4:
+                    # XKBGrammar.g:126:4: elem_overlay
                     root_0 = self.adaptor.nil()
 
-                    self._state.following.append(self.FOLLOW_elem_actions_in_keyelements593)
-                    elem_actions62 = self.elem_actions()
+                    self._state.following.append(self.FOLLOW_elem_overlay_in_keyelements572)
+                    elem_overlay61 = self.elem_overlay()
 
                     self._state.following.pop()
-                    self.adaptor.addChild(root_0, elem_actions62.tree)
-
-
-
-                elif alt11 == 5:
-                    # XKBGrammar.g:130:4: elem_overlay
-                    root_0 = self.adaptor.nil()
-
-                    self._state.following.append(self.FOLLOW_elem_overlay_in_keyelements598)
-                    elem_overlay63 = self.elem_overlay()
-
-                    self._state.following.pop()
-                    self.adaptor.addChild(root_0, elem_overlay63.tree)
+                    self.adaptor.addChild(root_0, elem_overlay61.tree)
 
 
 
@@ -1812,7 +1737,7 @@ class XKBGrammarParser(Parser):
 
 
     # $ANTLR start elem_keysyms
-    # XKBGrammar.g:133:1: elem_keysyms : 'type' ( '[' NAME ']' )? '=' DQSTRING -> ^( ELEM_KEYSYMS ^( TOKEN_TYPE ( NAME )? DQSTRING ) ) ;
+    # XKBGrammar.g:129:1: elem_keysyms : 'type' ( '[' NAME ']' )? '=' DQSTRING -> ^( ELEM_KEYSYMS ^( TOKEN_TYPE ( NAME )? DQSTRING ) ) ;
     def elem_keysyms(self, ):
 
         retval = self.elem_keysyms_return()
@@ -1820,62 +1745,62 @@ class XKBGrammarParser(Parser):
 
         root_0 = None
 
-        string_literal64 = None
+        string_literal62 = None
+        char_literal63 = None
+        NAME64 = None
         char_literal65 = None
-        NAME66 = None
-        char_literal67 = None
-        char_literal68 = None
-        DQSTRING69 = None
+        char_literal66 = None
+        DQSTRING67 = None
 
-        string_literal64_tree = None
+        string_literal62_tree = None
+        char_literal63_tree = None
+        NAME64_tree = None
         char_literal65_tree = None
-        NAME66_tree = None
-        char_literal67_tree = None
-        char_literal68_tree = None
-        DQSTRING69_tree = None
+        char_literal66_tree = None
+        DQSTRING67_tree = None
+        stream_49 = RewriteRuleTokenStream(self.adaptor, "token 49")
         stream_NAME = RewriteRuleTokenStream(self.adaptor, "token NAME")
-        stream_43 = RewriteRuleTokenStream(self.adaptor, "token 43")
-        stream_42 = RewriteRuleTokenStream(self.adaptor, "token 42")
         stream_41 = RewriteRuleTokenStream(self.adaptor, "token 41")
-        stream_51 = RewriteRuleTokenStream(self.adaptor, "token 51")
+        stream_40 = RewriteRuleTokenStream(self.adaptor, "token 40")
         stream_DQSTRING = RewriteRuleTokenStream(self.adaptor, "token DQSTRING")
+        stream_39 = RewriteRuleTokenStream(self.adaptor, "token 39")
 
         try:
             try:
-                # XKBGrammar.g:134:2: ( 'type' ( '[' NAME ']' )? '=' DQSTRING -> ^( ELEM_KEYSYMS ^( TOKEN_TYPE ( NAME )? DQSTRING ) ) )
-                # XKBGrammar.g:134:4: 'type' ( '[' NAME ']' )? '=' DQSTRING
-                string_literal64 = self.input.LT(1)
-                self.match(self.input, 51, self.FOLLOW_51_in_elem_keysyms609) 
-                stream_51.add(string_literal64)
-                # XKBGrammar.g:134:11: ( '[' NAME ']' )?
-                alt12 = 2
-                LA12_0 = self.input.LA(1)
+                # XKBGrammar.g:130:2: ( 'type' ( '[' NAME ']' )? '=' DQSTRING -> ^( ELEM_KEYSYMS ^( TOKEN_TYPE ( NAME )? DQSTRING ) ) )
+                # XKBGrammar.g:130:4: 'type' ( '[' NAME ']' )? '=' DQSTRING
+                string_literal62 = self.input.LT(1)
+                self.match(self.input, 49, self.FOLLOW_49_in_elem_keysyms583) 
+                stream_49.add(string_literal62)
+                # XKBGrammar.g:130:11: ( '[' NAME ']' )?
+                alt11 = 2
+                LA11_0 = self.input.LA(1)
 
-                if (LA12_0 == 41) :
-                    alt12 = 1
-                if alt12 == 1:
-                    # XKBGrammar.g:134:12: '[' NAME ']'
+                if (LA11_0 == 39) :
+                    alt11 = 1
+                if alt11 == 1:
+                    # XKBGrammar.g:130:12: '[' NAME ']'
+                    char_literal63 = self.input.LT(1)
+                    self.match(self.input, 39, self.FOLLOW_39_in_elem_keysyms586) 
+                    stream_39.add(char_literal63)
+                    NAME64 = self.input.LT(1)
+                    self.match(self.input, NAME, self.FOLLOW_NAME_in_elem_keysyms588) 
+                    stream_NAME.add(NAME64)
                     char_literal65 = self.input.LT(1)
-                    self.match(self.input, 41, self.FOLLOW_41_in_elem_keysyms612) 
-                    stream_41.add(char_literal65)
-                    NAME66 = self.input.LT(1)
-                    self.match(self.input, NAME, self.FOLLOW_NAME_in_elem_keysyms614) 
-                    stream_NAME.add(NAME66)
-                    char_literal67 = self.input.LT(1)
-                    self.match(self.input, 42, self.FOLLOW_42_in_elem_keysyms616) 
-                    stream_42.add(char_literal67)
+                    self.match(self.input, 40, self.FOLLOW_40_in_elem_keysyms590) 
+                    stream_40.add(char_literal65)
 
 
 
 
-                char_literal68 = self.input.LT(1)
-                self.match(self.input, 43, self.FOLLOW_43_in_elem_keysyms620) 
-                stream_43.add(char_literal68)
-                DQSTRING69 = self.input.LT(1)
-                self.match(self.input, DQSTRING, self.FOLLOW_DQSTRING_in_elem_keysyms622) 
-                stream_DQSTRING.add(DQSTRING69)
+                char_literal66 = self.input.LT(1)
+                self.match(self.input, 41, self.FOLLOW_41_in_elem_keysyms594) 
+                stream_41.add(char_literal66)
+                DQSTRING67 = self.input.LT(1)
+                self.match(self.input, DQSTRING, self.FOLLOW_DQSTRING_in_elem_keysyms596) 
+                stream_DQSTRING.add(DQSTRING67)
                 # AST Rewrite
-                # elements: NAME, DQSTRING
+                # elements: DQSTRING, NAME
                 # token labels: 
                 # rule labels: retval
                 # token list labels: 
@@ -1890,16 +1815,16 @@ class XKBGrammarParser(Parser):
 
 
                 root_0 = self.adaptor.nil()
-                # 135:2: -> ^( ELEM_KEYSYMS ^( TOKEN_TYPE ( NAME )? DQSTRING ) )
-                # XKBGrammar.g:135:5: ^( ELEM_KEYSYMS ^( TOKEN_TYPE ( NAME )? DQSTRING ) )
+                # 131:2: -> ^( ELEM_KEYSYMS ^( TOKEN_TYPE ( NAME )? DQSTRING ) )
+                # XKBGrammar.g:131:5: ^( ELEM_KEYSYMS ^( TOKEN_TYPE ( NAME )? DQSTRING ) )
                 root_1 = self.adaptor.nil()
                 root_1 = self.adaptor.becomeRoot(self.adaptor.createFromType(ELEM_KEYSYMS, "ELEM_KEYSYMS"), root_1)
 
-                # XKBGrammar.g:135:20: ^( TOKEN_TYPE ( NAME )? DQSTRING )
+                # XKBGrammar.g:131:20: ^( TOKEN_TYPE ( NAME )? DQSTRING )
                 root_2 = self.adaptor.nil()
                 root_2 = self.adaptor.becomeRoot(self.adaptor.createFromType(TOKEN_TYPE, "TOKEN_TYPE"), root_2)
 
-                # XKBGrammar.g:135:33: ( NAME )?
+                # XKBGrammar.g:131:33: ( NAME )?
                 if stream_NAME.hasNext():
                     self.adaptor.addChild(root_2, stream_NAME.nextNode())
 
@@ -1948,7 +1873,7 @@ class XKBGrammarParser(Parser):
 
 
     # $ANTLR start elem_keysymgroup
-    # XKBGrammar.g:138:1: elem_keysymgroup : ( 'symbols' '[' group= NAME ']' '=' )? '[' keysym+= NAME ( ',' keysym+= NAME )* ']' -> ^( ELEM_KEYSYMGROUP ( $group)? ^( VALUE ( $keysym)+ ) ) ;
+    # XKBGrammar.g:134:1: elem_keysymgroup : ( 'symbols' '[' group= NAME ']' '=' )? '[' keysym+= NAME ( ',' keysym+= NAME )* ']' -> ^( ELEM_KEYSYMGROUP ( $group)? ^( VALUE ( $keysym)+ ) ) ;
     def elem_keysymgroup(self, ):
 
         retval = self.elem_keysymgroup_return()
@@ -1957,89 +1882,89 @@ class XKBGrammarParser(Parser):
         root_0 = None
 
         group = None
-        string_literal70 = None
+        string_literal68 = None
+        char_literal69 = None
+        char_literal70 = None
         char_literal71 = None
         char_literal72 = None
         char_literal73 = None
         char_literal74 = None
-        char_literal75 = None
-        char_literal76 = None
         keysym = None
         list_keysym = None
 
         group_tree = None
-        string_literal70_tree = None
+        string_literal68_tree = None
+        char_literal69_tree = None
+        char_literal70_tree = None
         char_literal71_tree = None
         char_literal72_tree = None
         char_literal73_tree = None
         char_literal74_tree = None
-        char_literal75_tree = None
-        char_literal76_tree = None
         keysym_tree = None
         stream_NAME = RewriteRuleTokenStream(self.adaptor, "token NAME")
-        stream_43 = RewriteRuleTokenStream(self.adaptor, "token 43")
-        stream_42 = RewriteRuleTokenStream(self.adaptor, "token 42")
+        stream_44 = RewriteRuleTokenStream(self.adaptor, "token 44")
         stream_41 = RewriteRuleTokenStream(self.adaptor, "token 41")
-        stream_46 = RewriteRuleTokenStream(self.adaptor, "token 46")
-        stream_52 = RewriteRuleTokenStream(self.adaptor, "token 52")
+        stream_40 = RewriteRuleTokenStream(self.adaptor, "token 40")
+        stream_39 = RewriteRuleTokenStream(self.adaptor, "token 39")
+        stream_50 = RewriteRuleTokenStream(self.adaptor, "token 50")
 
         try:
             try:
-                # XKBGrammar.g:139:2: ( ( 'symbols' '[' group= NAME ']' '=' )? '[' keysym+= NAME ( ',' keysym+= NAME )* ']' -> ^( ELEM_KEYSYMGROUP ( $group)? ^( VALUE ( $keysym)+ ) ) )
-                # XKBGrammar.g:139:4: ( 'symbols' '[' group= NAME ']' '=' )? '[' keysym+= NAME ( ',' keysym+= NAME )* ']'
-                # XKBGrammar.g:139:4: ( 'symbols' '[' group= NAME ']' '=' )?
-                alt13 = 2
-                LA13_0 = self.input.LA(1)
+                # XKBGrammar.g:135:2: ( ( 'symbols' '[' group= NAME ']' '=' )? '[' keysym+= NAME ( ',' keysym+= NAME )* ']' -> ^( ELEM_KEYSYMGROUP ( $group)? ^( VALUE ( $keysym)+ ) ) )
+                # XKBGrammar.g:135:4: ( 'symbols' '[' group= NAME ']' '=' )? '[' keysym+= NAME ( ',' keysym+= NAME )* ']'
+                # XKBGrammar.g:135:4: ( 'symbols' '[' group= NAME ']' '=' )?
+                alt12 = 2
+                LA12_0 = self.input.LA(1)
 
-                if (LA13_0 == 52) :
-                    alt13 = 1
-                if alt13 == 1:
-                    # XKBGrammar.g:139:5: 'symbols' '[' group= NAME ']' '='
-                    string_literal70 = self.input.LT(1)
-                    self.match(self.input, 52, self.FOLLOW_52_in_elem_keysymgroup650) 
-                    stream_52.add(string_literal70)
-                    char_literal71 = self.input.LT(1)
-                    self.match(self.input, 41, self.FOLLOW_41_in_elem_keysymgroup652) 
-                    stream_41.add(char_literal71)
+                if (LA12_0 == 50) :
+                    alt12 = 1
+                if alt12 == 1:
+                    # XKBGrammar.g:135:5: 'symbols' '[' group= NAME ']' '='
+                    string_literal68 = self.input.LT(1)
+                    self.match(self.input, 50, self.FOLLOW_50_in_elem_keysymgroup624) 
+                    stream_50.add(string_literal68)
+                    char_literal69 = self.input.LT(1)
+                    self.match(self.input, 39, self.FOLLOW_39_in_elem_keysymgroup626) 
+                    stream_39.add(char_literal69)
                     group = self.input.LT(1)
-                    self.match(self.input, NAME, self.FOLLOW_NAME_in_elem_keysymgroup656) 
+                    self.match(self.input, NAME, self.FOLLOW_NAME_in_elem_keysymgroup630) 
                     stream_NAME.add(group)
-                    char_literal72 = self.input.LT(1)
-                    self.match(self.input, 42, self.FOLLOW_42_in_elem_keysymgroup658) 
-                    stream_42.add(char_literal72)
-                    char_literal73 = self.input.LT(1)
-                    self.match(self.input, 43, self.FOLLOW_43_in_elem_keysymgroup660) 
-                    stream_43.add(char_literal73)
+                    char_literal70 = self.input.LT(1)
+                    self.match(self.input, 40, self.FOLLOW_40_in_elem_keysymgroup632) 
+                    stream_40.add(char_literal70)
+                    char_literal71 = self.input.LT(1)
+                    self.match(self.input, 41, self.FOLLOW_41_in_elem_keysymgroup634) 
+                    stream_41.add(char_literal71)
 
 
 
 
-                char_literal74 = self.input.LT(1)
-                self.match(self.input, 41, self.FOLLOW_41_in_elem_keysymgroup664) 
-                stream_41.add(char_literal74)
+                char_literal72 = self.input.LT(1)
+                self.match(self.input, 39, self.FOLLOW_39_in_elem_keysymgroup638) 
+                stream_39.add(char_literal72)
                 keysym = self.input.LT(1)
-                self.match(self.input, NAME, self.FOLLOW_NAME_in_elem_keysymgroup668) 
+                self.match(self.input, NAME, self.FOLLOW_NAME_in_elem_keysymgroup642) 
                 stream_NAME.add(keysym)
                 if list_keysym is None:
                     list_keysym = []
                 list_keysym.append(keysym)
 
-                # XKBGrammar.g:139:57: ( ',' keysym+= NAME )*
-                while True: #loop14
-                    alt14 = 2
-                    LA14_0 = self.input.LA(1)
+                # XKBGrammar.g:135:57: ( ',' keysym+= NAME )*
+                while True: #loop13
+                    alt13 = 2
+                    LA13_0 = self.input.LA(1)
 
-                    if (LA14_0 == 46) :
-                        alt14 = 1
+                    if (LA13_0 == 44) :
+                        alt13 = 1
 
 
-                    if alt14 == 1:
-                        # XKBGrammar.g:139:58: ',' keysym+= NAME
-                        char_literal75 = self.input.LT(1)
-                        self.match(self.input, 46, self.FOLLOW_46_in_elem_keysymgroup671) 
-                        stream_46.add(char_literal75)
+                    if alt13 == 1:
+                        # XKBGrammar.g:135:58: ',' keysym+= NAME
+                        char_literal73 = self.input.LT(1)
+                        self.match(self.input, 44, self.FOLLOW_44_in_elem_keysymgroup645) 
+                        stream_44.add(char_literal73)
                         keysym = self.input.LT(1)
-                        self.match(self.input, NAME, self.FOLLOW_NAME_in_elem_keysymgroup675) 
+                        self.match(self.input, NAME, self.FOLLOW_NAME_in_elem_keysymgroup649) 
                         stream_NAME.add(keysym)
                         if list_keysym is None:
                             list_keysym = []
@@ -2049,14 +1974,14 @@ class XKBGrammarParser(Parser):
 
 
                     else:
-                        break #loop14
+                        break #loop13
 
 
-                char_literal76 = self.input.LT(1)
-                self.match(self.input, 42, self.FOLLOW_42_in_elem_keysymgroup679) 
-                stream_42.add(char_literal76)
+                char_literal74 = self.input.LT(1)
+                self.match(self.input, 40, self.FOLLOW_40_in_elem_keysymgroup653) 
+                stream_40.add(char_literal74)
                 # AST Rewrite
-                # elements: keysym, group
+                # elements: group, keysym
                 # token labels: group
                 # rule labels: retval
                 # token list labels: keysym
@@ -2073,22 +1998,22 @@ class XKBGrammarParser(Parser):
 
 
                 root_0 = self.adaptor.nil()
-                # 140:2: -> ^( ELEM_KEYSYMGROUP ( $group)? ^( VALUE ( $keysym)+ ) )
-                # XKBGrammar.g:140:5: ^( ELEM_KEYSYMGROUP ( $group)? ^( VALUE ( $keysym)+ ) )
+                # 136:2: -> ^( ELEM_KEYSYMGROUP ( $group)? ^( VALUE ( $keysym)+ ) )
+                # XKBGrammar.g:136:5: ^( ELEM_KEYSYMGROUP ( $group)? ^( VALUE ( $keysym)+ ) )
                 root_1 = self.adaptor.nil()
                 root_1 = self.adaptor.becomeRoot(self.adaptor.createFromType(ELEM_KEYSYMGROUP, "ELEM_KEYSYMGROUP"), root_1)
 
-                # XKBGrammar.g:140:24: ( $group)?
+                # XKBGrammar.g:136:24: ( $group)?
                 if stream_group.hasNext():
                     self.adaptor.addChild(root_1, stream_group.nextNode())
 
 
                 stream_group.reset();
-                # XKBGrammar.g:140:32: ^( VALUE ( $keysym)+ )
+                # XKBGrammar.g:136:32: ^( VALUE ( $keysym)+ )
                 root_2 = self.adaptor.nil()
                 root_2 = self.adaptor.becomeRoot(self.adaptor.createFromType(VALUE, "VALUE"), root_2)
 
-                # XKBGrammar.g:140:40: ( $keysym)+
+                # XKBGrammar.g:136:40: ( $keysym)+
                 if not (stream_keysym.hasNext()):
                     raise RewriteEarlyExitException()
 
@@ -2139,7 +2064,7 @@ class XKBGrammarParser(Parser):
 
 
     # $ANTLR start elem_virtualmods
-    # XKBGrammar.g:143:1: elem_virtualmods : ( 'virtualMods' '=' NAME ) -> ^( ELEM_VIRTUALMODS NAME ) ;
+    # XKBGrammar.g:139:1: elem_virtualmods : ( 'virtualMods' '=' NAME ) -> ^( ELEM_VIRTUALMODS NAME ) ;
     def elem_virtualmods(self, ):
 
         retval = self.elem_virtualmods_return()
@@ -2147,32 +2072,32 @@ class XKBGrammarParser(Parser):
 
         root_0 = None
 
-        string_literal77 = None
-        char_literal78 = None
-        NAME79 = None
+        string_literal75 = None
+        char_literal76 = None
+        NAME77 = None
 
-        string_literal77_tree = None
-        char_literal78_tree = None
-        NAME79_tree = None
+        string_literal75_tree = None
+        char_literal76_tree = None
+        NAME77_tree = None
         stream_NAME = RewriteRuleTokenStream(self.adaptor, "token NAME")
-        stream_43 = RewriteRuleTokenStream(self.adaptor, "token 43")
-        stream_53 = RewriteRuleTokenStream(self.adaptor, "token 53")
+        stream_41 = RewriteRuleTokenStream(self.adaptor, "token 41")
+        stream_51 = RewriteRuleTokenStream(self.adaptor, "token 51")
 
         try:
             try:
-                # XKBGrammar.g:144:2: ( ( 'virtualMods' '=' NAME ) -> ^( ELEM_VIRTUALMODS NAME ) )
-                # XKBGrammar.g:144:4: ( 'virtualMods' '=' NAME )
-                # XKBGrammar.g:144:4: ( 'virtualMods' '=' NAME )
-                # XKBGrammar.g:144:5: 'virtualMods' '=' NAME
-                string_literal77 = self.input.LT(1)
-                self.match(self.input, 53, self.FOLLOW_53_in_elem_virtualmods711) 
-                stream_53.add(string_literal77)
-                char_literal78 = self.input.LT(1)
-                self.match(self.input, 43, self.FOLLOW_43_in_elem_virtualmods713) 
-                stream_43.add(char_literal78)
-                NAME79 = self.input.LT(1)
-                self.match(self.input, NAME, self.FOLLOW_NAME_in_elem_virtualmods715) 
-                stream_NAME.add(NAME79)
+                # XKBGrammar.g:140:2: ( ( 'virtualMods' '=' NAME ) -> ^( ELEM_VIRTUALMODS NAME ) )
+                # XKBGrammar.g:140:4: ( 'virtualMods' '=' NAME )
+                # XKBGrammar.g:140:4: ( 'virtualMods' '=' NAME )
+                # XKBGrammar.g:140:5: 'virtualMods' '=' NAME
+                string_literal75 = self.input.LT(1)
+                self.match(self.input, 51, self.FOLLOW_51_in_elem_virtualmods685) 
+                stream_51.add(string_literal75)
+                char_literal76 = self.input.LT(1)
+                self.match(self.input, 41, self.FOLLOW_41_in_elem_virtualmods687) 
+                stream_41.add(char_literal76)
+                NAME77 = self.input.LT(1)
+                self.match(self.input, NAME, self.FOLLOW_NAME_in_elem_virtualmods689) 
+                stream_NAME.add(NAME77)
 
 
 
@@ -2193,8 +2118,8 @@ class XKBGrammarParser(Parser):
 
 
                 root_0 = self.adaptor.nil()
-                # 145:2: -> ^( ELEM_VIRTUALMODS NAME )
-                # XKBGrammar.g:145:5: ^( ELEM_VIRTUALMODS NAME )
+                # 141:2: -> ^( ELEM_VIRTUALMODS NAME )
+                # XKBGrammar.g:141:5: ^( ELEM_VIRTUALMODS NAME )
                 root_1 = self.adaptor.nil()
                 root_1 = self.adaptor.becomeRoot(self.adaptor.createFromType(ELEM_VIRTUALMODS, "ELEM_VIRTUALMODS"), root_1)
 
@@ -2228,345 +2153,6 @@ class XKBGrammarParser(Parser):
 
     # $ANTLR end elem_virtualmods
 
-    class elem_actions_return(object):
-        def __init__(self):
-            self.start = None
-            self.stop = None
-
-            self.tree = None
-
-
-
-
-    # $ANTLR start elem_actions
-    # XKBGrammar.g:148:1: elem_actions : 'actions' '[' NAME ']' '=' '[' actions_setmods ( ',' actions_setmods )* ']' -> ^( ELEM_ACTIONS NAME ( actions_setmods )+ ) ;
-    def elem_actions(self, ):
-
-        retval = self.elem_actions_return()
-        retval.start = self.input.LT(1)
-
-        root_0 = None
-
-        string_literal80 = None
-        char_literal81 = None
-        NAME82 = None
-        char_literal83 = None
-        char_literal84 = None
-        char_literal85 = None
-        char_literal87 = None
-        char_literal89 = None
-        actions_setmods86 = None
-
-        actions_setmods88 = None
-
-
-        string_literal80_tree = None
-        char_literal81_tree = None
-        NAME82_tree = None
-        char_literal83_tree = None
-        char_literal84_tree = None
-        char_literal85_tree = None
-        char_literal87_tree = None
-        char_literal89_tree = None
-        stream_NAME = RewriteRuleTokenStream(self.adaptor, "token NAME")
-        stream_43 = RewriteRuleTokenStream(self.adaptor, "token 43")
-        stream_42 = RewriteRuleTokenStream(self.adaptor, "token 42")
-        stream_41 = RewriteRuleTokenStream(self.adaptor, "token 41")
-        stream_46 = RewriteRuleTokenStream(self.adaptor, "token 46")
-        stream_54 = RewriteRuleTokenStream(self.adaptor, "token 54")
-        stream_actions_setmods = RewriteRuleSubtreeStream(self.adaptor, "rule actions_setmods")
-        try:
-            try:
-                # XKBGrammar.g:149:2: ( 'actions' '[' NAME ']' '=' '[' actions_setmods ( ',' actions_setmods )* ']' -> ^( ELEM_ACTIONS NAME ( actions_setmods )+ ) )
-                # XKBGrammar.g:149:4: 'actions' '[' NAME ']' '=' '[' actions_setmods ( ',' actions_setmods )* ']'
-                string_literal80 = self.input.LT(1)
-                self.match(self.input, 54, self.FOLLOW_54_in_elem_actions736) 
-                stream_54.add(string_literal80)
-                char_literal81 = self.input.LT(1)
-                self.match(self.input, 41, self.FOLLOW_41_in_elem_actions738) 
-                stream_41.add(char_literal81)
-                NAME82 = self.input.LT(1)
-                self.match(self.input, NAME, self.FOLLOW_NAME_in_elem_actions740) 
-                stream_NAME.add(NAME82)
-                char_literal83 = self.input.LT(1)
-                self.match(self.input, 42, self.FOLLOW_42_in_elem_actions742) 
-                stream_42.add(char_literal83)
-                char_literal84 = self.input.LT(1)
-                self.match(self.input, 43, self.FOLLOW_43_in_elem_actions744) 
-                stream_43.add(char_literal84)
-                char_literal85 = self.input.LT(1)
-                self.match(self.input, 41, self.FOLLOW_41_in_elem_actions746) 
-                stream_41.add(char_literal85)
-                self._state.following.append(self.FOLLOW_actions_setmods_in_elem_actions748)
-                actions_setmods86 = self.actions_setmods()
-
-                self._state.following.pop()
-                stream_actions_setmods.add(actions_setmods86.tree)
-                # XKBGrammar.g:149:51: ( ',' actions_setmods )*
-                while True: #loop15
-                    alt15 = 2
-                    LA15_0 = self.input.LA(1)
-
-                    if (LA15_0 == 46) :
-                        alt15 = 1
-
-
-                    if alt15 == 1:
-                        # XKBGrammar.g:149:52: ',' actions_setmods
-                        char_literal87 = self.input.LT(1)
-                        self.match(self.input, 46, self.FOLLOW_46_in_elem_actions751) 
-                        stream_46.add(char_literal87)
-                        self._state.following.append(self.FOLLOW_actions_setmods_in_elem_actions753)
-                        actions_setmods88 = self.actions_setmods()
-
-                        self._state.following.pop()
-                        stream_actions_setmods.add(actions_setmods88.tree)
-
-
-
-                    else:
-                        break #loop15
-
-
-                char_literal89 = self.input.LT(1)
-                self.match(self.input, 42, self.FOLLOW_42_in_elem_actions757) 
-                stream_42.add(char_literal89)
-                # AST Rewrite
-                # elements: actions_setmods, NAME
-                # token labels: 
-                # rule labels: retval
-                # token list labels: 
-                # rule list labels: 
-
-                retval.tree = root_0
-
-                if retval is not None:
-                    stream_retval = RewriteRuleSubtreeStream(self.adaptor, "token retval", retval.tree)
-                else:
-                    stream_retval = RewriteRuleSubtreeStream(self.adaptor, "token retval", None)
-
-
-                root_0 = self.adaptor.nil()
-                # 150:2: -> ^( ELEM_ACTIONS NAME ( actions_setmods )+ )
-                # XKBGrammar.g:150:5: ^( ELEM_ACTIONS NAME ( actions_setmods )+ )
-                root_1 = self.adaptor.nil()
-                root_1 = self.adaptor.becomeRoot(self.adaptor.createFromType(ELEM_ACTIONS, "ELEM_ACTIONS"), root_1)
-
-                self.adaptor.addChild(root_1, stream_NAME.nextNode())
-                # XKBGrammar.g:150:25: ( actions_setmods )+
-                if not (stream_actions_setmods.hasNext()):
-                    raise RewriteEarlyExitException()
-
-                while stream_actions_setmods.hasNext():
-                    self.adaptor.addChild(root_1, stream_actions_setmods.nextTree())
-
-
-                stream_actions_setmods.reset()
-
-                self.adaptor.addChild(root_0, root_1)
-
-
-
-                retval.tree = root_0
-
-
-
-
-                retval.stop = self.input.LT(-1)
-
-
-                retval.tree = self.adaptor.rulePostProcessing(root_0)
-                self.adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop)
-
-
-            except RecognitionException, re:
-                self.reportError(re)
-                self.recover(self.input, re)
-                retval.tree = self.adaptor.errorNode(self.input, retval.start, self.input.LT(-1), re)
-        finally:
-
-            pass
-
-        return retval
-
-    # $ANTLR end elem_actions
-
-    class actions_setmods_return(object):
-        def __init__(self):
-            self.start = None
-            self.stop = None
-
-            self.tree = None
-
-
-
-
-    # $ANTLR start actions_setmods
-    # XKBGrammar.g:153:1: actions_setmods : 'SetMods' '(' 'modifiers' '=' (mod= STATE | mod= NAME ) ( ',' NAME )* ')' -> ^( ACTIONS_SETMODS $mod ( NAME )* ) ;
-    def actions_setmods(self, ):
-
-        retval = self.actions_setmods_return()
-        retval.start = self.input.LT(1)
-
-        root_0 = None
-
-        mod = None
-        string_literal90 = None
-        char_literal91 = None
-        string_literal92 = None
-        char_literal93 = None
-        char_literal94 = None
-        NAME95 = None
-        char_literal96 = None
-
-        mod_tree = None
-        string_literal90_tree = None
-        char_literal91_tree = None
-        string_literal92_tree = None
-        char_literal93_tree = None
-        char_literal94_tree = None
-        NAME95_tree = None
-        char_literal96_tree = None
-        stream_STATE = RewriteRuleTokenStream(self.adaptor, "token STATE")
-        stream_NAME = RewriteRuleTokenStream(self.adaptor, "token NAME")
-        stream_58 = RewriteRuleTokenStream(self.adaptor, "token 58")
-        stream_43 = RewriteRuleTokenStream(self.adaptor, "token 43")
-        stream_57 = RewriteRuleTokenStream(self.adaptor, "token 57")
-        stream_56 = RewriteRuleTokenStream(self.adaptor, "token 56")
-        stream_55 = RewriteRuleTokenStream(self.adaptor, "token 55")
-        stream_46 = RewriteRuleTokenStream(self.adaptor, "token 46")
-
-        try:
-            try:
-                # XKBGrammar.g:154:2: ( 'SetMods' '(' 'modifiers' '=' (mod= STATE | mod= NAME ) ( ',' NAME )* ')' -> ^( ACTIONS_SETMODS $mod ( NAME )* ) )
-                # XKBGrammar.g:154:4: 'SetMods' '(' 'modifiers' '=' (mod= STATE | mod= NAME ) ( ',' NAME )* ')'
-                string_literal90 = self.input.LT(1)
-                self.match(self.input, 55, self.FOLLOW_55_in_actions_setmods780) 
-                stream_55.add(string_literal90)
-                char_literal91 = self.input.LT(1)
-                self.match(self.input, 56, self.FOLLOW_56_in_actions_setmods782) 
-                stream_56.add(char_literal91)
-                string_literal92 = self.input.LT(1)
-                self.match(self.input, 57, self.FOLLOW_57_in_actions_setmods784) 
-                stream_57.add(string_literal92)
-                char_literal93 = self.input.LT(1)
-                self.match(self.input, 43, self.FOLLOW_43_in_actions_setmods786) 
-                stream_43.add(char_literal93)
-                # XKBGrammar.g:154:34: (mod= STATE | mod= NAME )
-                alt16 = 2
-                LA16_0 = self.input.LA(1)
-
-                if (LA16_0 == STATE) :
-                    alt16 = 1
-                elif (LA16_0 == NAME) :
-                    alt16 = 2
-                else:
-                    nvae = NoViableAltException("", 16, 0, self.input)
-
-                    raise nvae
-
-                if alt16 == 1:
-                    # XKBGrammar.g:154:35: mod= STATE
-                    mod = self.input.LT(1)
-                    self.match(self.input, STATE, self.FOLLOW_STATE_in_actions_setmods791) 
-                    stream_STATE.add(mod)
-
-
-
-                elif alt16 == 2:
-                    # XKBGrammar.g:154:47: mod= NAME
-                    mod = self.input.LT(1)
-                    self.match(self.input, NAME, self.FOLLOW_NAME_in_actions_setmods797) 
-                    stream_NAME.add(mod)
-
-
-
-
-                # XKBGrammar.g:154:57: ( ',' NAME )*
-                while True: #loop17
-                    alt17 = 2
-                    LA17_0 = self.input.LA(1)
-
-                    if (LA17_0 == 46) :
-                        alt17 = 1
-
-
-                    if alt17 == 1:
-                        # XKBGrammar.g:154:58: ',' NAME
-                        char_literal94 = self.input.LT(1)
-                        self.match(self.input, 46, self.FOLLOW_46_in_actions_setmods801) 
-                        stream_46.add(char_literal94)
-                        NAME95 = self.input.LT(1)
-                        self.match(self.input, NAME, self.FOLLOW_NAME_in_actions_setmods803) 
-                        stream_NAME.add(NAME95)
-
-
-
-                    else:
-                        break #loop17
-
-
-                char_literal96 = self.input.LT(1)
-                self.match(self.input, 58, self.FOLLOW_58_in_actions_setmods807) 
-                stream_58.add(char_literal96)
-                # AST Rewrite
-                # elements: NAME, mod
-                # token labels: mod
-                # rule labels: retval
-                # token list labels: 
-                # rule list labels: 
-
-                retval.tree = root_0
-                stream_mod = RewriteRuleTokenStream(self.adaptor, "token mod", mod)
-
-                if retval is not None:
-                    stream_retval = RewriteRuleSubtreeStream(self.adaptor, "token retval", retval.tree)
-                else:
-                    stream_retval = RewriteRuleSubtreeStream(self.adaptor, "token retval", None)
-
-
-                root_0 = self.adaptor.nil()
-                # 155:2: -> ^( ACTIONS_SETMODS $mod ( NAME )* )
-                # XKBGrammar.g:155:5: ^( ACTIONS_SETMODS $mod ( NAME )* )
-                root_1 = self.adaptor.nil()
-                root_1 = self.adaptor.becomeRoot(self.adaptor.createFromType(ACTIONS_SETMODS, "ACTIONS_SETMODS"), root_1)
-
-                self.adaptor.addChild(root_1, stream_mod.nextNode())
-                # XKBGrammar.g:155:28: ( NAME )*
-                while stream_NAME.hasNext():
-                    self.adaptor.addChild(root_1, stream_NAME.nextNode())
-
-
-                stream_NAME.reset();
-
-                self.adaptor.addChild(root_0, root_1)
-
-
-
-                retval.tree = root_0
-
-
-
-
-                retval.stop = self.input.LT(-1)
-
-
-                retval.tree = self.adaptor.rulePostProcessing(root_0)
-                self.adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop)
-
-
-            except RecognitionException, re:
-                self.reportError(re)
-                self.recover(self.input, re)
-                retval.tree = self.adaptor.errorNode(self.input, retval.start, self.input.LT(-1), re)
-        finally:
-
-            pass
-
-        return retval
-
-    # $ANTLR end actions_setmods
-
     class elem_overlay_return(object):
         def __init__(self):
             self.start = None
@@ -2578,7 +2164,7 @@ class XKBGrammarParser(Parser):
 
 
     # $ANTLR start elem_overlay
-    # XKBGrammar.g:158:1: elem_overlay : NAME '=' keycode -> ^( OVERLAY NAME keycode ) ;
+    # XKBGrammar.g:144:1: elem_overlay : NAME '=' keycode -> ^( OVERLAY NAME keycode ) ;
     def elem_overlay(self, ):
 
         retval = self.elem_overlay_return()
@@ -2586,31 +2172,31 @@ class XKBGrammarParser(Parser):
 
         root_0 = None
 
-        NAME97 = None
-        char_literal98 = None
-        keycode99 = None
+        NAME78 = None
+        char_literal79 = None
+        keycode80 = None
 
 
-        NAME97_tree = None
-        char_literal98_tree = None
+        NAME78_tree = None
+        char_literal79_tree = None
         stream_NAME = RewriteRuleTokenStream(self.adaptor, "token NAME")
-        stream_43 = RewriteRuleTokenStream(self.adaptor, "token 43")
+        stream_41 = RewriteRuleTokenStream(self.adaptor, "token 41")
         stream_keycode = RewriteRuleSubtreeStream(self.adaptor, "rule keycode")
         try:
             try:
-                # XKBGrammar.g:159:2: ( NAME '=' keycode -> ^( OVERLAY NAME keycode ) )
-                # XKBGrammar.g:159:4: NAME '=' keycode
-                NAME97 = self.input.LT(1)
-                self.match(self.input, NAME, self.FOLLOW_NAME_in_elem_overlay831) 
-                stream_NAME.add(NAME97)
-                char_literal98 = self.input.LT(1)
-                self.match(self.input, 43, self.FOLLOW_43_in_elem_overlay833) 
-                stream_43.add(char_literal98)
-                self._state.following.append(self.FOLLOW_keycode_in_elem_overlay835)
-                keycode99 = self.keycode()
+                # XKBGrammar.g:145:2: ( NAME '=' keycode -> ^( OVERLAY NAME keycode ) )
+                # XKBGrammar.g:145:4: NAME '=' keycode
+                NAME78 = self.input.LT(1)
+                self.match(self.input, NAME, self.FOLLOW_NAME_in_elem_overlay710) 
+                stream_NAME.add(NAME78)
+                char_literal79 = self.input.LT(1)
+                self.match(self.input, 41, self.FOLLOW_41_in_elem_overlay712) 
+                stream_41.add(char_literal79)
+                self._state.following.append(self.FOLLOW_keycode_in_elem_overlay714)
+                keycode80 = self.keycode()
 
                 self._state.following.pop()
-                stream_keycode.add(keycode99.tree)
+                stream_keycode.add(keycode80.tree)
                 # AST Rewrite
                 # elements: keycode, NAME
                 # token labels: 
@@ -2627,8 +2213,8 @@ class XKBGrammarParser(Parser):
 
 
                 root_0 = self.adaptor.nil()
-                # 160:2: -> ^( OVERLAY NAME keycode )
-                # XKBGrammar.g:160:5: ^( OVERLAY NAME keycode )
+                # 146:2: -> ^( OVERLAY NAME keycode )
+                # XKBGrammar.g:146:5: ^( OVERLAY NAME keycode )
                 root_1 = self.adaptor.nil()
                 root_1 = self.adaptor.becomeRoot(self.adaptor.createFromType(OVERLAY, "OVERLAY"), root_1)
 
@@ -2669,110 +2255,89 @@ class XKBGrammarParser(Parser):
 
  
 
-    FOLLOW_symbols_in_layout169 = frozenset([30])
-    FOLLOW_EOF_in_layout172 = frozenset([1])
-    FOLLOW_mapType_in_symbols195 = frozenset([36])
-    FOLLOW_36_in_symbols197 = frozenset([28, 39, 40, 44, 45, 47, 48])
-    FOLLOW_mapMaterial_in_symbols199 = frozenset([28, 37, 39, 40, 44, 45, 47, 48])
-    FOLLOW_37_in_symbols202 = frozenset([38])
-    FOLLOW_38_in_symbols204 = frozenset([1])
-    FOLLOW_MAPOPTS_in_mapType232 = frozenset([30, 31])
-    FOLLOW_DQSTRING_in_mapType235 = frozenset([1])
-    FOLLOW_line_include_in_mapMaterial267 = frozenset([1])
-    FOLLOW_line_name_in_mapMaterial273 = frozenset([38])
-    FOLLOW_38_in_mapMaterial275 = frozenset([1])
-    FOLLOW_line_keytype_in_mapMaterial281 = frozenset([38])
-    FOLLOW_38_in_mapMaterial283 = frozenset([1])
-    FOLLOW_line_key_in_mapMaterial289 = frozenset([38])
-    FOLLOW_38_in_mapMaterial291 = frozenset([1])
-    FOLLOW_line_modifier_map_in_mapMaterial297 = frozenset([38])
-    FOLLOW_38_in_mapMaterial299 = frozenset([1])
-    FOLLOW_line_virtual_modifiers_in_mapMaterial305 = frozenset([38])
-    FOLLOW_38_in_mapMaterial307 = frozenset([1])
-    FOLLOW_39_in_line_include319 = frozenset([31])
-    FOLLOW_DQSTRING_in_line_include321 = frozenset([1])
-    FOLLOW_40_in_line_name341 = frozenset([41])
-    FOLLOW_41_in_line_name343 = frozenset([32])
-    FOLLOW_NAME_in_line_name345 = frozenset([42])
-    FOLLOW_42_in_line_name347 = frozenset([43])
-    FOLLOW_43_in_line_name349 = frozenset([31])
-    FOLLOW_DQSTRING_in_line_name351 = frozenset([1])
-    FOLLOW_44_in_line_keytype377 = frozenset([41, 43])
-    FOLLOW_41_in_line_keytype380 = frozenset([32])
-    FOLLOW_NAME_in_line_keytype382 = frozenset([42])
-    FOLLOW_42_in_line_keytype384 = frozenset([43])
-    FOLLOW_43_in_line_keytype388 = frozenset([31])
-    FOLLOW_DQSTRING_in_line_keytype390 = frozenset([1])
-    FOLLOW_OVERRIDE_in_line_key417 = frozenset([45])
-    FOLLOW_45_in_line_key420 = frozenset([32, 49])
-    FOLLOW_keycode_in_line_key422 = frozenset([36])
-    FOLLOW_36_in_line_key424 = frozenset([32, 41, 51, 52, 53, 54])
-    FOLLOW_keyelements_in_line_key426 = frozenset([37, 46])
-    FOLLOW_46_in_line_key429 = frozenset([32, 41, 51, 52, 53, 54])
-    FOLLOW_keyelements_in_line_key431 = frozenset([37, 46])
-    FOLLOW_37_in_line_key435 = frozenset([1])
-    FOLLOW_47_in_line_modifier_map461 = frozenset([21])
-    FOLLOW_STATE_in_line_modifier_map463 = frozenset([36])
-    FOLLOW_36_in_line_modifier_map465 = frozenset([32, 49])
-    FOLLOW_keycode_in_line_modifier_map467 = frozenset([37, 46])
-    FOLLOW_46_in_line_modifier_map470 = frozenset([32, 49])
-    FOLLOW_keycode_in_line_modifier_map472 = frozenset([37, 46])
-    FOLLOW_37_in_line_modifier_map476 = frozenset([1])
-    FOLLOW_48_in_line_virtual_modifiers499 = frozenset([32])
-    FOLLOW_NAME_in_line_virtual_modifiers501 = frozenset([1, 46])
-    FOLLOW_46_in_line_virtual_modifiers504 = frozenset([32])
-    FOLLOW_NAME_in_line_virtual_modifiers506 = frozenset([1, 46])
-    FOLLOW_NAME_in_keycode530 = frozenset([1])
-    FOLLOW_49_in_keycode543 = frozenset([32])
-    FOLLOW_NAME_in_keycode545 = frozenset([50])
-    FOLLOW_50_in_keycode547 = frozenset([1])
-    FOLLOW_OVERRIDE_in_override566 = frozenset([1])
-    FOLLOW_elem_keysyms_in_keyelements577 = frozenset([1])
-    FOLLOW_elem_keysymgroup_in_keyelements583 = frozenset([1])
-    FOLLOW_elem_virtualmods_in_keyelements588 = frozenset([1])
-    FOLLOW_elem_actions_in_keyelements593 = frozenset([1])
-    FOLLOW_elem_overlay_in_keyelements598 = frozenset([1])
-    FOLLOW_51_in_elem_keysyms609 = frozenset([41, 43])
-    FOLLOW_41_in_elem_keysyms612 = frozenset([32])
-    FOLLOW_NAME_in_elem_keysyms614 = frozenset([42])
-    FOLLOW_42_in_elem_keysyms616 = frozenset([43])
-    FOLLOW_43_in_elem_keysyms620 = frozenset([31])
-    FOLLOW_DQSTRING_in_elem_keysyms622 = frozenset([1])
-    FOLLOW_52_in_elem_keysymgroup650 = frozenset([41])
-    FOLLOW_41_in_elem_keysymgroup652 = frozenset([32])
-    FOLLOW_NAME_in_elem_keysymgroup656 = frozenset([42])
-    FOLLOW_42_in_elem_keysymgroup658 = frozenset([43])
-    FOLLOW_43_in_elem_keysymgroup660 = frozenset([41])
-    FOLLOW_41_in_elem_keysymgroup664 = frozenset([32])
-    FOLLOW_NAME_in_elem_keysymgroup668 = frozenset([42, 46])
-    FOLLOW_46_in_elem_keysymgroup671 = frozenset([32])
-    FOLLOW_NAME_in_elem_keysymgroup675 = frozenset([42, 46])
-    FOLLOW_42_in_elem_keysymgroup679 = frozenset([1])
-    FOLLOW_53_in_elem_virtualmods711 = frozenset([43])
-    FOLLOW_43_in_elem_virtualmods713 = frozenset([32])
-    FOLLOW_NAME_in_elem_virtualmods715 = frozenset([1])
-    FOLLOW_54_in_elem_actions736 = frozenset([41])
-    FOLLOW_41_in_elem_actions738 = frozenset([32])
-    FOLLOW_NAME_in_elem_actions740 = frozenset([42])
-    FOLLOW_42_in_elem_actions742 = frozenset([43])
-    FOLLOW_43_in_elem_actions744 = frozenset([41])
-    FOLLOW_41_in_elem_actions746 = frozenset([55])
-    FOLLOW_actions_setmods_in_elem_actions748 = frozenset([42, 46])
-    FOLLOW_46_in_elem_actions751 = frozenset([55])
-    FOLLOW_actions_setmods_in_elem_actions753 = frozenset([42, 46])
-    FOLLOW_42_in_elem_actions757 = frozenset([1])
-    FOLLOW_55_in_actions_setmods780 = frozenset([56])
-    FOLLOW_56_in_actions_setmods782 = frozenset([57])
-    FOLLOW_57_in_actions_setmods784 = frozenset([43])
-    FOLLOW_43_in_actions_setmods786 = frozenset([21, 32])
-    FOLLOW_STATE_in_actions_setmods791 = frozenset([46, 58])
-    FOLLOW_NAME_in_actions_setmods797 = frozenset([46, 58])
-    FOLLOW_46_in_actions_setmods801 = frozenset([32])
-    FOLLOW_NAME_in_actions_setmods803 = frozenset([46, 58])
-    FOLLOW_58_in_actions_setmods807 = frozenset([1])
-    FOLLOW_NAME_in_elem_overlay831 = frozenset([43])
-    FOLLOW_43_in_elem_overlay833 = frozenset([32, 49])
-    FOLLOW_keycode_in_elem_overlay835 = frozenset([1])
+    FOLLOW_symbols_in_layout161 = frozenset([28])
+    FOLLOW_EOF_in_layout164 = frozenset([1])
+    FOLLOW_mapType_in_symbols187 = frozenset([34])
+    FOLLOW_34_in_symbols189 = frozenset([26, 37, 38, 42, 43, 45, 46])
+    FOLLOW_mapMaterial_in_symbols191 = frozenset([26, 35, 37, 38, 42, 43, 45, 46])
+    FOLLOW_35_in_symbols194 = frozenset([36])
+    FOLLOW_36_in_symbols196 = frozenset([1])
+    FOLLOW_MAPOPTS_in_mapType224 = frozenset([28, 29])
+    FOLLOW_DQSTRING_in_mapType227 = frozenset([1])
+    FOLLOW_line_include_in_mapMaterial259 = frozenset([1])
+    FOLLOW_line_name_in_mapMaterial265 = frozenset([36])
+    FOLLOW_36_in_mapMaterial267 = frozenset([1])
+    FOLLOW_line_keytype_in_mapMaterial273 = frozenset([36])
+    FOLLOW_36_in_mapMaterial275 = frozenset([1])
+    FOLLOW_line_key_in_mapMaterial281 = frozenset([36])
+    FOLLOW_36_in_mapMaterial283 = frozenset([1])
+    FOLLOW_line_modifier_map_in_mapMaterial289 = frozenset([36])
+    FOLLOW_36_in_mapMaterial291 = frozenset([1])
+    FOLLOW_line_virtual_modifiers_in_mapMaterial297 = frozenset([36])
+    FOLLOW_36_in_mapMaterial299 = frozenset([1])
+    FOLLOW_37_in_line_include311 = frozenset([29])
+    FOLLOW_DQSTRING_in_line_include313 = frozenset([1])
+    FOLLOW_38_in_line_name333 = frozenset([39])
+    FOLLOW_39_in_line_name335 = frozenset([30])
+    FOLLOW_NAME_in_line_name337 = frozenset([40])
+    FOLLOW_40_in_line_name339 = frozenset([41])
+    FOLLOW_41_in_line_name341 = frozenset([29])
+    FOLLOW_DQSTRING_in_line_name343 = frozenset([1])
+    FOLLOW_42_in_line_keytype369 = frozenset([39, 41])
+    FOLLOW_39_in_line_keytype372 = frozenset([30])
+    FOLLOW_NAME_in_line_keytype374 = frozenset([40])
+    FOLLOW_40_in_line_keytype376 = frozenset([41])
+    FOLLOW_41_in_line_keytype380 = frozenset([29])
+    FOLLOW_DQSTRING_in_line_keytype382 = frozenset([1])
+    FOLLOW_OVERRIDE_in_line_key409 = frozenset([43])
+    FOLLOW_43_in_line_key412 = frozenset([47])
+    FOLLOW_keycode_in_line_key414 = frozenset([34])
+    FOLLOW_34_in_line_key416 = frozenset([30, 39, 49, 50, 51])
+    FOLLOW_keyelements_in_line_key418 = frozenset([35, 44])
+    FOLLOW_44_in_line_key421 = frozenset([30, 39, 49, 50, 51])
+    FOLLOW_keyelements_in_line_key423 = frozenset([35, 44])
+    FOLLOW_35_in_line_key427 = frozenset([1])
+    FOLLOW_45_in_line_modifier_map453 = frozenset([21])
+    FOLLOW_STATE_in_line_modifier_map455 = frozenset([34])
+    FOLLOW_34_in_line_modifier_map457 = frozenset([47])
+    FOLLOW_keycode_in_line_modifier_map459 = frozenset([35, 44])
+    FOLLOW_44_in_line_modifier_map462 = frozenset([47])
+    FOLLOW_keycode_in_line_modifier_map464 = frozenset([35, 44])
+    FOLLOW_35_in_line_modifier_map468 = frozenset([1])
+    FOLLOW_46_in_line_virtual_modifiers491 = frozenset([30])
+    FOLLOW_NAME_in_line_virtual_modifiers493 = frozenset([1, 44])
+    FOLLOW_44_in_line_virtual_modifiers496 = frozenset([30])
+    FOLLOW_NAME_in_line_virtual_modifiers498 = frozenset([1, 44])
+    FOLLOW_47_in_keycode522 = frozenset([30])
+    FOLLOW_NAME_in_keycode524 = frozenset([48])
+    FOLLOW_48_in_keycode526 = frozenset([1])
+    FOLLOW_OVERRIDE_in_override545 = frozenset([1])
+    FOLLOW_elem_keysyms_in_keyelements556 = frozenset([1])
+    FOLLOW_elem_keysymgroup_in_keyelements562 = frozenset([1])
+    FOLLOW_elem_virtualmods_in_keyelements567 = frozenset([1])
+    FOLLOW_elem_overlay_in_keyelements572 = frozenset([1])
+    FOLLOW_49_in_elem_keysyms583 = frozenset([39, 41])
+    FOLLOW_39_in_elem_keysyms586 = frozenset([30])
+    FOLLOW_NAME_in_elem_keysyms588 = frozenset([40])
+    FOLLOW_40_in_elem_keysyms590 = frozenset([41])
+    FOLLOW_41_in_elem_keysyms594 = frozenset([29])
+    FOLLOW_DQSTRING_in_elem_keysyms596 = frozenset([1])
+    FOLLOW_50_in_elem_keysymgroup624 = frozenset([39])
+    FOLLOW_39_in_elem_keysymgroup626 = frozenset([30])
+    FOLLOW_NAME_in_elem_keysymgroup630 = frozenset([40])
+    FOLLOW_40_in_elem_keysymgroup632 = frozenset([41])
+    FOLLOW_41_in_elem_keysymgroup634 = frozenset([39])
+    FOLLOW_39_in_elem_keysymgroup638 = frozenset([30])
+    FOLLOW_NAME_in_elem_keysymgroup642 = frozenset([40, 44])
+    FOLLOW_44_in_elem_keysymgroup645 = frozenset([30])
+    FOLLOW_NAME_in_elem_keysymgroup649 = frozenset([40, 44])
+    FOLLOW_40_in_elem_keysymgroup653 = frozenset([1])
+    FOLLOW_51_in_elem_virtualmods685 = frozenset([41])
+    FOLLOW_41_in_elem_virtualmods687 = frozenset([30])
+    FOLLOW_NAME_in_elem_virtualmods689 = frozenset([1])
+    FOLLOW_NAME_in_elem_overlay710 = frozenset([41])
+    FOLLOW_41_in_elem_overlay712 = frozenset([47])
+    FOLLOW_keycode_in_elem_overlay714 = frozenset([1])
 
 
 

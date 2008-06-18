@@ -34,19 +34,13 @@ mapMaterial
 
 keycode	
 	: ^(KEYCODE NAME)
-	| ^(KEYCODEX NAME)
 	;
 
 keyelements
 	: ^(ELEM_KEYSYMS ^(TOKEN_TYPE NAME? DQSTRING))
 	| ^(ELEM_KEYSYMGROUP NAME? ^(VALUE NAME+))
 	| ^(ELEM_VIRTUALMODS NAME)
-	| ^(ELEM_ACTIONS NAME actions_setmods+)
 	| ^(ELEM_OVERLAY NAME keycode)
-	;
-
-actions_setmods
-	: ^(ACTIONS_SETMODS STATE* NAME*)
 	;
 
 mapopts

@@ -36,8 +36,6 @@ tokens
 	ELEM_KEYSYMGROUP;
 	ELEM_KEYSYMS;
 	ELEM_VIRTUALMODS;
-	ELEM_ACTIONS;
-	ACTIONS_SETMODS;
 	KEYELEMENTS;
 	OVERRIDE;
 	OVERLAY;
@@ -114,8 +112,7 @@ line_virtual_modifiers
 	;
 
 keycode	
-	: NAME -> ^(KEYCODE NAME)
-	| '<' NAME '>' -> ^(KEYCODEX NAME)
+	: '<' NAME '>' -> ^(KEYCODE NAME)
 	;
 
 override
@@ -126,7 +123,6 @@ keyelements
 	: elem_keysyms 
 	| elem_keysymgroup
 	| elem_virtualmods
-	| elem_actions
 	| elem_overlay
 	;
 
@@ -143,16 +139,6 @@ elem_keysymgroup
 elem_virtualmods
 	: ('virtualMods' '=' NAME)
 	-> ^(ELEM_VIRTUALMODS NAME)
-	;
-
-elem_actions
-	: 'actions' '[' NAME ']' '=' '[' actions_setmods (',' actions_setmods)* ']'
-	-> ^(ELEM_ACTIONS NAME actions_setmods+)
-	;
-
-actions_setmods
-	: 'SetMods' '(' 'modifiers' '=' (mod=STATE | mod=NAME) (',' NAME)* ')'
-	-> ^(ACTIONS_SETMODS $mod NAME*)
 	;
 
 elem_overlay
