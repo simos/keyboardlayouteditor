@@ -141,7 +141,7 @@ elem_keysymgroup
 	;
 
 elem_virtualmods
-	: ('virtualMods' '=' vmod=NAME) => ('virtualMods' NAME)
+	: ('virtualMods' '=' NAME)
 	-> ^(ELEM_VIRTUALMODS NAME)
 	;
 
