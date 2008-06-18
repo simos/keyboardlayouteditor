@@ -1,27 +1,34 @@
 <?xml version="1.0"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
-  <define name="symbolsContent">
-    <oneOrMore>
-      <ref name="mapoptionContent"/>
-    </oneOrMore>
-    <element name="mapname">
-      <text/>
+  <start>
+    <element name="layout">
+      <attribute name="layoutname"/>
+      <oneOrMore>
+        <element name="symbols">
+          <oneOrMore>
+            <ref name="mapoptionContent"/>
+          </oneOrMore>
+          <element name="mapname">
+            <text/>
+          </element>
+          <element name="mapmaterial">
+            <ref name="mapContent"/>
+          </element>
+        </element>
+      </oneOrMore>
     </element>
-    <element name="mapmaterial">
-      <ref name="mapContent"/>
-    </element>
-  </define>
+  </start>
   <define name="mapContent">
-    <oneOrMore>
+    <optional>
       <element name="tokenname">
         <attribute name="name"/>
-        <attribute name="value"/>
+	<text/>
       </element>
-    </oneOrMore>
+    </optional>
     <optional>
       <oneOrMore>
         <element name="tokeninclude">
-          <attribute name="value"/>
+	  <text/>
         </element>
       </oneOrMore>
     </optional>
@@ -29,29 +36,25 @@
       <oneOrMore>
         <element name="tokenkeytype">
           <attribute name="name"/>
-          <attribute name="value"/>
+	  <text/>
         </element>
       </oneOrMore>
     </optional>
     <optional>
       <oneOrMore>
         <element name="tokenmodifiermap">
-          <attribute name="state">
-            <choice>
-              <value>Shift</value>
-              <value>Control</value>
-              <value>Lock</value>
-              <value>Mod1</value>
-              <value>Mod2</value>
-              <value>Mod3</value>
-              <value>Mod4</value>
-              <value>Mod5</value>
-            </choice>
-          </attribute>
+          <attribute name="state"/>
           <oneOrMore>
+	    <optional>
             <element name="keycode">
-              <text/>
+		<attribute name="value"/>
             </element>
+	    </optional>
+	    <optional>
+            <element name="keycodex">
+		<attribute name="value"/>
+            </element>
+	    </optional>
           </oneOrMore>
         </element>
       </oneOrMore>
@@ -59,7 +62,7 @@
     <optional>
       <oneOrMore>
         <element name="tokenvirtualmodifiers">
-          <text/>
+	  <attribute name="value"/>
         </element>
       </oneOrMore>
     </optional>
@@ -75,22 +78,32 @@
       <element name="keycodename">
         <attribute name="value"/>
       </element>
-      <element name="keysyms">
-        <attribute name="tokenname"/>
-        <element name="value">
-          <text/>
+      <optional>
+        <element name="keysyms">
+          <attribute name="tokenname"/>
+          <element name="value">
+            <text/>
+          </element>
         </element>
-      </element>
+      </optional>
       <optional>
         <element name="keysymgroup">
           <optional>
-            <element name="groupname">
-              <attribute name="value"/>
-            </element>
+            <oneOrMore>
+              <element name="typegroup">
+                <attribute name="group"/>
+                <attribute name="value"/>
+              </element>
+            </oneOrMore>
           </optional>
           <oneOrMore>
-            <element name="keysymname">
-              <attribute name="value"/>
+            <element name="symbolsgroup">
+	      <attribute name="group"/>
+              <oneOrMore>
+                <element name="symbol">
+		  <text/>
+                </element>
+              </oneOrMore>
             </element>
           </oneOrMore>
         </element>
@@ -112,7 +125,7 @@
       </optional>
       <optional>
         <element name="overlay">
-          <attribute name="name"/>
+          <attribute name="ovname"/>
           <attribute name="keycode"/>
         </element>
       </optional>
@@ -120,27 +133,7 @@
   </define>
   <define name="mapoptionContent">
     <element name="mapoption">
-      <choice>
-        <value>default</value>
-        <value>hidden</value>
-        <value>partial</value>
-        <value>alphanumeric_keys</value>
-        <value>keypad_keys</value>
-        <value>function_keys</value>
-        <value>modifier_keys</value>
-        <value>alternate_group</value>
-        <value>xkb_symbols</value>
-      </choice>
+	<text/>
     </element>
   </define>
-  <start>
-    <element name="layout">
-      <attribute name="layoutname"/>
-      <oneOrMore>
-        <element name="symbols">
-          <ref name="symbolsContent"/>
-        </element>
-      </oneOrMore>
-    </element>
-  </start>
 </grammar>

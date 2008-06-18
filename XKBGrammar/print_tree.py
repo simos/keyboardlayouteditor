@@ -38,7 +38,8 @@ except OSError:
 
 xkbfile.close
 
-char_stream = antlr3.ANTLRFileStream(xkbfilename, encoding='utf-8')
+# char_stream = antlr3.ANTLRFileStream(xkbfilename, encoding='utf-8')
+char_stream = antlr3.ANTLRFileStream(xkbfilename)
 lexer = XKBGrammarLexer(char_stream)
 tokens = antlr3.CommonTokenStream(lexer)
 parser = XKBGrammarParser(tokens)

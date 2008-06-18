@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout layoutname="gr">
+  <symbols>
+    <mapoption>default</mapoption>
+    <mapoption>partial</mapoption>
+    <mapoption>alphanumeric_keys</mapoption>
+    <mapoption>alternate_group</mapoption>
+    <mapoption>xkb_symbols</mapoption>
+    <mapname>basic</mapname>
+    <mapmaterial>
+      <tokenname name="Group1">Greece</tokenname>
+      <tokeninclude>gr(bare)</tokeninclude>
+      <tokenkeytype name="Group1">THREE_LEVEL</tokenkeytype>
+      <tokenkey override="False">
+        <keycodename value="TLDE"/>
+        <keysymgroup>
+          <symbolsgroup group="">
+            <symbol>grave</symbol>
+            <symbol>asciitilde</symbol>
+          </symbolsgroup>
+        </keysymgroup>
+      </tokenkey>
+      <tokenkey override="False">
+        <keycodename value="AE01"/>
+        <keysymgroup>
+          <symbolsgroup group="">
+            <symbol>1</symbol>
+            <symbol>exclam</symbol>
+          </symbolsgroup>
+        </keysymgroup>
+      </tokenkey>
+    </mapmaterial>
+  </symbols>
+  <symbols>
+    <mapoption>default</mapoption>
+    <mapoption>partial</mapoption>
+    <mapoption>alphanumeric_keys</mapoption>
+    <mapoption>hidden</mapoption>
+    <mapoption>xkb_symbols</mapoption>
+    <mapname>overlay1</mapname>
+    <mapmaterial>
+      <tokenkey override="False">
+        <keycodename value="TLDE"/>
+        <keysymgroup>
+          <symbolsgroup group="">
+            <symbol>KP_Home</symbol>
+          </symbolsgroup>
+        </keysymgroup>
+        <overlay ovname="overlay1" keycode="K07"/>
+      </tokenkey>
+      <tokenkey override="False">
+        <keycodename value="AE01"/>
+        <keysymgroup>
+          <symbolsgroup group="">
+            <symbol>1</symbol>
+            <symbol>exclam</symbol>
+          </symbolsgroup>
+        </keysymgroup>
+      </tokenkey>
+    </mapmaterial>
+  </symbols>
+  <symbols>
+    <mapoption>partial</mapoption>
+    <mapoption>alphanumeric_keys</mapoption>
+    <mapoption>xkb_symbols</mapoption>
+    <mapname>de_mac</mapname>
+    <mapmaterial>
+      <tokenname name="Group1">Switzerland - German (Macintosh)</tokenname>
+      <tokenkey override="False">
+        <keycodename value="AE01"/>
+        <keysymgroup>
+          <symbolsgroup group="">
+            <symbol>1</symbol>
+            <symbol>plus</symbol>
+            <symbol>plusminus</symbol>
+            <symbol>infinity</symbol>
+          </symbolsgroup>
+        </keysymgroup>
+      </tokenkey>
+      <tokenkey override="False">
+        <keycodename value="AE02"/>
+        <keysymgroup>
+          <symbolsgroup group="">
+            <symbol>2</symbol>
+            <symbol>quotedbl</symbol>
+            <symbol>leftquotedoublemark</symbol>
+            <symbol>rightquotedoublemark</symbol>
+          </symbolsgroup>
+        </keysymgroup>
+      </tokenkey>
+    </mapmaterial>
+  </symbols>
+  <symbols>
+    <mapoption>partial</mapoption>
+    <mapoption>modifier_keys</mapoption>
+    <mapoption>xkb_symbols</mapoption>
+    <mapname>ralt_alt</mapname>
+    <mapmaterial>
+      <tokenmodifiermap state="Mod1">
+	<keycodex value="RALT"/>
+      </tokenmodifiermap>	
+      <tokenvirtualmodifiers value="AltGr"/>
+      <tokenvirtualmodifiers value="LAlt"/>
+      <tokenkey override="False">
+        <keycodename value="RALT"/>
+        <keysymgroup>
+          <typegroup group="Group1" value="TWO_LEVEL"/>
+          <typegroup group="Group2" value="TWO_LEVEL"/>
+          <typegroup group="Group3" value="TWO_LEVEL"/>
+          <typegroup group="Group4" value="TWO_LEVEL"/>
+          <symbolsgroup group="Group1">
+            <symbol>Alt_R</symbol>
+            <symbol>Meta_R</symbol>
+          </symbolsgroup>
+          <symbolsgroup group="Group2">
+            <symbol>Alt_R</symbol>
+            <symbol>Meta_R</symbol>
+          </symbolsgroup>
+          <symbolsgroup group="Group3">
+            <symbol>Alt_R</symbol>
+            <symbol>Meta_R</symbol>
+          </symbolsgroup>
+          <symbolsgroup group="Group4">
+            <symbol>Alt_R</symbol>
+            <symbol>Meta_R</symbol>
+          </symbolsgroup>
+        </keysymgroup>
+      </tokenkey>
+    </mapmaterial>
+  </symbols>
+</layout>

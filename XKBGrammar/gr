@@ -1,7 +1,7 @@
 partial alphanumeric_keys alternate_group
 xkb_symbols "extended" {
     include "gr(basic)"
-    name[Group1] = "Greece-Extended";
+    name[Group1] = "Greece-Extendedδφδ";
     key.type[Group1] = "THREE_LEVEL"; // yeah, comment
     override key <AD01> {   type[Group1] = "SEPARATE_CAPS_AND_SHIFT_ALPHABETIC",
                  [ U1C9,                U1C8],       [  any,   U1C7 ]   }; // q
