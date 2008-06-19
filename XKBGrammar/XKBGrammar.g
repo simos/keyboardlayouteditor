@@ -87,7 +87,7 @@ line_include
 	;
 
 line_name
-	: 'name' '[' NAME ']' '=' DQSTRING
+	: 'name' ('[' NAME ']')? '=' DQSTRING
 	-> ^(TOKEN_NAME DQSTRING)
 	;
 

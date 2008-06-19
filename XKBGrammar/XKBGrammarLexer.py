@@ -1,4 +1,4 @@
-# $ANTLR 3.1b1 XKBGrammar.g 2008-06-19 21:19:59
+# $ANTLR 3.1b1 XKBGrammar.g 2008-06-19 21:40:26
 
 import sys
 from antlr3 import *
