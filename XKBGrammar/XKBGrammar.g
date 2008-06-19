@@ -88,12 +88,12 @@ line_include
 
 line_name
 	: 'name' '[' NAME ']' '=' DQSTRING
-	-> ^(TOKEN_NAME NAME ^(VALUE DQSTRING))
+	-> ^(TOKEN_NAME DQSTRING)
 	;
 
 line_keytype
 	: 'key.type' ('[' NAME ']')? '=' DQSTRING
-	-> ^(TOKEN_KEY_TYPE NAME? ^(VALUE DQSTRING))
+	-> ^(TOKEN_KEY_TYPE DQSTRING)
 	;
 
 line_key
@@ -128,12 +128,12 @@ keyelements
 
 elem_keysyms
 	: 'type' ('[' NAME ']')? '=' DQSTRING
-	-> ^(ELEM_KEYSYMS ^(TOKEN_TYPE NAME? DQSTRING))
+	-> ^(ELEM_KEYSYMS DQSTRING)
 	;
 
 elem_keysymgroup
-	: ('symbols' '[' group=NAME ']' '=')? '[' keysym+=NAME (',' keysym+=NAME)* ']'
-	-> ^(ELEM_KEYSYMGROUP $group? ^(VALUE $keysym+ ))
+	: ('symbols' '[' NAME ']' '=')? '[' keysym+=NAME (',' keysym+=NAME)* ']'
+	-> ^(ELEM_KEYSYMGROUP ^(VALUE $keysym+ ))
 	;
 
 elem_virtualmods

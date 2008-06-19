@@ -91,14 +91,12 @@
           <optional>
             <oneOrMore>
               <element name="typegroup">
-                <attribute name="group"/>
                 <attribute name="value"/>
               </element>
             </oneOrMore>
           </optional>
           <oneOrMore>
             <element name="symbolsgroup">
-	      <attribute name="group"/>
               <oneOrMore>
                 <element name="symbol">
 		  <text/>
@@ -111,16 +109,6 @@
       <optional>
         <element name="virtualMods">
           <attribute name="value"/>
-        </element>
-      </optional>
-      <optional>
-        <element name="actions">
-          <attribute name="name"/>
-          <oneOrMore>
-            <element name="setMods">
-              <attribute name="value"/>
-            </element>
-          </oneOrMore>
         </element>
       </optional>
       <optional>

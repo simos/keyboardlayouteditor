@@ -14,7 +14,7 @@
       <tokenkey override="False">
         <keycodename value="TLDE"/>
         <keysymgroup>
-          <symbolsgroup group="">
+          <symbolsgroup>
             <symbol>grave</symbol>
             <symbol>asciitilde</symbol>
           </symbolsgroup>
@@ -23,7 +23,7 @@
       <tokenkey override="False">
         <keycodename value="AE01"/>
         <keysymgroup>
-          <symbolsgroup group="">
+          <symbolsgroup>
             <symbol>1</symbol>
             <symbol>exclam</symbol>
           </symbolsgroup>
@@ -42,7 +42,7 @@
       <tokenkey override="False">
         <keycodename value="TLDE"/>
         <keysymgroup>
-          <symbolsgroup group="">
+          <symbolsgroup>
             <symbol>KP_Home</symbol>
           </symbolsgroup>
         </keysymgroup>
@@ -51,7 +51,7 @@
       <tokenkey override="False">
         <keycodename value="AE01"/>
         <keysymgroup>
-          <symbolsgroup group="">
+          <symbolsgroup>
             <symbol>1</symbol>
             <symbol>exclam</symbol>
           </symbolsgroup>
@@ -69,7 +69,7 @@
       <tokenkey override="False">
         <keycodename value="AE01"/>
         <keysymgroup>
-          <symbolsgroup group="">
+          <symbolsgroup>
             <symbol>1</symbol>
             <symbol>plus</symbol>
             <symbol>plusminus</symbol>
@@ -77,10 +77,10 @@
           </symbolsgroup>
         </keysymgroup>
       </tokenkey>
-      <tokenkey override="False">
+      <tokenkey override="True">
         <keycodename value="AE02"/>
         <keysymgroup>
-          <symbolsgroup group="">
+          <symbolsgroup>
             <symbol>2</symbol>
             <symbol>quotedbl</symbol>
             <symbol>leftquotedoublemark</symbol>
@@ -98,29 +98,16 @@
     <mapmaterial>
       <tokenmodifiermap state="Mod1">
 	<keycodex value="RALT"/>
+	<keycodex value="RALT"/>
+	<keycodex value="RALT"/>
       </tokenmodifiermap>	
       <tokenvirtualmodifiers value="AltGr"/>
       <tokenvirtualmodifiers value="LAlt"/>
       <tokenkey override="False">
         <keycodename value="RALT"/>
         <keysymgroup>
-          <typegroup group="Group1" value="TWO_LEVEL"/>
-          <typegroup group="Group2" value="TWO_LEVEL"/>
-          <typegroup group="Group3" value="TWO_LEVEL"/>
-          <typegroup group="Group4" value="TWO_LEVEL"/>
-          <symbolsgroup group="Group1">
-            <symbol>Alt_R</symbol>
-            <symbol>Meta_R</symbol>
-          </symbolsgroup>
-          <symbolsgroup group="Group2">
-            <symbol>Alt_R</symbol>
-            <symbol>Meta_R</symbol>
-          </symbolsgroup>
-          <symbolsgroup group="Group3">
-            <symbol>Alt_R</symbol>
-            <symbol>Meta_R</symbol>
-          </symbolsgroup>
-          <symbolsgroup group="Group4">
+          <typegroup value="TWO_LEVEL"/>
+          <symbolsgroup>
             <symbol>Alt_R</symbol>
             <symbol>Meta_R</symbol>
           </symbolsgroup>
