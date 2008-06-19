@@ -97,8 +97,8 @@ line_keytype
 	;
 
 line_key
-	: OVERRIDE? 'key' keycode '{' keyelements (',' keyelements)* '}'
-	-> ^(TOKEN_KEY OVERRIDE? keycode keyelements+)
+	: OVERRIDE? 'key' '<' NAME '>' '{' keyelements (',' keyelements)* '}'
+	-> ^(TOKEN_KEY OVERRIDE? NAME keyelements+)
 	;
 
 line_modifier_map
@@ -112,7 +112,8 @@ line_virtual_modifiers
 	;
 
 keycode	
-	: '<' NAME '>' -> ^(KEYCODE NAME)
+	: '<' NAME '>' -> ^(KEYCODEX NAME)
+	| NAME -> ^(KEYCODE NAME)
 	;
 
 override

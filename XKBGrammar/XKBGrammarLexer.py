@@ -1,4 +1,4 @@
-# $ANTLR 3.1b1 XKBGrammar.g 2008-06-18 23:49:32
+# $ANTLR 3.1b1 XKBGrammar.g 2008-06-19 21:19:59
 
 import sys
 from antlr3 import *
@@ -364,9 +364,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__44
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:17:7: ( ',' )
-            # XKBGrammar.g:17:9: ','
-            self.match(44)
+            # XKBGrammar.g:17:7: ( '<' )
+            # XKBGrammar.g:17:9: '<'
+            self.match(60)
 
 
 
@@ -389,9 +389,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__45
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:18:7: ( 'modifier_map' )
-            # XKBGrammar.g:18:9: 'modifier_map'
-            self.match("modifier_map")
+            # XKBGrammar.g:18:7: ( '>' )
+            # XKBGrammar.g:18:9: '>'
+            self.match(62)
 
 
 
@@ -414,9 +414,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__46
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:19:7: ( 'virtual_modifiers' )
-            # XKBGrammar.g:19:9: 'virtual_modifiers'
-            self.match("virtual_modifiers")
+            # XKBGrammar.g:19:7: ( ',' )
+            # XKBGrammar.g:19:9: ','
+            self.match(44)
 
 
 
@@ -439,9 +439,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__47
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:20:7: ( '<' )
-            # XKBGrammar.g:20:9: '<'
-            self.match(60)
+            # XKBGrammar.g:20:7: ( 'modifier_map' )
+            # XKBGrammar.g:20:9: 'modifier_map'
+            self.match("modifier_map")
 
 
 
@@ -464,9 +464,9 @@ class XKBGrammarLexer(Lexer):
             _type = T__48
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:21:7: ( '>' )
-            # XKBGrammar.g:21:9: '>'
-            self.match(62)
+            # XKBGrammar.g:21:7: ( 'virtual_modifiers' )
+            # XKBGrammar.g:21:9: 'virtual_modifiers'
+            self.match("virtual_modifiers")
 
 
 
@@ -564,59 +564,59 @@ class XKBGrammarLexer(Lexer):
             _type = MAPOPTS
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:150:2: ( 'default' | 'hidden' | 'partial' | 'alphanumeric_keys' | 'keypad_keys' | 'function_keys' | 'modifier_keys' | 'alternate_group' | 'xkb_symbols' )
+            # XKBGrammar.g:151:2: ( 'default' | 'hidden' | 'partial' | 'alphanumeric_keys' | 'keypad_keys' | 'function_keys' | 'modifier_keys' | 'alternate_group' | 'xkb_symbols' )
             alt1 = 9
             alt1 = self.dfa1.predict(self.input)
             if alt1 == 1:
-                # XKBGrammar.g:150:4: 'default'
+                # XKBGrammar.g:151:4: 'default'
                 self.match("default")
 
 
 
             elif alt1 == 2:
-                # XKBGrammar.g:151:4: 'hidden'
+                # XKBGrammar.g:152:4: 'hidden'
                 self.match("hidden")
 
 
 
             elif alt1 == 3:
-                # XKBGrammar.g:152:4: 'partial'
+                # XKBGrammar.g:153:4: 'partial'
                 self.match("partial")
 
 
 
             elif alt1 == 4:
-                # XKBGrammar.g:153:4: 'alphanumeric_keys'
+                # XKBGrammar.g:154:4: 'alphanumeric_keys'
                 self.match("alphanumeric_keys")
 
 
 
             elif alt1 == 5:
-                # XKBGrammar.g:154:4: 'keypad_keys'
+                # XKBGrammar.g:155:4: 'keypad_keys'
                 self.match("keypad_keys")
 
 
 
             elif alt1 == 6:
-                # XKBGrammar.g:155:4: 'function_keys'
+                # XKBGrammar.g:156:4: 'function_keys'
                 self.match("function_keys")
 
 
 
             elif alt1 == 7:
-                # XKBGrammar.g:156:4: 'modifier_keys'
+                # XKBGrammar.g:157:4: 'modifier_keys'
                 self.match("modifier_keys")
 
 
 
             elif alt1 == 8:
-                # XKBGrammar.g:157:4: 'alternate_group'
+                # XKBGrammar.g:158:4: 'alternate_group'
                 self.match("alternate_group")
 
 
 
             elif alt1 == 9:
-                # XKBGrammar.g:158:4: 'xkb_symbols'
+                # XKBGrammar.g:159:4: 'xkb_symbols'
                 self.match("xkb_symbols")
 
 
@@ -639,53 +639,53 @@ class XKBGrammarLexer(Lexer):
             _type = STATE
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:162:2: ( 'Shift' | 'Control' | 'Lock' | 'Mod1' | 'Mod2' | 'Mod3' | 'Mod4' | 'Mod5' )
+            # XKBGrammar.g:163:2: ( 'Shift' | 'Control' | 'Lock' | 'Mod1' | 'Mod2' | 'Mod3' | 'Mod4' | 'Mod5' )
             alt2 = 8
             alt2 = self.dfa2.predict(self.input)
             if alt2 == 1:
-                # XKBGrammar.g:162:4: 'Shift'
+                # XKBGrammar.g:163:4: 'Shift'
                 self.match("Shift")
 
 
 
             elif alt2 == 2:
-                # XKBGrammar.g:163:4: 'Control'
+                # XKBGrammar.g:164:4: 'Control'
                 self.match("Control")
 
 
 
             elif alt2 == 3:
-                # XKBGrammar.g:164:4: 'Lock'
+                # XKBGrammar.g:165:4: 'Lock'
                 self.match("Lock")
 
 
 
             elif alt2 == 4:
-                # XKBGrammar.g:165:4: 'Mod1'
+                # XKBGrammar.g:166:4: 'Mod1'
                 self.match("Mod1")
 
 
 
             elif alt2 == 5:
-                # XKBGrammar.g:166:4: 'Mod2'
+                # XKBGrammar.g:167:4: 'Mod2'
                 self.match("Mod2")
 
 
 
             elif alt2 == 6:
-                # XKBGrammar.g:167:4: 'Mod3'
+                # XKBGrammar.g:168:4: 'Mod3'
                 self.match("Mod3")
 
 
 
             elif alt2 == 7:
-                # XKBGrammar.g:168:4: 'Mod4'
+                # XKBGrammar.g:169:4: 'Mod4'
                 self.match("Mod4")
 
 
 
             elif alt2 == 8:
-                # XKBGrammar.g:169:4: 'Mod5'
+                # XKBGrammar.g:170:4: 'Mod5'
                 self.match("Mod5")
 
 
@@ -708,8 +708,8 @@ class XKBGrammarLexer(Lexer):
             _type = OVERRIDE
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:173:2: ( 'override' )
-            # XKBGrammar.g:173:4: 'override'
+            # XKBGrammar.g:174:2: ( 'override' )
+            # XKBGrammar.g:174:4: 'override'
             self.match("override")
 
 
@@ -733,9 +733,9 @@ class XKBGrammarLexer(Lexer):
             _type = NAME
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:177:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' | '+' | '-' )* )
-            # XKBGrammar.g:177:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' | '+' | '-' )*
-            # XKBGrammar.g:177:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' | '+' | '-' )*
+            # XKBGrammar.g:178:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' | '+' | '-' )* )
+            # XKBGrammar.g:178:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' | '+' | '-' )*
+            # XKBGrammar.g:178:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' | '+' | '-' )*
             while True: #loop3
                 alt3 = 2
                 LA3_0 = self.input.LA(1)
@@ -781,8 +781,8 @@ class XKBGrammarLexer(Lexer):
             _type = WS
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:181:2: ( ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' ) )
-            # XKBGrammar.g:182:2: ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' )
+            # XKBGrammar.g:182:2: ( ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' ) )
+            # XKBGrammar.g:183:2: ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' )
             if (9 <= self.input.LA(1) <= 10) or (12 <= self.input.LA(1) <= 13) or self.input.LA(1) == 32:
                 self.input.consume();
             else:
@@ -815,10 +815,10 @@ class XKBGrammarLexer(Lexer):
             _type = COMMENT
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:187:6: ( '/*' ( . )* '*/' )
-            # XKBGrammar.g:188:2: '/*' ( . )* '*/'
+            # XKBGrammar.g:188:6: ( '/*' ( . )* '*/' )
+            # XKBGrammar.g:189:2: '/*' ( . )* '*/'
             self.match("/*")
-            # XKBGrammar.g:188:7: ( . )*
+            # XKBGrammar.g:189:7: ( . )*
             while True: #loop4
                 alt4 = 2
                 LA4_0 = self.input.LA(1)
@@ -837,7 +837,7 @@ class XKBGrammarLexer(Lexer):
 
 
                 if alt4 == 1:
-                    # XKBGrammar.g:188:7: .
+                    # XKBGrammar.g:189:7: .
                     self.matchAny()
 
 
@@ -872,9 +872,9 @@ class XKBGrammarLexer(Lexer):
             _type = LINE_COMMENT
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:192:6: ( ( '//' | '#' ) (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' )
-            # XKBGrammar.g:193:2: ( '//' | '#' ) (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
-            # XKBGrammar.g:193:2: ( '//' | '#' )
+            # XKBGrammar.g:193:6: ( ( '//' | '#' ) (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' )
+            # XKBGrammar.g:194:2: ( '//' | '#' ) (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+            # XKBGrammar.g:194:2: ( '//' | '#' )
             alt5 = 2
             LA5_0 = self.input.LA(1)
 
@@ -888,19 +888,19 @@ class XKBGrammarLexer(Lexer):
                 raise nvae
 
             if alt5 == 1:
-                # XKBGrammar.g:193:3: '//'
+                # XKBGrammar.g:194:3: '//'
                 self.match("//")
 
 
 
             elif alt5 == 2:
-                # XKBGrammar.g:193:10: '#'
+                # XKBGrammar.g:194:10: '#'
                 self.match(35)
 
 
 
 
-            # XKBGrammar.g:193:16: (~ ( '\\n' | '\\r' ) )*
+            # XKBGrammar.g:194:16: (~ ( '\\n' | '\\r' ) )*
             while True: #loop6
                 alt6 = 2
                 LA6_0 = self.input.LA(1)
@@ -910,7 +910,7 @@ class XKBGrammarLexer(Lexer):
 
 
                 if alt6 == 1:
-                    # XKBGrammar.g:193:16: ~ ( '\\n' | '\\r' )
+                    # XKBGrammar.g:194:16: ~ ( '\\n' | '\\r' )
                     if (0 <= self.input.LA(1) <= 9) or (11 <= self.input.LA(1) <= 12) or (14 <= self.input.LA(1) <= 65534):
                         self.input.consume();
                     else:
@@ -925,14 +925,14 @@ class XKBGrammarLexer(Lexer):
                     break #loop6
 
 
-            # XKBGrammar.g:193:32: ( '\\r' )?
+            # XKBGrammar.g:194:32: ( '\\r' )?
             alt7 = 2
             LA7_0 = self.input.LA(1)
 
             if (LA7_0 == 13) :
                 alt7 = 1
             if alt7 == 1:
-                # XKBGrammar.g:193:32: '\\r'
+                # XKBGrammar.g:194:32: '\\r'
                 self.match(13)
 
 
@@ -964,10 +964,10 @@ class XKBGrammarLexer(Lexer):
             _type = DQSTRING
             _channel = DEFAULT_CHANNEL
 
-            # XKBGrammar.g:201:6: ( '\"' ( options {greedy=false; } : ~ ( '\"' ) )* '\"' )
-            # XKBGrammar.g:201:10: '\"' ( options {greedy=false; } : ~ ( '\"' ) )* '\"'
+            # XKBGrammar.g:202:6: ( '\"' ( options {greedy=false; } : ~ ( '\"' ) )* '\"' )
+            # XKBGrammar.g:202:10: '\"' ( options {greedy=false; } : ~ ( '\"' ) )* '\"'
             self.match(34)
-            # XKBGrammar.g:201:14: ( options {greedy=false; } : ~ ( '\"' ) )*
+            # XKBGrammar.g:202:14: ( options {greedy=false; } : ~ ( '\"' ) )*
             while True: #loop8
                 alt8 = 2
                 LA8_0 = self.input.LA(1)
@@ -979,7 +979,7 @@ class XKBGrammarLexer(Lexer):
 
 
                 if alt8 == 1:
-                    # XKBGrammar.g:201:39: ~ ( '\"' )
+                    # XKBGrammar.g:202:39: ~ ( '\"' )
                     if (0 <= self.input.LA(1) <= 33) or (35 <= self.input.LA(1) <= 65534):
                         self.input.consume();
                     else:
@@ -1269,14 +1269,14 @@ class XKBGrammarLexer(Lexer):
     # lookup tables for DFA #9
 
     DFA9_eot = DFA.unpack(
-        u"\1\34\3\uffff\2\34\3\uffff\1\34\1\uffff\2\34\2\uffff\15\34\5\uffff"
-        u"\22\34\1\uffff\2\34\1\113\21\34\1\141\1\uffff\1\34\1\uffff\2\34"
-        u"\1\145\12\34\6\160\2\34\1\uffff\3\34\1\uffff\10\34\1\160\1\34\1"
-        u"\uffff\7\34\1\u0086\7\34\1\u008e\3\34\1\u0093\1\u0086\1\uffff\1"
-        u"\u0086\4\34\1\160\1\34\1\uffff\4\34\1\uffff\4\34\1\u00a1\10\34"
-        u"\1\uffff\11\34\1\u0086\3\34\1\u00b7\3\34\1\u0086\1\u00bb\2\34\1"
-        u"\uffff\3\34\1\uffff\1\u0086\3\34\1\u0086\5\34\1\u0086\2\34\1\u00cb"
-        u"\1\u0086\1\uffff"
+        u"\1\34\3\uffff\2\34\3\uffff\1\34\3\uffff\17\34\5\uffff\22\34\1\uffff"
+        u"\2\34\1\113\21\34\1\141\1\uffff\1\34\1\uffff\2\34\1\145\12\34\6"
+        u"\160\2\34\1\uffff\3\34\1\uffff\10\34\1\160\1\34\1\uffff\7\34\1"
+        u"\u0086\7\34\1\u008e\3\34\1\u0093\1\u0086\1\uffff\1\u0086\4\34\1"
+        u"\160\1\34\1\uffff\4\34\1\uffff\4\34\1\u00a1\10\34\1\uffff\11\34"
+        u"\1\u0086\3\34\1\u00b7\3\34\1\u0086\1\u00bb\2\34\1\uffff\3\34\1"
+        u"\uffff\1\u0086\3\34\1\u0086\5\34\1\u0086\2\34\1\u00cb\1\u0086\1"
+        u"\uffff"
         )
 
     DFA9_eof = DFA.unpack(
@@ -1284,53 +1284,53 @@ class XKBGrammarLexer(Lexer):
         )
 
     DFA9_min = DFA.unpack(
-        u"\1\11\3\uffff\1\156\1\141\3\uffff\1\145\1\uffff\1\157\1\151\2\uffff"
-        u"\2\171\1\145\1\151\1\141\1\154\1\165\1\153\1\150\3\157\1\166\2"
-        u"\uffff\1\52\2\uffff\1\143\1\155\1\171\1\144\1\162\1\160\1\155\1"
-        u"\146\1\144\1\162\1\160\1\156\1\142\1\151\1\156\1\143\1\144\1\145"
-        u"\1\uffff\1\154\1\145\1\53\1\151\1\164\1\145\1\142\1\141\1\144\1"
-        u"\164\1\150\1\145\1\143\1\137\1\146\1\164\1\153\1\61\1\162\1\165"
-        u"\1\53\1\uffff\1\141\1\uffff\1\146\1\165\1\53\1\157\1\165\1\145"
-        u"\1\151\1\141\1\162\1\164\1\163\1\164\1\162\6\53\1\162\1\144\1\uffff"
-        u"\1\144\1\151\1\141\1\uffff\2\154\1\156\1\141\2\156\1\151\1\171"
-        u"\1\53\1\157\1\uffff\1\151\1\145\1\137\1\145\1\154\1\163\1\164\1"
-        u"\53\1\154\1\165\1\141\1\157\1\155\1\154\1\144\1\53\1\153\1\162"
-        u"\1\115\2\53\1\uffff\1\53\1\155\1\164\1\156\1\142\1\53\1\145\1\uffff"
-        u"\1\145\1\137\1\155\1\157\1\uffff\2\145\1\137\1\157\1\53\1\171\1"
-        u"\153\1\157\1\144\1\162\1\137\1\153\1\154\1\uffff\1\163\1\141\1"
-        u"\145\1\144\1\163\1\151\1\147\1\145\1\163\1\53\1\160\1\171\1\151"
-        u"\1\53\1\143\1\162\1\171\2\53\1\163\1\146\1\uffff\1\137\1\157\1"
-        u"\163\1\uffff\1\53\1\151\1\153\1\165\1\53\2\145\1\160\1\162\1\171"
-        u"\1\53\2\163\2\53\1\uffff"
+        u"\1\11\3\uffff\1\156\1\141\3\uffff\1\145\3\uffff\1\157\1\151\2\171"
+        u"\1\145\1\151\1\141\1\154\1\165\1\153\1\150\3\157\1\166\2\uffff"
+        u"\1\52\2\uffff\1\143\1\155\1\171\1\144\1\162\1\160\1\155\1\146\1"
+        u"\144\1\162\1\160\1\156\1\142\1\151\1\156\1\143\1\144\1\145\1\uffff"
+        u"\1\154\1\145\1\53\1\151\1\164\1\145\1\142\1\141\1\144\1\164\1\150"
+        u"\1\145\1\143\1\137\1\146\1\164\1\153\1\61\1\162\1\165\1\53\1\uffff"
+        u"\1\141\1\uffff\1\146\1\165\1\53\1\157\1\165\1\145\1\151\1\141\1"
+        u"\162\1\164\1\163\1\164\1\162\6\53\1\162\1\144\1\uffff\1\144\1\151"
+        u"\1\141\1\uffff\2\154\1\156\1\141\2\156\1\151\1\171\1\53\1\157\1"
+        u"\uffff\1\151\1\145\1\137\1\145\1\154\1\163\1\164\1\53\1\154\1\165"
+        u"\1\141\1\157\1\155\1\154\1\144\1\53\1\153\1\162\1\115\2\53\1\uffff"
+        u"\1\53\1\155\1\164\1\156\1\142\1\53\1\145\1\uffff\1\145\1\137\1"
+        u"\155\1\157\1\uffff\2\145\1\137\1\157\1\53\1\171\1\153\1\157\1\144"
+        u"\1\162\1\137\1\153\1\154\1\uffff\1\163\1\141\1\145\1\144\1\163"
+        u"\1\151\1\147\1\145\1\163\1\53\1\160\1\171\1\151\1\53\1\143\1\162"
+        u"\1\171\2\53\1\163\1\146\1\uffff\1\137\1\157\1\163\1\uffff\1\53"
+        u"\1\151\1\153\1\165\1\53\2\145\1\160\1\162\1\171\1\53\2\163\2\53"
+        u"\1\uffff"
         )
 
     DFA9_max = DFA.unpack(
-        u"\1\175\3\uffff\1\156\1\141\3\uffff\1\145\1\uffff\1\157\1\151\2"
-        u"\uffff\2\171\1\145\1\151\1\141\1\154\1\165\1\153\1\150\3\157\1"
-        u"\166\2\uffff\1\57\2\uffff\1\143\1\155\1\171\1\144\1\162\1\160\1"
-        u"\155\1\146\1\144\1\162\1\164\1\156\1\142\1\151\1\156\1\143\1\144"
-        u"\1\145\1\uffff\1\154\1\145\1\172\1\151\1\164\1\145\1\142\1\141"
-        u"\1\144\1\164\1\150\1\145\1\143\1\137\1\146\1\164\1\153\1\65\1\162"
-        u"\1\165\1\172\1\uffff\1\141\1\uffff\1\146\1\165\1\172\1\157\1\165"
-        u"\1\145\1\151\1\141\1\162\1\164\1\163\1\164\1\162\6\172\1\162\1"
-        u"\144\1\uffff\1\144\1\151\1\141\1\uffff\2\154\1\156\1\141\2\156"
-        u"\1\151\1\171\1\172\1\157\1\uffff\1\151\1\145\1\137\1\145\1\154"
-        u"\1\163\1\164\1\172\1\154\1\165\1\141\1\157\1\155\1\154\1\144\1"
-        u"\172\1\153\1\162\1\137\2\172\1\uffff\1\172\1\155\1\164\1\156\1"
-        u"\142\1\172\1\145\1\uffff\1\145\1\137\1\155\1\157\1\uffff\2\145"
-        u"\1\137\1\157\1\172\1\171\1\155\1\157\1\144\1\162\1\137\1\153\1"
-        u"\154\1\uffff\1\163\1\141\1\145\1\144\1\163\1\151\1\147\1\145\1"
-        u"\163\1\172\1\160\1\171\1\151\1\172\1\143\1\162\1\171\2\172\1\163"
-        u"\1\146\1\uffff\1\137\1\157\1\163\1\uffff\1\172\1\151\1\153\1\165"
-        u"\1\172\2\145\1\160\1\162\1\171\1\172\2\163\2\172\1\uffff"
+        u"\1\175\3\uffff\1\156\1\141\3\uffff\1\145\3\uffff\1\157\1\151\2"
+        u"\171\1\145\1\151\1\141\1\154\1\165\1\153\1\150\3\157\1\166\2\uffff"
+        u"\1\57\2\uffff\1\143\1\155\1\171\1\144\1\162\1\160\1\155\1\146\1"
+        u"\144\1\162\1\164\1\156\1\142\1\151\1\156\1\143\1\144\1\145\1\uffff"
+        u"\1\154\1\145\1\172\1\151\1\164\1\145\1\142\1\141\1\144\1\164\1"
+        u"\150\1\145\1\143\1\137\1\146\1\164\1\153\1\65\1\162\1\165\1\172"
+        u"\1\uffff\1\141\1\uffff\1\146\1\165\1\172\1\157\1\165\1\145\1\151"
+        u"\1\141\1\162\1\164\1\163\1\164\1\162\6\172\1\162\1\144\1\uffff"
+        u"\1\144\1\151\1\141\1\uffff\2\154\1\156\1\141\2\156\1\151\1\171"
+        u"\1\172\1\157\1\uffff\1\151\1\145\1\137\1\145\1\154\1\163\1\164"
+        u"\1\172\1\154\1\165\1\141\1\157\1\155\1\154\1\144\1\172\1\153\1"
+        u"\162\1\137\2\172\1\uffff\1\172\1\155\1\164\1\156\1\142\1\172\1"
+        u"\145\1\uffff\1\145\1\137\1\155\1\157\1\uffff\2\145\1\137\1\157"
+        u"\1\172\1\171\1\155\1\157\1\144\1\162\1\137\1\153\1\154\1\uffff"
+        u"\1\163\1\141\1\145\1\144\1\163\1\151\1\147\1\145\1\163\1\172\1"
+        u"\160\1\171\1\151\1\172\1\143\1\162\1\171\2\172\1\163\1\146\1\uffff"
+        u"\1\137\1\157\1\163\1\uffff\1\172\1\151\1\153\1\165\1\172\2\145"
+        u"\1\160\1\162\1\171\1\172\2\163\2\172\1\uffff"
         )
 
     DFA9_accept = DFA.unpack(
-        u"\1\uffff\1\1\1\2\1\3\2\uffff\1\6\1\7\1\10\1\uffff\1\13\2\uffff"
-        u"\1\16\1\17\15\uffff\1\26\1\27\1\uffff\1\31\1\32\22\uffff\1\30\25"
-        u"\uffff\1\11\1\uffff\1\12\25\uffff\1\5\3\uffff\1\20\12\uffff\1\24"
-        u"\25\uffff\1\23\7\uffff\1\4\4\uffff\1\21\15\uffff\1\25\25\uffff"
-        u"\1\22\3\uffff\1\14\17\uffff\1\15"
+        u"\1\uffff\1\1\1\2\1\3\2\uffff\1\6\1\7\1\10\1\uffff\1\13\1\14\1\15"
+        u"\17\uffff\1\26\1\27\1\uffff\1\31\1\32\22\uffff\1\30\25\uffff\1"
+        u"\11\1\uffff\1\12\25\uffff\1\5\3\uffff\1\20\12\uffff\1\24\25\uffff"
+        u"\1\23\7\uffff\1\4\4\uffff\1\21\15\uffff\1\25\25\uffff\1\22\3\uffff"
+        u"\1\16\17\uffff\1\17"
         )
 
     DFA9_special = DFA.unpack(
@@ -1340,10 +1340,10 @@ class XKBGrammarLexer(Lexer):
             
     DFA9_transition = [
         DFA.unpack(u"\2\35\1\uffff\2\35\22\uffff\1\35\1\uffff\1\40\1\37\10"
-        u"\uffff\1\12\2\uffff\1\36\13\uffff\1\3\1\15\1\10\1\16\4\uffff\1"
+        u"\uffff\1\14\2\uffff\1\36\13\uffff\1\3\1\12\1\10\1\13\4\uffff\1"
         u"\30\10\uffff\1\31\1\32\5\uffff\1\27\7\uffff\1\6\1\uffff\1\7\3\uffff"
         u"\1\24\2\uffff\1\21\1\uffff\1\25\1\uffff\1\22\1\4\1\uffff\1\11\1"
-        u"\uffff\1\13\1\5\1\33\1\23\2\uffff\1\20\1\17\1\uffff\1\14\1\uffff"
+        u"\uffff\1\15\1\5\1\33\1\23\2\uffff\1\20\1\17\1\uffff\1\16\1\uffff"
         u"\1\26\2\uffff\1\1\1\uffff\1\2"),
         DFA.unpack(u""),
         DFA.unpack(u""),
@@ -1355,10 +1355,10 @@ class XKBGrammarLexer(Lexer):
         DFA.unpack(u""),
         DFA.unpack(u"\1\43"),
         DFA.unpack(u""),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
         DFA.unpack(u"\1\44"),
         DFA.unpack(u"\1\45"),
-        DFA.unpack(u""),
-        DFA.unpack(u""),
         DFA.unpack(u"\1\46"),
         DFA.unpack(u"\1\47"),
         DFA.unpack(u"\1\50"),

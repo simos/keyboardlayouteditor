@@ -20,11 +20,27 @@ def getChildrenByType(tree, type_value):
 			yield child
 
 # Helper function to iterate through all children of a given type
+def getChildrenByTypes(tree, type_value1, type_value2):
+	for i in range(tree.getChildCount()):
+		child = tree.getChild(i)
+		if child.getType() == type_value1 or child.getType() == type_value2:
+			yield child
+
+# Helper function to iterate through all children of a given type
 def getChildrenListByType(tree, type_value):
 	list = []
     	for i in range(tree.getChildCount()):
         	child = tree.getChild(i)
         	if child.getType() == type_value:
+        		list.append(child)
+	return list
+
+# Helper function to iterate through all children of a given type
+def getChildrenListByTypes(tree, type_value1, type_value2):
+	list = []
+    	for i in range(tree.getChildCount()):
+        	child = tree.getChild(i)
+        	if child.getType() == type_value1 or child.getType() == type_value2:
         		list.append(child)
 	return list
 
@@ -100,30 +116,30 @@ for symbols in result.tree.getChildren():
 				eInclude.text = include.getChild(0).getText()[1:-1]
 			for keytype in getChildrenByType(mapobject, TOKEN_KEY_TYPE):
 				keytypeText = keytype.getChild(0).getText()
-				for i in keytype.getChildren():
-					if i.getType() == VALUE:
-						eKeyType = etree.SubElement(eMapMaterial, 'tokentype')
-						eKeyType.attrib['name'] = keytypeText
-						eKeyType.text = i.getChild(0).getText()[1:-1]
+				eKeyType = etree.SubElement(eMapMaterial, 'tokentype')
+				eKeyType.text = keytypeText[1:-1]
+			for modmap in getChildrenByType(mapobject, TOKEN_MODIFIER_MAP):
+				eModMap = etree.SubElement(eMapMaterial, 'tokenmodifiermap', state=modmap.getChild(0).getText())
+				for modstate in getChildrenByTypes(modmap, KEYCODE, KEYCODEX):
+        				if modstate.getType() == KEYCODE:
+						eModState = etree.SubElement(eModMap, "keycode", value=modstate.getChild(0).getText())
+					elif modstate.getType() == KEYCODEX:
+						eModState = etree.SubElement(eModMap, "keycodex", value=modstate.getChild(0).getText())
+					else:
+						print "Unexpected token encountered. Aborting...", modstate.getText()
+						sys.exit(-1)
 			for keyset in getChildrenByType(mapobject, TOKEN_KEY):
-				keycode = getChildrenListByType(keyset, KEYCODE)
-				keycodex = getChildrenListByType(keyset, KEYCODEX)
 				elem_keysymgroup = getChildrenByType(keyset, ELEM_KEYSYMGROUP)
 				elem_virtualmods = getChildrenByType(keyset, ELEM_VIRTUALMODS)
 				elem_overlay = getChildrenByType(keyset, OVERLAY)
 				override = getChildrenListByType(keyset, OVERRIDE)
 				eTokenKey = etree.SubElement(eMapMaterial, 'tokenkey')
+				eKeyCodeName = etree.SubElement(eTokenKey, 'keycodename')
+				eKeyCodeName.text = keyset.getChild(0).getText()
 				if len(override) == 1:
 					eTokenKey.attrib['override'] = "True"
 				else:
 					eTokenKey.attrib['override'] = "False"
-				if len(keycode) == 1:
-					eKeyCodeName = etree.SubElement(eTokenKey, 'keycodename', value=keycode[0].getChild(0).getText())
-				elif len(keycodex) == 1:
-					eKeyCodeNameX = etree.SubElement(eTokenKey, 'keycodenamex', value=keycode[0].getChild(0).getText())
-				else:
-					print "\tInternal error keycode/keycodex:", len(keycode), len(keycodex)
-					sys.exit(-1)
 				if len(getChildrenListByType(keyset, ELEM_KEYSYMGROUP)):
 					elem_keysyms = getChildrenListByType(keyset, ELEM_KEYSYMS)
 					eKeySymGroup = etree.SubElement(eTokenKey, 'keysymgroup')
@@ -142,7 +158,8 @@ for symbols in result.tree.getChildren():
 							print "Unexpected error!"
 							sys.exit(-2)
 				if len(getChildrenListByType(keyset, ELEM_VIRTUALMODS)):
-					eVirtualMods = etree.SubElement(eTokenKey, 'tokenvirtualmodifiers', value=elem.getChild(0).getText())
+					for vmods in elem_virtualmods:
+						etree.SubElement(eKeySymGroup, 'tokenvirtualmodifiers', value=vmods.getChild(0).getText())
 				if len(getChildrenListByType(keyset, OVERLAY)):
 					for elem in elem_overlay:
 						for elem2 in getChildrenByType(elem, KEYCODEX):

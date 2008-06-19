@@ -35,7 +35,6 @@
     <optional>
       <oneOrMore>
         <element name="tokenkeytype">
-          <attribute name="name"/>
 	  <text/>
         </element>
       </oneOrMore>
@@ -76,7 +75,7 @@
     <element name="tokenkey">
       <attribute name="override"/>
       <element name="keycodename">
-        <attribute name="value"/>
+	<text/>
       </element>
       <optional>
         <element name="keysyms">

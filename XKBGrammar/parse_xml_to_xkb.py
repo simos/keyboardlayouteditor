@@ -45,7 +45,7 @@ def recurse_tree(node, depth):
 						print "\tname = \"%(s)s\";" % { "s": t.attrib["name"] }
 					elif t.tag == "tokeninclude":
 						print "\tinclude \"%(s)s\"" % { "s": t.text }
-					elif t.tag == "tokenkeytype":
+					elif t.tag == "tokentype":
 						print "\tkey.type = \"%(s)s\";" % { "s": t.text }
 					elif t.tag == "tokenmodifiermap":
 						print "\tmodifier_map %(s)s {" % { "s": t.attrib['state'] },
@@ -66,7 +66,7 @@ def recurse_tree(node, depth):
 							print "override",	
 						for tk in t:
 							if tk.tag == "keycodename":
-								print "key <%(s)s> {" % { "s": tk.attrib["value"] },
+								print "key <%(s)s> {" % { "s": tk.text },
 							elif tk.tag == "keysymgroup":
 								gotitem = False
 								for ks in tk:
@@ -75,6 +75,10 @@ def recurse_tree(node, depth):
 											sys.stdout.write(", ")
 										print "type = \"%(s)s\"" % { "s": ks.attrib["value"] },
 										gotitem = True
+									elif ks.tag == "tokenvirtualmodifiers":
+										if gotitem:
+											sys.stdout.write(", ")
+										print "virtualMods = %(s)s" % { "s": ks.attrib["value"] },
 									elif ks.tag == "symbolsgroup":
 										if gotitem:
 											sys.stdout.write(", ")

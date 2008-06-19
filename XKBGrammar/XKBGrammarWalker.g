@@ -27,13 +27,14 @@ mapMaterial
 	: ^(TOKEN_INCLUDE DQSTRING)
 	| ^(TOKEN_NAME DQSTRING)
 	| ^(TOKEN_KEY_TYPE NAME? ^(VALUE DQSTRING))
-	| ^(TOKEN_KEY OVERRIDE? keycode keyelements+)
-	| ^(TOKEN_MODIFIER_MAP (STATE|NAME) keycode+)
+	| ^(TOKEN_KEY OVERRIDE? NAME keyelements+)
+	| ^(TOKEN_MODIFIER_MAP STATE keycode+)
 	| ^(TOKEN_VIRTUAL_MODIFIERS NAME+)
 	;
 
 keycode	
 	: ^(KEYCODE NAME)
+	| ^(KEYCODEX NAME)
 	;
 
 keyelements

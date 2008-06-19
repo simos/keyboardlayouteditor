@@ -10,9 +10,9 @@
     <mapmaterial>
       <tokenname name="Group1">Greece</tokenname>
       <tokeninclude>gr(bare)</tokeninclude>
-      <tokenkeytype name="Group1">THREE_LEVEL</tokenkeytype>
+      <tokenkeytype>THREE_LEVEL</tokenkeytype>
       <tokenkey override="False">
-        <keycodename value="TLDE"/>
+        <keycodename>TLDE</keycodename>
         <keysymgroup>
           <symbolsgroup>
             <symbol>grave</symbol>
@@ -21,7 +21,7 @@
         </keysymgroup>
       </tokenkey>
       <tokenkey override="False">
-        <keycodename value="AE01"/>
+        <keycodename>AE01</keycodename>
         <keysymgroup>
           <symbolsgroup>
             <symbol>1</symbol>
@@ -40,7 +40,7 @@
     <mapname>overlay1</mapname>
     <mapmaterial>
       <tokenkey override="False">
-        <keycodename value="TLDE"/>
+        <keycodename>TLDE</keycodename>
         <keysymgroup>
           <symbolsgroup>
             <symbol>KP_Home</symbol>
@@ -49,7 +49,7 @@
         <overlay ovname="overlay1" keycode="K07"/>
       </tokenkey>
       <tokenkey override="False">
-        <keycodename value="AE01"/>
+        <keycodename>AE01</keycodename>
         <keysymgroup>
           <symbolsgroup>
             <symbol>1</symbol>
@@ -67,7 +67,7 @@
     <mapmaterial>
       <tokenname name="Group1">Switzerland - German (Macintosh)</tokenname>
       <tokenkey override="False">
-        <keycodename value="AE01"/>
+        <keycodename>AE01</keycodename>
         <keysymgroup>
           <symbolsgroup>
             <symbol>1</symbol>
@@ -78,7 +78,7 @@
         </keysymgroup>
       </tokenkey>
       <tokenkey override="True">
-        <keycodename value="AE02"/>
+        <keycodename>AE02</keycodename>
         <keysymgroup>
           <symbolsgroup>
             <symbol>2</symbol>
@@ -104,7 +104,7 @@
       <tokenvirtualmodifiers value="AltGr"/>
       <tokenvirtualmodifiers value="LAlt"/>
       <tokenkey override="False">
-        <keycodename value="RALT"/>
+        <keycodename>RALT</keycodename>
         <keysymgroup>
           <typegroup value="TWO_LEVEL"/>
           <symbolsgroup>
