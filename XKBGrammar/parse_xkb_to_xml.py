@@ -87,6 +87,7 @@ doc = etree.ElementTree(layout)
 
 layout.attrib['layoutname'] = os.path.basename(xkbfilename)
 
+print "Processing", os.path.basename(xkbfilename), "...",
 for symbols in result.tree.getChildren():
 	eSymbol = etree.SubElement(layout, 'symbols')
 	for mapobject in symbols.getChildren():
@@ -155,8 +156,10 @@ for symbols in result.tree.getChildren():
 							ksname = elem_keysyms[0].getChild(0).getText()
 							eKeySyms = etree.SubElement(eKeySymGroup, 'typegroup', value=ksname[1:-1])
 						else:
-							print "Unexpected error!"
-							sys.exit(-2)
+							""" We are probably processing level3; we keep first item """
+							ksname = elem_keysyms[0].getChild(0).getText()
+							eKeySyms = etree.SubElement(eKeySymGroup, 'typegroup', value=ksname[1:-1])
+							print "Possibly processing level3"
 				if len(getChildrenListByType(keyset, ELEM_VIRTUALMODS)):
 					for vmods in elem_virtualmods:
 						etree.SubElement(eKeySymGroup, 'tokenvirtualmodifiers', value=vmods.getChild(0).getText())
@@ -168,6 +171,10 @@ for symbols in result.tree.getChildren():
 			print "\tInternal error at map level,", mapobject.getText()
 			# sys.exit(-2)
 
-print etree.tostring(layout, pretty_print=True)
+fout = open(os.path.basename(xkbfilename) + ".xml", "w")
+fout.write(etree.tostring(layout, pretty_print=True))
+fout.close()
+
+print " done."
 
 #pdb.set_trace()
