@@ -52,7 +52,7 @@ def recurse_tree(node, depth):
 					elif t.tag == "tokentype":
 						fout.write("\tkey.type = \"%(s)s\";\n" % { "s": t.text })
 					elif t.tag == "tokenmodifiermap":
-						fout.write("\tmodifier_map %(s)s {" % { "s": t.attrib['state'] })
+						fout.write("\tmodifier_map %(s)s { " % { "s": t.attrib['state'] })
 						count_mm = len(t)
 						for mm in t:
 							if mm.tag == "keycodex":
@@ -62,12 +62,12 @@ def recurse_tree(node, depth):
 							if count_mm > 1:
 								fout.write(", ")
 							count_mm -= 1
-						fout.write("};\n")
+						fout.write(" };\n")
 								
 					elif t.tag == "tokenkey": 
 						fout.write("\t")
 						if t.attrib["override"] == "True":
-							fout.write("override")
+							fout.write("override ")
 						for tk in t:
 							if tk.tag == "keycodename":
 								fout.write("key <%(s)s> { " % { "s": tk.text })

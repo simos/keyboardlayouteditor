@@ -74,7 +74,7 @@ parser = XKBGrammarParser(tokens)
 
 result = parser.layout()
 
-# print "tree =", result.tree.toStringTree()
+print "tree =", result.tree.toStringTree()
 
 nodes = antlr3.tree.CommonTreeNodeStream(result.tree)
 nodes.setTokenStream(tokens)
@@ -95,7 +95,7 @@ for symbols in result.tree.getChildren():
 			for maptypesect in mapobject.getChildren():
 				if maptypesect.getType() == MAPOPTIONS:
 					for mapoption in maptypesect.getChildren():
-						if mapoption.getText() == 'xkb_symbols':
+						if mapoption.getText() == 'xkb_symbols' or mapoption.getText() == 'hidden':
 							eMapOption = etree.SubElement(eSymbol, 'mapoption')
 							eMapOption.text = mapoption.getText()
 				elif maptypesect.getType() == MAPNAME:
@@ -136,7 +136,12 @@ for symbols in result.tree.getChildren():
 				override = getChildrenListByType(keyset, OVERRIDE)
 				eTokenKey = etree.SubElement(eMapMaterial, 'tokenkey')
 				eKeyCodeName = etree.SubElement(eTokenKey, 'keycodename')
-				eKeyCodeName.text = keyset.getChild(0).getText()
+				keycodex = getChildrenListByType(keyset, KEYCODEX)
+				if len(keycodex) == 1:
+					eKeyCodeName.text = keycodex[0].getChild(0).getText()
+				else:
+					print "Could not retrieve keycode name"
+					exit(-1)
 				if len(override) == 1:
 					eTokenKey.attrib['override'] = "True"
 				else:
