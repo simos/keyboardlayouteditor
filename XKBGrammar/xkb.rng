@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
-<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+	 xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" 
+	 xmlns:xlink="http://www.w3.org/1999/xlink"
+	 datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   <start>
     <element name="layout">
       <attribute name="layoutname"/>
@@ -34,7 +37,7 @@
     </optional>
     <optional>
       <oneOrMore>
-        <element name="tokenkeytype">
+        <element name="tokentype">
 	  <text/>
         </element>
       </oneOrMore>
@@ -87,13 +90,6 @@
       </optional>
       <optional>
         <element name="keysymgroup">
-          <optional>
-            <oneOrMore>
-              <element name="typegroup">
-                <attribute name="value"/>
-              </element>
-            </oneOrMore>
-          </optional>
           <oneOrMore>
             <element name="symbolsgroup">
               <oneOrMore>
@@ -103,6 +99,13 @@
               </oneOrMore>
             </element>
           </oneOrMore>
+          <optional>
+            <oneOrMore>
+              <element name="typegroup">
+                <attribute name="value"/>
+              </element>
+            </oneOrMore>
+          </optional>
         </element>
       </optional>
       <optional>

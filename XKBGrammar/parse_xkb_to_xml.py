@@ -172,6 +172,9 @@ for symbols in result.tree.getChildren():
 			# sys.exit(-2)
 
 fout = open(os.path.basename(xkbfilename) + ".xml", "w")
+fout.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
+# fout.write("  xmlns=\"http://relaxng.org/ns/structure/1.0\"\n")
+# fout.write("  xmlns:xlink=\"http://www.w3.org/1999/xlink\"?>\n")
 fout.write(etree.tostring(layout, pretty_print=True))
 fout.close()
 

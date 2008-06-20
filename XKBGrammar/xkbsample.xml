@@ -9,7 +9,7 @@
     <mapname>basic</mapname>
     <mapmaterial>
       <tokenname name="Group1">Greece</tokenname>
-      <tokeninclude>gr(bare)</tokeninclude>
+      <tokeninclude xlink:href="gr.xml" xlink:type="simple" xlink:title="bare"/>
       <tokenkeytype>THREE_LEVEL</tokenkeytype>
       <tokenkey override="False">
         <keycodename>TLDE</keycodename>
