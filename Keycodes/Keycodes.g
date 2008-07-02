@@ -105,6 +105,6 @@ LINE_COMMENT
  *  should make us exit loop not continue.
  */
 DQSTRING
-    	:   '"' (options {greedy=false;}:~('"'))* '"'
+    	:   '"' ((options {greedy=false;}:~('"'))*) '"'
         ;
 
