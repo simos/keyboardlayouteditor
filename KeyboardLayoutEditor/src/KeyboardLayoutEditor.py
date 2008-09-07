@@ -15,8 +15,8 @@
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 __author__      = "Simos Xenitellis <simos.lists@googlemail.com>"
-__version__     = "1.0"
-__date__        = "Date: 2008/08/18"
+__version__     = "1.1"
+__date__        = "Date: 2008/09/07"
 __copyright__   = "Copyright (c) 2008 Simos Xenitellis"
 __license__     = "GPLv3"
 
