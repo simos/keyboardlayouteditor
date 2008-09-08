@@ -139,8 +139,11 @@ class Keyboard(gtk.Frame):
         self.context = widget.window.cairo_create()
 
         # set a clip region for the expose event
+        self.context.set_source_rgb(0.8, 0.8, 0.8)
         self.context.rectangle(event.area.x, event.area.y,
                                        event.area.width, event.area.height)
+        self.context.fill_preserve()
+        self.context.stroke()
         self.context.clip()
         self.draw(self.context)
 
