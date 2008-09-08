@@ -29,7 +29,7 @@ from KeyDict import KeyDict, included_files, activated_variants
 class Keyboard(gtk.Frame):
     __gtype_name__ = 'Keyboard'
     
-    SPACING = 5
+    SPACING = 6
 
     def __init__(self, layout):
         gtk.Frame.__init__(self)
@@ -139,11 +139,10 @@ class Keyboard(gtk.Frame):
         self.context = widget.window.cairo_create()
 
         # set a clip region for the expose event
-        self.context.set_source_rgb(0.8, 0.8, 0.8)
+        self.context.set_source_rgb(0.81, 0.84, 0.81)
         self.context.rectangle(event.area.x, event.area.y,
                                        event.area.width, event.area.height)
         self.context.fill_preserve()
-        self.context.stroke()
         self.context.clip()
         self.draw(self.context)
 
