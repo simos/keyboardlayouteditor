@@ -470,7 +470,7 @@ Please do not put punctuation marks."
             include_parse_result = self.parse_xkb.parse_layout(Common.symbolsdir + layout_file)
             layout_name = layout_file
             
-        print "ADD++Include_parse_result (after parse_xkb.parse_layout):", include_parse_result
+        #print "ADD++Include_parse_result (after parse_xkb.parse_layout):", include_parse_result
         if include_parse_result["success"] == True:
             include_parsed_variants = copy.deepcopy(include_parse_result["variants"])
             include_parsed_layout = include_parse_result["layout"]
@@ -480,14 +480,14 @@ Please do not put punctuation marks."
         included_files[layout_name] = { 'file': layout_name,
                                                   'variants' : include_parsed_variants, 
                                                   'xml' : include_parsed_layout}
-        print "+++included files for", layout_name, included_files[layout_name]
+        #print "+++included files for", layout_name, included_files[layout_name]
 
         self.treestore_includes_iters[layout_name] = \
                 self.treestore_includes.append(None, [layout_name, False, False])
         for variant in include_parsed_variants:
-            print "ADD_INCLUDE, doing variant", variant
+            #print "ADD_INCLUDE, doing variant", variant
             if highlight_variant != None and variant == highlight_variant:
-                print "HIGHLIGHT", variant
+                #print "HIGHLIGHT", variant
                 self.treestore_includes.append(self.treestore_includes_iters[layout_name],
                                            [variant, True, True])
             else:
@@ -602,15 +602,15 @@ Please do not put punctuation marks."
              layout_file = chooser.get_filename()
              chooser.destroy()
              layout_name = layout_file.rpartition('/')[2]
-             print "We are about to open a file"
-             print "+We have layout file", layout_file
+             #print "We are about to open a file"
+             #print "+We have layout file", layout_file
              parse_result = self.parse_xkb.parse_layout(layout_file)
              if parse_result["success"] == True:
                 # For example, included_files["latin"] = { "file": "/tmp/latin", 
                 #    "variants": variants_dict, xml_layout }
                 
                 # Clear the layout constructs
-                print "+Parse was success", parse_result
+                #print "+Parse was success", parse_result
                 
                 self.select_variant.set_list(parse_result['variants'])
                 self.select_variant.show()
@@ -622,14 +622,14 @@ Please do not put punctuation marks."
                 variant_verbose_name = ''
                 self.mykeyboard.layoutvariant = self.select_variant.get_selection()
                 Common.currentlayoutfile = layout_file
-                print "Selected:", self.mykeyboard.layoutvariant
+                #print "Selected:", self.mykeyboard.layoutvariant
                 result_extract = ExtractVariantsKeycodes(parse_result['layout'], 
                                                 self.mykeyboard.layoutvariant)
-                print "+Extracting variants from layout", parse_result['layout'], "variant", self.mykeyboard.layoutvariant
+                #print "+Extracting variants from layout", parse_result['layout'], "variant", self.mykeyboard.layoutvariant
                 newkeydict = result_extract['keydict']
                 newvariants = result_extract['variants']
-                print "+Keycodes (newkeydict):", newkeydict
-                print "+Variants (newvariants):", newvariants
+                #print "+Keycodes (newkeydict):", newkeydict
+                #print "+Variants (newvariants):", newvariants
 
                 for keycode in KeyDict.Keys.keys():
                     if keycode not in KeyDict.IgnoreKeys:
@@ -645,18 +645,18 @@ Please do not put punctuation marks."
                 self.layoutdetails_entry_name.set_text(self.mykeyboard.layoutname)
 
                 for variant in result_extract['variants']:
-                    print "++Parsed include strings:", Common.parseIncludeString(variant)
+                    #print "++Parsed include strings:", Common.parseIncludeString(variant)
                     parsed_variant = Common.parseIncludeString(variant)
                     
                     include_parse_result = self.parse_xkb.parse_layout(Common.symbolsdir 
                                                                + parsed_variant['filename'])
-                    print "++Include_parse_result (after parse_xkb.parse_layout):", include_parse_result
+                    #print "++Include_parse_result (after parse_xkb.parse_layout):", include_parse_result
                     if include_parse_result["success"] == True:
                         include_parsed_layout = include_parse_result["layout"]
                         if parsed_variant['variant'] == '':
                             """ If not variant is supplied, we select the first one. """
                             parsed_variant['variant'] = include_parse_result["variants"][0]
-                            print "+++fixed", include_parse_result["variants"][0]
+                            #print "+++fixed", include_parse_result["variants"][0]
 
                         # For example, included_files["latin"] = { "file": "/tmp/latin", 
                         #    "variants": variants_dict, xml_layout }
@@ -664,7 +664,7 @@ Please do not put punctuation marks."
                                                     "file": parsed_variant['filename'],
                                                     "variants" : copy.deepcopy(include_parse_result["variants"]), 
                                                     "xml" : include_parsed_layout}
-                        print "+++included files for", layout_name, included_files[parsed_variant['variant']]
+                        #print "+++included files for", layout_name, included_files[parsed_variant['variant']]
                         self.add_includefile(parsed_variant['filename'], 
                                              parsed_variant['variant'])
                         self.select_include_variant(parsed_variant['filename'], 
@@ -738,7 +738,7 @@ Please do not put punctuation marks."
                 Common.addtostatusbar('Layout saved to ' + Common.currentlayoutfile + '.')
                 return True
             else:
-                print "temp_filename:", temp_filename
+                #print "temp_filename:", temp_filename
                 self.error_dialog('File save cancelled; cannot save to ' + temp_filename + '.')
                 Common.addtostatusbar('File save cancelled; cannot save to ' + temp_filename + '.')
                 return False

@@ -73,10 +73,10 @@ class SelectVariant:
             store_iter = self.filter.convert_iter_to_child_iter(filter_iter)
             # Use it to show the selected row
             self.selection = self.store[store_iter][0]
-            print self.selection
+            #print self.selection
         else:
             self.selection = ''
-            print "Cancelled"
+            #print "Cancelled"
         self.dialog.hide()
         
     def close(self):

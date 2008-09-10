@@ -102,10 +102,11 @@ class GenericLayout:
                 # print "Keycode", keycodename, "is empty, skipping"
                 continue
             else: 
-                print keycodename, "we only had", votes_empty, "votes,"
+                # print keycodename, "we only had", votes_empty, "votes,"
                 for counter in Common.keysegmentslist:
-                    print layoutkeys[keycodename].key.keyvalues[counter].getValue(),
-                print
+                    pass
+                    #print layoutkeys[keycodename].key.keyvalues[counter].getValue(),
+                #print
             #print layoutkeys[keycodename].key.keyvalues[Common.keysegments.ONE].getValue()
             self.tokenkey = etree.SubElement(self.mapmaterial, "tokenkey")
             self.tokenkey.attrib["override"] = "False"
@@ -116,23 +117,23 @@ class GenericLayout:
 
             self.symbolsgroup = etree.SubElement(self.keysymgroup, "symbolsgroup")
 
-            print "Counting elems in key:",
+            # print "Counting elems in key:",
             for counter in Common.keysegmentslistreverse:
                 max_index = counter
                 if layoutkeys[keycodename].key.keyvalues[counter].getType() == Common.keyvaluetype.NOSYMBOL:
-                    print "O",
+                    #print "O",
                     continue
                 else:
                     break
-            print
-            print "Doing look between", Common.keysegments.ONE, "and", max_index
+            #print
+            #print "Doing look between", Common.keysegments.ONE, "and", max_index
             for counter in range(Common.keysegments.ONE, max_index + 1):
                 sym = etree.SubElement(self.symbolsgroup, "symbol")
                 sym.text = layoutkeys[keycodename].key.keyvalues[counter].getValue()
                 if sym.text == "":
                     sym.text = "NoSymbol"
 
-                print "sym.text", sym.text
+                # print "sym.text", sym.text
         return self.new_layout
     
     def create_tokenkey(self, keycodenametext):
