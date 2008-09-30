@@ -171,14 +171,14 @@ class Key(gtk.EventBox):
             return Common.keysegments.NONE
 
     def set_tooltip(self):
-        tooltip_string = "Keycode: " + self.keycode
+        tooltip_string = 'Keycode: ' + self.keycode
         counter_empty = 0
         for counter in Common.keysegmentslist:
             if self.key.dvalues[counter].getType() == Common.keyvaluetype.NOSYMBOL:
                 counter_empty +=1
         if counter_empty < len(Common.keysegmentslist):
             for counter in Common.keysegmentslist:
-                tooltip_string += "\n" + str(counter) + ". " +\
-                            self.key.dvalues[counter].getValue() + "  " +\
+                tooltip_string += '\n' + str(counter) + '. ' +\
+                            str(self.key.dvalues[counter].getValue()) + '  ' +\
                             self.key.dvalues[counter].getPValue()
         self.tooltips.set_tip(self, tooltip_string)
