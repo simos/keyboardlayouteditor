@@ -38,7 +38,7 @@ def getChildrenListByType(tree, type_value):
     return list
 
 
-def parseFile(fileandvariant = "xfree86|xfree86", *morefilesandvariants):
+def parseFile(fileandvariant = "/usr/share/X11/xkb/keycodes/xfree86|xfree86", *morefilesandvariants):
     keycodedb = {}
     for eachfileandvariant in (fileandvariant,) + morefilesandvariants:
         filename, pipe, variant = eachfileandvariant.partition('|')
@@ -119,8 +119,10 @@ def compare_keycode(a, b):
 def initialise():
     global KEYCODEDB
 
-    KEYCODEDB = parseFile("xfree86|xfree86", "aliases|qwerty", "evdev|evdev")
+    KEYCODEDB = parseFile("/usr/share/X11/xkb/keycodes/xfree86|xfree86", 
+                          "/usr/share/X11/xkb/keycodes/aliases|qwerty", 
+                          "/usr/share/X11/xkb/keycodes/evdev|evdev")
     #KEYCODEDB = parseFile("evdev|evdev", "aliases|qwerty")
 
 if __name__ == "__main__":
-    KEYCODEDB = parseFile("xfree86|xfree86", "aliases|qwerty")
+    KEYCODEDB = parseFile("/usr/share/X11/xkb/keycodes/xfree86|xfree86", "/usr/share/X11/xkb/keycodes/aliases|qwerty")

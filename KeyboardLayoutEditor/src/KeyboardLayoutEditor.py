@@ -24,6 +24,7 @@ __license__     = "GPLv3"
 
 try:
     import os
+    import sys
     import copy
     import string
     import gtk
@@ -66,6 +67,9 @@ class Controller_KeyboardLayoutEditor:
     """ The keyboard layout editor controller """
 
     def __init__(self):
+        # Set the home directory of the application
+        Common.HOMEDIR = os.path.split( os.path.realpath( sys.argv[0] ) )[0] + '/'
+        
         # This is the parser for XKB files, creates an lxml.etree object.
         self.parse_xkb = ParseXKB.ParseXKB()
         
@@ -92,7 +96,7 @@ class Controller_KeyboardLayoutEditor:
         
         self.window.connect("check_resize", self.check_resize)
         
-        self.icon_pixbuf = gtk.gdk.pixbuf_new_from_file('kle-icon4.svg')
+        self.icon_pixbuf = gtk.gdk.pixbuf_new_from_file(Common.HOMEDIR + 'kle-icon4.svg')
         self.window.set_icon(self.icon_pixbuf)
 
         self.TARGET_TYPE_TEXT = 80

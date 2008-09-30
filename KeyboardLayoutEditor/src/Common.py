@@ -44,6 +44,9 @@ KLEiconfile = "kleiconfile.ico"
 # Max levels, currently 4. May go 8 in future.
 LEVELMAX = 4
 
+# The application home directory
+HOMEDIR = ''
+
 # The application's official full name.
 applicationname="Keyboard Layout Editor"
 
