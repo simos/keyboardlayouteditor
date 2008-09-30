@@ -57,7 +57,9 @@ def __recurse_tree__(node, fout):
                     elif t.tag == "tokenkey":
                         # We attempt to sort the keycode lines by keycode value.
                         keycodelinelist = [] 
+                        keycodelinecomment = []
                         keycodelinelist.append("\t")
+                        keycodelinecomment.append(" // ")
                         if t.attrib["override"] == "True":
                             keycodelinelist.append("override ")
                         for tk in t:
@@ -78,25 +80,30 @@ def __recurse_tree__(node, fout):
                                         keycodelinelist.append("virtualMods = %(s)s " % { "s": ks.attrib["value"] })
                                     elif ks.tag == "symbolsgroup":
                                         if gotitem:
-                                            keycodelinelist.append(", ")
+                                            keycodelinelist.append(', ')
                                         gotitem = True
-                                        keycodelinelist.append("[ ")
+                                        keycodelinelist.append('[ ')
                                         count_sg = len(ks)
                                         for sg in ks:
-                                            if sg.tag == "symbol":
+                                            if sg.tag == 'symbol':
                                                 if count_sg > 1:
                                                     keycodelinelist.append("%(s)14s, " % { "s": sg.text })
                                                 else:
                                                     keycodelinelist.append("%(s)14s " % { "s": sg.text })
                                                 count_sg -= 1
+                                                kval = KeyValue.KeyValue(sg.text)
+                                                keycodelinecomment.append(kval.getPValue())
+                                                keycodelinecomment.append(' ')
                                             else:
-                                                print "ERROR"
+                                                print 'ERROR'
                                                 sys.exit(-1)
                                         for spaces_count in range(Common.LEVELMAX - len(ks)):
                                             keycodelinelist.append('%(s)15s ' % { 's': ' ' })
-                                        keycodelinelist.append("]")
-                                keycodelinelist.append(" };\n")
-                                keycodedict_lines[keycodelinekeycode] = "".join(keycodelinelist)
+                                        keycodelinelist.append(']')
+                                keycodelinelist.append(' };')
+                                keycodelinecomment.append('\n')
+                                keycodedict_lines[keycodelinekeycode] = "".join(keycodelinelist) \
+                                                                      + "".join(keycodelinecomment)
                 keycodeslist = keycodedict_lines.keys()
                 keycodeslist.sort()
                 for kc in keycodeslist:
