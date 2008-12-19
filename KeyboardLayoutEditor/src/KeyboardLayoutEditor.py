@@ -192,11 +192,12 @@ and drop characters from there to the keyboard below")
         addtolayout_hbox.pack_start(deadkey_unicodechars_vbox, expand=False, fill=False)
 
         layoutdetails_frame = gtk.Frame("Layout details")
+
         layoutdetails_vbox = gtk.VBox()
         layoutdetails_hbox_code = gtk.HBox()
         layoutdetails_label_code = gtk.Label("Layout code")
         self.layoutdetails_entry_code = gtk.Entry()
-        self.layoutdetails_entry_code.set_max_length(10)
+        self.layoutdetails_entry_code.set_max_length(24)
         self.layoutdetails_entry_code.connect("key_release_event", self.entry_callback, self.layoutdetails_entry_code)
         layoutdetails_code_tooltip = gtk.Tooltips()
         layoutdetails_code_tooltip_text = "Enter the layout code.\nTypically \
@@ -207,6 +208,7 @@ This is two \nor three letters long, lowercase."
         layoutdetails_hbox_code.pack_start(layoutdetails_label_code, expand=False, fill=False)
         layoutdetails_hbox_code.pack_start(self.layoutdetails_entry_code, expand=True, fill=True)
         layoutdetails_vbox.pack_start(layoutdetails_hbox_code, expand=False, fill=False)
+
         layoutdetails_hbox_variant = gtk.HBox()
         layoutdetails_label_variant = gtk.Label("Variant")
         self.layoutdetails_entry_variant = gtk.Entry()
@@ -219,6 +221,25 @@ or more alphanumeric characters,\nall lowercase."
         layoutdetails_hbox_variant.pack_start(layoutdetails_label_variant, expand=False, fill=False)
         layoutdetails_hbox_variant.pack_start(self.layoutdetails_entry_variant, expand=True, fill=True)
         layoutdetails_vbox.pack_start(layoutdetails_hbox_variant, expand=False, fill=False)
+
+        layoutdetails_hbox_country = gtk.HBox()
+        layoutdetails_label_country = gtk.Label("Country name")
+        self.layoutdetails_entry_country = gtk.Entry()
+        self.layoutdetails_entry_country.set_max_length(48)
+        self.layoutdetails_entry_country.connect("key_release_event", self.entry_callback, self.layoutdetails_entry_country)
+        layoutdetails_country_tooltip = gtk.Tooltips()
+        layoutdetails_country_tooltip_text = "Enter the relevant country name for the layout.\n\
+You put something like France or Germany.\n\
+In very special cases where no country is relevant,\n\
+you may put a language name (for example, Arabic).\n\
+This information is used when submitting the layout to\n\
+the xkeyboard-config project\n\
+Please do not put punctuation marks."
+        layoutdetails_country_tooltip.set_tip(self.layoutdetails_entry_country, layoutdetails_country_tooltip_text)
+        layoutdetails_hbox_country.pack_start(layoutdetails_label_country, expand=False, fill=False)
+        layoutdetails_hbox_country.pack_start(self.layoutdetails_entry_country, expand=True, fill=True)
+        layoutdetails_vbox.pack_start(layoutdetails_hbox_country, expand=False, fill=False)
+
         layoutdetails_hbox_name = gtk.HBox()
         layoutdetails_label_name = gtk.Label("Layout name")
         self.layoutdetails_entry_name = gtk.Entry()
@@ -545,9 +566,11 @@ Please do not put punctuation marks."
         Common.currentlayoutfile = ''
         self.mykeyboard.layoutcode = ''
         self.mykeyboard.layoutvariant = ''
+        self.mykeyboard.layoutcountry = ''
         self.mykeyboard.layoutname = ''
         self.layoutdetails_entry_code.set_text(self.mykeyboard.layoutcode)
         self.layoutdetails_entry_variant.set_text(self.mykeyboard.layoutvariant)
+        self.layoutdetails_entry_country.set_text(self.mykeyboard.layoutcountry)
         self.layoutdetails_entry_name.set_text(self.mykeyboard.layoutname)
         for keycode in KeyDict.Keys.keys():
             if keycode not in KeyDict.IgnoreKeys:
@@ -860,6 +883,8 @@ Please do not put punctuation marks."
             self.mykeyboard.layoutcode = entry.get_text()
         elif entry == self.layoutdetails_entry_variant:
             self.mykeyboard.layoutvariant = entry.get_text()
+        elif entry == self.layoutdetails_entry_country:
+            self.mykeyboard.layoutcountry = entry.get_text()
         elif entry == self.layoutdetails_entry_name:
             self.mykeyboard.layoutname = entry.get_text()
         else:

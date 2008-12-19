@@ -38,9 +38,10 @@ class Keyboard(gtk.Frame):
         # This is a GenericLayout object, created in KeyboardLayoutEditor.
         self.xmllayout = layout
         
-        self.layoutcode = ""
-        self.layoutvariant = ""
-        self.layoutname = ""
+        self.layoutcode = ''
+        self.layoutvariant = ''
+        self.layoutcountry = ''
+        self.layoutname = ''
 
         KeyDict.set()
 
@@ -165,6 +166,7 @@ class Keyboard(gtk.Frame):
         self.gl_layout = GenericLayout.GenericLayout()
         newxml = self.gl_layout.create_layout(self.layoutcode, 
                                               self.layoutvariant, 
+                                              self.layoutcountry,
                                               self.layoutname, 
                                               KeyDict.Keys)
         fout.write(Common.layout_preamble)

@@ -68,7 +68,7 @@ class GenericLayout:
                 etree.SubElement(self.symbolsgroup, "symbol")
         """
         
-    def create_layout(self, layoutcode, layoutvariant, layoutname, layoutkeys):
+    def create_layout(self, layoutcode, layoutvariant, layoutcountry, layoutname, layoutkeys):
         """ 
         Creates an lxml construct with the layout. 
         Makes use of KeyDict.included_files, KeyDict.activated_variants 
