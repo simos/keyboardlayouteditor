@@ -504,7 +504,7 @@ if __name__ == '__main__':
     px = ParseXKB()
 
     store_keydict = {}
-    px.parse_layout_controller(store_keydict, '/etc/X11/xkb/symbols/gr', 'polytonic')
+    px.parse_layout_controller(store_keydict, '/usr/share/X11/xkb/symbols/gr', 'polytonic')
     print "About to print"
     for k in store_keydict.keys():
         print k,
