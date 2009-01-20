@@ -35,7 +35,7 @@ fontsize = 12
 gucharmappath = "/usr/bin/gucharmap"
 
 # The Xkeyboard-Config path
-xkcpath = "/etc/X11/xkb"
+xkcpath = "/usr/share/X11/xkb"
 xkcsymbols = xkcpath + "/symbols"
 
 # The program icon
