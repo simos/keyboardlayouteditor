@@ -1,7 +1,9 @@
 This is the Keyboard Layout Editor, a pygtk program that helps create or edit XKB keyboard layouts.
 
 This is the version that has been submitted to the GSoC xorg project; you can find the latest version
-at 
+at http://github.com/simos/keyboardlayouteditor/tree/master
+
+The home page of the Keyboard Layout Editor is
 http://code.google.com/p/keyboardlayouteditor/
 
 You are strongly encouraged to use the version that is found at the above URL, 
@@ -24,8 +26,9 @@ Choose the appropriate *.egg file for the 3.1 version, then type
 
 sudo easy_install antlr_python_runtime-3.1-py2.5.egg
 
-This should to the installation for you.
+You need to process the ANTLR grammars in order to generate the necessary Python code.
+All *.g files should be processed with ANTLR.
 
 You run this program with 
 
-./KeyboardLayoutEditor.py
+./KeyboardLayoutEditor
