@@ -54,7 +54,7 @@ applicationname="Keyboard Layout Editor"
 currentlayoutfile=''
 
 # The directory to the xkeyboard-config base directory.
-basedir = '/etc/X11/xkb/'
+basedir = '/usr/share/X11/xkb/'
 
 # The directory to the xkeyboard-config symbols directory.
 symbolsdir = basedir + 'symbols/'
