@@ -21,9 +21,14 @@ import antlr3
 import re
 import copy
 from lxml import etree
-from XKBGrammarLexer import XKBGrammarLexer 
-from XKBGrammarParser import XKBGrammarParser
-from XKBGrammarWalker import XKBGrammarWalker, LAYOUT, SYMBOLS, MAPMATERIAL, MAPTYPE, MAPOPTIONS, MAPOPTS, MAPNAME, TOKEN_INCLUDE, TOKEN_NAME, TOKEN_KEY_TYPE, TOKEN_KEY, TOKEN_TYPE, TOKEN_MODIFIER_MAP, TOKEN_VIRTUAL_MODIFIERS, KEYCODE, KEYCODEX, ELEM_KEYSYMS, ELEM_KEYSYMGROUP, ELEM_VIRTUALMODS, OVERLAY, VALUE, STATE, NAME, DQSTRING, OVERRIDE
+
+try: 
+	from XKBGrammarLexer import XKBGrammarLexer 
+	from XKBGrammarParser import XKBGrammarParser
+	from XKBGrammarWalker import XKBGrammarWalker, LAYOUT, SYMBOLS, MAPMATERIAL, MAPTYPE, MAPOPTIONS, MAPOPTS, MAPNAME, TOKEN_INCLUDE, TOKEN_NAME, TOKEN_KEY_TYPE, TOKEN_KEY, TOKEN_TYPE, TOKEN_MODIFIER_MAP, TOKEN_VIRTUAL_MODIFIERS, KEYCODE, KEYCODEX, ELEM_KEYSYMS, ELEM_KEYSYMGROUP, ELEM_VIRTUALMODS, OVERLAY, VALUE, STATE, NAME, DQSTRING, OVERRIDE
+except ImportError, e:
+    raise SystemExit("A generated source file by ANTLR was not found.\nSee the README on how to generate.\nImport error: " + str(e))
+	
 import KeycodesReader
 import KeysymsUni
 
