@@ -31,6 +31,13 @@ All *.g files should be processed with ANTLR.
 Assuming you installed Antlr 3.1 in your CLASSPATH, you compile a grammar (*.g) with
   java org.antlr.Tool *.g
 
-You run this program with 
+Here is a practical example with Antlr 3.1.2.
+  wget http://antlr.org/download/Python/antlr_python_runtime-3.1.2-py2.5.egg
+  sudo easy_install antlr_python_runtime-3.1.2-py2.5.egg
+  wget http://antlr.org/download/antlr-3.1.2.jar
+  export CLASSPATH=$CLASSPATH:antlr-3.1.2.jar       
+  java org.antlr.Tool *.g
+
+You finally run this program with 
 
 ./KeyboardLayoutEditor
