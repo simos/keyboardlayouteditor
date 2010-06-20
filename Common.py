@@ -32,7 +32,11 @@ fontstyle = cairo.FONT_SLANT_NORMAL
 fontweight = cairo.FONT_WEIGHT_NORMAL
 fontsize = 12
 
-gucharmappath = "/usr/bin/gucharmap"
+# You need to have gucharmap installed.
+# It might be possible to perform drag n drop from the KDE equivalent,
+# though I did not get any confirmation on this yet.
+# We now perform a 'os.system()' on the following string.
+gucharmappath = "gucharmap"
 
 # The Xkeyboard-Config path
 xkcpath = "/usr/share/X11/xkb"
