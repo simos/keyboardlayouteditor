@@ -20,15 +20,16 @@ To run the application, you need the python binding packages for
 * GObject
 * lxml
 
-and the Antlr 3.1 Runtime environment for Python. You grab that at 
+and the Antlr 3.1.2 Runtime environment for Python. You grab that at 
 http://antlr.org/download/Python/
-Choose the appropriate *.egg file for the 3.1 version, then type
+Choose the appropriate *.egg file for the 3.1.2 version, then type
 
-sudo easy_install antlr_python_runtime-3.1-py2.5.egg
+sudo easy_install antlr_python_runtime-3.1.2-py2.5.egg
 
 You need to process the ANTLR grammars in order to generate the necessary Python code.
 All *.g files should be processed with ANTLR.
-Assuming you installed Antlr 3.1 in your CLASSPATH, you compile a grammar (*.g) with
+You can get the ANTLR 3.1.2 package from http://www.antlr.org/download/antlr-3.1.2.jar
+Assuming you installed Antlr 3.1.2 in your CLASSPATH, you compile a grammar (*.g) with
   java org.antlr.Tool *.g
 
 Here is a practical example with Antlr 3.1.2.
