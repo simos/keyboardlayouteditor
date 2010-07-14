@@ -26,6 +26,8 @@ Choose the appropriate *.egg file for the 3.1.2 version, then type
 
 sudo easy_install antlr_python_runtime-3.1.2-py2.5.egg
 
+('easy_install' is part of the 'python-setuptools' package; it is not installed by default).
+
 You need to process the ANTLR grammars in order to generate the necessary Python code.
 All *.g files should be processed with ANTLR.
 You can get the ANTLR 3.1.2 package from http://www.antlr.org/download/antlr-3.1.2.jar
@@ -33,6 +35,7 @@ Assuming you installed Antlr 3.1.2 in your CLASSPATH, you compile a grammar (*.g
   java org.antlr.Tool *.g
 
 Here is a practical example with Antlr 3.1.2.
+  sudo apt-get install python-setuptools
   wget http://antlr.org/download/Python/antlr_python_runtime-3.1.2-py2.5.egg
   sudo easy_install antlr_python_runtime-3.1.2-py2.5.egg
   wget http://antlr.org/download/antlr-3.1.2.jar
