@@ -948,7 +948,9 @@ Please do not put punctuation marks."
         return False
     
     def unicodechars_clicked_callback(self, button):
-        os.system(Common.gucharmapapp)
+        if os.fork() == 0 :
+            os.system(Common.gucharmappath)
+        exit(0)
 
     def check_resize(self, container):
         pass    # TODO: Make sure the keyboard does not get too small.
