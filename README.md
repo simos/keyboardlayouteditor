@@ -2,6 +2,8 @@
 
 PyGTK program that helps create or edit XKB keyboard layouts.
 
+![Screenshot](http://simos.info/blog/wp-content/uploads/2008/10/kle-intro.png)
+
 To run the application, you need the python binding packages for
 * Cairo
 * Pango
