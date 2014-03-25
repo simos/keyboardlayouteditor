@@ -15,7 +15,6 @@ All *.g files should be processed with ANTLR:
     sudo apt-get install python-setuptools
     pip install http://www.antlr3.org/download/Python/antlr_python_runtime-3.1.2.tar.gz
     wget http://www.antlr3.org/download/antlr-3.1.2.jar
-    export CLASSPATH=$CLASSPATH:antlr-3.1.2.jar
     java -classpath "antlr-3.1.2.jar" org.antlr.Tool *.g
 
 You finally run this program with:
