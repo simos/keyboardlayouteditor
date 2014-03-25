@@ -1,6 +1,6 @@
 # Keyboard Layout Editor
 
-PyGTK program that helps create or edit XKB keyboard layouts.
+PyGTK program that helps create or edit XKB keyboard layouts. Created by [@simos](https://github.com/simos) in Google Summer of Code 2008. [More information](http://simos.info/blog/archives/747/)
 
 ![Screenshot](http://simos.info/blog/wp-content/uploads/2008/10/kle-intro.png)
 
