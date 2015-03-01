@@ -18,7 +18,9 @@ For Ubuntu 14.04, the packages below are already pre-installed.
 
 Clone the repository with
 
-    `$ git clone https://github.com/simos/keyboardlayouteditor.git`
+```
+$ git clone https://github.com/simos/keyboardlayouteditor.git
+```
 
 You need to process the ANTLR grammars in order to generate the necessary Python code.
 This is a process that you do one time only (unless you make changes in the grammar files).
@@ -45,4 +47,6 @@ Then, you can start the KeyboardLayoutEditor program.
 
 You finally run this program with:
 
-    `$ ./KeyboardLayoutEditor`
+```
+$ ./KeyboardLayoutEditor
+```
