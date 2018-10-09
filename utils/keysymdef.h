@@ -1496,20 +1496,20 @@ SOFTWARE.
 #define XK_downcaret                     0x0ba8  /*(U+2228 LOGICAL OR)*/
 #define XK_upcaret                       0x0ba9  /*(U+2227 LOGICAL AND)*/
 #define XK_overbar                       0x0bc0  /*(U+00AF MACRON)*/
-#define XK_downtack                      0x0bc2  /* U+22A5 UP TACK */
+#define XK_downtack                      0x0bc2  /* U+22A4 DOWN TACK */
 #define XK_upshoe                        0x0bc3  /*(U+2229 INTERSECTION)*/
 #define XK_downstile                     0x0bc4  /* U+230A LEFT FLOOR */
 #define XK_underbar                      0x0bc6  /*(U+005F LOW LINE)*/
 #define XK_jot                           0x0bca  /* U+2218 RING OPERATOR */
 #define XK_quad                          0x0bcc  /* U+2395 APL FUNCTIONAL SYMBOL QUAD */
-#define XK_uptack                        0x0bce  /* U+22A4 DOWN TACK */
+#define XK_uptack                        0x0bce  /* U+22A5 UP TACK */
 #define XK_circle                        0x0bcf  /* U+25CB WHITE CIRCLE */
 #define XK_upstile                       0x0bd3  /* U+2308 LEFT CEILING */
 #define XK_downshoe                      0x0bd6  /*(U+222A UNION)*/
 #define XK_rightshoe                     0x0bd8  /*(U+2283 SUPERSET OF)*/
 #define XK_leftshoe                      0x0bda  /*(U+2282 SUBSET OF)*/
-#define XK_lefttack                      0x0bdc  /* U+22A2 RIGHT TACK */
-#define XK_righttack                     0x0bfc  /* U+22A3 LEFT TACK */
+#define XK_lefttack                      0x0bdc  /* U+22A3 LEFT TACK */
+#define XK_righttack                     0x0bfc  /* U+22A2 RIGHT TACK */
 #endif /* XK_APL */
 
 /*
