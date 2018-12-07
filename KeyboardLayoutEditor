@@ -100,7 +100,7 @@ class Controller_KeyboardLayoutEditor:
 
         # Set initial size
         (width, height) = self.window.get_size()
-        self.window.resize(800, 550)
+        self.window.resize(1350, 700)
         
         self.window.connect("check_resize", self.check_resize)
         
@@ -277,7 +277,7 @@ Please do not put punctuation marks."
         fontbutton_vbox = gtk.VBox()
         fontbutton_label = gtk.Label("Select a font")
         fontbutton_vbox.pack_start(fontbutton_label, expand=False, fill=False)
-        fontbutton = gtk.FontButton(fontname=Common.fontname + " " + str(Common.fontsize))
+        fontbutton = gtk.FontButton(fontname=Common.font_desc.to_string())
         fontbutton.set_title('Select a font')
         fontbutton.connect('font-set', self.font_set_callback)
         fontbutton_vbox.pack_start(fontbutton, expand=False, fill=False)
@@ -900,23 +900,9 @@ Please do not put punctuation marks."
 
     def font_set_callback(self, fontbutton):
         newfont = fontbutton.get_font_name()
+        font_desc = pango.FontDescription(newfont)
+        Common.font_desc= font_desc
         context = self.window.create_pango_context()
-        for family in context.list_families():
-            if newfont.find(family.get_name()) == 0:
-                face = family.list_faces()[0]
-                Common.fontname = family.get_name()
-                Common.fontsize = string.atoi(newfont.rpartition(' ')[-1], 10)
-                Common.fontstyle = cairo.FONT_SLANT_NORMAL
-                Common.fontweight = cairo.FONT_WEIGHT_NORMAL
-                if face.get_face_name() == "Regular":
-                    Common.fontstyle = cairo.FONT_SLANT_NORMAL
-                if face.get_face_name() == "Bold":
-                    Common.fontweight = cairo.FONT_SLANT_BOLD
-                if face.get_face_name() == "Italic":
-                    Common.fontstyle = cairo.FONT_SLANT_ITALIC
-                if face.get_face_name() == "Oblique":
-                    Common.fontstyle = cairo.FONT_SLANT_OBLIQUE
-                break
         for keycode in KeyDict.Keys.keys():
             KeyDict.Keys[keycode].key.redraw()
         Common.addtostatusbar('Font set to ' + newfont + '.')
