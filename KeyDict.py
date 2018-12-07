@@ -55,9 +55,9 @@ class KeyDictClass:
                 "AE10": Key.Key(1, "AE10", False, Common.keytypes.SIMPLE),
                 "AE11": Key.Key(1, "AE11", False, Common.keytypes.SIMPLE),
                 "AE12": Key.Key(1, "AE12", False, Common.keytypes.SIMPLE),
-                "BKSP": Key.Key(2, "BKSP", False, Common.keytypes.SPECIAL,'Backspace'),
+                "BKSP": Key.Key(2, "BKSP", False, Common.keytypes.SPECIAL,'Backspace ⌫'),
 
-                "TAB" : Key.Key(1.8, "TAB", False, Common.keytypes.SPECIAL, 'Tab', 'ISO_Left'),
+                "TAB" : Key.Key(1.8, "TAB", False, Common.keytypes.SPECIAL, 'Tab ↹', 'ISO_Left'),
                 "AD01": Key.Key(1, "AD01", False, Common.keytypes.SIMPLE),
                 "AD02": Key.Key(1, "AD02", False, Common.keytypes.SIMPLE),
                 "AD03": Key.Key(1, "AD03", False, Common.keytypes.SIMPLE),
@@ -72,7 +72,7 @@ class KeyDictClass:
                 "AD12": Key.Key(1, "AD12", False, Common.keytypes.SIMPLE),
                 "BKSL": Key.Key(1, "BKSL", False, Common.keytypes.SIMPLE),
 
-                "CAPS": Key.Key(2, "CAPS", False, Common.keytypes.SPECIAL, 'Caps Lock'),
+                "CAPS": Key.Key(2, "CAPS", False, Common.keytypes.SPECIAL, 'Caps Lock ⇩'),
                 "AC01": Key.Key(1, "AC01", False, Common.keytypes.SIMPLE),
                 "AC02": Key.Key(1, "AC02", False, Common.keytypes.SIMPLE),
                 "AC03": Key.Key(1, "AC03", False, Common.keytypes.SIMPLE),
@@ -84,9 +84,9 @@ class KeyDictClass:
                 "AC09": Key.Key(1, "AC09", False, Common.keytypes.SIMPLE),
                 "AC10": Key.Key(1, "AC10", False, Common.keytypes.SIMPLE),
                 "AC11": Key.Key(1, "AC11", False,Common.keytypes.SIMPLE),
-                "RTRN": Key.Key(2, "RTRN", False, Common.keytypes.SPECIAL, 'Return'),
+                "RTRN": Key.Key(2, "RTRN", False, Common.keytypes.SPECIAL, 'Return ↵'),
 
-                "LFSH": Key.Key(1,   "LFSH", False, Common.keytypes.SPECIAL,'Shift L', 'ISO Prev'),
+                "LFSH": Key.Key(1,   "LFSH", False, Common.keytypes.SPECIAL,'Shift L ⇧', 'ISO Prev'),
                 "LSGT": Key.Key(1,   "LSGT", False, Common.keytypes.SIMPLE),
                 "AB01": Key.Key(1,   "AB01", False, Common.keytypes.SIMPLE),
                 "AB02": Key.Key(1,   "AB02", False, Common.keytypes.SIMPLE),
@@ -98,7 +98,7 @@ class KeyDictClass:
                 "AB08": Key.Key(1,   "AB08", False, Common.keytypes.SIMPLE),
                 "AB09": Key.Key(1,   "AB09", False, Common.keytypes.SIMPLE),
                 "AB10": Key.Key(1,   "AB10", False, Common.keytypes.SIMPLE),
-                "RTSH": Key.Key(2.5, "RTSH", False, Common.keytypes.SPECIAL, 'Shift R', 'ISO Next'),
+                "RTSH": Key.Key(2.5, "RTSH", False, Common.keytypes.SPECIAL, 'Shift R ⇧', 'ISO Next'),
 
                 "LCTL": Key.Key(1.8, "LCTL", False, Common.keytypes.SPECIAL, 'Control L'),
                 "LWIN": Key.Key(1.5, "LWIN", False, Common.keytypes.SPECIAL, 'Super L'),
