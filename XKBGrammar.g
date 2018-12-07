@@ -38,6 +38,7 @@ tokens
   ELEM_VIRTUALMODS;
   KEYELEMENTS;
   OVERRIDE;
+  REPLACE;
   OVERLAY;
 }
 
@@ -97,7 +98,7 @@ line_keytype
   ;
 
 line_key
-  : OVERRIDE? 'key' '<' NAME '>' '{' keyelements (',' keyelements)* '}'
+  : (OVERRIDE|REPLACE)? 'key' '<' NAME '>' '{' keyelements (',' keyelements)* '}'
   -> ^(TOKEN_KEY OVERRIDE? ^(KEYCODEX NAME) keyelements+)
   ;
 
@@ -118,6 +119,10 @@ keycode
 
 override
   : 'override'
+  ;
+
+replace
+  : 'replace'
   ;
 
 keyelements
@@ -172,6 +177,10 @@ STATE
 
 OVERRIDE
   : 'override'
+  ;
+
+REPLACE
+  : 'replace'
   ;
 
 NAME
