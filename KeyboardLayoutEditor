@@ -100,7 +100,7 @@ class Controller_KeyboardLayoutEditor:
 
         # Set initial size
         (width, height) = self.window.get_size()
-        self.window.resize(800, 550)
+        self.window.resize(1350, 700)
         
         self.window.connect("check_resize", self.check_resize)
         
