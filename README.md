@@ -2,7 +2,18 @@
 
 PyGTK program that helps create or edit XKB keyboard layouts. Created by [@simos](https://github.com/simos) in Google Summer of Code 2008. [More information](http://simos.info/blog/archives/747/)
 
-![Screenshot](http://simos.info/blog/wp-content/uploads/2008/10/kle-intro.png)
+![Screenshot](screenshot.png)
+
+## Changes to upstream
+
+This is not the upstream source. It's a fork to fix some bugs that are not
+incorporated into upstream yet. If you are searching for the non-patched
+upstream see http://github.com/simos/keyboardlayouteditor.
+
+The following bugs are fixed in this fork:
+
+ - [Don't throw an exception on a `replace` directive](http://github.com/simos/keyboardlayouteditor/issues/24)
+ - [Respect selected font style](http://github.com/simos/keyboardlayouteditor/issues/25)
 
 ## Requirements
 
