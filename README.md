@@ -4,6 +4,11 @@ PyGTK program that helps create or edit XKB keyboard layouts. Created by [@simos
 
 ![Screenshot](http://simos.info/blog/wp-content/uploads/2008/10/kle-intro.png)
 
+Additional changes:
+
+ - Print symbol next to special keys names (for Backspace ⌫, Caps Lock ⇩, Return ↵, Shift ⇧, Tab ↹)
+
+
 ## Requirements
 
 To run the application, you need the python UI binding packages.
