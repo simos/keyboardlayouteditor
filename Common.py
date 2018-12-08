@@ -73,7 +73,7 @@ deadkey = "dead_acute"
 layout_preamble = """/////////////////////////////////////////////////////////////////////////////////
 //
 // Generated keyboard layout file with the Keyboard Layout Editor.
-// For more about the software, see http://code.google.com/p/keyboardlayouteditor
+// For more about the software, see https://github.com/simos/keyboardlayouteditor
 //
 
 """
