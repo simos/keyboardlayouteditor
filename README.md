@@ -15,6 +15,11 @@ The following bugs are fixed in this fork:
  - [Don't throw an exception on a `replace` directive](http://github.com/simos/keyboardlayouteditor/issues/24)
  - [Respect selected font style](http://github.com/simos/keyboardlayouteditor/issues/25)
 
+Additional changes:
+
+ - Print symbol next to special keys names (for Backspace ⌫, Caps Lock ⇩, Return ↵, Shift ⇧, Tab ↹)
+
+
 ## Requirements
 
 To run the application, you need the python UI binding packages.
