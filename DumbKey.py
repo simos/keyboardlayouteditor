@@ -18,6 +18,7 @@ import gtk
 import gobject
 import cairo
 import copy
+import pango
 
 import Common
 import KeyValue
@@ -75,6 +76,7 @@ class DumbKey(gtk.DrawingArea):
 
     def expose(self, widget, event):
         self.context = widget.window.cairo_create()
+        self.layout= self.context.create_layout()
         
         # set a clip region for the expose event
         self.context.rectangle(event.area.x,     event.area.y,
@@ -177,28 +179,37 @@ class DumbKey(gtk.DrawingArea):
     def draw_character(self, context, char, align, cx, cy, cwidth, cheight):
         if char == '':
             return
-        self.context.select_font_face(Common.fontname, Common.fontstyle, 
-                                      Common.fontweight)
-        self.context.set_font_size(Common.fontsize * 1.0)
-        fascent, fdescent, fheight, fxadvance, fyadvance = self.context.font_extents()
-        xbearing, ybearing, width, height, xadvance, yadvance = \
-                                                  self.context.text_extents(char)
+
+        # set the font and text
+        self.layout.set_font_description(Common.font_desc)
+        self.layout.set_text(char)
+
+        # now calculate the position for the text based on the fonts metrics
+        text_bounds = self.layout.get_pixel_size()
+        twidth= text_bounds[0]
+        theight= text_bounds[1]
+        spacing = theight / 3
+
+        # TODO: The font-size should be adjusted according to the available
+        # space. If the rendered text is larger than the available space
+        # its font-size should be reduced until it fits
 
         if align == Common.alignments.CENTRE:
-                self.context.move_to(cx + cwidth/2 - width/2 - xbearing, 
-                                     cy + cheight/2 - height/2 - ybearing)
+            self.context.move_to(cx + cwidth/2  - twidth/2,
+                                 cy + cheight/2 - theight/2)
         elif align == Common.alignments.LEFT:
-            self.context.move_to(cx + cwidth/16 - xbearing, 
-                                 cy + cheight - cheight/16 + ybearing)
+            self.context.move_to(cx + spacing,
+                                 cy + cheight - theight - spacing)
         elif align == Common.alignments.RIGHT:
-            self.context.move_to(cx + cwidth/2 - width/2 - xbearing, 
-                                 cy + cheight/2 - height/2 - ybearing)
+            self.context.move_to(cx + cwidth  - twidth - spacing,
+                                 cy + cheight - theight - spacing)
         else:
             print "Error; unknown alignment"
             sys.exit(-1)
 
         self.context.set_source_rgb(.30, .30, .30)
-        self.context.show_text(char)
+        self.context.update_layout(self.layout)
+        self.context.show_layout(self.layout)
         
     def redraw(self):
         (x,y,width,height) = self.get_allocation()
@@ -294,4 +305,4 @@ class DumbKey(gtk.DrawingArea):
             if self.dvalues[counter].getType() == Common.keyvaluetype.NOSYMBOL:
                 self.dvalues_inherited[counter] = False
                 self.dvalues[counter] = copy.copy(self.keyvalues[counter])
-    
+

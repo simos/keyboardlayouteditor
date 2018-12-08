@@ -15,6 +15,7 @@
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import cairo
+import pango
 import Enum
 
 keytypes = Enum.Enum("SIMPLE SPECIAL").vals(illegal=255)
@@ -27,10 +28,7 @@ keysegmentslist = [keysegments.ONE, keysegments.TWO,
 keysegmentslistreverse = list(keysegmentslist)
 keysegmentslistreverse.reverse()
 
-fontname = "Sans"
-fontstyle = cairo.FONT_SLANT_NORMAL
-fontweight = cairo.FONT_WEIGHT_NORMAL
-fontsize = 12
+font_desc = pango.FontDescription("Sans Bold 12")
 
 # You need to have gucharmap installed.
 # It might be possible to perform drag n drop from the KDE equivalent,
