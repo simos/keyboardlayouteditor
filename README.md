@@ -14,6 +14,12 @@ For Ubuntu 14.04, the packages below are already pre-installed.
 * GObject
 * lxml
 
+For later versions of Ubuntu, the lxml package does not come preinstalled. If you get error messages, install it manually:
+
+```
+$ sudo apt-get install python-lxml
+```
+
 ## Installation
 
 Clone the repository with
