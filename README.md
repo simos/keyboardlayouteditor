@@ -31,13 +31,13 @@ All *.g files should be processed with ANTLR:
     $ cd keyboardlayouteditor/
     $ sudo apt-get install python-pip
     $ sudo pip install http://www.antlr3.org/download/Python/antlr_python_runtime-3.1.2.tar.gz
-    $ wget http://www.antlr3.org/download/antlr-3.1.2.jar
-    $ java -classpath antlr-3.1.2.jar org.antlr.Tool *.g
+    $ wget http://www.antlr3.org/download/antlr-3.5.2-complete.jar
+    $ java -classpath antlr-3.5.2-complete.jar org.antlr.Tool *.g
 ```
 
 The first command installs the Python 2 package manager.
 The second command installs the Python 2 Antlr 3.1.2 runtime.
-The third command downloads the antlr 3.1.2 JAR file (code of Antlr) in the current directory.
+The third command downloads the antlr 3.5.2 JAR file (code of Antlr) in the current directory.
 The antlr3 package in Ubuntu is for Antlr 3.2, but we cannot use it because it is a bit complicated to get a 3.2 python runtime.
 The fourth command runs the Antlr code on the .g grammar files that exist in the KeyboardLayoutEditor directory.
 These are four files, and produces the processed grammar. 
