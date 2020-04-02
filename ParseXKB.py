@@ -151,7 +151,8 @@ class ParseXKB:
                                 sys.exit(-1)
                     allkeysymgroups = {}
                     for keyset in self.getChildrenByType(mapobject, TOKEN_KEY):
-                        allkeysymgroups[keyset.getChild(0).getChild(0).getText()] = keyset
+                        keycodex = keyset.getChild(0) if str(keyset.getChild(0)) == "keycodex" else keyset.getChild(1)
+                        allkeysymgroups[keycodex.getChild(0).getText()] = keyset
                     sortedkeysymgroups = self.sortDict(allkeysymgroups, KeycodesReader.compare_keycode)
                     for keyset in sortedkeysymgroups:
                         elem_keysymgroup = self.getChildrenByType(keyset, ELEM_KEYSYMGROUP)
