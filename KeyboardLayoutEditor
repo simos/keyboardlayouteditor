@@ -40,18 +40,18 @@ if gtk.pygtk_version < (2, 12):
 
 try:
     import cairo
-except ImportError, e:
+except(ImportError, e):
     raise SystemExit("The Python bindings for Cairo are required \
                         for this application: " + str(e))
 
 try:
     from lxml import etree
-except ImportError, e:
+except(ImportError, e):
     raise SystemExit("The Python bindings for libxml2 were not found: " + str(e))
 
 try:
     import antlr3
-except ImportError, err:
+except(ImportError, err):
     print 'Import error:', err
     print 'This script requires to have the python antl3 package installed.'
     print 'Please see the README file for further instructions.\nExiting...'
