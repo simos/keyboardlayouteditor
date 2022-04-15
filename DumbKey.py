@@ -23,11 +23,12 @@ import Common
 import KeyValue
 from KeyDict import KeyDict, included_files, activated_variants
 
+
 class DumbKey(gtk.DrawingArea):
-    def __init__(self, size = 1, keycode = None, vertical = False, 
-                 keytype = Common.keytypes.SIMPLE, 
-                 level1 = '', level2 = '', 
-                 level3 = '', level4 = ''):
+    def __init__(self, size=1, keycode=None, vertical=False,
+                 keytype=Common.keytypes.SIMPLE,
+                 level1='', level2='',
+                 level3='', level4=''):
         gtk.DrawingArea.__init__(self)
         self.connect("expose_event", self.expose)
 
@@ -36,26 +37,26 @@ class DumbKey(gtk.DrawingArea):
         self.dvalues = {}
         self.dvalues_inherited = {}
 
-        self.setvalues(size, keycode, vertical, keytype, 
+        self.setvalues(size, keycode, vertical, keytype,
                        level1, level2, level3, level4)
 
         self.modifier = 1
         self.highlight_x = -1
         self.highlight_y = -1
         self.highlight = False
-        self.pending = { "ispending": False, 
+        self.pending = {"ispending": False,
                         "keysegment": Common.keysegments.NONE,
-                        "value": '', 
-                        "coordinates": (-1, -1) }
+                        "value": '',
+                        "coordinates": (-1, -1)}
         self.popup_highlight = 0
-        
+
         self.infowin = gtk.Window()
         self.infowin.set_decorated(False)
-                
-    def setvalues(self, size = 1, keycode = None, vertical = False, 
-                  keytype = Common.keytypes.SIMPLE, 
-                  level1 = '', level2 = '', 
-                  level3 = '', level4 = ''):
+
+    def setvalues(self, size=1, keycode=None, vertical=False,
+                  keytype=Common.keytypes.SIMPLE,
+                  level1='', level2='',
+                  level3='', level4=''):
         self.keycode = keycode
         self.size = size
         self.vertical = vertical
@@ -64,26 +65,26 @@ class DumbKey(gtk.DrawingArea):
             self.verbatim = True
         else:
             self.verbatim = False
-        self.keyvalues = { 
-                        Common.keysegments.ONE:   KeyValue.KeyValue(level1.decode('utf-8'), self.verbatim), 
-                        Common.keysegments.TWO:   KeyValue.KeyValue(level2.decode('utf-8'), self.verbatim),
-                        Common.keysegments.THREE: KeyValue.KeyValue(level3.decode('utf-8'), self.verbatim),
-                        Common.keysegments.FOUR:  KeyValue.KeyValue(level4.decode('utf-8'), self.verbatim)
-                      }
+        self.keyvalues = {
+            Common.keysegments.ONE: KeyValue.KeyValue(level1.decode('utf-8'), self.verbatim),
+            Common.keysegments.TWO: KeyValue.KeyValue(level2.decode('utf-8'), self.verbatim),
+            Common.keysegments.THREE: KeyValue.KeyValue(level3.decode('utf-8'), self.verbatim),
+            Common.keysegments.FOUR: KeyValue.KeyValue(level4.decode('utf-8'), self.verbatim)
+        }
         # Fills up the dvalues list with the values to display
         self.extract_display_keyvalues()
 
     def expose(self, widget, event):
         self.context = widget.window.cairo_create()
-        
+
         # set a clip region for the expose event
-        self.context.rectangle(event.area.x,     event.area.y,
-                                       event.area.width, event.area.height)
+        self.context.rectangle(event.area.x, event.area.y,
+                               event.area.width, event.area.height)
         self.context.clip()
 
         self.a = self.parent.get_parent()
         self.b = self.a.parent.get_parent()
-        self.set_size_request(int(self.__key_width*self.size), -1)
+        self.set_size_request(int(self.__key_width * self.size), -1)
         self.draw(self.context)
 
         return False
@@ -95,14 +96,14 @@ class DumbKey(gtk.DrawingArea):
         """ Draw the rectangle, filling in with color """
         self.context.set_source_rgb(0.0, 0.0, 0.0)
         self.roundedrec(context, 0, 0, rect.width, rect.height, 15, 3)
-                           
+
         if self.keytype == Common.keytypes.SIMPLE:
-            context.set_source_rgb(1.0 * self.modifier, 
-                                   1.0 * self.modifier, 
+            context.set_source_rgb(1.0 * self.modifier,
+                                   1.0 * self.modifier,
                                    0.9 * self.modifier)
         elif self.keytype == Common.keytypes.SPECIAL:
             context.set_source_rgb(.7 * self.modifier,
-                                   .7 * self.modifier, 
+                                   .7 * self.modifier,
                                    .5 * self.modifier)
         self.context.fill_preserve()
         self.context.stroke()
@@ -110,13 +111,13 @@ class DumbKey(gtk.DrawingArea):
         """ Highlight the segment """
         if self.highlight or self.popup_highlight:
             self.context.set_source_rgb(1.0, 1.0, 0.6)
-            self.roundedrec_segment(context, self.pending["keysegment"], 
+            self.roundedrec_segment(context, self.pending["keysegment"],
                                     0, 0, rect.width, rect.height, 15, 3)
             self.context.fill_preserve()
             self.context.stroke()
 
         """ Draw the cross """
-        context.set_source_rgb(.1,.1,.1)
+        context.set_source_rgb(.1, .1, .1)
         context.set_line_width(0.3)
         if self.dvalues[Common.keysegments.THREE].getPValue() != '' \
                 or self.dvalues[Common.keysegments.FOUR].getPValue() != '':
@@ -128,42 +129,42 @@ class DumbKey(gtk.DrawingArea):
         self.context.stroke()
 
         """ Draw the four characters on the key """
-        self.context.set_source_rgb(0,1,0)
+        self.context.set_source_rgb(0, 1, 0)
         if self.dvalues[Common.keysegments.ONE].getPValue() == '':
             pass
         if self.dvalues[Common.keysegments.TWO].getPValue() == '' and \
-                    self.dvalues[Common.keysegments.THREE].getPValue() == '' and \
-                    self.dvalues[Common.keysegments.FOUR].getPValue() == '' \
-                    or self.dvalues[Common.keysegments.THREE].getPValue() == '' and \
-                    self.dvalues[Common.keysegments.FOUR].getPValue() == '':
-            self.draw_character(context, self.dvalues[Common.keysegments.ONE].getPValue(), 
-                                Common.alignments.LEFT, 
+                self.dvalues[Common.keysegments.THREE].getPValue() == '' and \
+                self.dvalues[Common.keysegments.FOUR].getPValue() == '' \
+                or self.dvalues[Common.keysegments.THREE].getPValue() == '' and \
+                self.dvalues[Common.keysegments.FOUR].getPValue() == '':
+            self.draw_character(context, self.dvalues[Common.keysegments.ONE].getPValue(),
+                                Common.alignments.LEFT,
                                 0, rect.height / 2, rect.width, rect.height / 2)
         else:
-            self.draw_character(context, self.dvalues[Common.keysegments.ONE].getPValue(), 
-                                Common.alignments.CENTRE, 
+            self.draw_character(context, self.dvalues[Common.keysegments.ONE].getPValue(),
+                                Common.alignments.CENTRE,
                                 0, rect.height / 2, rect.width / 2, rect.height / 2)
 
         if self.dvalues[Common.keysegments.THREE].getPValue() == '' and \
-                    self.dvalues[Common.keysegments.FOUR].getPValue() == '':
-            self.draw_character(context, self.dvalues[Common.keysegments.TWO].getPValue(),  
-                                Common.alignments.LEFT, 
+                self.dvalues[Common.keysegments.FOUR].getPValue() == '':
+            self.draw_character(context, self.dvalues[Common.keysegments.TWO].getPValue(),
+                                Common.alignments.LEFT,
                                 0, 0, rect.width, rect.height / 2)
         else:
-            self.draw_character(context, self.dvalues[Common.keysegments.TWO].getPValue(), 
-                                Common.alignments.CENTRE, 
+            self.draw_character(context, self.dvalues[Common.keysegments.TWO].getPValue(),
+                                Common.alignments.CENTRE,
                                 0, 0, rect.width / 2, rect.height / 2)
-        self.draw_character(context, self.dvalues[Common.keysegments.THREE].getPValue(), 
-                                Common.alignments.CENTRE, 
-                                rect.width / 2, rect.height / 2, 
-                                rect.width / 2, rect.height / 2 )
-        self.draw_character(context, self.dvalues[Common.keysegments.FOUR].getPValue(), 
-                            Common.alignments.CENTRE, 
+        self.draw_character(context, self.dvalues[Common.keysegments.THREE].getPValue(),
+                            Common.alignments.CENTRE,
+                            rect.width / 2, rect.height / 2,
+                            rect.width / 2, rect.height / 2)
+        self.draw_character(context, self.dvalues[Common.keysegments.FOUR].getPValue(),
+                            Common.alignments.CENTRE,
                             rect.width / 2, 0, rect.width / 2, rect.height / 2)
 
     def draw_segment(self, segment):
         pass
-    
+
     def draw_line(self, context, x1, y1, x2, y2):
         self.context.move_to(x1, y1)
         self.context.line_to(x2, y2)
@@ -171,40 +172,40 @@ class DumbKey(gtk.DrawingArea):
 
     def draw_linewh(self, context, x, y, w, h):
         self.context.move_to(x, y)
-        self.context.line_to(x+w, y+h)
+        self.context.line_to(x + w, y + h)
         self.context.stroke()
-            
+
     def draw_character(self, context, char, align, cx, cy, cwidth, cheight):
         if char == '':
             return
-        self.context.select_font_face(Common.fontname, Common.fontstyle, 
+        self.context.select_font_face(Common.fontname, Common.fontstyle,
                                       Common.fontweight)
         self.context.set_font_size(Common.fontsize * 1.0)
         fascent, fdescent, fheight, fxadvance, fyadvance = self.context.font_extents()
         xbearing, ybearing, width, height, xadvance, yadvance = \
-                                                  self.context.text_extents(char)
+            self.context.text_extents(char)
 
         if align == Common.alignments.CENTRE:
-                self.context.move_to(cx + cwidth/2 - width/2 - xbearing, 
-                                     cy + cheight/2 - height/2 - ybearing)
+            self.context.move_to(cx + cwidth / 2 - width / 2 - xbearing,
+                                 cy + cheight / 2 - height / 2 - ybearing)
         elif align == Common.alignments.LEFT:
-            self.context.move_to(cx + cwidth/16 - xbearing, 
-                                 cy + cheight - cheight/16 + ybearing)
+            self.context.move_to(cx + cwidth / 16 - xbearing,
+                                 cy + cheight - cheight / 16 + ybearing)
         elif align == Common.alignments.RIGHT:
-            self.context.move_to(cx + cwidth/2 - width/2 - xbearing, 
-                                 cy + cheight/2 - height/2 - ybearing)
+            self.context.move_to(cx + cwidth / 2 - width / 2 - xbearing,
+                                 cy + cheight / 2 - height / 2 - ybearing)
         else:
-            print "Error; unknown alignment"
+            print("Error; unknown alignment")
             sys.exit(-1)
 
         self.context.set_source_rgb(.30, .30, .30)
         self.context.show_text(char)
-        
+
     def redraw(self):
-        (x,y,width,height) = self.get_allocation()
-        self.queue_draw_area(x, y, width, height)    
-    
-    def roundedrec(self, context, x, y, w, h, r = 10, line_width=1):
+        (x, y, width, height) = self.get_allocation()
+        self.queue_draw_area(x, y, width, height)
+
+    def roundedrec(self, context, x, y, w, h, r=10, line_width=1):
         "Draw a rounded rectangle (source: anonymous/pygtk website)"
         #   A****BQ
         #  H      C
@@ -213,17 +214,17 @@ class DumbKey(gtk.DrawingArea):
         #   F****E
 
         context.set_line_width(line_width)
-        context.move_to(x+r,y)                    # Move to A
-        context.line_to(x+w-r,y)                # Straight line to B
-        context.curve_to(x+w,y,x+w,y,x+w,y+r)    # Curve to C, Control points are both at Q
-        context.line_to(x+w,y+h-r)                # Move to D
-        context.curve_to(x+w,y+h,x+w,y+h,x+w-r,y+h) # Curve to E
-        context.line_to(x+r,y+h)                # Line to F
-        context.curve_to(x,y+h,x,y+h,x,y+h-r)    # Curve to G
-        context.line_to(x,y+r)                    # Line to H
-        context.curve_to(x,y,x,y,x+r,y)            # Curve to A
+        context.move_to(x + r, y)  # Move to A
+        context.line_to(x + w - r, y)  # Straight line to B
+        context.curve_to(x + w, y, x + w, y, x + w, y + r)  # Curve to C, Control points are both at Q
+        context.line_to(x + w, y + h - r)  # Move to D
+        context.curve_to(x + w, y + h, x + w, y + h, x + w - r, y + h)  # Curve to E
+        context.line_to(x + r, y + h)  # Line to F
+        context.curve_to(x, y + h, x, y + h, x, y + h - r)  # Curve to G
+        context.line_to(x, y + r)  # Line to H
+        context.curve_to(x, y, x, y, x + r, y)  # Curve to A
 
-    def roundedrec_segment(self,context, which_segment, x, y, w, h, r = 10, 
+    def roundedrec_segment(self, context, which_segment, x, y, w, h, r=10,
                            line_width=1):
         "Draw a rounded rectangle (source: anonymous/pygtk website)"
         #   A****BQ
@@ -236,41 +237,41 @@ class DumbKey(gtk.DrawingArea):
         if which_segment == Common.keysegments.ALL:
             self.roundedrec(context, x, y, w, h, r, line_width)
         elif which_segment == Common.keysegments.ONE:
-            context.move_to(x, y + h / 2)                   # Move to GH-middle
-            context.line_to(x, y + h - r)                   # Line to G
-            context.curve_to(x, y + h, x, y + h, x + r, y+h)# Curve to F
-            context.line_to(x + w / 2, y + h)               # Line to FE-middle
-            context.line_to(x + w / 2, y + h / 2)           # Line to middle
-            context.line_to(x, y + h / 2)                   # Line to GH-middle
+            context.move_to(x, y + h / 2)  # Move to GH-middle
+            context.line_to(x, y + h - r)  # Line to G
+            context.curve_to(x, y + h, x, y + h, x + r, y + h)  # Curve to F
+            context.line_to(x + w / 2, y + h)  # Line to FE-middle
+            context.line_to(x + w / 2, y + h / 2)  # Line to middle
+            context.line_to(x, y + h / 2)  # Line to GH-middle
         elif which_segment == Common.keysegments.TWO:
-            context.move_to(x, y + h / 2)                   # Move to GH-middle
-            context.line_to(x, y + r)                       # Line to H
-            context.curve_to(x, y, x, y, x + r, y)          # Curve to A
-            context.line_to(x + w / 2, y)                   # Line to AB-middle
-            context.line_to(x + w / 2, y + h / 2)           # Line to middle
-            context.line_to(x, y + h / 2)                   # Line to GH-middle
+            context.move_to(x, y + h / 2)  # Move to GH-middle
+            context.line_to(x, y + r)  # Line to H
+            context.curve_to(x, y, x, y, x + r, y)  # Curve to A
+            context.line_to(x + w / 2, y)  # Line to AB-middle
+            context.line_to(x + w / 2, y + h / 2)  # Line to middle
+            context.line_to(x, y + h / 2)  # Line to GH-middle
         elif which_segment == Common.keysegments.THREE:
-            context.move_to(x + w / 2, y + h)               # Move to FE-middle
-            context.line_to(x + w - r, y + h)               # Line to E
-            context.curve_to(x + w, y + h, x + w, y + h, 
-                             x + w, y + h - r)              # Curve to D
-            context.line_to(x + w, y + h / 2)               # Line to CD-middle
-            context.line_to(x + w / 2, y + h / 2)           # Line to middle
-            context.line_to(x + w / 2, y + h)               # Line to FE-middle
+            context.move_to(x + w / 2, y + h)  # Move to FE-middle
+            context.line_to(x + w - r, y + h)  # Line to E
+            context.curve_to(x + w, y + h, x + w, y + h,
+                             x + w, y + h - r)  # Curve to D
+            context.line_to(x + w, y + h / 2)  # Line to CD-middle
+            context.line_to(x + w / 2, y + h / 2)  # Line to middle
+            context.line_to(x + w / 2, y + h)  # Line to FE-middle
         elif which_segment == Common.keysegments.FOUR:
-            context.move_to(x + w, y + h / 2)               # Move to CD-middle
-            context.line_to(x + w, y + r)                   # Line to C
-            context.curve_to(x + w, y, x + w, y, 
-                             x + w - r, y)                  # Curve to B
-            context.line_to(x + w / 2, y)                   # Line to AB-middle
-            context.line_to(x + w / 2, y + h / 2)           # Line to middle
-            context.line_to(x + w, y + h / 2)               # Line to CD-middle
+            context.move_to(x + w, y + h / 2)  # Move to CD-middle
+            context.line_to(x + w, y + r)  # Line to C
+            context.curve_to(x + w, y, x + w, y,
+                             x + w - r, y)  # Curve to B
+            context.line_to(x + w / 2, y)  # Line to AB-middle
+            context.line_to(x + w / 2, y + h / 2)  # Line to middle
+            context.line_to(x + w, y + h / 2)  # Line to CD-middle
 
-    def do_highlight(self, do_highlight = Common.keysegments.NONE, x = -1, y = -1):
+    def do_highlight(self, do_highlight=Common.keysegments.NONE, x=-1, y=-1):
         self.highlight_x = x
         self.highlight_y = y
-        
-        #print "do_highlight():", x, y
+
+        # print "do_highlight():", x, y
         if do_highlight:
             self.modifier = .8
         else:
@@ -290,8 +291,8 @@ class DumbKey(gtk.DrawingArea):
                         if activated_variants[layout][variant].has_key(self.keycode):
                             if activated_variants[layout][variant][self.keycode].has_key(counter):
                                 self.dvalues_inherited[counter] = True
-                                self.dvalues[counter] = copy.copy(activated_variants[layout][variant][self.keycode][counter])
+                                self.dvalues[counter] = copy.copy(
+                                    activated_variants[layout][variant][self.keycode][counter])
             if self.dvalues[counter].getType() == Common.keyvaluetype.NOSYMBOL:
                 self.dvalues_inherited[counter] = False
                 self.dvalues[counter] = copy.copy(self.keyvalues[counter])
-    

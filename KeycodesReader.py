@@ -30,12 +30,12 @@ KEYCODEDB = {}
 
 # Helper function to iterate through all children of a given type
 def getChildrenListByType(tree, type_value):
-    list = []
+    a_list = []
     for i in range(tree.getChildCount()):
         child = tree.getChild(i)
         if child.getType() == type_value:
-            list.append(child)
-    return list
+            a_list.append(child)
+    return a_list
 
 
 def parseFile(fileandvariant = "/usr/share/X11/xkb/keycodes/xfree86|xfree86", *morefilesandvariants):
@@ -46,9 +46,9 @@ def parseFile(fileandvariant = "/usr/share/X11/xkb/keycodes/xfree86|xfree86", *m
         try:    
             file = open(filename, 'r')
         except OSError:
-            print "Could not open file ", filename, " Aborting..."
+            print("Could not open file ", filename, " Aborting...")
             sys.exit(-1)
-        file.close
+        file.close()
     
         char_stream = antlr3.ANTLRFileStream(filename)
         lexer = KeycodesLexer(char_stream)
@@ -69,10 +69,10 @@ def parseFile(fileandvariant = "/usr/share/X11/xkb/keycodes/xfree86|xfree86", *m
             listType = getChildrenListByType(itemKeycodeDoc, KEYCODELISTTYPE)
             material = getChildrenListByType(itemKeycodeDoc, KEYCODEMATERIAL)
             if len(listType) != 1:
-                print "Requires single node for KEYCODELISTTYPE. Found", len(listType)
+                print("Requires single node for KEYCODELISTTYPE. Found", len(listType))
                 sys.exit(-1)
             if len(material) != 1:
-                print "Requires single node for KEYCODEMATERIAL. Found", len(material)
+                print("Requires single node for KEYCODEMATERIAL. Found", len(material))
                 sys.exit(-1)
                     
             for listNameGroup in getChildrenListByType(listType[0], KEYCODELISTNAME):

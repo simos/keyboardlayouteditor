@@ -20,32 +20,33 @@ from DeadKeysDict import DeadKeys
 from KeysymsUniByValue import KeysymsUniByValue
 from KeysymsUni import KeysymsUni
 
+
 class KeyValue:
-    def __init__(self, value = None, verbatim = False):
+    def __init__(self, value=None, verbatim=False):
         # Any of Common.keyvaluetype.
         self.__type__ = ""
         # String that goes to the XKB file
         self.__value__ = ""
         # String shown in the editor
         self.__presentation_value__ = ""
-        
+
         if value != None:
             self.add(value, verbatim)
-    
+
     def getType(self):
         return self.__type__
-    
+
     def getValue(self):
         return self.__value__
-    
+
     def getPValue(self):
         """ Accessor to retrieve the PresenationValue """
         return self.__presentation_value__
-    
+
     def tostring(self):
         return "type: %(type)s, value: %(value)s, pvalue: %(pvalue)s" % \
-                    { "type": self.getType(), "value": self.getValue(), 
-                     "pvalue": self.getPValue() }
+               {"type": self.getType(), "value": self.getValue(),
+                "pvalue": self.getPValue()}
 
     def copy(self, existing):
         self.__type__ = existing.getType()
@@ -53,9 +54,9 @@ class KeyValue:
         self.__presentation_value__ = existing.getPValue()
 
     def reset(self):
-        self.add('')
-        
-    def add(self, value, verbatim = False):
+        self.add(decode, '')
+
+    def add(self, value, verbatim=False):
         if verbatim:
             if value != '':
                 self.__type__ = Common.keyvaluetype.VERBATIM
@@ -64,13 +65,13 @@ class KeyValue:
                 return
         try:
             intval = ord(value.decode('utf8'))
-        except TypeError, e:
+        except TypeError as e:
             intval = 0
         if value == '':
             """ If value is empty, we put NoSymbol and inherit from above. """
             self.__type__ = Common.keyvaluetype.NOSYMBOL
             self.__value__ = ''
-            self.__presentation_value__ = ''            
+            self.__presentation_value__ = ''
         elif intval > 0:
             """ If value is a verbatim character, """
             if KeysymsUniByValue.has_key(intval):
@@ -85,7 +86,7 @@ class KeyValue:
             """ if value is of the form Uxxxx, where xxxx a hex number, """
             try:
                 val = int(value[1:], 16)
-            except ValueError, e:
+            except ValueError as e:
                 val = 0
             if val > 0:
                 self.__type__ = Common.keyvaluetype.CODEPOINT
@@ -103,10 +104,10 @@ class KeyValue:
                     0x1000 000. This should not have happened because we\
                     changed this in the code, all over the place.\
                     Sorry, I cannot continue. Error with %(e)s, value %(v)d"
-                    % { "e": value, "v": val} )
+                                % {"e": value, "v": val})
                 self.__type__ = Common.keyvaluetype.CONSTANT
                 self.__value__ = value.lower()
-                self.__presentation_value__ = unichr(val - 0x1000000) # TODO: 0x200E (special)
+                self.__presentation_value__ = unichr(val - 0x1000000)  # TODO: 0x200E (special)
         elif value[:5] == "dead_":
             self.__type__ = Common.keyvaluetype.DEADKEY
             self.__value__ = value
@@ -134,13 +135,13 @@ class KeyValue:
             else:
                 self.__presentation_value__ = value
 
+
 if __name__ == "__main__":
-    print KeyValue("U0392").tostring()
-    print KeyValue("U4FE8").tostring()
-    print KeyValue("0x1000389").tostring()
-    print KeyValue("dead_acute").tostring()
-    print KeyValue("0x1000392").tostring()
-    print KeyValue("A").tostring()
-    print KeyValue("'").tostring()
-    print KeyValue("α").tostring()
-        
+    print(KeyValue("U0392").tostring())
+    print(KeyValue("U4FE8").tostring())
+    print(KeyValue("0x1000389").tostring())
+    print(KeyValue("dead_acute").tostring())
+    print(KeyValue("0x1000392").tostring())
+    print(KeyValue("A").tostring())
+    print(KeyValue("'").tostring())
+    print(KeyValue("α").tostring())
