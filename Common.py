@@ -20,9 +20,10 @@ import Enum
 keytypes = Enum.Enum("SIMPLE SPECIAL").vals(illegal=255)
 alignments = Enum.Enum("LEFT CENTRE RIGHT").vals(illegal=255)
 keysegments = Enum.Enum("ALL ONE TWO THREE FOUR NONE").vals(illegal=255)
-keyvaluetype = Enum.Enum("UNICHAR CODEPOINT KEYSYM CONSTANT DEADKEY ANY VOIDSYMBOL NOSYMBOL NOACTION VERBATIM").vals(illegal=255)
+keyvaluetype = Enum.Enum("UNICHAR CODEPOINT KEYSYM CONSTANT DEADKEY ANY VOIDSYMBOL NOSYMBOL NOACTION VERBATIM").vals(
+    illegal=255)
 
-keysegmentslist = [keysegments.ONE, keysegments.TWO, 
+keysegmentslist = [keysegments.ONE, keysegments.TWO,
                    keysegments.THREE, keysegments.FOUR]
 keysegmentslistreverse = list(keysegmentslist)
 keysegmentslistreverse.reverse()
@@ -52,10 +53,10 @@ LEVELMAX = 4
 HOMEDIR = ''
 
 # The application's official full name.
-applicationname="Keyboard Layout Editor"
+applicationname = "Keyboard Layout Editor"
 
 # Holds the current filename.
-currentlayoutfile=''
+currentlayoutfile = ''
 
 # The directory to the xkeyboard-config base directory.
 basedir = '/usr/share/X11/xkb/'
@@ -78,14 +79,17 @@ layout_preamble = """///////////////////////////////////////////////////////////
 
 """
 
+
 # Sorts a dictionary by value, produces a sorted list of values.
-def sortDict(adict, cmp_function = None):
+def sortDict(adict, cmp_function=None):
     keys = adict.keys()
     keys.sort(cmp_function)
     return map(adict.get, keys)
 
+
 def addtostatusbar(message):
     statusbar.push(statusbar.console_context, message)
+
 
 def parseIncludeString(include):
     """ 
@@ -93,12 +97,13 @@ def parseIncludeString(include):
     { 'filename': 'us', 'variant': 'intl' }, { 'filename': 'us', 'variant': 'basic' }
     """
     if include.partition('(')[1] == '(':
-        return { 'filename': include.partition('(')[0], 'variant': include.partition('(')[2].partition(')')[0] }
+        return {'filename': include.partition('(')[0], 'variant': include.partition('(')[2].partition(')')[0]}
     else:
-        return { 'filename': include.partition('(')[0], 'variant': '' }
+        return {'filename': include.partition('(')[0], 'variant': ''}
 
-if __name__ == '__main__':
-    print parseIncludeString('us')
-    print parseIncludeString('us(level1)')
-    
-    
+
+if __name__ != '__main__':
+    pass
+else:
+    print(parseIncludeString('us'))
+    print(parseIncludeString('us(level1)'))
