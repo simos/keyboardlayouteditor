@@ -1,0 +1,4 @@
+pygtk=>2.24.0
+gobject=>0.1.0
+lxml=>4.8.0
+Enum=>0.4.7
