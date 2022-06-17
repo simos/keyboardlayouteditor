@@ -27,7 +27,7 @@ try:
     import sys
     import copy
     import string
-    import gtk
+    import pygtk
     import gobject
     import pango
 except(ImportError, e):
