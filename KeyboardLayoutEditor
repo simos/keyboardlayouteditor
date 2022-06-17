@@ -30,8 +30,8 @@ try:
     import pygtk
     import gobject
     import pango
-except(ImportError, e):
-    raise SystemExit("Import error, Keyboard Layout Editor: " + str(e))
+except (ImportError, e):
+    raise SystemExit(f"Import error, Keyboard Layout Editor: {str(e)}")
 
 if gtk.pygtk_version < (2, 12):
     print("PyGtk 2.12 or later required for this application")
@@ -40,14 +40,16 @@ if gtk.pygtk_version < (2, 12):
 
 try:
     import cairo
-except(ImportError, e):
+except (ImportError, e) as exc:
     raise SystemExit("The Python bindings for Cairo are required \
-                        for this application: " + str(e))
+                        for this application: " + str(e)) from exc
+
 
 try:
     from lxml import etree
-except(ImportError, e):
-    raise SystemExit("The Python bindings for libxml2 were not found: " + str(e))
+except (ImportError, e) as err:
+    raise SystemExit(f"The Python bindings for libxml2 were not found: {str(e)}") from err
+
 
 try:
     import antlr3
@@ -68,9 +70,8 @@ try:
     from KeyDict import KeyDict, included_files, activated_variants
     from ParseXML import ExtractVariantsKeycodes
     from DeadKeysDict import DeadKeys
-except(ImportError, e):
-    raise SystemExit("Import error, Keyboard Layout Editor: " + str(e))
-
+except (ImportError, e):
+    raise SystemExit(f"Import error, Keyboard Layout Editor: {str(e)}")
 class Controller_KeyboardLayoutEditor:
     """ The keyboard layout editor controller """
 
