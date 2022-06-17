@@ -18,6 +18,7 @@ import Common
 from lxml import etree
 from KeyDict import KeyDict, included_files, activated_variants
 
+
 # <layout layoutname="CHANGEME">
 #  <symbols>
 #    <mapoption/>
@@ -37,12 +38,13 @@ from KeyDict import KeyDict, included_files, activated_variants
 #      </tokenkey>
 #    </mapmaterial>
 #  </symbols>
-#</layout>
+# </layout>
 
 
 class GenericLayout:
-    def __init__(self): 
-        self.generic_layout = etree.Element("layout", layoutname = "CHANGEME")
+    def __init__(self):
+        self.tokenkey = None
+        self.generic_layout = etree.Element("layout", layoutname="CHANGEME")
 
         self.symbols = etree.SubElement(self.generic_layout, "symbols")
 
@@ -67,13 +69,14 @@ class GenericLayout:
             for counter in range(Common.LEVELS):
                 etree.SubElement(self.symbolsgroup, "symbol")
         """
-        
+
     def create_layout(self, layoutcode, layoutvariant, layoutcountry, layoutname, layoutkeys):
         """ 
         Creates an lxml construct with the layout. 
         Makes use of KeyDict.included_files, KeyDict.activated_variants 
         """
-        self.new_layout = etree.Element("layout", layoutname = layoutcode)
+        global max_index
+        self.new_layout = etree.Element("layout", layoutname=layoutcode)
 
         self.symbols = etree.SubElement(self.new_layout, "symbols")
 
@@ -92,7 +95,7 @@ class GenericLayout:
 
         for keycodename in layoutkeys.keys():
             if keycodename in KeyDict.IgnoreKeys:
-                #print "keycodename", keycodename, "is in ignorekeys"
+                # print "keycodename", keycodename, "is in ignorekeys"
                 continue
             votes_empty = 0
             for counter in Common.keysegmentslist:
@@ -101,13 +104,13 @@ class GenericLayout:
             if votes_empty == len(Common.keysegmentslist):
                 # print "Keycode", keycodename, "is empty, skipping"
                 continue
-            else: 
+            else:
                 # print keycodename, "we only had", votes_empty, "votes,"
                 for counter in Common.keysegmentslist:
                     pass
-                    #print layoutkeys[keycodename].key.keyvalues[counter].getValue(),
-                #print
-            #print layoutkeys[keycodename].key.keyvalues[Common.keysegments.ONE].getValue()
+                    # print layoutkeys[keycodename].key.keyvalues[counter].getValue(),
+                # print
+            # print layoutkeys[keycodename].key.keyvalues[Common.keysegments.ONE].getValue()
             self.tokenkey = etree.SubElement(self.mapmaterial, "tokenkey")
             self.tokenkey.attrib["override"] = "False"
 
@@ -121,12 +124,12 @@ class GenericLayout:
             for counter in Common.keysegmentslistreverse:
                 max_index = counter
                 if layoutkeys[keycodename].key.keyvalues[counter].getType() == Common.keyvaluetype.NOSYMBOL:
-                    #print "O",
+                    # print "O",
                     continue
                 else:
                     break
-            #print
-            #print "Doing look between", Common.keysegments.ONE, "and", max_index
+            # print
+            # print "Doing look between", Common.keysegments.ONE, "and", max_index
             for counter in range(Common.keysegments.ONE, max_index + 1):
                 sym = etree.SubElement(self.symbolsgroup, "symbol")
                 sym.text = layoutkeys[keycodename].key.keyvalues[counter].getValue()
@@ -135,7 +138,7 @@ class GenericLayout:
 
                 # print "sym.text", sym.text
         return self.new_layout
-    
+
     def create_tokenkey(self, keycodenametext):
         if not self.exists_tokenkey(keycodenametext):
             tokenkey = etree.SubElement(self.mapmaterial, "tokenkey")
@@ -155,11 +158,11 @@ class GenericLayout:
 
     def return_tokenkey(self, keycode):
         all_tokenkeys = self.generic_layout.findall(".//tokenkey")
-        if all_tokenkeys == []:
+        if not all_tokenkeys:
             return None
         for tk in all_tokenkeys:
             keycodenames = tk.findall(".//keycodename")
-            if keycodenames == []:  
+            if not keycodenames:
                 SystemError("Internal error, expecting a keycodename")
             if len(keycodenames) > 1:
                 SystemError("Internal error, expecting only one keycodename")
@@ -168,11 +171,11 @@ class GenericLayout:
 
     def exists_tokenkey(self, keycode):
         all_tokenkeys = self.generic_layout.findall(".//tokenkey")
-        if all_tokenkeys == []:
+        if not all_tokenkeys:
             return False
         for tk in all_tokenkeys:
             keycodenames = tk.findall(".//keycodename")
-            if keycodenames == []:  
+            if not keycodenames:
                 SystemError("Internal error, expecting a keycodename")
             if len(keycodenames) > 1:
                 SystemError("Internal error, expecting only one keycodename")
@@ -180,10 +183,11 @@ class GenericLayout:
                 return True
             else:
                 return False
-                
+
     def tostring(self):
-        return etree.tostring(self.generic_layout, pretty_print = True)
-    
+        return etree.tostring(self.generic_layout, pretty_print=True)
+
+
 if __name__ == "__main__":
     gl = GenericLayout()
-    print gl.tostring()
+    print(gl.tostring())

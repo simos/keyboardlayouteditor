@@ -27,34 +27,36 @@ try:
     import sys
     import copy
     import string
-    import gtk
+    import pygtk
     import gobject
     import pango
-except ImportError, e:
-    raise SystemExit("Import error, Keyboard Layout Editor: " + str(e))
+except (ImportError, e):
+    raise SystemExit(f"Import error, Keyboard Layout Editor: {str(e)}")
 
 if gtk.pygtk_version < (2, 12):
-    print "PyGtk 2.12 or later required for this application"
-    print "You have pyGTK", gtk.pygtk_version
+    print("PyGtk 2.12 or later required for this application")
+    print("You have pyGTK", gtk.pygtk_version)
     raise SystemExit
 
 try:
     import cairo
-except ImportError, e:
+except (ImportError, e) as exc:
     raise SystemExit("The Python bindings for Cairo are required \
-                        for this application: " + str(e))
+                        for this application: " + str(e)) from exc
+
 
 try:
     from lxml import etree
-except ImportError, e:
-    raise SystemExit("The Python bindings for libxml2 were not found: " + str(e))
+except (ImportError, e) as err:
+    raise SystemExit(f"The Python bindings for libxml2 were not found: {str(e)}") from err
+
 
 try:
     import antlr3
-except ImportError, err:
-    print 'Import error:', err
-    print 'This script requires to have the python antl3 package installed.'
-    print 'Please see the README file for further instructions.\nExiting...'
+except(ImportError, err):
+    print('Import error:', err)
+    print('This script requires to have the python antl3 package installed.')
+    print('Please see the README file for further instructions.\nExiting...')
     sys.exit(-10)
 
 try:
@@ -68,9 +70,8 @@ try:
     from KeyDict import KeyDict, included_files, activated_variants
     from ParseXML import ExtractVariantsKeycodes
     from DeadKeysDict import DeadKeys
-except ImportError, e:
-    raise SystemExit("Import error, Keyboard Layout Editor: " + str(e))
-
+except (ImportError, e):
+    raise SystemExit(f"Import error, Keyboard Layout Editor: {str(e)}")
 class Controller_KeyboardLayoutEditor:
     """ The keyboard layout editor controller """
 
@@ -804,11 +805,11 @@ Please do not put punctuation marks."
 
         if activated_variants.has_key(selected_layout):
             del activated_variants[selected_layout]
-        print "clicked_removeentry_callback:", included_files
+        print("clicked_removeentry_callback:", included_files)
         del included_files[selected_layout]
         del self.include_layout_selected["model"][self.include_layout_selected["paths"][0]]
-        self.mykeyboard.redraw()
-        Common.addtostatusbar('Removed layout ' + selected_layout)
+        self.myke('Import error:', erryboard.redraw())
+        Common.addtostatusbar(f'Removed layout {selected_layout}')
         button.set_sensitive(False)
           
     def col1_toggled_callback( self, cell, path, model ):
@@ -966,9 +967,7 @@ Please do not put punctuation marks."
         
     def keypress_filter_callback(self, event, data = None):
         if event.type == gtk.gdk.KEY_PRESS:
-            #print event.keyval, event.string
-		pass
-        gtk.main_do_event(event)
+    	    gtk.main_do_event(event)
 
 if __name__ == "__main__":
     myeditor = Controller_KeyboardLayoutEditor()
