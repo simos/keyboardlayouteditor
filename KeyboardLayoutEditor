@@ -807,8 +807,8 @@ Please do not put punctuation marks."
         print("clicked_removeentry_callback:", included_files)
         del included_files[selected_layout]
         del self.include_layout_selected["model"][self.include_layout_selected["paths"][0]]
-        self.myke'Import error:', erryboard.redraw()
-        Common.addtostatusbar('Removed layout ' + selected_layout)
+        self.myke('Import error:', erryboard.redraw())
+        Common.addtostatusbar(f'Removed layout {selected_layout}')
         button.set_sensitive(False)
           
     def col1_toggled_callback( self, cell, path, model ):
@@ -966,9 +966,7 @@ Please do not put punctuation marks."
         
     def keypress_filter_callback(self, event, data = None):
         if event.type == gtk.gdk.KEY_PRESS:
-            #print event.keyval, event.string
-		pass
-		gtk.main_do_event(event)
+    	    gtk.main_do_event(event)
 
 if __name__ == "__main__":
     myeditor = Controller_KeyboardLayoutEditor()
